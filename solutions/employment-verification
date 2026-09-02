@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Employment Verification — Verifitrust</title>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KFSWZS2J');</script>
+<!-- End Google Tag Manager -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- AEO & GEO Schema for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is employment verification?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Employment verification is the process of confirming a candidate's work history, including job titles, employment dates, and sometimes salary or performance. It ensures the experience claimed on a resume is accurate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if a previous employer doesn't respond?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If an employer is unresponsive, we use alternative methods like HR email outreach, third-party database matching, or pay stub/W-2 verification to ensure the employment history is still confirmed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does the employment verification process take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most employment verifications are completed within 24 to 48 hours. Automated database verifications can be instant, while manual outreach to previous employers may take a few business days."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can international employment be verified?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, our global network supports employment verification in 180+ countries, ensuring local compliance and data privacy while confirming international work history."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --primary: #69be28;
+    --primary-dark: #4f9e1a;
+    --primary-soft: #eaf7d8;
+    --secondary: #071A2b;
+    --secondary-soft: #122845;
+    --white: #ffffff;
+    --grey-50: #f8fafc;
+    --grey-100: #f1f5f9;
+    --grey-200: #e2e8f0;
+    --grey-600: #475569;
+    --grey-700: #334155;
+  }
+  *{ -webkit-font-smoothing: antialiased; }
+  body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    color: var(--secondary);
+    overflow-x: hidden;
+  }
+  .font-serif{ font-family: 'Instrument Serif', serif; font-weight: 400; }
+  
+  ::-webkit-scrollbar{ width: 10px; }
+  ::-webkit-scrollbar-track{ background: #f1f5f9; }
+  ::-webkit-scrollbar-thumb{ background: #69be28; border-radius: 5px; }
+  
+  /* Gradient text */
+  .gradient-text{
+    background: linear-gradient(135deg, #071A2b 0%, #2d5a1a 50%, #69be28 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Buttons */
+  .btn-primary{
+    background: var(--primary);
+    color: var(--secondary);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 4px 14px rgba(105,190,40,0.3);
+  }
+  .btn-primary:hover{
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(105,190,40,0.4);
+  }
+  .btn-secondary{
+    background: transparent;
+    color: var(--secondary);
+    border: 1.5px solid var(--secondary);
+    transition: all 0.3s ease;
+  }
+  .btn-secondary:hover{
+    background: var(--secondary);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  
+  /* Fade in animation */
+  .fade-up{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fade-up.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Card hover */
+  .feature-card{
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before{
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, #69be28, transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  .feature-card:hover::before{ transform: translateX(100%); }
+  .feature-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(7,26,43,0.08);
+    border-color: rgba(105,190,40,0.3);
+  }
+  
+  /* Hero mockup styling */
+  .dashboard-card{
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px -15px rgba(7,26,43,0.1), 0 0 0 1px rgba(7,26,43,0.02);
+  }
+  
+  @keyframes drawCheck{ to{ stroke-dashoffset: 0; } }
+  .check-path{
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawCheck 1.5s ease forwards;
+  }
+  
+  .stripe-bg{
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(105,190,40,0.04) 10px,
+      rgba(105,190,40,0.04) 20px
+    );
+  }
+  
+  .mobile-menu{
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-menu.open{ transform: translateX(0); }
+  
+  ::selection{ background: #69be28; color: #071A2b; }
+  
+  .border-soft{ border: 1px solid rgba(7,26,43,0.08); }
+  
+  .stagger > *{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .stagger.visible > *{ opacity: 1; transform: translateY(0); }
+  .stagger.visible > *:nth-child(1){ transition-delay: 0.05s; }
+  .stagger.visible > *:nth-child(2){ transition-delay: 0.15s; }
+  .stagger.visible > *:nth-child(3){ transition-delay: 0.25s; }
+  .stagger.visible > *:nth-child(4){ transition-delay: 0.35s; }
+  .stagger.visible > *:nth-child(5){ transition-delay: 0.45s; }
+  .stagger.visible > *:nth-child(6){ transition-delay: 0.55s; }
+  
+  @keyframes verifyRing{
+    0%,100%{ transform: scale(1); opacity: 0.6; }
+    50%{ transform: scale(1.1); opacity: 1; }
+  }
+  .verify-ring{ animation: verifyRing 3s ease-in-out infinite; }
+  
+  html{ scroll-behavior: smooth; }
+  
+  /* Step Badge */
+  .step-badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: #071A2b;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 9999px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  
+  /* Comic Card styling */
+  .comic-card {
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    border: 1px solid rgba(7,26,43,0.08);
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px -5px rgba(7,26,43,0.05);
+  }
+  .comic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -5px rgba(7,26,43,0.1);
+    border-color: rgba(105,190,40,0.3);
+  }
+  
+  /* FAQ Accordion (JS Driven for Desktop/Mobile/Tablet reliability) */
+  .faq-item {
+    border: 1px solid #e2e8f0;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .faq-item.active {
+    border-color: rgba(105,190,40,0.5);
+    box-shadow: 0 10px 30px -5px rgba(105,190,40,0.1);
+  }
+  .faq-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    text-align: left;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    gap: 1rem;
+  }
+  .faq-trigger h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #071A2b;
+  }
+  .faq-icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    background: rgba(105,190,40,0.1);
+    color: #4f9e1a;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  }
+  .faq-item.active .faq-icon {
+    transform: rotate(135deg);
+    background: #69be28;
+    color: #071A2b;
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+  .faq-answer-inner {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: #475569;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body class="bg-white">
+
+<!-- ============ HEADER ============ -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="../index.html" class="flex items-center group">
+        <img src="../assets/logo.png" alt="VerifitTrust - Right People. Safer Future." class="h-12 md:h-14 w-auto object-contain transition-transform group-hover:scale-105">
+      </a>
+        
+      <nav class="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+        <a href="../index.html#features" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Features</a>
+        
+        <!-- Solutions Dropdown -->
+        <div class="relative group">
+          <button class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors flex items-center gap-1">
+            Solutions <i class="fas fa-chevron-down text-[10px] mt-0.5"></i>
+          </button>
+          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-56 bg-white border border-slate-100 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-4">
+            <a href="/solutions/id-verification.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
+              <div class="text-sm font-semibold text-[#071A2b]">ID Verification</div>
+              <div class="text-xs text-slate-500">For teams of 1-200</div>
+            </a>
+            <a href="/solutions/enterprise.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
+              <div class="text-sm font-semibold text-[#071A2b]">Enterprise</div>
+              <div class="text-xs text-slate-500">Custom workflows & SSO</div>
+            </a>
+            <a href="/solutions/platforms.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
+              <div class="text-sm font-semibold text-[#071A2b]">Platforms</div>
+              <div class="text-xs text-slate-500">API & White-label</div>
+            </a>
+            <a href="/solutions/healthcare.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
+              <div class="text-sm font-semibold text-[#071A2b]">Healthcare</div>
+              <div class="text-xs text-slate-500">Sanction checks & compliance</div>
+            </a>
+            <a href="/solutions/finance.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
+              <div class="text-sm font-semibold text-[#071A2b]">Financial Services</div>
+              <div class="text-xs text-slate-500">FCRA & credit checks</div>
+            </a>
+          </div>
+        </div>
+
+        <a href="../index.html#how" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">How it Works</a>
+        <a href="../index.html#testimonials" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Customers</a>
+        <a href="../index.html#pricing" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Pricing</a>
+      </nav>
+      
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="#" class="text-sm font-semibold text-[#071A2b] hover:text-[#69be28] transition-colors">Sign in</a>
+        <a href="../index.html#cta" class="btn-primary text-sm font-semibold px-5 py-2.5 rounded-full">
+          Get Started <i class="fas fa-arrow-right ml-1 text-xs"></i>
+        </a>
+      </div>
+      
+      <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-slate-100">
+        <i class="fas fa-bars text-[#071A2b] text-xl"></i>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu lg:hidden fixed top-0 right-0 h-screen w-80 bg-white shadow-2xl z-50 p-6">
+    <div class="flex justify-between items-center mb-8">
+      <span class="text-xl font-bold">Menu</span>
+      <button id="closeMenu" class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-slate-100">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-4">
+      <a href="../index.html#features" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">Features</a>
+      
+      <details class="border-b border-slate-100">
+        <summary class="text-lg font-medium py-3 cursor-pointer list-none flex items-center justify-between">
+          Solutions <i class="fas fa-chevron-down text-xs"></i>
+        </summary>
+        <div class="flex flex-col gap-2 pb-4 pl-3">
+          <a href="/solutions/id-verification.html" class="mobile-link text-base font-normal py-2 text-slate-700">ID Verification</a>
+          <a href="/solutions/enterprise.html" class="mobile-link text-base font-normal py-2 text-slate-700">Enterprise</a>
+          <a href="/solutions/platforms.html" class="mobile-link text-base font-normal py-2 text-slate-700">Platforms</a>
+          <a href="/solutions/healthcare.html" class="mobile-link text-base font-normal py-2 text-slate-700">Healthcare</a>
+          <a href="/solutions/finance.html" class="mobile-link text-base font-normal py-2 text-slate-700">Financial Services</a>
+        </div>
+      </details>
+
+      <a href="../index.html#how" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">How it Works</a>
+      <a href="../index.html#testimonials" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">Customers</a>
+      <a href="../index.html#pricing" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">Pricing</a>
+      <a href="../index.html#cta" class="btn-primary mt-4 text-center font-semibold py-3 rounded-full">Get Started</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      
+      <div class="relative z-10">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full mb-6">
+          <i class="fas fa-briefcase text-[#69be28]"></i>
+          <span class="text-xs font-semibold text-[#071A2b]">Global Employment Verification</span>
+        </div>
+        
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
+          <span class="block text-[#071A2b]">Verify experience.</span>
+          <span class="block">
+            <span class="gradient-text">Hire</span>
+          </span>
+          <span class="block text-[#071A2b]">with confidence<span class="text-[#69be28]">.</span></span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-xl leading-relaxed">
+          Don't just read the resume—verify the experience. Validate candidate work history, job titles, and dates instantly with previous employers globally.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 mb-12">
+          <a href="#cta" class="btn-primary px-7 py-4 rounded-full font-semibold text-base inline-flex items-center justify-center gap-2">
+            Start Verifying Free
+            <i class="fas fa-arrow-right text-sm"></i>
+          </a>
+          <a href="#process" class="btn-secondary px-7 py-4 rounded-full font-semibold text-base inline-flex items-center justify-center gap-2">
+            <i class="fas fa-play text-xs"></i>
+            See How It Works
+          </a>
+        </div>
+      </div>
+      
+      <div class="relative">
+        <div class="dashboard-card max-w-sm mx-auto relative z-10 p-6">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <div class="text-xs text-slate-400 uppercase tracking-wider">Employment Check</div>
+              <div class="text-lg font-bold text-[#071A2b]">Arjun Kumar</div>
+            </div>
+            <div class="w-10 h-10 bg-[#69be28] rounded-full flex items-center justify-center">
+              <i class="fas fa-check text-[#071A2b]"></i>
+            </div>
+          </div>
+          
+          <div class="bg-slate-50 rounded-xl p-4 mb-4 flex items-center gap-4">
+            <div class="w-16 h-16 bg-white rounded-lg border border-slate-200 flex items-center justify-center">
+              <i class="fas fa-building text-2xl text-slate-400"></i>
+            </div>
+            <div>
+              <div class="text-sm font-bold text-[#071A2b]">Tech Solutions Pvt. Ltd.</div>
+              <div class="text-xs text-slate-500">Jan 2018 - Dec 2022</div>
+            </div>
+          </div>
+          
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Job Title</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Sr. Software Engineer</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Employment Dates</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Match</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Reason for Leaving</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Verified</span>
+            </div>
+          </div>
+          
+          <div class="bg-[#69be28]/8 rounded-xl p-4 mt-6 flex items-center gap-3">
+            <div class="verify-ring w-8 h-8 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-shield-halved text-[#071A2b] text-xs"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-[#071A2b]">Employment Verified</div>
+              <div class="text-[10px] text-slate-500">Confident hiring decision</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMIC PROCESS TIMELINE ============ -->
+<section id="process" class="py-24 lg:py-32 bg-gradient-to-b from-white to-slate-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="text-center max-w-3xl mx-auto mb-20 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">The Journey</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        The journey to <span class="font-serif italic text-[#69be28]">verified</span> experience
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        From resume submission to a confidently hired candidate. Follow the journey of how we verify employment history to ensure zero compromise.
+      </p>
+    </div>
+
+    <div class="space-y-12 lg:space-y-24">
+
+      <!-- Step 1 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="comic-card fade-up order-1 lg:order-1">
+          <img src="https://z-cdn-media.chatglm.cn/files/9cb56272-fb4f-4ae7-aabf-4d3d85749f7f.png?auth_key=1888287189-cde1fc1e206d44f48d06b32c0f50f6e4-0-5922af0607605141dceb750ba36c7e47" alt="Candidate submits resume comic" class="w-full h-auto" loading="lazy">
+        </div>
+        <div class="text-center lg:text-left fade-up order-2 lg:order-2 py-4">
+          <span class="step-badge mb-4">Step 01</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">I have 6 years of experience!</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">The journey begins with the candidate's resume. While the claims look great on paper, true hiring confidence requires evidence and verification.</p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="text-center lg:text-right fade-up order-2 lg:order-1 py-4">
+          <span class="step-badge mb-4">Step 02</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Before we make the final decision...</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">Let's verify that experience. The HR manager initiates the employment verification process directly from the screening dashboard to ensure the right hire.</p>
+        </div>
+        <div class="comic-card fade-up order-1 lg:order-2">
+          <img src="https://z-cdn-media.chatglm.cn/files/570bc441-3639-452f-904e-7906884b6b72.png?auth_key=1888287189-ca3ed3d4711b49efa58eb24dd115118c-0-bbd62ac21731c9b944f75315ae80372f" alt="HR manager verifying experience comic" class="w-full h-auto" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="comic-card fade-up order-1 lg:order-1">
+          <img src="https://z-cdn-media.chatglm.cn/files/b4c14d94-4f57-4910-9121-5558328f77c6.png?auth_key=1888287189-b975abe474944f52b395eb68114a0eb0-0-f4c2ccf26e96648fd6b69b10195b3eac" alt="Candidate submitting employment details comic" class="w-full h-auto" loading="lazy">
+        </div>
+        <div class="text-center lg:text-left fade-up order-2 lg:order-2 py-4">
+          <span class="step-badge mb-4">Step 03</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Here are my employment details.</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">The candidate securely submits their previous employer information, job titles, and employment dates. All data is encrypted and securely captured.</p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="text-center lg:text-right fade-up order-2 lg:order-1 py-4">
+          <span class="step-badge mb-4">Step 04</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Details Match!</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">The system cross-references the provided information with verified employer records. A match confirms authenticity, leading to a successful verification.</p>
+        </div>
+        <div class="comic-card fade-up order-1 lg:order-2">
+          <img src="https://z-cdn-media.chatglm.cn/files/fae19d1a-0c55-457b-bc40-c66622b1f19d.png?auth_key=1888287189-12a20377660042e38892b7e691c0775a-0-d536077f6ee5d70eb3d7ba2f99ae9fb9" alt="Verification successful details match comic" class="w-full h-auto" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="comic-card fade-up order-1 lg:order-1">
+          <img src="https://z-cdn-media.chatglm.cn/files/0da9c801-ea5a-4bf0-b602-4293e72767ca.png?auth_key=1888287189-65e1ab318b484df6b404c379f7965fba-0-6787f7565d114579638b40dadee3d7b0" alt="Investigating discrepancy in employment dates comic" class="w-full h-auto" loading="lazy">
+        </div>
+        <div class="text-center lg:text-left fade-up order-2 lg:order-2 py-4">
+          <span class="step-badge mb-4">Step 05</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Employment dates don't match.</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">What happens when there's a discrepancy? Discrepancies are flagged for review, not ignored. We investigate the differences and ask for clarification.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Step 6 (Full Width Banner) -->
+    <div class="mt-12 lg:mt-24 fade-up">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-0 items-center bg-[#071A2b] rounded-[2rem] overflow-hidden border border-slate-100 shadow-lg">
+        <div class="p-8 lg:p-12 lg:pl-16 order-2 lg:order-1">
+          <span class="step-badge mb-6 bg-[#69be28] text-[#071A2b]">Step 06</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight mt-4">
+            Verified experience. <br><span class="font-serif italic text-[#69be28]">Confident decision.</span>
+          </h2>
+          <p class="text-slate-300 mb-8 leading-relaxed">
+            Don't just read the resume. Verify the experience. Make your final hiring decision with absolute clarity and trust in your new team member.
+          </p>
+          <a href="#cta" class="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm">
+            Start Verifying Today
+            <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+        <div class="h-full w-full order-1 lg:order-2">
+          <img src="https://z-cdn-media.chatglm.cn/files/80882401-32de-4788-b249-6858ff3099bf.png?auth_key=1888287189-dfc3b20c252f48a7944221e23df561b1-0-9d182bb52a9aa6c8550f5175677a68ae" alt="Verified experience and confident decision comic" class="w-full h-full object-cover" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SIMPLE AS 1, 2, 3 ============ -->
+<section class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">How it works</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Employment verification as simple as <span class="font-serif italic text-[#69be28]">1, 2, 3</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        We handle the outreach and database matching so you can focus on interviewing the right candidates.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8 stagger">
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-paper-plane text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 1</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Request verification</h3>
+        <p class="text-slate-600 leading-relaxed">Enter the candidate's previous employer details and trigger a verification request directly from your dashboard.</p>
+      </div>
+      
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-handshake text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 2</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Verify records</h3>
+        <p class="text-slate-600 leading-relaxed">We automatically reach out to the previous employer's HR department or match the details against verified global databases.</p>
+      </div>
+      
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-file-circle-check text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 3</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Get report</h3>
+        <p class="text-slate-600 leading-relaxed">Receive a comprehensive report detailing the matched job titles, dates of employment, and reasons for leaving.</p>
+      </div>
+    </div>
+
+    <!-- Feature Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 stagger">
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-database text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Database Matching</h3>
+          <p class="text-sm text-slate-600">Instant verification using authoritative third-party payroll and HR databases.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-headset text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Direct Outreach</h3>
+          <p class="text-sm text-slate-600">Automated HR outreach for employers not present in digital databases.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-flag text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Discrepancy Flags</h3>
+          <p class="text-sm text-slate-600">Instant alerts if job titles or dates don't align, allowing for quick clarification.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ (AEO & GEO Optimized) ============ -->
+<section class="py-24 lg:py-32 bg-slate-50">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">FAQ</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Frequently asked <span class="font-serif italic text-[#69be28]">questions</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">Everything you need to know about employment verification and background checks.</p>
+    </div>
+
+    <div class="space-y-4 stagger" id="faq-container">
+      
+      <!-- FAQ Item 1 -->
+      <div class="faq-item active">
+        <button class="faq-trigger">
+          <h3>What is employment verification?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer" style="max-height: 500px;">
+          <div class="faq-answer-inner">
+            <p>Employment verification is the process of confirming a candidate's work history, including job titles, employment dates, and sometimes salary or performance. It ensures the experience claimed on a resume is accurate and verified by official sources.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>What happens if a previous employer doesn't respond?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>If an employer is unresponsive, we use alternative methods like HR email outreach, third-party database matching, or pay stub/W-2 verification to ensure the employment history is still confirmed accurately.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>How long does the employment verification process take?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Most employment verifications are completed within 24 to 48 hours. Automated database verifications can be instant, while manual outreach to previous employers may take a few business days.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>Can international employment be verified?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Yes, our global network supports employment verification in 180+ countries, ensuring local compliance and data privacy while confirming international work history seamlessly.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="cta" class="py-24 lg:py-32 relative overflow-hidden bg-white">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="relative bg-[#071A2b] rounded-[2.5rem] p-10 md:p-16 lg:p-20 overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-80 h-80 bg-[#69be28]/20 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-[#69be28]/10 rounded-full blur-3xl"></div>
+      <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(105,190,40,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(105,190,40,0.5) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      
+      <div class="relative grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-1.5 bg-[#69be28]/15 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-6">Get started today</span>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Verify your first candidate in <span class="font-serif italic text-[#69be28]">minutes</span>
+          </h2>
+          <p class="text-lg text-slate-300 mb-8 leading-relaxed">
+            Join 4,000+ companies that trust Verifitrust for fast, accurate, and compliant employment verification. No credit card required.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#" class="btn-primary inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold">
+              Start free trial
+              <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+            <a href="#" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold border border-white/20 text-white hover:bg-white/5 transition-all">
+              Book a demo
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8">
+          <h3 class="text-white font-bold text-xl mb-6">What's included:</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">5 free employment checks — no card required</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">Full access to dashboard & integrations</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">Global employer database access</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">24/7 priority support</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-white border-t border-slate-100 pt-20 pb-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-10 mb-12">
+      <div class="lg:col-span-2">
+        <a href="../index.html" class="flex items-center justify-start group mr-auto mb-5">
+          <img src="../assets/logo.png" alt="VerifitTrust - Right People. Safer Future." class="h-12 md:h-14 w-auto object-contain transition-transform group-hover:scale-105">
+        </a>
+        <p class="text-slate-600 leading-relaxed max-w-sm mb-6">Fast, accurate, and compliant background checks for teams hiring anywhere in the world.</p>
+        <div class="flex gap-3">
+          <a href="#" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-[#69be28] flex items-center justify-center transition-colors group">
+            <i class="fab fa-linkedin-in text-slate-600 group-hover:text-[#071A2b]"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-[#69be28] flex items-center justify-center transition-colors group">
+            <i class="fab fa-x-twitter text-slate-600 group-hover:text-[#071A2b]"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-[#69be28] flex items-center justify-center transition-colors group">
+            <i class="fab fa-github text-slate-600 group-hover:text-[#071A2b]"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-[#69be28] flex items-center justify-center transition-colors group">
+            <i class="fab fa-youtube text-slate-600 group-hover:text-[#071A2b]"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div>
+        <h4 class="font-bold text-[#071A2b] mb-4">Product</h4>
+        <ul class="space-y-3">
+          <li><a href="../index.html#features" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Features</a></li>
+          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Integrations</a></li>
+          <li><a href="../index.html#pricing" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Pricing</a></li>
+          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">API Docs</a></li>
+          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Changelog</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="font-bold text-[#071A2b] mb-4">Solutions</h4>
+        <ul class="space-y-3">
+          <li><a href="/solutions/id-verification.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">ID Verification</a></li>
+          <li><a href="/solutions/enterprise.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Enterprise</a></li>
+          <li><a href="/solutions/platforms.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Platforms</a></li>
+          <li><a href="/solutions/healthcare.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Healthcare</a></li>
+          <li><a href="/solutions/finance.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Financial Services</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="font-bold text-[#071A2b] mb-4">Company</h4>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">About us</a></li>
+          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Careers</a></li>
+          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Blog</a></li>
+          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Press</a></li>
+          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="font-bold text-[#071A2b] mb-4">Resources</h4>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Help Center</a></li>
+          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Compliance</a></li>
+          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Security</a></li>
+          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Status</a></li>
+          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-slate-500">© 2025 Verifitrust Inc. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a href="#" class="text-sm text-slate-500 hover:text-[#69be28] transition-colors">Terms</a>
+        <a href="#" class="text-sm text-slate-500 hover:text-[#69be28] transition-colors">Privacy</a>
+        <a href="#" class="text-sm text-slate-500 hover:text-[#69be28] transition-colors">Cookies</a>
+        <div class="flex items-center gap-2 px-3 py-1.5 bg-slate-100 rounded-full">
+          <i class="fas fa-globe text-slate-500 text-xs"></i>
+          <select class="bg-transparent text-sm text-slate-600 outline-none cursor-pointer">
+            <option>English</option>
+            <option>Français</option>
+            <option>Deutsch</option>
+            <option>Español</option>
+            <option>日本語</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="backTop" class="fixed bottom-8 right-8 w-12 h-12 bg-[#69be28] text-[#071A2b] rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all hover:scale-110 z-40">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const closeMenu = document.getElementById('closeMenu');
+  const mobileMenu = document.getElementById('mobileMenu');
+  
+  if(menuBtn) {
+    menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+    closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+  }
+  
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  document.querySelectorAll('.fade-up, .stagger').forEach(el => observer.observe(el));
+  
+  // FAQ Accordion (JS Driven for Perfect Desktop/Mobile/Tablet Support)
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const trigger = item.querySelector('.faq-trigger');
+    const answer = item.querySelector('.faq-answer');
+    
+    trigger.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      
+      // Close all other items
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('active');
+          otherItem.querySelector('.faq-answer').style.maxHeight = '0px';
+        }
+      });
+      
+      // Toggle current item
+      if (!isActive) {
+        item.classList.add('active');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      } else {
+        item.classList.remove('active');
+        answer.style.maxHeight = '0px';
+      }
+    });
+  });
+  
+  // Initialize the first FAQ item to be open by default
+  const firstFaq = document.querySelector('.faq-item.active');
+  if(firstFaq) {
+    const firstAnswer = firstFaq.querySelector('.faq-answer');
+    firstAnswer.style.maxHeight = firstAnswer.scrollHeight + 'px';
+  }
+  
+  // Back to top
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      backTop.style.opacity = '1';
+      backTop.style.visibility = 'visible';
+    } else {
+      backTop.style.opacity = '0';
+      backTop.style.visibility = 'invisible';
+    }
+  });
+  backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+
+</body>
+</html>
