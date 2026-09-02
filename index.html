@@ -220,9 +220,42 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <img src="assets/logo.png" alt="VerifitTrust - Right People. Safer Future." class="h-12 md:h-14 w-auto object-contain transition-transform group-hover:scale-105">
       </a>
         
-      <nav class="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+           <nav class="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+        
+        <!-- Normal Link -->
         <a href="#features" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Features</a>
-        <a href="#solutions" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Solutions</a>
+        
+        <!-- Solutions Dropdown (Only this one is a dropdown) -->
+        <div class="relative group">
+          <button class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors flex items-center gap-1">
+            Solutions <i class="fas fa-chevron-down text-[10px] mt-0.5"></i>
+          </button>
+          <!-- Dropdown Menu -->
+          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-56 bg-white border border-slate-100 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-4">
+            <a href="solutions/startups.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
+              <div class="text-sm font-semibold text-[#071A2b]">Startups & SMBs</div>
+              <div class="text-xs text-slate-500">For teams of 1-200</div>
+            </a>
+            <a href="solutions/enterprise.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
+              <div class="text-sm font-semibold text-[#071A2b]">Enterprise</div>
+              <div class="text-xs text-slate-500">Custom workflows & SSO</div>
+            </a>
+            <a href="solutions/platforms.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
+              <div class="text-sm font-semibold text-[#071A2b]">Platforms</div>
+              <div class="text-xs text-slate-500">API & White-label</div>
+            </a>
+            <a href="solutions/healthcare.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
+              <div class="text-sm font-semibold text-[#071A2b]">Healthcare</div>
+              <div class="text-xs text-slate-500">Sanction checks & compliance</div>
+            </a>
+            <a href="solutions/finance.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
+              <div class="text-sm font-semibold text-[#071A2b]">Financial Services</div>
+              <div class="text-xs text-slate-500">FCRA & credit checks</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Normal Links -->
         <a href="#how" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">How it Works</a>
         <a href="#testimonials" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Customers</a>
         <a href="#pricing" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Pricing</a>
