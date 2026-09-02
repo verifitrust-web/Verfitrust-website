@@ -4,65 +4,23 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Identity Verification — Verifitrust</title>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KFSWZS2J');</script>
+<!-- End Google Tag Manager -->
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<!-- AEO & GEO Schema for Search Engines -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How long does the identity verification process take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Most identity verifications are completed in under 2 minutes. The candidate simply uploads their ID and takes a quick selfie. Our AI engine does the rest instantly, checking document authenticity, extracting data, and matching the selfie to the ID photo."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What types of documents can be verified?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Verifitrust supports over 12,000 document types across 180+ countries, including passports, driver's licenses, national ID cards, and residence permits."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is the candidate's data secure during verification?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, absolutely. We are SOC 2 Type II and ISO 27001 certified. All data is encrypted in transit and at rest, and we never store images longer than strictly necessary for compliance."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can Verifitrust integrate with my existing ATS?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! We have native integrations with Greenhouse, Lever, Workday, BambooHR, and 40+ other tools. You can trigger a verification without ever leaving your ATS."
-      }
-    }
-  ]
-}
-</script>
 
 <style>
   :root{
     --primary: #69be28;
     --primary-dark: #4f9e1a;
-    --primary-soft: #eaf7d8;
     --secondary: #071A2b;
-    --secondary-soft: #122845;
     --white: #ffffff;
-    --grey-50: #f8fafc;
-    --grey-100: #f1f5f9;
-    --grey-200: #e2e8f0;
-    --grey-600: #475569;
-    --grey-700: #334155;
   }
   *{ -webkit-font-smoothing: antialiased; }
   body{
@@ -72,20 +30,16 @@
     overflow-x: hidden;
   }
   .font-serif{ font-family: 'Instrument Serif', serif; font-weight: 400; }
-  
   ::-webkit-scrollbar{ width: 10px; }
   ::-webkit-scrollbar-track{ background: #f1f5f9; }
   ::-webkit-scrollbar-thumb{ background: #69be28; border-radius: 5px; }
   
-  /* Gradient text */
   .gradient-text{
     background: linear-gradient(135deg, #071A2b 0%, #2d5a1a 50%, #69be28 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
-  /* Buttons */
   .btn-primary{
     background: var(--primary);
     color: var(--secondary);
@@ -108,8 +62,6 @@
     color: var(--white);
     transform: translateY(-2px);
   }
-  
-  /* Fade in animation */
   .fade-up{
     opacity: 0;
     transform: translateY(40px);
@@ -119,64 +71,29 @@
     opacity: 1;
     transform: translateY(0);
   }
-  
-  /* Card hover */
   .feature-card{
     transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
     position: relative;
     overflow: hidden;
   }
-  .feature-card::before{
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 3px;
-    background: linear-gradient(90deg, transparent, #69be28, transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-  }
-  .feature-card:hover::before{ transform: translateX(100%); }
   .feature-card:hover{
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(7,26,43,0.08);
     border-color: rgba(105,190,40,0.3);
   }
-  
-  /* Hero mockup styling */
   .dashboard-card{
     background: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: 24px;
     box-shadow: 0 30px 60px -15px rgba(7,26,43,0.1), 0 0 0 1px rgba(7,26,43,0.02);
   }
-  
-  @keyframes drawCheck{ to{ stroke-dashoffset: 0; } }
-  .check-path{
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-    animation: drawCheck 1.5s ease forwards;
-  }
-  
-  .stripe-bg{
-    background-image: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 10px,
-      rgba(105,190,40,0.04) 10px,
-      rgba(105,190,40,0.04) 20px
-    );
-  }
-  
   .mobile-menu{
     transform: translateX(100%);
     transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
   }
   .mobile-menu.open{ transform: translateX(0); }
-  
   ::selection{ background: #69be28; color: #071A2b; }
-  
   .border-soft{ border: 1px solid rgba(7,26,43,0.08); }
-  
   .stagger > *{
     opacity: 0;
     transform: translateY(20px);
@@ -186,19 +103,12 @@
   .stagger.visible > *:nth-child(1){ transition-delay: 0.05s; }
   .stagger.visible > *:nth-child(2){ transition-delay: 0.15s; }
   .stagger.visible > *:nth-child(3){ transition-delay: 0.25s; }
-  .stagger.visible > *:nth-child(4){ transition-delay: 0.35s; }
-  .stagger.visible > *:nth-child(5){ transition-delay: 0.45s; }
-  .stagger.visible > *:nth-child(6){ transition-delay: 0.55s; }
-  
   @keyframes verifyRing{
     0%,100%{ transform: scale(1); opacity: 0.6; }
     50%{ transform: scale(1.1); opacity: 1; }
   }
   .verify-ring{ animation: verifyRing 3s ease-in-out infinite; }
-  
   html{ scroll-behavior: smooth; }
-  
-  /* Step Badge */
   .step-badge {
     display: inline-block;
     padding: 0.5rem 1.25rem;
@@ -210,8 +120,6 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
   }
-  
-  /* Comic Card styling */
   .comic-card {
     transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
     border: 1px solid rgba(7,26,43,0.08);
@@ -225,8 +133,6 @@
     box-shadow: 0 20px 40px -5px rgba(7,26,43,0.1);
     border-color: rgba(105,190,40,0.3);
   }
-  
-  /* FAQ Accordion (JS Driven for Desktop/Mobile/Tablet reliability) */
   .faq-item {
     border: 1px solid #e2e8f0;
     background: white;
@@ -290,57 +196,51 @@
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
-      <a href="#" class="flex items-center group">
-        <!-- Adjust the 'h-14' (height) to make the logo larger or smaller if needed -->
-      <a href="#" class="flex items-center justify-start group mr-auto">
-        <!-- Path updated to look inside the 'assets' folder -->
-        <img src="assets/logo.png" alt="VerifitTrust - Right People. Safer Future." class="h-12 md:h-14 w-auto object-contain transition-transform group-hover:scale-105">
+      <a href="../index.html" class="flex items-center group">
+        <!-- Path updated for subfolder -->
+        <img src="../assets/logo.png" alt="VerifitTrust - Right People. Safer Future." class="h-12 md:h-14 w-auto object-contain transition-transform group-hover:scale-105">
       </a>
         
-           <nav class="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+      <nav class="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+        <a href="../index.html#features" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Features</a>
         
-        <!-- Normal Link -->
-        <a href="#features" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Features</a>
-        
-        <!-- Solutions Dropdown (Only this one is a dropdown) -->
+        <!-- Solutions Dropdown -->
         <div class="relative group">
           <button class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors flex items-center gap-1">
             Solutions <i class="fas fa-chevron-down text-[10px] mt-0.5"></i>
           </button>
-          <!-- Dropdown Menu -->
           <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-56 bg-white border border-slate-100 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-4">
-            <a href="solutions/id-verification.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-              <div class="text-sm font-semibold text-[#071A2b]">Id-verification</div>
+            <a href="Id-verification.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
+              <div class="text-sm font-semibold text-[#071A2b]">ID Verification</div>
               <div class="text-xs text-slate-500">For teams of 1-200</div>
             </a>
-            <a href="solutions/enterprise.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
+            <a href="enterprise.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
               <div class="text-sm font-semibold text-[#071A2b]">Enterprise</div>
               <div class="text-xs text-slate-500">Custom workflows & SSO</div>
             </a>
-            <a href="solutions/platforms.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
+            <a href="platforms.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
               <div class="text-sm font-semibold text-[#071A2b]">Platforms</div>
               <div class="text-xs text-slate-500">API & White-label</div>
             </a>
-            <a href="solutions/healthcare.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
+            <a href="healthcare.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
               <div class="text-sm font-semibold text-[#071A2b]">Healthcare</div>
               <div class="text-xs text-slate-500">Sanction checks & compliance</div>
             </a>
-            <a href="solutions/finance.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
+            <a href="finance.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
               <div class="text-sm font-semibold text-[#071A2b]">Financial Services</div>
               <div class="text-xs text-slate-500">FCRA & credit checks</div>
             </a>
           </div>
         </div>
 
-        <!-- Normal Links -->
-        <a href="#how" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">How it Works</a>
-        <a href="#testimonials" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Customers</a>
-        <a href="#pricing" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Pricing</a>
+        <a href="../index.html#how" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">How it Works</a>
+        <a href="../index.html#testimonials" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Customers</a>
+        <a href="../index.html#pricing" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Pricing</a>
       </nav>
       
       <div class="hidden lg:flex items-center gap-3">
         <a href="#" class="text-sm font-semibold text-[#071A2b] hover:text-[#69be28] transition-colors">Sign in</a>
-        <a href="#cta" class="btn-primary text-sm font-semibold px-5 py-2.5 rounded-full">
+        <a href="../index.html#cta" class="btn-primary text-sm font-semibold px-5 py-2.5 rounded-full">
           Get Started <i class="fas fa-arrow-right ml-1 text-xs"></i>
         </a>
       </div>
@@ -351,6 +251,7 @@
     </div>
   </div>
   
+  <!-- Mobile Menu -->
   <div id="mobileMenu" class="mobile-menu lg:hidden fixed top-0 right-0 h-screen w-80 bg-white shadow-2xl z-50 p-6">
     <div class="flex justify-between items-center mb-8">
       <span class="text-xl font-bold">Menu</span>
@@ -359,12 +260,25 @@
       </button>
     </div>
     <nav class="flex flex-col gap-4">
-      <a href="#features" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">Features</a>
-      <a href="#solutions" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">Solutions</a>
-      <a href="#how" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">How it Works</a>
-      <a href="#testimonials" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">Customers</a>
-      <a href="#pricing" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">Pricing</a>
-      <a href="#cta" class="btn-primary mt-4 text-center font-semibold py-3 rounded-full">Get Started</a>
+      <a href="../index.html#features" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">Features</a>
+      
+      <details class="border-b border-slate-100">
+        <summary class="text-lg font-medium py-3 cursor-pointer list-none flex items-center justify-between">
+          Solutions <i class="fas fa-chevron-down text-xs"></i>
+        </summary>
+        <div class="flex flex-col gap-2 pb-4 pl-3">
+          <a href="Id-verification.html" class="mobile-link text-base font-normal py-2 text-slate-700">ID Verification</a>
+          <a href="enterprise.html" class="mobile-link text-base font-normal py-2 text-slate-700">Enterprise</a>
+          <a href="platforms.html" class="mobile-link text-base font-normal py-2 text-slate-700">Platforms</a>
+          <a href="healthcare.html" class="mobile-link text-base font-normal py-2 text-slate-700">Healthcare</a>
+          <a href="finance.html" class="mobile-link text-base font-normal py-2 text-slate-700">Financial Services</a>
+        </div>
+      </details>
+
+      <a href="../index.html#how" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">How it Works</a>
+      <a href="../index.html#testimonials" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">Customers</a>
+      <a href="../index.html#pricing" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">Pricing</a>
+      <a href="../index.html#cta" class="btn-primary mt-4 text-center font-semibold py-3 rounded-full">Get Started</a>
     </nav>
   </div>
 </header>
@@ -633,75 +547,6 @@
   </div>
 </section>
 
-<!-- ============ FAQ (AEO & GEO Optimized) ============ -->
-<section class="py-24 lg:py-32 bg-slate-50">
-  <div class="max-w-4xl mx-auto px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
-      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">FAQ</span>
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
-        Frequently asked <span class="font-serif italic text-[#69be28]">questions</span>
-      </h2>
-      <p class="text-lg text-slate-600 leading-relaxed">Everything you need to know about identity verification and background checks.</p>
-    </div>
-
-    <div class="space-y-4 stagger" id="faq-container">
-      
-      <!-- FAQ Item 1 -->
-      <div class="faq-item active">
-        <button class="faq-trigger">
-          <h3>How long does the identity verification process take?</h3>
-          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
-        </button>
-        <div class="faq-answer" style="max-height: 500px;">
-          <div class="faq-answer-inner">
-            <p>Most identity verifications are completed in under 2 minutes. The candidate simply uploads a photo of their ID and takes a quick selfie. Our AI engine instantly checks document authenticity, extracts data, and matches the facial features.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- FAQ Item 2 -->
-      <div class="faq-item">
-        <button class="faq-trigger">
-          <h3>What types of documents can be verified?</h3>
-          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            <p>Verifitrust supports over 12,000 document types across 180+ countries, including passports, driver's licenses, national ID cards, and residence permits. Our system is updated regularly to support new document versions globally.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- FAQ Item 3 -->
-      <div class="faq-item">
-        <button class="faq-trigger">
-          <h3>Is the candidate's data secure during verification?</h3>
-          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            <p>Yes, absolutely. We are SOC 2 Type II and ISO 27001 certified. All data is encrypted in transit and at rest, and we never store images longer than strictly necessary for compliance. Candidate privacy is our top priority.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- FAQ Item 4 -->
-      <div class="faq-item">
-        <button class="faq-trigger">
-          <h3>Can Verifitrust integrate with my existing ATS?</h3>
-          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            <p>Yes! We have native integrations with Greenhouse, Lever, Workday, BambooHR, and 40+ other tools. You can trigger a verification without ever leaving your ATS, making the hiring workflow completely seamless.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <!-- ============ CTA ============ -->
 <section id="cta" class="py-24 lg:py-32 relative overflow-hidden bg-white">
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
@@ -769,16 +614,10 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-10 mb-12">
       <div class="lg:col-span-2">
-        <a href="#" class="flex items-center gap-2.5 mb-5">
-          <div class="w-10 h-10 bg-[#071A2b] rounded-xl flex items-center justify-center">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z" stroke="#69be28" stroke-width="2"/>
-              <path d="M8.5 12L11 14.5L15.5 10" stroke="#69be28" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="text-2xl font-bold">Verifi<span class="text-[#69be28]">trust</span></span>
+        <a href="../index.html" class="flex items-center justify-start group mr-auto mb-5">
+          <img src="../assets/logo.png" alt="VerifitTrust - Right People. Safer Future." class="h-12 md:h-14 w-auto object-contain transition-transform group-hover:scale-105">
         </a>
-        <p class="text-slate-600 leading-relaxed max-w-sm mb-6">Fast, accurate, and compliant identity verification & background checks for teams hiring anywhere in the world.</p>
+        <p class="text-slate-600 leading-relaxed max-w-sm mb-6">Fast, accurate, and compliant background checks for teams hiring anywhere in the world.</p>
         <div class="flex gap-3">
           <a href="#" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-[#69be28] flex items-center justify-center transition-colors group">
             <i class="fab fa-linkedin-in text-slate-600 group-hover:text-[#071A2b]"></i>
@@ -798,9 +637,9 @@
       <div>
         <h4 class="font-bold text-[#071A2b] mb-4">Product</h4>
         <ul class="space-y-3">
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Features</a></li>
+          <li><a href="../index.html#features" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Features</a></li>
           <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Integrations</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Pricing</a></li>
+          <li><a href="../index.html#pricing" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Pricing</a></li>
           <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">API Docs</a></li>
           <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Changelog</a></li>
         </ul>
@@ -809,11 +648,11 @@
       <div>
         <h4 class="font-bold text-[#071A2b] mb-4">Solutions</h4>
         <ul class="space-y-3">
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Startups & SMBs</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Enterprise</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Platforms</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Healthcare</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Financial Services</a></li>
+          <li><a href="Id-verification.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">ID Verification</a></li>
+          <li><a href="enterprise.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Enterprise</a></li>
+          <li><a href="platforms.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Platforms</a></li>
+          <li><a href="healthcare.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Healthcare</a></li>
+          <li><a href="finance.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Financial Services</a></li>
         </ul>
       </div>
       
@@ -871,11 +710,13 @@
   const closeMenu = document.getElementById('closeMenu');
   const mobileMenu = document.getElementById('mobileMenu');
   
-  menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
-  closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  document.querySelectorAll('.mobile-link').forEach(link => {
-    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  });
+  if(menuBtn) {
+    menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+    closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+  }
   
   // Scroll animations
   const observer = new IntersectionObserver((entries) => {
@@ -887,42 +728,6 @@
   }, { threshold: 0.1 });
   
   document.querySelectorAll('.fade-up, .stagger').forEach(el => observer.observe(el));
-  
-  // FAQ Accordion (JS Driven for Perfect Desktop/Mobile/Tablet Support)
-  const faqItems = document.querySelectorAll('.faq-item');
-  
-  faqItems.forEach(item => {
-    const trigger = item.querySelector('.faq-trigger');
-    const answer = item.querySelector('.faq-answer');
-    
-    trigger.addEventListener('click', () => {
-      const isActive = item.classList.contains('active');
-      
-      // Close all other items
-      faqItems.forEach(otherItem => {
-        if (otherItem !== item) {
-          otherItem.classList.remove('active');
-          otherItem.querySelector('.faq-answer').style.maxHeight = '0px';
-        }
-      });
-      
-      // Toggle current item
-      if (!isActive) {
-        item.classList.add('active');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-      } else {
-        item.classList.remove('active');
-        answer.style.maxHeight = '0px';
-      }
-    });
-  });
-  
-  // Initialize the first FAQ item to be open by default
-  const firstFaq = document.querySelector('.faq-item.active');
-  if(firstFaq) {
-    const firstAnswer = firstFaq.querySelector('.faq-answer');
-    firstAnswer.style.maxHeight = firstAnswer.scrollHeight + 'px';
-  }
   
   // Back to top
   const backTop = document.getElementById('backTop');
@@ -940,4 +745,3 @@
 
 </body>
 </html>
-
