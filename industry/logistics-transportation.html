@@ -1,1 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Logistics & Transportation Background Checks — Verifitrust</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- AEO & GEO Schema for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why do logistics and transportation companies need specialized background checks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Transportation companies are responsible for public safety, expensive cargo, and heavy machinery. Specialized background checks help verify driving records, ensure DOT compliance, prevent cargo theft, and maintain high safety standards for commercial drivers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a Motor Vehicle Record (MVR) check?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An MVR check provides a history of a driver's license status, traffic violations, DUIs, and accidents. It is critical for any role operating a company vehicle or commercial truck to ensure they are safe and legally permitted to drive."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you ensure DOT and FMCSA compliance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We conduct pre-employment drug and alcohol testing, verify previous employment in safety-sensitive functions, and query the FMCSA Drug and Alcohol Clearinghouse to ensure full compliance with Department of Transportation regulations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you handle high-volume hiring for peak shipping seasons?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Our platform features bulk upload capabilities and seamless ATS integrations, allowing logistics companies to process hundreds of driver and warehouse background checks simultaneously during peak holiday shipping seasons."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --primary: #69be28;
+    --primary-dark: #4f9e1a;
+    --primary-soft: #eaf7d8;
+    --secondary: #071A2b;
+    --secondary-soft: #122845;
+    --white: #ffffff;
+    --grey-50: #f8fafc;
+    --grey-100: #f1f5f9;
+    --grey-200: #e2e8f0;
+    --grey-600: #475569;
+    --grey-700: #334155;
+  }
+  *{ -webkit-font-smoothing: antialiased; }
+  body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    color: var(--secondary);
+    overflow-x: hidden;
+  }
+  .font-serif{ font-family: 'Instrument Serif', serif; font-weight: 400; }
+  
+  ::-webkit-scrollbar{ width: 10px; }
+  ::-webkit-scrollbar-track{ background: #f1f5f9; }
+  ::-webkit-scrollbar-thumb{ background: #69be28; border-radius: 5px; }
+  
+  /* Gradient text */
+  .gradient-text{
+    background: linear-gradient(135deg, #071A2b 0%, #2d5a1a 50%, #69be28 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Buttons */
+  .btn-primary{
+    background: var(--primary);
+    color: var(--secondary);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 4px 14px rgba(105,190,40,0.3);
+  }
+  .btn-primary:hover{
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(105,190,40,0.4);
+  }
+  .btn-secondary{
+    background: transparent;
+    color: var(--secondary);
+    border: 1.5px solid var(--secondary);
+    transition: all 0.3s ease;
+  }
+  .btn-secondary:hover{
+    background: var(--secondary);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  
+  /* Fade in animation */
+  .fade-up{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fade-up.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Card hover */
+  .feature-card{
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before{
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, #69be28, transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  .feature-card:hover::before{ transform: translateX(100%); }
+  .feature-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(7,26,43,0.08);
+    border-color: rgba(105,190,40,0.3);
+  }
+  
+  /* Hero mockup styling */
+  .dashboard-card{
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px -15px rgba(7,26,43,0.1), 0 0 0 1px rgba(7,26,43,0.02);
+  }
+  
+  @keyframes drawCheck{ to{ stroke-dashoffset: 0; } }
+  .check-path{
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawCheck 1.5s ease forwards;
+  }
+  
+  .stripe-bg{
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(105,190,40,0.04) 10px,
+      rgba(105,190,40,0.04) 20px
+    );
+  }
+  
+  .mobile-menu{
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-menu.open{ transform: translateX(0); }
+  
+  ::selection{ background: #69be28; color: #071A2b; }
+  
+  .border-soft{ border: 1px solid rgba(7,26,43,0.08); }
+  
+  .stagger > *{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .stagger.visible > *{ opacity: 1; transform: translateY(0); }
+  .stagger.visible > *:nth-child(1){ transition-delay: 0.05s; }
+  .stagger.visible > *:nth-child(2){ transition-delay: 0.15s; }
+  .stagger.visible > *:nth-child(3){ transition-delay: 0.25s; }
+  .stagger.visible > *:nth-child(4){ transition-delay: 0.35s; }
+  .stagger.visible > *:nth-child(5){ transition-delay: 0.45s; }
+  .stagger.visible > *:nth-child(6){ transition-delay: 0.55s; }
+  
+  @keyframes verifyRing{
+    0%,100%{ transform: scale(1); opacity: 0.6; }
+    50%{ transform: scale(1.1); opacity: 1; }
+  }
+  .verify-ring{ animation: verifyRing 3s ease-in-out infinite; }
+  
+  html{ scroll-behavior: smooth; }
+  
+  /* FAQ Accordion (JS Driven for Desktop/Mobile/Tablet reliability) */
+  .faq-item {
+    border: 1px solid #e2e8f0;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .faq-item.active {
+    border-color: rgba(105,190,40,0.5);
+    box-shadow: 0 10px 30px -5px rgba(105,190,40,0.1);
+  }
+  .faq-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    text-align: left;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    gap: 1rem;
+  }
+  .faq-trigger h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #071A2b;
+  }
+  .faq-icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    background: rgba(105,190,40,0.1);
+    color: #4f9e1a;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  }
+  .faq-item.active .faq-icon {
+    transform: rotate(135deg);
+    background: #69be28;
+    color: #071A2b;
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+  .faq-answer-inner {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: #475569;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body class="bg-white">
+<!-- ============ HEADER ============ -->
+<div id="header-include"></div>
+
+<!-- ============ HERO ============ -->
+<section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      
+      <div class="relative z-10">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full mb-6">
+          <i class="fas fa-truck-fast text-[#69be28]"></i>
+          <span class="text-xs font-semibold text-[#071A2b]">Logistics & Transportation Industry</span>
+        </div>
+        
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
+          <span class="block text-[#071A2b]">Build reliable transport teams.</span>
+          <span class="block">
+            <span class="gradient-text">Hire</span>
+          </span>
+          <span class="block text-[#071A2b]">with confidence<span class="text-[#69be28]">.</span></span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-xl leading-relaxed">
+          Protect your fleet, cargo, and public safety. Rigorous identity, driving record, and compliance verification built for commercial drivers, dispatchers, and warehouse staff.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 mb-12">
+          <a href="#cta" class="btn-primary px-7 py-4 rounded-full font-semibold text-base inline-flex items-center justify-center gap-2">
+            Start Verifying Free
+            <i class="fas fa-arrow-right text-sm"></i>
+          </a>
+          <a href="#process" class="btn-secondary px-7 py-4 rounded-full font-semibold text-base inline-flex items-center justify-center gap-2">
+            <i class="fas fa-play text-xs"></i>
+            See How It Works
+          </a>
+        </div>
+      </div>
+      
+      <div class="relative">
+        <div class="dashboard-card max-w-sm mx-auto relative z-10 p-6">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <div class="text-xs text-slate-400 uppercase tracking-wider">Transport Candidate Check</div>
+              <div class="text-lg font-bold text-[#071A2b]">James Miller</div>
+            </div>
+            <div class="w-10 h-10 bg-[#69be28] rounded-full flex items-center justify-center">
+              <i class="fas fa-check text-[#071A2b]"></i>
+            </div>
+          </div>
+          
+          <div class="bg-slate-50 rounded-xl p-4 mb-4 flex items-center gap-4">
+            <div class="w-16 h-16 bg-white rounded-lg border border-slate-200 flex items-center justify-center">
+              <i class="fas fa-truck-field text-2xl text-slate-400"></i>
+            </div>
+            <div>
+              <div class="text-sm font-bold text-[#071A2b]">Commercial Fleet Driver</div>
+              <div class="text-xs text-slate-500">Safety-Sensitive Role</div>
+            </div>
+          </div>
+          
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Motor Vehicle Record (MVR)</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Clean</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">CDL License</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Verified</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">DOT Drug & Clearinghouse</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Passed</span>
+            </div>
+          </div>
+          
+          <div class="bg-[#69be28]/8 rounded-xl p-4 mt-6 flex items-center gap-3">
+            <div class="verify-ring w-8 h-8 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-shield-halved text-[#071A2b] text-xs"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-[#071A2b]">Cleared for Dispatch</div>
+              <div class="text-[10px] text-slate-500">Fully DOT Compliant</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INDUSTRY CHALLENGES ============ -->
+<section class="py-24 lg:py-32 bg-gradient-to-b from-white to-slate-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="text-center max-w-3xl mx-auto mb-20 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">Why Logistics Needs Verifitrust</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Built for the speed of <span class="font-serif italic text-[#69be28]">transport</span> hiring
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        Safety and compliance are paramount. Protect your fleet, secure your cargo, and maintain strict DOT regulations with every driver and warehouse hire.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
+      
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-road text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-[#071A2b] mb-3">Fleet Safety</h3>
+        <p class="text-slate-600 leading-relaxed">Protect public safety and reduce accidents. Screen MVRs for reckless driving, DUIs, and license suspensions before handing over the keys.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-clipboard-check text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-[#071A2b] mb-3">DOT Compliance</h3>
+        <p class="text-slate-600 leading-relaxed">Meet strict FMCSA regulations. Query the Drug & Alcohol Clearinghouse and automate pre-employment testing for safety-sensitive roles.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-box-archive text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-[#071A2b] mb-3">Cargo Security</h3>
+        <p class="text-slate-600 leading-relaxed">Prevent cargo theft and shrinkage. Comprehensive criminal background checks ensure your warehouse and drivers can be trusted with high-value goods.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-people-group text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-[#071A2b] mb-3">Peak Season Scaling</h3>
+        <p class="text-slate-600 leading-relaxed">Rapidly scale your workforce during holiday peaks. Bulk screening tools allow you to process hundreds of temporary drivers effortlessly.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-satellite-dish text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-[#071A2b] mb-3">Continuous MVR Monitoring</h3>
+        <p class="text-slate-600 leading-relaxed">Don't just check once. Get real-time alerts if an active driver's license is suspended or they receive a major traffic violation while employed.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-stamp text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-[#071A2b] mb-3">Right to Work (E-Verify)</h3>
+        <p class="text-slate-600 leading-relaxed">Automate I-9 and E-Verify checks to ensure legal working status, protecting your logistics company from severe immigration fines.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECOMMENDED CHECKS FOR LOGISTICS ============ -->
+<section class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">Verification Packages</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Recommended checks for <span class="font-serif italic text-[#69be28]">Logistics</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        Our standard package for commercial drivers, warehouse staff, and dispatchers ensures road safety, cargo security, and regulatory compliance are fully authenticated.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
+      <!-- Check 1 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-fingerprint text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Identity Verification</h3>
+          <p class="text-sm text-slate-600">Confirm the candidate is exactly who they claim to be before granting access to company vehicles or warehouse facilities.</p>
+        </div>
+      </div>
+
+      <!-- Check 2 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-car-burst text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Motor Vehicle Record (MVR)</h3>
+          <p class="text-sm text-slate-600">Check driving history for traffic violations, DUIs, and license suspensions to ensure safe driving practices.</p>
+        </div>
+      </div>
+
+      <!-- Check 3 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-gavel text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Criminal Record Check</h3>
+          <p class="text-sm text-slate-600">Screen for theft, violence, and other offenses that pose a risk to cargo security, workplace safety, or customers.</p>
+        </div>
+      </div>
+
+      <!-- Check 4 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-flask-vial text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">DOT Drug & Health Screening</h3>
+          <p class="text-sm text-slate-600">Integrate FMCSA compliant pre-employment drug testing and query the Drug & Alcohol Clearinghouse.</p>
+        </div>
+      </div>
+
+      <!-- Check 5 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-briefcase text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Employment Verification</h3>
+          <p class="text-sm text-slate-600">Validate past driving experience, safety records, and reasons for leaving previous transport companies directly.</p>
+        </div>
+      </div>
+
+      <!-- Check 6 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-id-card-clip text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">CDL & Certification</h3>
+          <p class="text-sm text-slate-600">Authenticate Commercial Driver's Licenses (CDL), hazmat endorsements, and forklift operation certificates.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIMPLE AS 1, 2, 3 ============ -->
+<section id="process" class="py-24 lg:py-32 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">How it works</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Transport screening as simple as <span class="font-serif italic text-[#69be28]">1, 2, 3</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        We handle the compliance and safety overhead so your team can focus on keeping supply chains moving.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8 stagger">
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-paper-plane text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 1</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Send invite</h3>
+        <p class="text-slate-600 leading-relaxed">Trigger bulk verification requests for a new class of drivers directly from your dashboard or ATS integration.</p>
+      </div>
+      
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-magnifying-glass-chart text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 2</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Compliance Check</h3>
+        <p class="text-slate-600 leading-relaxed">Our engine checks legal status, MVR records, CDL validity, and DOT drug clearinghouse status in seconds.</p>
+      </div>
+      
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-file-circle-check text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 3</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Dispatch safely</h3>
+        <p class="text-slate-600 leading-relaxed">Receive a clear report and grant facility or vehicle access. Confidently hit the road knowing they are fully cleared.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ (AEO & GEO Optimized) ============ -->
+<section class="py-24 lg:py-32 bg-white">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">FAQ</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Frequently asked <span class="font-serif italic text-[#69be28]">questions</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">Everything you need to know about background checks for Logistics & Transportation teams.</p>
+    </div>
+
+    <div class="space-y-4 stagger" id="faq-container">
+      
+      <!-- FAQ Item 1 -->
+      <div class="faq-item active">
+        <button class="faq-trigger">
+          <h3>Why do logistics and transportation companies need specialized background checks?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer" style="max-height: 500px;">
+          <div class="faq-answer-inner">
+            <p>Transportation companies are responsible for public safety, expensive cargo, and heavy machinery. Specialized background checks help verify driving records, ensure DOT compliance, prevent cargo theft, and maintain high safety standards for commercial drivers and warehouse staff.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>What is a Motor Vehicle Record (MVR) check?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>An MVR check provides a history of a driver's license status, traffic violations, DUIs, and accidents. It is critical for any role operating a company vehicle or commercial truck to ensure they are safe and legally permitted to drive on public roads.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>How do you ensure DOT and FMCSA compliance?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>We conduct pre-employment drug and alcohol testing, verify previous employment in safety-sensitive functions, and query the FMCSA Drug and Alcohol Clearinghouse to ensure full compliance with Department of Transportation regulations before a driver gets behind the wheel.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>Can you handle high-volume hiring for peak shipping seasons?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Yes. Our platform features bulk upload capabilities and seamless ATS integrations, allowing logistics companies to process hundreds of driver and warehouse background checks simultaneously during peak holiday shipping seasons without delays.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="cta" class="py-24 lg:py-32 relative overflow-hidden bg-white">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="relative bg-[#071A2b] rounded-[2.5rem] p-10 md:p-16 lg:p-20 overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-80 h-80 bg-[#69be28]/20 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-[#69be28]/10 rounded-full blur-3xl"></div>
+      <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(105,190,40,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(105,190,40,0.5) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      
+      <div class="relative grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-1.5 bg-[#69be28]/15 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-6">Get started today</span>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Secure your next <span class="font-serif italic text-[#69be28]">driver</span> hire
+          </h2>
+          <p class="text-lg text-slate-300 mb-8 leading-relaxed">
+            Join 4,000+ logistics companies that trust Verifitrust for fast, accurate, and DOT-compliant background checks. No credit card required.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#" class="btn-primary inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold">
+              Start free trial
+              <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+            <a href="#" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold border border-white/20 text-white hover:bg-white/5 transition-all">
+              Book a demo
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8">
+          <h3 class="text-white font-bold text-xl mb-6">What's included:</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">5 free background checks — no card required</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">MVR & CDL verification</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">DOT Drug & Clearinghouse queries</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">Bulk high-volume screening tools</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div id="footer-include"></div>
+
+<!-- Load global scripts (Header, Footer, Animations) -->
+<script src="/main.js"></script>
+
+</body>
+</html>
+
 
