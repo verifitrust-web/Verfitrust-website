@@ -3,24 +3,7 @@ fetch('/header.html')
   .then(response => response.text())
   .then(data => {
     document.getElementById('header-include').innerHTML = data;
-    
-    // Tell Tailwind to scan the newly added header
-    if (window.tailwind) {
-      window.tailwind.refresh();
-    }
-    
-    // Initialize Mobile Menu scripts AFTER header loads
-    const menuBtn = document.getElementById('menuBtn');
-    const closeMenu = document.getElementById('closeMenu');
-    const mobileMenu = document.getElementById('mobileMenu');
-    
-    if(menuBtn) {
-      menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
-      closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
-      document.querySelectorAll('.mobile-link').forEach(link => {
-        link.addEventListener('click', () => mobileMenu.classList.remove('open'));
-      });
-    }
+    if (window.tailwind) { window.tailwind.refresh(); }
   });
 
 // Fetch and inject Footer
@@ -28,13 +11,8 @@ fetch('/footer.html')
   .then(response => response.text())
   .then(data => {
     document.getElementById('footer-include').innerHTML = data;
+    if (window.tailwind) { window.tailwind.refresh(); }
     
-    // Tell Tailwind to scan the newly added footer
-    if (window.tailwind) {
-      window.tailwind.refresh();
-    }
-    
-    // Initialize Back to Top button AFTER footer loads
     const backTop = document.getElementById('backTop');
     if(backTop) {
       window.addEventListener('scroll', () => {
@@ -70,14 +48,12 @@ if(faqItems.length > 0) {
     
     trigger.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
-      
       faqItems.forEach(otherItem => {
         if (otherItem !== item) {
           otherItem.classList.remove('active');
           otherItem.querySelector('.faq-answer').style.maxHeight = '0px';
         }
       });
-      
       if (!isActive) {
         item.classList.add('active');
         answer.style.maxHeight = answer.scrollHeight + 'px';
@@ -94,3 +70,23 @@ if(faqItems.length > 0) {
     firstAnswer.style.maxHeight = firstAnswer.scrollHeight + 'px';
   }
 }
+
+// Bulletproof Mobile Menu Click Listener (Event Delegation)
+document.addEventListener('click', function(e) {
+  const menuBtn = e.target.closest('#menuBtn');
+  const closeMenu = e.target.closest('#closeMenu');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (menuBtn && mobileMenu) {
+    mobileMenu.classList.add('open');
+  }
+  
+  if (closeMenu && mobileMenu) {
+    mobileMenu.classList.remove('open');
+  }
+  
+  // Close menu when a link inside it is clicked
+  if (e.target.closest('.mobile-link') && mobileMenu && mobileMenu.classList.contains('open')) {
+    mobileMenu.classList.remove('open');
+  }
+});
