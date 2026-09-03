@@ -4,6 +4,11 @@ fetch('/header.html')
   .then(data => {
     document.getElementById('header-include').innerHTML = data;
     
+    // Tell Tailwind to scan the newly added header
+    if (window.tailwind) {
+      window.tailwind.refresh();
+    }
+    
     // Initialize Mobile Menu scripts AFTER header loads
     const menuBtn = document.getElementById('menuBtn');
     const closeMenu = document.getElementById('closeMenu');
@@ -23,6 +28,11 @@ fetch('/footer.html')
   .then(response => response.text())
   .then(data => {
     document.getElementById('footer-include').innerHTML = data;
+    
+    // Tell Tailwind to scan the newly added footer
+    if (window.tailwind) {
+      window.tailwind.refresh();
+    }
     
     // Initialize Back to Top button AFTER footer loads
     const backTop = document.getElementById('backTop');
@@ -51,7 +61,7 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-up, .stagger').forEach(el => observer.observe(el));
 
-// FAQ Accordion (Safe to run globally, will only trigger if FAQ items exist)
+// FAQ Accordion
 const faqItems = document.querySelectorAll('.faq-item');
 if(faqItems.length > 0) {
   faqItems.forEach(item => {
