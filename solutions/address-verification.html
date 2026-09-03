@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Address Verification — Verifitrust</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- AEO & GEO Schema for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is address verification?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Address verification is the process of confirming a candidate's residential address through physical site visits, database checks, or utility bill analysis to ensure the information provided is accurate and genuine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What details are checked during address verification?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We verify the exact address line, city, state, and postal code. Additionally, our field verifiers confirm the geolocation, residential status (owned/rented), and the duration of stay at the provided address."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does the address verification process take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Digital database verifications are instant. On-site physical verifications typically take 1 to 3 business days, depending on the location's accessibility and the availability of the candidate or their family members at the residence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can international addresses be verified?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, our global network supports address verification in 180+ countries. We work with local field agents and digital databases to validate global residential records, ensuring localized compliance and data privacy."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --primary: #69be28;
+    --primary-dark: #4f9e1a;
+    --primary-soft: #eaf7d8;
+    --secondary: #071A2b;
+    --secondary-soft: #122845;
+    --white: #ffffff;
+    --grey-50: #f8fafc;
+    --grey-100: #f1f5f9;
+    --grey-200: #e2e8f0;
+    --grey-600: #475569;
+    --grey-700: #334155;
+  }
+  *{ -webkit-font-smoothing: antialiased; }
+  body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    color: var(--secondary);
+    overflow-x: hidden;
+  }
+  .font-serif{ font-family: 'Instrument Serif', serif; font-weight: 400; }
+  ::-webkit-scrollbar{ width: 10px; }
+  ::-webkit-scrollbar-track{ background: #f1f5f9; }
+  ::-webkit-scrollbar-thumb{ background: #69be28; border-radius: 5px; }
+  ::selection{ background: #69be28; color: #071A2b; }
+  html{ scroll-behavior: smooth; }
+
+  .gradient-text{
+    background: linear-gradient(135deg, #071A2b 0%, #2d5a1a 50%, #69be28 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .btn-primary{
+    background: var(--primary);
+    color: var(--secondary);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 4px 14px rgba(105,190,40,0.3);
+  }
+  .btn-primary:hover{
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(105,190,40,0.4);
+  }
+  .btn-secondary{
+    background: transparent;
+    color: var(--secondary);
+    border: 1.5px solid var(--secondary);
+    transition: all 0.3s ease;
+  }
+  .btn-secondary:hover{
+    background: var(--secondary);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  .fade-up{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fade-up.visible{ opacity: 1; transform: translateY(0); }
+  .feature-card{
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before{
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, #69be28, transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  .feature-card:hover::before{ transform: translateX(100%); }
+  .feature-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(7,26,43,0.08);
+    border-color: rgba(105,190,40,0.3);
+  }
+  .dashboard-card{
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px -15px rgba(7,26,43,0.1), 0 0 0 1px rgba(7,26,43,0.02);
+  }
+  @keyframes drawCheck{ to{ stroke-dashoffset: 0; } }
+  .check-path{
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawCheck 1.5s ease forwards;
+  }
+  .mobile-menu{
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-menu.open{ transform: translateX(0); }
+  .border-soft{ border: 1px solid rgba(7,26,43,0.08); }
+  .stagger > *{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .stagger.visible > *{ opacity: 1; transform: translateY(0); }
+  .stagger.visible > *:nth-child(1){ transition-delay: 0.05s; }
+  .stagger.visible > *:nth-child(2){ transition-delay: 0.15s; }
+  .stagger.visible > *:nth-child(3){ transition-delay: 0.25s; }
+  .stagger.visible > *:nth-child(4){ transition-delay: 0.35s; }
+  .stagger.visible > *:nth-child(5){ transition-delay: 0.45s; }
+  .stagger.visible > *:nth-child(6){ transition-delay: 0.55s; }
+  @keyframes verifyRing{
+    0%,100%{ transform: scale(1); opacity: 0.6; }
+    50%{ transform: scale(1.1); opacity: 1; }
+  }
+  .verify-ring{ animation: verifyRing 3s ease-in-out infinite; }
+  .step-badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: #071A2b;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 9999px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .comic-card {
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    border: 1px solid rgba(7,26,43,0.08);
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px -5px rgba(7,26,43,0.05);
+  }
+  .comic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -5px rgba(7,26,43,0.1);
+    border-color: rgba(105,190,40,0.3);
+  }
+  .faq-item {
+    border: 1px solid #e2e8f0;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .faq-item.active {
+    border-color: rgba(105,190,40,0.5);
+    box-shadow: 0 10px 30px -5px rgba(105,190,40,0.1);
+  }
+  .faq-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    gap: 1rem;
+  }
+  .faq-trigger h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #071A2b;
+    line-height: 1.4;
+  }
+  @media(min-width:768px){
+    .faq-trigger{ padding: 1.5rem 2rem; }
+    .faq-trigger h3{ font-size: 1.125rem; }
+  }
+  .faq-icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    background: rgba(105,190,40,0.1);
+    color: #4f9e1a;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  }
+  .faq-item.active .faq-icon {
+    transform: rotate(135deg);
+    background: #69be28;
+    color: #071A2b;
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+  .faq-answer-inner {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: #475569;
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+  @media(min-width:768px){
+    .faq-answer-inner{ padding: 0 2rem 2rem 2rem; font-size: 1rem; }
+  }
+
+  /* ===== DESKTOP DROPDOWN MEGA MENU ===== */
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(7,26,43,0.08);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    padding: 24px;
+    z-index: 60;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .nav-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #334155;
+    transition: color 0.2s ease;
+  }
+  .nav-trigger:hover { color: #69be28; }
+  .nav-trigger i { font-size: 10px; transition: transform 0.2s ease; }
+  .nav-dropdown:hover .nav-trigger i { transform: rotate(180deg); }
+  
+  .mega-menu-heading {
+    font-size: 11px;
+    font-weight: 800;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    padding-left: 12px;
+  }
+  
+  .mega-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+  }
+  .mega-item:hover {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+  }
+  .mega-item.active {
+    background: rgba(105,190,40,0.08);
+    border-color: rgba(105,190,40,0.2);
+  }
+  .mega-item-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(105,190,40,0.1);
+    color: #4f9e1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+  }
+  .mega-item:hover .mega-item-icon {
+    background: #69be28;
+    color: #071A2b;
+    transform: scale(1.05);
+  }
+  .mega-item.active .mega-item-icon {
+    background: #69be28;
+    color: #071A2b;
+  }
+  .mega-item-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #071A2b;
+    line-height: 1.3;
+  }
+  .mega-item-desc {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-top: 2px;
+    line-height: 1.3;
+  }
+
+  /* Mobile accordions */
+  .mobile-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .mobile-accordion-content.open {
+    max-height: 1200px;
+  }
+</style>
+</head>
+<body class="bg-white">
+
+<!-- ============ HEADER ============ -->
+<div id="header-include"></div>
+
+<!-- ============ HERO ============ -->
+<section class="relative pt-28 pb-16 md:pt-36 lg:pt-40 lg:pb-28 overflow-hidden bg-white">
+  <div class="absolute top-20 right-0 w-96 h-96 bg-[#69be28]/5 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 w-80 h-80 bg-[#071A2b]/3 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+      <div class="relative z-10 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full mb-6">
+          <i class="fas fa-location-dot text-[#69be28]"></i>
+          <span class="text-xs font-semibold text-[#071A2b]">Global Address Verification</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
+          <span class="block text-[#071A2b]">Verify addresses.</span>
+          <span class="block">
+            <span class="gradient-text">Hire</span>
+          </span>
+          <span class="block text-[#071A2b]">with confidence<span class="text-[#69be28]">.</span></span>
+        </h1>
+
+        <p class="text-base sm:text-lg md:text-xl text-slate-600 mb-8 max-w-xl leading-relaxed mx-auto lg:mx-0">
+          Don't just trust the resume—verify the residence. Validate candidate addresses, occupancy details, and geographic locations directly through our field network and digital databases.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 mb-12">
+          <a href="#cta" class="btn-primary px-7 py-4 rounded-full font-semibold text-base inline-flex items-center justify-center gap-2">
+            Start Verifying Free
+            <i class="fas fa-arrow-right text-sm"></i>
+          </a>
+          <a href="#process" class="btn-secondary px-7 py-4 rounded-full font-semibold text-base inline-flex items-center justify-center gap-2">
+            <i class="fas fa-play text-xs"></i>
+            See How It Works
+          </a>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="absolute -top-6 -left-6 w-24 h-24 bg-[#69be28]/10 rounded-2xl rotate-12 hidden md:block"></div>
+        <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-[#071A2b]/5 rounded-full hidden md:block"></div>
+
+        <div class="dashboard-card max-w-sm mx-auto relative z-10 p-5 sm:p-6">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <div class="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider">Address Check</div>
+              <div class="text-base sm:text-lg font-bold text-[#071A2b]">Rahul Sharma</div>
+            </div>
+            <div class="w-10 h-10 bg-[#69be28] rounded-full flex items-center justify-center">
+              <i class="fas fa-check text-[#071A2b]"></i>
+            </div>
+          </div>
+
+          <div class="bg-slate-50 rounded-xl p-4 mb-4 flex items-center gap-4">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-lg border border-slate-200 flex items-center justify-center">
+              <i class="fas fa-house text-xl sm:text-2xl text-slate-400"></i>
+            </div>
+            <div>
+              <div class="text-sm font-bold text-[#071A2b]">123 Green View Apts</div>
+              <div class="text-xs text-slate-500">MG Road, Bangalore, Karnataka</div>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">City/State</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Bangalore, KA</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Verification Type</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> On-Site Visit</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Residency Status</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Verified</span>
+            </div>
+          </div>
+
+          <div class="bg-[#69be28]/8 rounded-xl p-4 mt-6 flex items-center gap-3">
+            <div class="verify-ring w-8 h-8 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-shield-halved text-[#071A2b] text-xs"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-[#071A2b]">Address Verified</div>
+              <div class="text-[10px] text-slate-500">Confident hiring decision</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMIC PROCESS TIMELINE ============ -->
+<section id="process" class="py-20 lg:py-32 bg-gradient-to-b from-white to-slate-50">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative">
+    <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-20 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">The Journey</span>
+      <h2 class="text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        The journey to <span class="font-serif italic text-[#69be28]">verified</span> addresses
+      </h2>
+      <p class="text-base md:text-lg text-slate-600 leading-relaxed">
+        From resume submission to a confidently hired candidate. Follow the journey of how we verify residential addresses to ensure your new hire is exactly who they say they are.
+      </p>
+    </div>
+
+    <div class="space-y-12 lg:space-y-24">
+
+      <!-- Step 1 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="comic-card fade-up order-1">
+          <img src="https://z-cdn-media.chatglm.cn/files/1fc8a73b-ffcc-41da-a145-4c3c9f039710.png?auth_key=1888399273-d6700c80af3c4ab28007248c24876180-0-a617bde6d1467ed7c6c5298217cff86d" alt="Candidate provides resume with address comic" class="w-full h-auto" loading="lazy" decoding="async">
+        </div>
+        <div class="text-center lg:text-left fade-up order-2 py-2">
+          <span class="step-badge mb-4">Step 01</span>
+          <h3 class="text-xl md:text-2xl lg:text-3xl font-bold text-[#071A2b] mt-4 mb-4">I've updated my current address on my resume.</h3>
+          <p class="text-slate-600 text-base md:text-lg leading-relaxed">The journey begins with a candidate's resume. While the address looks complete, true hiring confidence requires official authentication of their physical residence.</p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="text-center lg:text-right fade-up order-2 lg:order-1 py-2">
+          <span class="step-badge mb-4">Step 02</span>
+          <h3 class="text-xl md:text-2xl lg:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Is this the candidate's actual residential address?</h3>
+          <p class="text-slate-600 text-base md:text-lg leading-relaxed">The HR manager initiates the verification process through the Candidate Screening Dashboard to ensure the address provided is authentic.</p>
+        </div>
+        <div class="comic-card fade-up order-1 lg:order-2">
+          <img src="https://z-cdn-media.chatglm.cn/files/3b2d4e7e-9075-4b44-bf89-b86262893f9c.png?auth_key=1888399273-0310488809be419dba7203802832e8d3-0-aec7f0643f2b6292102355911c55652f" alt="HR manager verifying address details comic" class="w-full h-auto" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="comic-card fade-up order-1">
+          <img src="https://z-cdn-media.chatglm.cn/files/3fa5bbd7-9509-42dd-99db-986f74263949.png?auth_key=1888399273-2f1273a0277c4592947b6b173da7e38e-0-561ace18e973b56f0bc089ae20529c60" alt="Field verifier arrives at location comic" class="w-full h-auto" loading="lazy" decoding="async">
+        </div>
+        <div class="text-center lg:text-left fade-up order-2 py-2">
+          <span class="step-badge mb-4">Step 03</span>
+          <h3 class="text-xl md:text-2xl lg:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Field verifier arrives at the location.</h3>
+          <p class="text-slate-600 text-base md:text-lg leading-relaxed">A dedicated field verifier visits the provided address. The status updates in real-time on the dashboard as the on-site verification process begins.</p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="text-center lg:text-right fade-up order-2 lg:order-1 py-2">
+          <span class="step-badge mb-4">Step 04</span>
+          <h3 class="text-xl md:text-2xl lg:text-3xl font-bold text-[#071A2b] mt-4 mb-4">On-site details successfully verified.</h3>
+          <p class="text-slate-600 text-base md:text-lg leading-relaxed">The field verifier confirms the address, exact location, and occupancy details. The information perfectly matches the candidate's claims.</p>
+        </div>
+        <div class="comic-card fade-up order-1 lg:order-2">
+          <img src="https://z-cdn-media.chatglm.cn/files/0f90cd35-690a-4c8b-994e-aa806fe3846d.png?auth_key=1888399273-774416f14b8447af915bc37c5fbca19f-0-4764b95f76c3d99920f7b38a91781c56" alt="Verifier checks details and all match comic" class="w-full h-auto" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="comic-card fade-up order-1">
+          <img src="https://z-cdn-media.chatglm.cn/files/c05a1b53-619e-42a3-81dc-85f30a395752.png?auth_key=1888399273-36824f9022904bc795ed0dc6362b2f41-0-51222ef638d8ffb64f4d4790d2f5c52c" alt="HR manager reviewing verification summary comic" class="w-full h-auto" loading="lazy" decoding="async">
+        </div>
+        <div class="text-center lg:text-left fade-up order-2 py-2">
+          <span class="step-badge mb-4">Step 05</span>
+          <h3 class="text-xl md:text-2xl lg:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Verification summary reviewed.</h3>
+          <p class="text-slate-600 text-base md:text-lg leading-relaxed">The HR manager reviews the comprehensive dashboard. The system highlights verified details and intelligently flags any discrepancies for further review.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Step 6 (Full Width Banner) -->
+    <div class="mt-12 lg:mt-24 fade-up">
+      <div class="grid lg:grid-cols-2 gap-0 items-stretch bg-[#071A2b] rounded-[1.5rem] lg:rounded-[2rem] overflow-hidden shadow-xl">
+        <div class="p-8 lg:p-12 lg:pl-16 order-2 lg:order-1">
+          <span class="step-badge mb-6 bg-[#69be28] text-[#071A2b]">Step 06</span>
+          <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight mt-4">
+            Address verified. <br><span class="font-serif italic text-[#69be28]">Confident decision.</span>
+          </h2>
+          <p class="text-slate-300 mb-8 leading-relaxed text-sm md:text-base">
+            Welcome aboard! Make your final hiring decision with absolute clarity and trust, knowing your new team member's residence is fully verified for a stronger future together.
+          </p>
+          <a href="#cta" class="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm">
+            Start Verifying Today
+            <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+        <div class="h-full w-full order-1 lg:order-2">
+          <img src="https://z-cdn-media.chatglm.cn/files/479ff55a-6975-4edd-a851-c3bbc9abc4f2.png?auth_key=1888399273-7f87b32d90f444ff802f407623f98efa-0-cb6e4a84f7781093276276fd810806bc" alt="Welcome aboard and confident decision comic" class="w-full h-full object-cover" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SIMPLE AS 1, 2, 3 ============ -->
+<section class="py-20 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12 lg:mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">How it works</span>
+      <h2 class="text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Address verification as simple as <span class="font-serif italic text-[#69be28]">1, 2, 3</span>
+      </h2>
+      <p class="text-base md:text-lg text-slate-600 leading-relaxed">
+        We handle the field visits and database matching so you can focus on interviewing qualified candidates.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 md:gap-8 stagger">
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 md:p-8 text-center flex flex-col h-full">
+        <div class="w-14 h-14 md:w-16 md:h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-paper-plane text-[#69be28] text-xl md:text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 1</div>
+        <h3 class="text-xl md:text-2xl font-bold text-[#071A2b] mb-4">Request verification</h3>
+        <p class="text-slate-600 leading-relaxed text-sm md:text-base">Enter the candidate's residential details and trigger a verification request directly from your dashboard.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 md:p-8 text-center flex flex-col h-full">
+        <div class="w-14 h-14 md:w-16 md:h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-map-location-dot text-[#69be28] text-xl md:text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 2</div>
+        <h3 class="text-xl md:text-2xl font-bold text-[#071A2b] mb-4">Verify records</h3>
+        <p class="text-slate-600 leading-relaxed text-sm md:text-base">We automatically dispatch a field agent or match the details against geographic and utility databases.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 md:p-8 text-center flex flex-col h-full">
+        <div class="w-14 h-14 md:w-16 md:h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-file-circle-check text-[#69be28] text-xl md:text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 3</div>
+        <h3 class="text-xl md:text-2xl font-bold text-[#071A2b] mb-4">Get report</h3>
+        <p class="text-slate-600 leading-relaxed text-sm md:text-base">Receive a comprehensive report detailing the matched address, geolocation tags, and occupancy status.</p>
+      </div>
+    </div>
+
+    <!-- Feature Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 md:mt-12 stagger">
+      <div class="feature-card bg-white border-soft rounded-2xl p-5 md:p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-globe-americas text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-base md:text-lg font-bold text-[#071A2b] mb-1">Global Field Network</h3>
+          <p class="text-sm text-slate-600">Verifying addresses in 180+ countries with local field agents.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-5 md:p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-map-pin text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-base md:text-lg font-bold text-[#071A2b] mb-1">Geolocation Tracking</h3>
+          <p class="text-sm text-slate-600">GPS tagging and timestamping for every on-site verification.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-5 md:p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-exclamation-triangle text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-base md:text-lg font-bold text-[#071A2b] mb-1">Discrepancy Detection</h3>
+          <p class="text-sm text-slate-600">Advanced checks to spot fake addresses and mismatched occupancy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="py-20 lg:py-32 bg-slate-50">
+  <div class="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12 lg:mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">FAQ</span>
+      <h2 class="text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Frequently asked <span class="font-serif italic text-[#69be28]">questions</span>
+      </h2>
+      <p class="text-base md:text-lg text-slate-600 leading-relaxed">Everything you need to know about address verification and residential credential checks.</p>
+    </div>
+
+    <div class="space-y-3 md:space-y-4 stagger" id="faq-container">
+
+      <!-- FAQ Item 1 -->
+      <div class="faq-item active">
+        <button class="faq-trigger">
+          <h3>What is address verification?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer" style="max-height: 500px;">
+          <div class="faq-answer-inner">
+            <p>Address verification is the process of confirming a candidate's residential address through physical site visits, database checks, or utility bill analysis to ensure the information provided is accurate and genuine.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>What details are checked during address verification?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>We verify the exact address line, city, state, and postal code. Additionally, our field verifiers confirm the geolocation, residential status (owned/rented), and the duration of stay at the provided address.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>How long does the address verification process take?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Digital database verifications are instant. On-site physical verifications typically take 1 to 3 business days, depending on the location's accessibility and the availability of the candidate or their family members at the residence.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>Can international addresses be verified?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Yes, our global network supports address verification in 180+ countries. We work with local field agents and digital databases to validate global residential records, ensuring localized compliance and data privacy.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 5 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>What happens if the candidate is not available at the address?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>If the candidate is unavailable, our field verifier will attempt to speak with family members or neighbors to confirm residency. We also leave a notice for the candidate to contact us, ensuring a thorough and compliant verification process.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 6 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>Is the address verification process compliant with privacy laws?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Absolutely. Our verification process is fully compliant with GDPR, CCPA, and other global data protection regulations. We obtain candidate consent before initiating any check, and all data is encrypted and stored according to industry-leading security standards.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="cta" class="py-20 lg:py-32 relative overflow-hidden bg-white">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="relative bg-[#071A2b] rounded-[1.5rem] md:rounded-[2.5rem] p-8 md:p-12 lg:p-20 overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-80 h-80 bg-[#69be28]/20 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-[#69be28]/10 rounded-full blur-3xl"></div>
+      <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(105,190,40,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(105,190,40,0.5) 1px, transparent 1px); background-size: 50px 50px;"></div>
+
+      <div class="relative grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-1.5 bg-[#69be28]/15 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-6">Get started today</span>
+          <h2 class="text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Verify your first candidate in <span class="font-serif italic text-[#69be28]">minutes</span>
+          </h2>
+          <p class="text-base md:text-lg text-slate-300 mb-8 leading-relaxed">
+            Join 4,000+ companies that trust Verifitrust for fast, accurate, and compliant address verification. No credit card required.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#" class="btn-primary inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold">
+              Start free trial
+              <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+            <a href="#" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold border border-white/20 text-white hover:bg-white/5 transition-all">
+              Book a demo
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 md:p-8">
+          <h3 class="text-white font-bold text-lg md:text-xl mb-6">What's included:</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200 text-sm md:text-base">5 free address checks — no card required</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200 text-sm md:text-base">Full access to dashboard & integrations</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200 text-sm md:text-base">Global field agent network access</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200 text-sm md:text-base">24/7 priority support</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div id="footer-include"></div>
+
+<!-- Load global scripts (Header, Footer, Animations) -->
+<script src="/main.js"></script>
+
+</body>
+</html>
+
