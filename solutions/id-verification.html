@@ -15,6 +15,48 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+<!-- AEO & GEO Schema for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does the identity verification process take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most identity verifications are completed in under 2 minutes. The candidate simply uploads their ID and takes a quick selfie. Our AI engine does the rest instantly, checking document authenticity, extracting data, and matching the selfie to the ID photo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What types of documents can be verified?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Verifitrust supports over 12,000 document types across 180+ countries, including passports, driver's licenses, national ID cards, and residence permits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the candidate's data secure during verification?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, absolutely. We are SOC 2 Type II and ISO 27001 certified. All data is encrypted in transit and at rest, and we never store images longer than strictly necessary for compliance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Verifitrust integrate with my existing ATS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! We have native integrations with Greenhouse, Lever, Workday, BambooHR, and 40+ other tools. You can trigger a verification without ever leaving your ATS."
+      }
+    }
+  ]
+}
+</script>
+
 <style>
   :root{
     --primary: #69be28;
@@ -87,9 +129,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border-radius: 24px;
     box-shadow: 0 30px 60px -15px rgba(7,26,43,0.1), 0 0 0 1px rgba(7,26,43,0.02);
   }
+  /* Mobile Menu Sliding Animation */
   .mobile-menu{
     transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .mobile-menu.open{ transform: translateX(0); }
   ::selection{ background: #69be28; color: #071A2b; }
@@ -103,6 +146,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .stagger.visible > *:nth-child(1){ transition-delay: 0.05s; }
   .stagger.visible > *:nth-child(2){ transition-delay: 0.15s; }
   .stagger.visible > *:nth-child(3){ transition-delay: 0.25s; }
+  .stagger.visible > *:nth-child(4){ transition-delay: 0.35s; }
+  .stagger.visible > *:nth-child(5){ transition-delay: 0.45s; }
+  .stagger.visible > *:nth-child(6){ transition-delay: 0.55s; }
   @keyframes verifyRing{
     0%,100%{ transform: scale(1); opacity: 0.6; }
     50%{ transform: scale(1.1); opacity: 1; }
@@ -193,95 +239,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <body class="bg-white">
 
 <!-- ============ HEADER ============ -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="flex items-center justify-between h-20">
-      <a href="../index.html" class="flex items-center group">
-        <!-- Path updated for subfolder -->
-        <img src="../assets/logo.png" alt="VerifitTrust - Right People. Safer Future." class="h-12 md:h-14 w-auto object-contain transition-transform group-hover:scale-105">
-      </a>
-        
-      <nav class="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-        <a href="../index.html#features" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Features</a>
-        
-        <!-- Solutions Dropdown -->
-        <div class="relative group">
-          <button class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors flex items-center gap-1">
-            Solutions <i class="fas fa-chevron-down text-[10px] mt-0.5"></i>
-          </button>
-          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-56 bg-white border border-slate-100 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-4">
-            <a href="/solutions/id-verification.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-              <div class="text-sm font-semibold text-[#071A2b]">ID Verification</div>
-              <div class="text-xs text-slate-500">For teams of 1-200</div>
-            </a>
-            <a href="enterprise.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-              <div class="text-sm font-semibold text-[#071A2b]">Enterprise</div>
-              <div class="text-xs text-slate-500">Custom workflows & SSO</div>
-            </a>
-            <a href="platforms.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-              <div class="text-sm font-semibold text-[#071A2b]">Platforms</div>
-              <div class="text-xs text-slate-500">API & White-label</div>
-            </a>
-            <a href="healthcare.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-              <div class="text-sm font-semibold text-[#071A2b]">Healthcare</div>
-              <div class="text-xs text-slate-500">Sanction checks & compliance</div>
-            </a>
-            <a href="finance.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-              <div class="text-sm font-semibold text-[#071A2b]">Financial Services</div>
-              <div class="text-xs text-slate-500">FCRA & credit checks</div>
-            </a>
-          </div>
-        </div>
-
-        <a href="../index.html#how" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">How it Works</a>
-        <a href="../index.html#testimonials" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Customers</a>
-        <a href="../index.html#pricing" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Pricing</a>
-      </nav>
-      
-      <div class="hidden lg:flex items-center gap-3">
-        <a href="#" class="text-sm font-semibold text-[#071A2b] hover:text-[#69be28] transition-colors">Sign in</a>
-        <a href="../index.html#cta" class="btn-primary text-sm font-semibold px-5 py-2.5 rounded-full">
-          Get Started <i class="fas fa-arrow-right ml-1 text-xs"></i>
-        </a>
-      </div>
-      
-      <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-slate-100">
-        <i class="fas fa-bars text-[#071A2b] text-xl"></i>
-      </button>
-    </div>
-  </div>
-  
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="mobile-menu lg:hidden fixed top-0 right-0 h-screen w-80 bg-white shadow-2xl z-50 p-6">
-    <div class="flex justify-between items-center mb-8">
-      <span class="text-xl font-bold">Menu</span>
-      <button id="closeMenu" class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-slate-100">
-        <i class="fas fa-times text-xl"></i>
-      </button>
-    </div>
-    <nav class="flex flex-col gap-4">
-      <a href="../index.html#features" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">Features</a>
-      
-      <details class="border-b border-slate-100">
-        <summary class="text-lg font-medium py-3 cursor-pointer list-none flex items-center justify-between">
-          Solutions <i class="fas fa-chevron-down text-xs"></i>
-        </summary>
-        <div class="flex flex-col gap-2 pb-4 pl-3">
-          <a href="Id-verification.html" class="mobile-link text-base font-normal py-2 text-slate-700">ID Verification</a>
-          <a href="enterprise.html" class="mobile-link text-base font-normal py-2 text-slate-700">Enterprise</a>
-          <a href="platforms.html" class="mobile-link text-base font-normal py-2 text-slate-700">Platforms</a>
-          <a href="healthcare.html" class="mobile-link text-base font-normal py-2 text-slate-700">Healthcare</a>
-          <a href="finance.html" class="mobile-link text-base font-normal py-2 text-slate-700">Financial Services</a>
-        </div>
-      </details>
-
-      <a href="../index.html#how" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">How it Works</a>
-      <a href="../index.html#testimonials" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">Customers</a>
-      <a href="../index.html#pricing" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">Pricing</a>
-      <a href="../index.html#cta" class="btn-primary mt-4 text-center font-semibold py-3 rounded-full">Get Started</a>
-    </nav>
-  </div>
-</header>
+<div id="header-include"></div>
 
 <!-- ============ HERO ============ -->
 <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-white">
@@ -610,138 +568,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </section>
 
 <!-- ============ FOOTER ============ -->
-<footer class="bg-white border-t border-slate-100 pt-20 pb-10">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-10 mb-12">
-      <div class="lg:col-span-2">
-        <a href="../index.html" class="flex items-center justify-start group mr-auto mb-5">
-          <img src="../assets/logo.png" alt="VerifitTrust - Right People. Safer Future." class="h-12 md:h-14 w-auto object-contain transition-transform group-hover:scale-105">
-        </a>
-        <p class="text-slate-600 leading-relaxed max-w-sm mb-6">Fast, accurate, and compliant background checks for teams hiring anywhere in the world.</p>
-        <div class="flex gap-3">
-          <a href="#" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-[#69be28] flex items-center justify-center transition-colors group">
-            <i class="fab fa-linkedin-in text-slate-600 group-hover:text-[#071A2b]"></i>
-          </a>
-          <a href="#" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-[#69be28] flex items-center justify-center transition-colors group">
-            <i class="fab fa-x-twitter text-slate-600 group-hover:text-[#071A2b]"></i>
-          </a>
-          <a href="#" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-[#69be28] flex items-center justify-center transition-colors group">
-            <i class="fab fa-github text-slate-600 group-hover:text-[#071A2b]"></i>
-          </a>
-          <a href="#" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-[#69be28] flex items-center justify-center transition-colors group">
-            <i class="fab fa-youtube text-slate-600 group-hover:text-[#071A2b]"></i>
-          </a>
-        </div>
-      </div>
-      
-      <div>
-        <h4 class="font-bold text-[#071A2b] mb-4">Product</h4>
-        <ul class="space-y-3">
-          <li><a href="../index.html#features" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Features</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Integrations</a></li>
-          <li><a href="../index.html#pricing" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Pricing</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">API Docs</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Changelog</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <h4 class="font-bold text-[#071A2b] mb-4">Solutions</h4>
-        <ul class="space-y-3">
-          <li><a href="Id-verification.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">ID Verification</a></li>
-          <li><a href="enterprise.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Enterprise</a></li>
-          <li><a href="platforms.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Platforms</a></li>
-          <li><a href="healthcare.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Healthcare</a></li>
-          <li><a href="finance.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Financial Services</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <h4 class="font-bold text-[#071A2b] mb-4">Company</h4>
-        <ul class="space-y-3">
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">About us</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Careers</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Blog</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Press</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Contact</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <h4 class="font-bold text-[#071A2b] mb-4">Resources</h4>
-        <ul class="space-y-3">
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Help Center</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Compliance</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Security</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Status</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Privacy</a></li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-slate-500">© 2025 Verifitrust Inc. All rights reserved.</p>
-      <div class="flex items-center gap-6">
-        <a href="#" class="text-sm text-slate-500 hover:text-[#69be28] transition-colors">Terms</a>
-        <a href="#" class="text-sm text-slate-500 hover:text-[#69be28] transition-colors">Privacy</a>
-        <a href="#" class="text-sm text-slate-500 hover:text-[#69be28] transition-colors">Cookies</a>
-        <div class="flex items-center gap-2 px-3 py-1.5 bg-slate-100 rounded-full">
-          <i class="fas fa-globe text-slate-500 text-xs"></i>
-          <select class="bg-transparent text-sm text-slate-600 outline-none cursor-pointer">
-            <option>English</option>
-            <option>Français</option>
-            <option>Deutsch</option>
-            <option>Español</option>
-            <option>日本語</option>
-          </select>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
+<div id="footer-include"></div>
 
-<button id="backTop" class="fixed bottom-8 right-8 w-12 h-12 bg-[#69be28] text-[#071A2b] rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all hover:scale-110 z-40">
-  <i class="fas fa-arrow-up"></i>
-</button>
-
-<script>
-  // Mobile menu
-  const menuBtn = document.getElementById('menuBtn');
-  const closeMenu = document.getElementById('closeMenu');
-  const mobileMenu = document.getElementById('mobileMenu');
-  
-  if(menuBtn) {
-    menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
-    closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
-    });
-  }
-  
-  // Scroll animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-  
-  document.querySelectorAll('.fade-up, .stagger').forEach(el => observer.observe(el));
-  
-  // Back to top
-  const backTop = document.getElementById('backTop');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
-      backTop.style.opacity = '1';
-      backTop.style.visibility = 'visible';
-    } else {
-      backTop.style.opacity = '0';
-      backTop.style.visibility = 'invisible';
-    }
-  });
-  backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-</script>
+<!-- Load global scripts (Header, Footer, Animations) -->
+<script src="/main.js"></script>
 
 </body>
 </html>
