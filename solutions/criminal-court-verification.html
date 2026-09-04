@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Criminal & Court Verification — Verifitrust</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- AEO & GEO Schema for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is criminal and court verification?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Criminal and court verification is the process of checking a candidate's history against court records, public record databases, and government sources to identify any criminal cases, convictions, or ongoing legal proceedings. It helps employers make informed, risk-aware hiring decisions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What sources are checked during criminal and court verification?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We check district and high court records, public record databases, and verified government sources. Our system searches across civil and criminal case databases to surface any adverse records tied to the candidate's identity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does the criminal and court verification process take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Digital database matches return results instantly. Manual court-record verifications that require outreach to court clerks typically take 3 to 7 business days, depending on the jurisdiction and the court's response time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if a potential match is found?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If a potential match is found, the result is flagged for further review. Our analysts verify identity details, case status, and relevance before producing a final report. A potential match is not a conclusion and never automatically disqualifies a candidate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can international criminal records be checked?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Our global network supports criminal and court verification in 180+ countries. We work with localized court systems, police departments, and authorized databases to validate records while staying compliant with regional data privacy laws."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is criminal background screening compliant with hiring laws?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. Every check is conducted with candidate consent and follows local labor laws, EEOC guidance, and data privacy frameworks such as GDPR and DPDP. Results are stored securely and shared only with authorized stakeholders."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --primary: #69be28;
+    --primary-dark: #4f9e1a;
+    --primary-soft: #eaf7d8;
+    --secondary: #071A2b;
+    --secondary-soft: #122845;
+    --white: #ffffff;
+    --grey-50: #f8fafc;
+    --grey-100: #f1f5f9;
+    --grey-200: #e2e8f0;
+    --grey-600: #475569;
+    --grey-700: #334155;
+  }
+  *{ -webkit-font-smoothing: antialiased; }
+  body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    color: var(--secondary);
+    overflow-x: hidden;
+  }
+  .font-serif{ font-family: 'Instrument Serif', serif; font-weight: 400; }
+  
+  ::-webkit-scrollbar{ width: 10px; }
+  ::-webkit-scrollbar-track{ background: #f1f5f9; }
+  ::-webkit-scrollbar-thumb{ background: #69be28; border-radius: 5px; }
+  
+  .gradient-text{
+    background: linear-gradient(135deg, #071A2b 0%, #2d5a1a 50%, #69be28 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .btn-primary{
+    background: var(--primary);
+    color: var(--secondary);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 4px 14px rgba(105,190,40,0.3);
+  }
+  .btn-primary:hover{
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(105,190,40,0.4);
+  }
+  .btn-secondary{
+    background: transparent;
+    color: var(--secondary);
+    border: 1.5px solid var(--secondary);
+    transition: all 0.3s ease;
+  }
+  .btn-secondary:hover{
+    background: var(--secondary);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  
+  .fade-up{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fade-up.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .feature-card{
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before{
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, #69be28, transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  .feature-card:hover::before{ transform: translateX(100%); }
+  .feature-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(7,26,43,0.08);
+    border-color: rgba(105,190,40,0.3);
+  }
+  
+  .dashboard-card{
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px -15px rgba(7,26,43,0.1), 0 0 0 1px rgba(7,26,43,0.02);
+  }
+  
+  @keyframes drawCheck{ to{ stroke-dashoffset: 0; } }
+  .check-path{
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawCheck 1.5s ease forwards;
+  }
+  
+  .mobile-menu{
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-menu.open{ transform: translateX(0); }
+  
+  ::selection{ background: #69be28; color: #071A2b; }
+  
+  .border-soft{ border: 1px solid rgba(7,26,43,0.08); }
+  
+  .stagger > *{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .stagger.visible > *{ opacity: 1; transform: translateY(0); }
+  .stagger.visible > *:nth-child(1){ transition-delay: 0.05s; }
+  .stagger.visible > *:nth-child(2){ transition-delay: 0.15s; }
+  .stagger.visible > *:nth-child(3){ transition-delay: 0.25s; }
+  .stagger.visible > *:nth-child(4){ transition-delay: 0.35s; }
+  .stagger.visible > *:nth-child(5){ transition-delay: 0.45s; }
+  .stagger.visible > *:nth-child(6){ transition-delay: 0.55s; }
+  
+  @keyframes verifyRing{
+    0%,100%{ transform: scale(1); opacity: 0.6; }
+    50%{ transform: scale(1.1); opacity: 1; }
+  }
+  .verify-ring{ animation: verifyRing 3s ease-in-out infinite; }
+
+  @keyframes pulseDot{
+    0%,100%{ opacity: 0.4; transform: scale(1); }
+    50%{ opacity: 1; transform: scale(1.25); }
+  }
+  .pulse-dot{ animation: pulseDot 1.4s ease-in-out infinite; }
+  
+  html{ scroll-behavior: smooth; }
+  
+  .step-badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: #071A2b;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 9999px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  
+  .comic-card {
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    border: 1px solid rgba(7,26,43,0.08);
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px -5px rgba(7,26,43,0.05);
+  }
+  .comic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -5px rgba(7,26,43,0.1);
+    border-color: rgba(105,190,40,0.3);
+  }
+  
+  .faq-item {
+    border: 1px solid #e2e8f0;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .faq-item.active {
+    border-color: rgba(105,190,40,0.5);
+    box-shadow: 0 10px 30px -5px rgba(105,190,40,0.1);
+  }
+  .faq-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    text-align: left;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    gap: 1rem;
+  }
+  .faq-trigger h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #071A2b;
+    line-height: 1.4;
+  }
+  .faq-icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    background: rgba(105,190,40,0.1);
+    color: #4f9e1a;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  }
+  .faq-item.active .faq-icon {
+    transform: rotate(135deg);
+    background: #69be28;
+    color: #071A2b;
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+  .faq-answer-inner {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: #475569;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px){
+    .faq-trigger h3{ font-size: 1rem; }
+    .faq-trigger{ padding: 1.25rem; }
+  }
+</style>
+</head>
+<body class="bg-white">
+
+<!-- ============ HEADER ============ -->
+<div id="header-include"></div>
+
+<!-- ============ HERO ============ -->
+<section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-white">
+  <div class="absolute top-0 left-0 w-72 h-72 bg-[#69be28]/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-slate-100/50 rounded-full blur-3xl"></div>
+  
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      
+      <div class="relative z-10">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full mb-6">
+          <i class="fas fa-gavel text-[#69be28]"></i>
+          <span class="text-xs font-semibold text-[#071A2b]">Criminal & Court Records Check</span>
+        </div>
+        
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
+          <span class="block text-[#071A2b]">Verify records.</span>
+          <span class="block">
+            <span class="gradient-text">Hire</span>
+          </span>
+          <span class="block text-[#071A2b]">with confidence<span class="text-[#69be28]">.</span></span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-xl leading-relaxed">
+          Don't just trust the resume—verify the record. Cross-check candidate histories against court records, public databases, and government sources for risk-aware, compliant hiring.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#cta" class="btn-primary px-7 py-4 rounded-full font-semibold text-base inline-flex items-center justify-center gap-2">
+            Start Verifying Free
+            <i class="fas fa-arrow-right text-sm"></i>
+          </a>
+          <a href="#process" class="btn-secondary px-7 py-4 rounded-full font-semibold text-base inline-flex items-center justify-center gap-2">
+            <i class="fas fa-play text-xs"></i>
+            See How It Works
+          </a>
+        </div>
+      </div>
+      
+      <div class="relative">
+        <div class="dashboard-card max-w-sm mx-auto relative z-10 p-6">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <div class="text-xs text-slate-400 uppercase tracking-wider">Criminal & Court Check</div>
+              <div class="text-lg font-bold text-[#071A2b]">Rahul Sharma</div>
+            </div>
+            <div class="w-10 h-10 bg-[#69be28] rounded-full flex items-center justify-center">
+              <i class="fas fa-check text-[#071A2b]"></i>
+            </div>
+          </div>
+          
+          <div class="bg-slate-50 rounded-xl p-4 mb-4 flex items-center gap-4">
+            <div class="w-16 h-16 bg-white rounded-lg border border-slate-200 flex items-center justify-center">
+              <i class="fas fa-scale-balanced text-2xl text-slate-400"></i>
+            </div>
+            <div>
+              <div class="text-sm font-bold text-[#071A2b]">District Court Records</div>
+              <div class="text-xs text-slate-500">Searched 12 jurisdictions</div>
+            </div>
+          </div>
+          
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Court Records</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> No adverse record</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Public Databases</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Clear</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Government Sources</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Verified</span>
+            </div>
+          </div>
+          
+          <div class="bg-[#69be28]/8 rounded-xl p-4 mt-6 flex items-center gap-3">
+            <div class="verify-ring w-8 h-8 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-shield-halved text-[#071A2b] text-xs"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-[#071A2b]">Record Cleared</div>
+              <div class="text-[10px] text-slate-500">Confident hiring decision</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Floating badge -->
+        <div class="absolute -top-4 -right-4 lg:-right-8 bg-white rounded-2xl shadow-xl border border-slate-100 p-4 z-20 hidden sm:block">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center">
+              <i class="fas fa-triangle-exclamation text-red-500"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-[#071A2b]">Potential match?</div>
+              <div class="text-[10px] text-slate-500">Flagged for review</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMIC PROCESS TIMELINE ============ -->
+<section id="process" class="py-24 lg:py-32 bg-gradient-to-b from-white to-slate-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="text-center max-w-3xl mx-auto mb-20 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">The Journey</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        The journey to <span class="font-serif italic text-[#69be28]">verified</span> records
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        From interview to a confidently hired candidate. Follow the journey of how we cross-check criminal and court records so your new hire is fully cleared.
+      </p>
+    </div>
+
+    <div class="space-y-12 lg:space-y-24">
+
+      <!-- Step 1 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="comic-card fade-up order-1 lg:order-1">
+          <img src="https://z-cdn-media.chatglm.cn/files/b00af90e-cd9f-444b-b29e-0e5567888407.png?auth_key=1888488857-1779f5a7dc2846a8899141c369e59c59-0-2802793384653bf289ea1cfa12baff47" alt="Candidate interview with HR manager comic" class="w-full h-auto" loading="lazy">
+        </div>
+        <div class="text-center lg:text-left fade-up order-2 lg:order-2 py-4">
+          <span class="step-badge mb-4">Step 01</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">I have the experience and skills you're looking for.</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">The journey begins with a candidate who looks perfect on paper. Impressive skills, strong experience—but before any offer, true hiring confidence requires a complete screening process.</p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="text-center lg:text-right fade-up order-2 lg:order-1 py-4">
+          <span class="step-badge mb-4">Step 02</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Before the final decision, we need a criminal and court records check.</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">The HR manager explains the screening checklist. Identity, address, and education are done—Criminal & Court Verification now moves from pending to in-progress. Better to verify than assume.</p>
+        </div>
+        <div class="comic-card fade-up order-1 lg:order-2">
+          <img src="https://z-cdn-media.chatglm.cn/files/0dbf81d4-6268-489d-af95-388a407e3da3.png?auth_key=1888488857-6ccdf61a5f0347178d8b5dc2903e06bc-0-9cf5a98d47cffab6906980128cf902f9" alt="HR manager initiates criminal and court records check comic" class="w-full h-auto" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="comic-card fade-up order-1 lg:order-1">
+          <img src="https://z-cdn-media.chatglm.cn/files/11f7fd5e-7bc7-4981-bcf4-158f65be9d28.png?auth_key=1888488857-2df5cca5630f49448999610c5c8632b5-0-cfbc104faecc490eb32cc8052c7e7b85" alt="Criminal and court verification searching databases comic" class="w-full h-auto" loading="lazy">
+        </div>
+        <div class="text-center lg:text-left fade-up order-2 lg:order-2 py-4">
+          <span class="step-badge mb-4">Step 03</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Searching across court records, public databases, and government sources.</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">The system moves from Initiated → Searching → Verifying → Compiling Results → Completed. Every check is run against trusted judicial and government sources for complete coverage.</p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="text-center lg:text-right fade-up order-2 lg:order-1 py-4">
+          <span class="step-badge mb-4">Step 04</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Wait… a potential match?</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">A potential match is detected in one of the data sources. The system flags it for review—but a flag is not a conclusion. It simply means the details require closer human analysis.</p>
+        </div>
+        <div class="comic-card fade-up order-1 lg:order-2">
+          <img src="https://z-cdn-media.chatglm.cn/files/5f48c802-7002-4ee1-8a93-391f453e8e00.png?auth_key=1888488857-28523fcfa5b84042bb36e766d7e80eab-0-070a3bb70d0c66d772879e793b588454" alt="Potential match found in criminal check comic" class="w-full h-auto" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="comic-card fade-up order-1 lg:order-1">
+          <img src="https://z-cdn-media.chatglm.cn/files/590291e2-c5d5-4ee7-9872-0d8d03fba757.png?auth_key=1888488857-752859b38abe44749312cc722ad3f396-0-3214f83b3491d5a7afc36a424a2d85ff" alt="Further review of potential match comic" class="w-full h-auto" loading="lazy">
+        </div>
+        <div class="text-center lg:text-left fade-up order-2 lg:order-2 py-4">
+          <span class="step-badge mb-4">Step 05</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Details require further review.</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">Our analysts verify identity, case status, date, and relevance. Many flagged matches turn out to be name collisions or dismissed cases—so every record is reviewed before a final conclusion is reached.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Step 6 (Full Width Banner) -->
+    <div class="mt-12 lg:mt-24 fade-up">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-0 items-center bg-[#071A2b] rounded-[2rem] overflow-hidden border border-slate-100 shadow-lg">
+        <div class="p-8 lg:p-12 lg:pl-16 order-2 lg:order-1">
+          <span class="step-badge mb-6 bg-[#69be28] text-[#071A2b]">Step 06</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight mt-4">
+            Cleared. <br><span class="font-serif italic text-[#69be28]">Confident decision.</span>
+          </h2>
+          <p class="text-slate-300 mb-8 leading-relaxed">
+            Verification complete. The Final Screening Dashboard confirms no adverse record. Welcome aboard—a fair, transparent, and verified hiring decision for the right talent and a stronger future.
+          </p>
+          <a href="#cta" class="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm">
+            Start Verifying Today
+            <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+        <div class="h-full w-full order-1 lg:order-2">
+          <img src="https://z-cdn-media.chatglm.cn/files/d63a72a9-5954-4b31-96ec-6eb6460629c4.png?auth_key=1888488857-b4b69bc52c5142dbbce028670aaab54b-0-0356b6a60c7dab1af95c93148ca0e576" alt="Verification complete final screening dashboard comic" class="w-full h-full object-cover" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SIMPLE AS 1, 2, 3 ============ -->
+<section class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">How it works</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Criminal & court verification as simple as <span class="font-serif italic text-[#69be28]">1, 2, 3</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        We handle the database searches, court outreach, and analyst review so you can focus on making a confident, compliant hiring decision.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8 stagger">
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-user-check text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 1</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Request a check</h3>
+        <p class="text-slate-600 leading-relaxed">Enter the candidate's details and trigger a criminal & court verification request directly from your dashboard with their consent.</p>
+      </div>
+      
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-magnifying-glass-chart text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 2</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Search records</h3>
+        <p class="text-slate-600 leading-relaxed">We cross-check court records, public databases, and government sources. Any potential match is flagged for further analyst review.</p>
+      </div>
+      
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-file-shield text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 3</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Get report</h3>
+        <p class="text-slate-600 leading-relaxed">Receive a comprehensive, audit-ready report with the final status—Cleared or Adverse Record—plus a full source trail.</p>
+      </div>
+    </div>
+
+    <!-- Feature Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 stagger">
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-globe-americas text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Global Coverage</h3>
+          <p class="text-sm text-slate-600">Search 180+ countries across court, public, and government records.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-shield-halved text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Risk-Aware Hiring</h3>
+          <p class="text-sm text-slate-600">Surface any adverse records before you make a final hiring decision.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-bolt text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Instant Database Checks</h3>
+          <p class="text-sm text-slate-600">Real-time matching against digital court and public record databases.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-user-shield text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Candidate Consent First</h3>
+          <p class="text-sm text-slate-600">Every check is initiated only after explicit candidate authorization.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-landmark text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Manual Court Outreach</h3>
+          <p class="text-sm text-slate-600">Analysts verify with district court clerks for hard-to-access records.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-file-circle-check text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Audit-Ready Reports</h3>
+          <p class="text-sm text-slate-600">Full source trail and timestamps for every verified record.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ (AEO & GEO Optimized) ============ -->
+<section class="py-24 lg:py-32 bg-slate-50">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">FAQ</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Frequently asked <span class="font-serif italic text-[#69be28]">questions</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">Everything you need to know about criminal and court verification, record checks, and compliant screening.</p>
+    </div>
+
+    <div class="space-y-4 stagger" id="faq-container">
+      
+      <!-- FAQ Item 1 -->
+      <div class="faq-item active">
+        <button class="faq-trigger">
+          <h3>What is criminal and court verification?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer" style="max-height: 500px;">
+          <div class="faq-answer-inner">
+            <p>Criminal and court verification is the process of checking a candidate's history against court records, public record databases, and government sources to identify any criminal cases, convictions, or ongoing legal proceedings. It helps employers make informed, risk-aware hiring decisions.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>What sources are checked during criminal and court verification?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>We check district and high court records, public record databases, and verified government sources. Our system searches across civil and criminal case databases to surface any adverse records tied to the candidate's identity.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>How long does the criminal and court verification process take?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Digital database matches return results instantly. Manual court-record verifications that require outreach to court clerks typically take 3 to 7 business days, depending on the jurisdiction and the court's response time.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>What happens if a potential match is found?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>If a potential match is found, the result is flagged for further review. Our analysts verify identity details, case status, and relevance before producing a final report. A potential match is not a conclusion and never automatically disqualifies a candidate.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 5 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>Can international criminal records be checked?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Yes. Our global network supports criminal and court verification in 180+ countries. We work with localized court systems, police departments, and authorized databases to validate records while staying compliant with regional data privacy laws.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 6 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>Is criminal background screening compliant with hiring laws?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Absolutely. Every check is conducted with candidate consent and follows local labor laws, EEOC guidance, and data privacy frameworks such as GDPR and DPDP. Results are stored securely and shared only with authorized stakeholders.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="cta" class="py-24 lg:py-32 relative overflow-hidden bg-white">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="relative bg-[#071A2b] rounded-[2.5rem] p-10 md:p-16 lg:p-20 overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-80 h-80 bg-[#69be28]/20 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-[#69be28]/10 rounded-full blur-3xl"></div>
+      <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(105,190,40,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(105,190,40,0.5) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      
+      <div class="relative grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-1.5 bg-[#69be28]/15 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-6">Get started today</span>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Verify your first candidate in <span class="font-serif italic text-[#69be28]">minutes</span>
+          </h2>
+          <p class="text-lg text-slate-300 mb-8 leading-relaxed">
+            Join 4,000+ companies that trust Verifitrust for fast, accurate, and compliant criminal and court verification. No credit card required.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#" class="btn-primary inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold">
+              Start free trial
+              <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+            <a href="#" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold border border-white/20 text-white hover:bg-white/5 transition-all">
+              Book a demo
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8">
+          <h3 class="text-white font-bold text-xl mb-6">What's included:</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">5 free criminal & court checks — no card required</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">Full access to dashboard & integrations</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">Global court & government database access</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">24/7 priority support</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div id="footer-include"></div>
+
+<!-- Load global scripts (Header, Footer, Animations) -->
+<script src="/main.js"></script>
+
+</body>
+</html>
+
