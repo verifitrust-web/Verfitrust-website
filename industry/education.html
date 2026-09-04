@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Education Background Checks — Verifitrust</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- AEO & GEO Schema for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why do educational institutions need specialized background checks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Schools, universities, and EdTech platforms are responsible for the safety and development of students. Specialized background checks help verify academic credentials, prevent abuse, ensure campus security, and maintain compliance with strict educational regulations like FERPA."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you verify international academic credentials for professors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, our global network supports education verification in 180+ countries. We work directly with international universities, degree registries, and credential evaluation services to validate the academic history of international faculty and researchers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you handle bulk hiring for adjuncts and seasonal staff?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our platform is built for scale. We offer bulk upload features and seamless ATS integrations that allow universities to process hundreds of background checks simultaneously, ensuring you can staff up for new semesters without delays."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are your background checks compliant with FERPA and Title IX?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, our processes are designed to align with educational compliance standards. We ensure that all candidate data is handled securely to maintain FERPA compliance, and our checks help institutions meet their safety obligations under Title IX."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --primary: #69be28;
+    --primary-dark: #4f9e1a;
+    --primary-soft: #eaf7d8;
+    --secondary: #071A2b;
+    --secondary-soft: #122845;
+    --white: #ffffff;
+    --grey-50: #f8fafc;
+    --grey-100: #f1f5f9;
+    --grey-200: #e2e8f0;
+    --grey-600: #475569;
+    --grey-700: #334155;
+  }
+  *{ -webkit-font-smoothing: antialiased; }
+  body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    color: var(--secondary);
+    overflow-x: hidden;
+  }
+  .font-serif{ font-family: 'Instrument Serif', serif; font-weight: 400; }
+  
+  ::-webkit-scrollbar{ width: 10px; }
+  ::-webkit-scrollbar-track{ background: #f1f5f9; }
+  ::-webkit-scrollbar-thumb{ background: #69be28; border-radius: 5px; }
+  
+  /* Gradient text */
+  .gradient-text{
+    background: linear-gradient(135deg, #071A2b 0%, #2d5a1a 50%, #69be28 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Buttons */
+  .btn-primary{
+    background: var(--primary);
+    color: var(--secondary);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 4px 14px rgba(105,190,40,0.3);
+  }
+  .btn-primary:hover{
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(105,190,40,0.4);
+  }
+  .btn-secondary{
+    background: transparent;
+    color: var(--secondary);
+    border: 1.5px solid var(--secondary);
+    transition: all 0.3s ease;
+  }
+  .btn-secondary:hover{
+    background: var(--secondary);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  
+  /* Fade in animation */
+  .fade-up{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fade-up.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Card hover */
+  .feature-card{
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before{
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, #69be28, transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  .feature-card:hover::before{ transform: translateX(100%); }
+  .feature-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(7,26,43,0.08);
+    border-color: rgba(105,190,40,0.3);
+  }
+  
+  /* Hero mockup styling */
+  .dashboard-card{
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px -15px rgba(7,26,43,0.1), 0 0 0 1px rgba(7,26,43,0.02);
+  }
+  
+  @keyframes drawCheck{ to{ stroke-dashoffset: 0; } }
+  .check-path{
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawCheck 1.5s ease forwards;
+  }
+  
+  .stripe-bg{
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(105,190,40,0.04) 10px,
+      rgba(105,190,40,0.04) 20px
+    );
+  }
+  
+  .mobile-menu{
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-menu.open{ transform: translateX(0); }
+  
+  ::selection{ background: #69be28; color: #071A2b; }
+  
+  .border-soft{ border: 1px solid rgba(7,26,43,0.08); }
+  
+  .stagger > *{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .stagger.visible > *{ opacity: 1; transform: translateY(0); }
+  .stagger.visible > *:nth-child(1){ transition-delay: 0.05s; }
+  .stagger.visible > *:nth-child(2){ transition-delay: 0.15s; }
+  .stagger.visible > *:nth-child(3){ transition-delay: 0.25s; }
+  .stagger.visible > *:nth-child(4){ transition-delay: 0.35s; }
+  .stagger.visible > *:nth-child(5){ transition-delay: 0.45s; }
+  .stagger.visible > *:nth-child(6){ transition-delay: 0.55s; }
+  
+  @keyframes verifyRing{
+    0%,100%{ transform: scale(1); opacity: 0.6; }
+    50%{ transform: scale(1.1); opacity: 1; }
+  }
+  .verify-ring{ animation: verifyRing 3s ease-in-out infinite; }
+  
+  html{ scroll-behavior: smooth; }
+  
+  /* FAQ Accordion (JS Driven for Desktop/Mobile/Tablet reliability) */
+  .faq-item {
+    border: 1px solid #e2e8f0;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .faq-item.active {
+    border-color: rgba(105,190,40,0.5);
+    box-shadow: 0 10px 30px -5px rgba(105,190,40,0.1);
+  }
+  .faq-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    text-align: left;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    gap: 1rem;
+  }
+  .faq-trigger h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #071A2b;
+  }
+  .faq-icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    background: rgba(105,190,40,0.1);
+    color: #4f9e1a;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  }
+  .faq-item.active .faq-icon {
+    transform: rotate(135deg);
+    background: #69be28;
+    color: #071A2b;
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+  .faq-answer-inner {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: #475569;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body class="bg-white">
+
+<!-- ============ HEADER ============ -->
+<div id="header-include"></div>
+
+<!-- ============ HERO ============ -->
+<section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      
+      <div class="relative z-10">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full mb-6">
+          <i class="fas fa-graduation-cap text-[#69be28]"></i>
+          <span class="text-xs font-semibold text-[#071A2b]">Education Industry</span>
+        </div>
+        
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
+          <span class="block text-[#071A2b]">Build safe academic communities.</span>
+          <span class="block">
+            <span class="gradient-text">Hire</span>
+          </span>
+          <span class="block text-[#071A2b]">with confidence<span class="text-[#69be28]">.</span></span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-xl leading-relaxed">
+          Protect your students, verify academic credentials, and ensure campus safety. Rigorous identity, background, and degree verification built for universities, schools, and EdTech platforms.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 mb-12">
+          <a href="#cta" class="btn-primary px-7 py-4 rounded-full font-semibold text-base inline-flex items-center justify-center gap-2">
+            Start Verifying Free
+            <i class="fas fa-arrow-right text-sm"></i>
+          </a>
+          <a href="#process" class="btn-secondary px-7 py-4 rounded-full font-semibold text-base inline-flex items-center justify-center gap-2">
+            <i class="fas fa-play text-xs"></i>
+            See How It Works
+          </a>
+        </div>
+      </div>
+      
+      <div class="relative">
+        <div class="dashboard-card max-w-sm mx-auto relative z-10 p-6">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <div class="text-xs text-slate-400 uppercase tracking-wider">Faculty Candidate Check</div>
+              <div class="text-lg font-bold text-[#071A2b]">Dr. Alan Grant</div>
+            </div>
+            <div class="w-10 h-10 bg-[#69be28] rounded-full flex items-center justify-center">
+              <i class="fas fa-check text-[#071A2b]"></i>
+            </div>
+          </div>
+          
+          <div class="bg-slate-50 rounded-xl p-4 mb-4 flex items-center gap-4">
+            <div class="w-16 h-16 bg-white rounded-lg border border-slate-200 flex items-center justify-center">
+              <i class="fas fa-chalkboard-user text-2xl text-slate-400"></i>
+            </div>
+            <div>
+              <div class="text-sm font-bold text-[#071A2b]">Assistant Professor</div>
+              <div class="text-xs text-slate-500">Student-Facing Role</div>
+            </div>
+          </div>
+          
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Identity & Right to Work</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Verified</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Criminal & Abuse Registry</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Clear</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">PhD Degree</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Authenticated</span>
+            </div>
+          </div>
+          
+          <div class="bg-[#69be28]/8 rounded-xl p-4 mt-6 flex items-center gap-3">
+            <div class="verify-ring w-8 h-8 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-shield-halved text-[#071A2b] text-xs"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-[#071A2b]">Cleared for Campus Access</div>
+              <div class="text-[10px] text-slate-500">Ready for the semester</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INDUSTRY CHALLENGES ============ -->
+<section class="py-24 lg:py-32 bg-gradient-to-b from-white to-slate-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="text-center max-w-3xl mx-auto mb-20 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">Why Education Needs Verifitrust</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Built for the safety of <span class="font-serif italic text-[#69be28]">academic</span> hiring
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        Student safety is non-negotiable. Protect your campus, verify academic credentials, and maintain strict educational compliance with every faculty and staff hire.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
+      
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-shield-heart text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-[#071A2b] mb-3">Student Safety</h3>
+        <p class="text-slate-600 leading-relaxed">Protect vulnerable populations. Screen against abuse and sex offender registries to ensure a safe environment for students of all ages.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-user-graduate text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-[#071A2b] mb-3">Credential Verification</h3>
+        <p class="text-slate-600 leading-relaxed">Prevent academic fraud. Verify PhDs, Master's degrees, and teaching certifications directly with issuing universities and registries.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-landmark text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-[#071A2b] mb-3">Campus Security</h3>
+        <p class="text-slate-600 leading-relaxed">Protect your campus community. Comprehensive criminal background checks ensure staff and faculty don't pose a risk to campus security.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-people-group text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-[#071A2b] mb-3">Bulk Semester Hiring</h3>
+        <p class="text-slate-600 leading-relaxed">Rapidly scale your workforce for new semesters. Bulk screening tools allow you to process hundreds of adjuncts and seasonal staff effortlessly.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-scale-balanced text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-[#071A2b] mb-3">Regulatory Compliance</h3>
+        <p class="text-slate-600 leading-relaxed">Meet strict accrediting body standards. We help you maintain compliance with FERPA, Title IX, and state education department regulations.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-plug text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-[#071A2b] mb-3">EdTech & ATS Integrations</h3>
+        <p class="text-slate-600 leading-relaxed">Native integration with leading university HRIS and ATS platforms. Trigger checks without ever leaving your existing academic recruiting workflow.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECOMMENDED CHECKS FOR EDUCATION ============ -->
+<section class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">Verification Packages</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Recommended checks for <span class="font-serif italic text-[#69be28]">Education</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        Our standard package for professors, administrative staff, and campus workers ensures student safety, academic integrity, and campus security are fully authenticated.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
+      <!-- Check 1 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-fingerprint text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Identity Verification</h3>
+          <p class="text-sm text-slate-600">Confirm the candidate is exactly who they claim to be before granting access to campus facilities and student records.</p>
+        </div>
+      </div>
+
+      <!-- Check 2 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-gavel text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Criminal Record Check</h3>
+          <p class="text-sm text-slate-600">Comprehensive criminal history screening to protect students, staff, and university property from potential harm.</p>
+        </div>
+      </div>
+
+      <!-- Check 3 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-user-shield text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Sex Offender & Abuse Registry</h3>
+          <p class="text-sm text-slate-600">Crucial for any student-facing role. Screen against national sex offender registries and child abuse/neglect databases.</p>
+        </div>
+      </div>
+
+      <!-- Check 4 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-user-graduate text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Education Verification</h3>
+          <p class="text-sm text-slate-600">Authenticate degrees, diplomas, and certifications directly with the issuing institutions to prevent academic fraud.</p>
+        </div>
+      </div>
+
+      <!-- Check 5 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-briefcase text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Employment Verification</h3>
+          <p class="text-sm text-slate-600">Validate past teaching experience, tenure, and reasons for leaving previous academic institutions directly.</p>
+        </div>
+      </div>
+
+      <!-- Check 6 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-comments text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Professional References</h3>
+          <p class="text-sm text-slate-600">Gather qualitative feedback from past academic peers, department heads, or deans to ensure teaching competency.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIMPLE AS 1, 2, 3 ============ -->
+<section id="process" class="py-24 lg:py-32 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">How it works</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Academic screening as simple as <span class="font-serif italic text-[#69be28]">1, 2, 3</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        We handle the credentialing and safety overhead so your HR team can focus on building the best academic environment.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8 stagger">
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-paper-plane text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 1</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Send invite</h3>
+        <p class="text-slate-600 leading-relaxed">Trigger a verification request directly from your ATS. The candidate receives a secure link to upload their ID and academic credentials.</p>
+      </div>
+      
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-magnifying-glass-chart text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 2</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Compliance Check</h3>
+        <p class="text-slate-600 leading-relaxed">Our engine verifies degrees with universities, screens abuse registries, and checks criminal history in seconds.</p>
+      </div>
+      
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-circle-check text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 3</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Onboard safely</h3>
+        <p class="text-slate-600 leading-relaxed">Receive a clear, audit-ready report. Confidently grant campus and student record access knowing they are fully cleared.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ (AEO & GEO Optimized) ============ -->
+<section class="py-24 lg:py-32 bg-white">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">FAQ</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Frequently asked <span class="font-serif italic text-[#69be28]">questions</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">Everything you need to know about background checks for Educational Institutions.</p>
+    </div>
+
+    <div class="space-y-4 stagger" id="faq-container">
+      
+      <!-- FAQ Item 1 -->
+      <div class="faq-item active">
+        <button class="faq-trigger">
+          <h3>Why do educational institutions need specialized background checks?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer" style="max-height: 500px;">
+          <div class="faq-answer-inner">
+            <p>Schools, universities, and EdTech platforms are responsible for the safety and development of students. Specialized background checks help verify academic credentials, prevent abuse, ensure campus security, and maintain compliance with strict educational regulations like FERPA and Title IX.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>Can you verify international academic credentials for professors?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Yes, our global network supports education verification in 180+ countries. We work directly with international universities, degree registries, and credential evaluation services to validate the academic history of international faculty and researchers seamlessly.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>How do you handle bulk hiring for adjuncts and seasonal staff?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Our platform is built for scale. We offer bulk upload features and seamless ATS integrations that allow universities to process hundreds of background checks simultaneously, ensuring you can staff up for new semesters or summer programs without delays.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>Are your background checks compliant with FERPA and Title IX?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Yes, our processes are designed to align with educational compliance standards. We ensure that all candidate data is handled securely to maintain FERPA compliance, and our comprehensive checks help institutions meet their safety and reporting obligations under Title IX.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="cta" class="py-24 lg:py-32 relative overflow-hidden bg-white">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="relative bg-[#071A2b] rounded-[2.5rem] p-10 md:p-16 lg:p-20 overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-80 h-80 bg-[#69be28]/20 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-[#69be28]/10 rounded-full blur-3xl"></div>
+      <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(105,190,40,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(105,190,40,0.5) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      
+      <div class="relative grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-1.5 bg-[#69be28]/15 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-6">Get started today</span>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Secure your next <span class="font-serif italic text-[#69be28]">academic</span> hire
+          </h2>
+          <p class="text-lg text-slate-300 mb-8 leading-relaxed">
+            Join 4,000+ universities and schools that trust Verifitrust for fast, accurate, and compliant background checks. No credit card required.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#" class="btn-primary inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold">
+              Start free trial
+              <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+            <a href="#" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold border border-white/20 text-white hover:bg-white/5 transition-all">
+              Book a demo
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8">
+          <h3 class="text-white font-bold text-xl mb-6">What's included:</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">5 free background checks — no card required</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">Sex offender & abuse registry screening</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">Global degree verification</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">FERPA compliant & SOC 2 secured</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div id="footer-include"></div>
+
+<!-- Load global scripts (Header, Footer, Animations) -->
+<script src="/main.js"></script>
+
+</body>
+</html>
+
