@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Careers — Verifitrust</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- AEO & GEO Schema for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Verifitrust offer remote work options?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, Verifitrust is a remote-first company. While we have physical offices in Chennai, India, the majority of our team works remotely across the globe. We believe in hiring the best talent regardless of location."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the interview process like at Verifitrust?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our interview process typically takes 2-3 weeks. It starts with a phone screen with HR, followed by a technical or role-specific assessment, a deep-dive interview with the hiring manager, and a final culture-fit interview with the leadership team."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Verifitrust sponsor work visas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We evaluate visa sponsorships on a case-by-case basis depending on the role and the candidate's location. We are committed to securing top global talent and will discuss this early in the screening process."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What benefits does Verifitrust offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We offer comprehensive health, dental, and vision insurance, unlimited PTO, a home office stipend, continuous learning budgets, and stock options for all full-time employees."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --primary: #69be28;
+    --primary-dark: #4f9e1a;
+    --primary-soft: #eaf7d8;
+    --secondary: #071A2b;
+    --secondary-soft: #122845;
+    --white: #ffffff;
+    --grey-50: #f8fafc;
+    --grey-100: #f1f5f9;
+    --grey-200: #e2e8f0;
+    --grey-600: #475569;
+    --grey-700: #334155;
+  }
+  *{ -webkit-font-smoothing: antialiased; }
+  body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    color: var(--secondary);
+    overflow-x: hidden;
+  }
+  .font-serif{ font-family: 'Instrument Serif', serif; font-weight: 400; }
+  
+  ::-webkit-scrollbar{ width: 10px; }
+  ::-webkit-scrollbar-track{ background: #f1f5f9; }
+  ::-webkit-scrollbar-thumb{ background: #69be28; border-radius: 5px; }
+  
+  /* Gradient text */
+  .gradient-text{
+    background: linear-gradient(135deg, #071A2b 0%, #2d5a1a 50%, #69be28 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Buttons */
+  .btn-primary{
+    background: var(--primary);
+    color: var(--secondary);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 4px 14px rgba(105,190,40,0.3);
+  }
+  .btn-primary:hover{
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(105,190,40,0.4);
+  }
+  .btn-secondary{
+    background: transparent;
+    color: var(--secondary);
+    border: 1.5px solid var(--secondary);
+    transition: all 0.3s ease;
+  }
+  .btn-secondary:hover{
+    background: var(--secondary);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  
+  /* Fade in animation */
+  .fade-up{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fade-up.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Card hover */
+  .feature-card{
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before{
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, #69be28, transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  .feature-card:hover::before{ transform: translateX(100%); }
+  .feature-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(7,26,43,0.08);
+    border-color: rgba(105,190,40,0.3);
+  }
+  
+  @keyframes drawCheck{ to{ stroke-dashoffset: 0; } }
+  .check-path{
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawCheck 1.5s ease forwards;
+  }
+  
+  .stripe-bg{
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(105,190,40,0.04) 10px,
+      rgba(105,190,40,0.04) 20px
+    );
+  }
+  
+  .mobile-menu{
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-menu.open{ transform: translateX(0); }
+  
+  ::selection{ background: #69be28; color: #071A2b; }
+  
+  .border-soft{ border: 1px solid rgba(7,26,43,0.08); }
+  
+  .stagger > *{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .stagger.visible > *{ opacity: 1; transform: translateY(0); }
+  .stagger.visible > *:nth-child(1){ transition-delay: 0.05s; }
+  .stagger.visible > *:nth-child(2){ transition-delay: 0.15s; }
+  .stagger.visible > *:nth-child(3){ transition-delay: 0.25s; }
+  .stagger.visible > *:nth-child(4){ transition-delay: 0.35s; }
+  .stagger.visible > *:nth-child(5){ transition-delay: 0.45s; }
+  .stagger.visible > *:nth-child(6){ transition-delay: 0.55s; }
+  
+  /* Job Accordion (JS Driven for Desktop/Mobile/Tablet reliability) */
+  .job-item {
+    border: 1px solid #e2e8f0;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .job-item.active {
+    border-color: rgba(105,190,40,0.5);
+    box-shadow: 0 10px 30px -5px rgba(105,190,40,0.1);
+  }
+  .job-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    text-align: left;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    gap: 1rem;
+  }
+  .job-trigger h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #071A2b;
+  }
+  .job-icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    background: rgba(105,190,40,0.1);
+    color: #4f9e1a;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  }
+  .job-item.active .job-icon {
+    transform: rotate(135deg);
+    background: #69be28;
+    color: #071A2b;
+  }
+  .job-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+  .job-details-inner {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  /* FAQ Accordion */
+  .faq-item {
+    border: 1px solid #e2e8f0;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .faq-item.active {
+    border-color: rgba(105,190,40,0.5);
+    box-shadow: 0 10px 30px -5px rgba(105,190,40,0.1);
+  }
+  .faq-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    text-align: left;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    gap: 1rem;
+  }
+  .faq-trigger h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #071A2b;
+  }
+  .faq-icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    background: rgba(105,190,40,0.1);
+    color: #4f9e1a;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  }
+  .faq-item.active .faq-icon {
+    transform: rotate(135deg);
+    background: #69be28;
+    color: #071A2b;
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+  .faq-answer-inner {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: #475569;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body class="bg-white">
+
+<!-- ============ HEADER ============ -->
+<div id="header-include"></div>
+
+<!-- ============ HERO ============ -->
+<section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-white">
+  <div class="absolute inset-0 grid-bg opacity-40" style="background-image: linear-gradient(rgba(7,26,43,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(7,26,43,0.04) 1px, transparent 1px); background-size: 40px 40px;"></div>
+  
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      
+      <div class="relative z-10 fade-up">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full mb-6">
+          <i class="fas fa-heart text-[#69be28]"></i>
+          <span class="text-xs font-semibold text-[#071A2b]">Life at Verifitrust</span>
+        </div>
+        
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
+          <span class="block text-[#071A2b]">Build the future of</span>
+          <span class="block">
+            <span class="gradient-text">hiring</span>
+          </span>
+          <span class="block text-[#071A2b]">with us<span class="text-[#69be28]">.</span></span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-xl leading-relaxed">
+          We're on a mission to make the world a safer place to hire. Join a fast-paced, remote-first team that values trust, innovation, and speed. Help us build the trust infrastructure for modern global teams.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 mb-12">
+          <a href="#openings" class="btn-primary px-7 py-4 rounded-full font-semibold text-base inline-flex items-center justify-center gap-2">
+            View Open Roles
+            <i class="fas fa-arrow-right text-sm"></i>
+          </a>
+          <a href="#culture" class="btn-secondary px-7 py-4 rounded-full font-semibold text-base inline-flex items-center justify-center gap-2">
+            <i class="fas fa-play text-xs"></i>
+            Our Culture
+          </a>
+        </div>
+      </div>
+      
+      <!-- Right visual: Team collage / image -->
+      <div class="relative fade-up">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-4">
+            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&auto=format&fit=crop&q=80" alt="Team collaboration" class="rounded-2xl shadow-lg w-full h-48 object-cover">
+            <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=400&auto=format&fit=crop&q=80" alt="Team working" class="rounded-2xl shadow-lg w-full h-64 object-cover">
+          </div>
+          <div class="space-y-4 mt-8">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&auto=format&fit=crop&q=80" alt="Office meeting" class="rounded-2xl shadow-lg w-full h-64 object-cover">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&auto=format&fit=crop&q=80" alt="Office work" class="rounded-2xl shadow-lg w-full h-48 object-cover">
+          </div>
+        </div>
+        
+        <!-- Floating Badge -->
+        <div class="absolute top-4 -left-4 bg-white rounded-2xl shadow-xl p-4 border border-slate-100 hidden md:block">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-[#69be28]/15 rounded-full flex items-center justify-center">
+              <i class="fas fa-globe text-[#69be28]"></i>
+            </div>
+            <div>
+              <div class="text-xs text-slate-500">Team Location</div>
+              <div class="text-sm font-bold text-[#071A2b]">12+ Countries</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CULTURE & VALUES ============ -->
+<section id="culture" class="py-24 lg:py-32 bg-gradient-to-b from-white to-slate-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="text-center max-w-3xl mx-auto mb-20 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">Our Values</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        What it means to <span class="font-serif italic text-[#69be28]">work</span> here
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        We are builders, problem-solvers, and trust-creators. Our core values shape how we build our product, interact with our clients, and grow our team globally.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 stagger">
+      
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-rocket text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-[#071A2b] mb-2">Move Fast & Deliver</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">We act with urgency. Shipping fast and iterating based on customer feedback is embedded in our DNA.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-shield-halved text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-[#071A2b] mb-2">Default to Trust</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">We build trust with our clients and each other. Transparency, honesty, and accountability are non-negotiable.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-globe text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-[#071A2b] mb-2">Global Mindset</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">We think globally. We embrace diverse perspectives to build a product that works seamlessly across borders.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-seedling text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-[#071A2b] mb-2">Ownership & Growth</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">We take extreme ownership of our roles. We invest in our team's continuous learning and personal growth.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFITS & PERKS ============ -->
+<section class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">Benefits & Perks</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        We take care of <span class="font-serif italic text-[#69be28]">our team</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        As a remote-first company, we’ve built our benefits package to support your health, wealth, and well-being, no matter where you are in the world.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
+      <!-- Benefit 1 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-house-laptop text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Remote-First Culture</h3>
+          <p class="text-sm text-slate-600">Work from anywhere. We provide a generous home-office stipend to set up your ideal workspace.</p>
+        </div>
+      </div>
+
+      <!-- Benefit 2 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-heart-pulse text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Health & Wellness</h3>
+          <p class="text-sm text-slate-600">Comprehensive medical, dental, and vision insurance for you and your dependents. Plus mental health support.</p>
+        </div>
+      </div>
+
+      <!-- Benefit 3 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-umbrella-beach text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Unlimited PTO</h3>
+          <p class="text-sm text-slate-600">We trust you to do your job. Take the time you need to recharge, travel, and spend time with family.</p>
+        </div>
+      </div>
+
+      <!-- Benefit 4 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-graduation-cap text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Learning & Development</h3>
+          <p class="text-sm text-slate-600">Annual stipend for courses, conferences, and books. We support your continuous professional growth.</p>
+        </div>
+      </div>
+
+      <!-- Benefit 5 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-chart-line text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Equity Options</h3>
+          <p class="text-sm text-slate-600">Every full-time employee gets stock options. When Verifitrust wins, we all win together.</p>
+        </div>
+      </div>
+
+      <!-- Benefit 6 -->
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-plane text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Annual Offsites</h3>
+          <p class="text-sm text-slate-600">Once a year, the whole team gets together in an exciting location to bond, brainstorm, and celebrate.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OPEN POSITIONS ============ -->
+<section id="openings" class="py-24 lg:py-32 bg-slate-50">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">Open Roles</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Find your next <span class="font-serif italic text-[#69be28]">role</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">We’re always looking for passionate builders. Browse our current openings below.</p>
+    </div>
+
+    <div class="space-y-4 stagger" id="jobs-container">
+      
+      <!-- Job 1 -->
+      <div class="job-item active">
+        <button class="job-trigger">
+          <div class="flex items-center gap-4">
+            <h3>Senior Full-Stack Engineer</h3>
+            <span class="hidden sm:inline-block px-2.5 py-1 bg-slate-100 text-slate-600 text-[10px] font-bold uppercase rounded-full">Engineering</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="hidden md:inline text-xs text-slate-500">Remote - Global</span>
+            <span class="job-icon"><i class="fas fa-plus text-sm"></i></span>
+          </div>
+        </button>
+        <div class="job-details" style="max-height: 500px;">
+          <div class="job-details-inner">
+            <p class="mb-4">We are looking for a Senior Full-Stack Engineer to help scale our verification platform. You will build new product features using React, Node.js, and Postgres, while shaping our engineering culture.</p>
+            <ul class="list-disc list-inside space-y-2 mb-6">
+              <li>5+ years of experience in full-stack development.</li>
+              <li>Deep knowledge of React, Node.js, and REST APIs.</li>
+              <li>Experience with AWS and CI/CD pipelines.</li>
+            </ul>
+            <a href="#" class="btn-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold">
+              Apply Now <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job 2 -->
+      <div class="job-item">
+        <button class="job-trigger">
+          <div class="flex items-center gap-4">
+            <h3>Product Marketing Manager</h3>
+            <span class="hidden sm:inline-block px-2.5 py-1 bg-slate-100 text-slate-600 text-[10px] font-bold uppercase rounded-full">Marketing</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="hidden md:inline text-xs text-slate-500">Remote - US/EU</span>
+            <span class="job-icon"><i class="fas fa-plus text-sm"></i></span>
+          </div>
+        </button>
+        <div class="job-details">
+          <div class="job-details-inner">
+            <p class="mb-4">Drive the go-to-market strategy for our new identity verification products. You will craft compelling messaging, create sales enablement materials, and launch campaigns that drive user adoption.</p>
+            <ul class="list-disc list-inside space-y-2 mb-6">
+              <li>4+ years of experience in B2B SaaS product marketing.</li>
+              <li>Strong storytelling and copywriting skills.</li>
+              <li>Experience working closely with sales and product teams.</li>
+            </ul>
+            <a href="#" class="btn-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold">
+              Apply Now <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job 3 -->
+      <div class="job-item">
+        <button class="job-trigger">
+          <div class="flex items-center gap-4">
+            <h3>Enterprise Account Executive</h3>
+            <span class="hidden sm:inline-block px-2.5 py-1 bg-slate-100 text-slate-600 text-[10px] font-bold uppercase rounded-full">Sales</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="hidden md:inline text-xs text-slate-500">Remote - North America</span>
+            <span class="job-icon"><i class="fas fa-plus text-sm"></i></span>
+          </div>
+        </button>
+        <div class="job-details">
+          <div class="job-details-inner">
+            <p class="mb-4">Own the full sales cycle for enterprise clients. You will prospect, build relationships with HR and Security leaders, and close high-value deals to bring Verifitrust to new organizations.</p>
+            <ul class="list-disc list-inside space-y-2 mb-6">
+              <li>5+ years of enterprise B2B SaaS sales experience.</li>
+              <li>Proven track record of exceeding quota ($1M+ ARR).</li>
+              <li>Experience selling HR Tech or cybersecurity is a plus.</li>
+            </ul>
+            <a href="#" class="btn-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold">
+              Apply Now <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job 4 -->
+      <div class="job-item">
+        <button class="job-trigger">
+          <div class="flex items-center gap-4">
+            <h3>Customer Success Manager</h3>
+            <span class="hidden sm:inline-block px-2.5 py-1 bg-slate-100 text-slate-600 text-[10px] font-bold uppercase rounded-full">Success</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="hidden md:inline text-xs text-slate-500">Chennai, India (Hybrid)</span>
+            <span class="job-icon"><i class="fas fa-plus text-sm"></i></span>
+          </div>
+        </button>
+        <div class="job-details">
+          <div class="job-details-inner">
+            <p class="mb-4">Be the primary point of contact for our enterprise clients. Ensure seamless onboarding, drive product adoption, and identify upsell opportunities to maximize customer lifetime value.</p>
+            <ul class="list-disc list-inside space-y-2 mb-6">
+              <li>3+ years in Customer Success or Account Management for SaaS.</li>
+              <li>Strong technical aptitude and problem-solving skills.</li>
+              <li>Ability to build trust and rapport with C-level executives.</li>
+            </ul>
+            <a href="#" class="btn-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold">
+              Apply Now <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ (AEO & GEO Optimized) ============ -->
+<section class="py-24 lg:py-32 bg-white">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">FAQ</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Frequently asked <span class="font-serif italic text-[#69be28]">questions</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">Everything you need to know about working at Verifitrust.</p>
+    </div>
+
+    <div class="space-y-4 stagger" id="faq-container">
+      
+      <!-- FAQ Item 1 -->
+      <div class="faq-item active">
+        <button class="faq-trigger">
+          <h3>Does Verifitrust offer remote work options?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer" style="max-height: 500px;">
+          <div class="faq-answer-inner">
+            <p>Yes, Verifitrust is a remote-first company. While we have physical offices in Chennai, India, the majority of our team works remotely across the globe. We believe in hiring the best talent regardless of location, as long as there is overlap with your team's working hours.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>What is the interview process like at Verifitrust?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Our interview process typically takes 2-3 weeks. It starts with a 30-minute phone screen with HR to discuss your background and the role. This is followed by a technical or role-specific assessment, a deep-dive interview with the hiring manager, and a final culture-fit interview with the leadership team.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>Does Verifitrust sponsor work visas?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>We evaluate visa sponsorships on a case-by-case basis depending on the role, the candidate's location, and business needs. We are committed to securing top global talent and will discuss relocation or sponsorship options early in the screening process if applicable.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>What benefits does Verifitrust offer?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>We offer comprehensive health, dental, and vision insurance, unlimited PTO, a home office stipend, continuous learning budgets, and stock options for all full-time employees. Specifics may vary depending on your geographic location.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="cta" class="py-24 lg:py-32 relative overflow-hidden bg-white">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="relative bg-[#071A2b] rounded-[2.5rem] p-10 md:p-16 lg:p-20 overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-80 h-80 bg-[#69be28]/20 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-[#69be28]/10 rounded-full blur-3xl"></div>
+      <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(105,190,40,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(105,190,40,0.5) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      
+      <div class="relative text-center max-w-2xl mx-auto">
+        <span class="inline-block px-4 py-1.5 bg-[#69be28]/15 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-6">Don't see your role?</span>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          Send us your <span class="font-serif italic text-[#69be28]">resume</span>
+        </h2>
+        <p class="text-lg text-slate-300 mb-8 leading-relaxed">
+          We are always looking for exceptional talent. If you don't see a perfect fit in our open roles, email us your resume. We'd love to hear from you.
+        </p>
+        <a href="mailto:verify@verifitrust.com" class="btn-primary inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold">
+          verify@verifitrust.com
+          <i class="fas fa-arrow-right text-sm"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div id="footer-include"></div>
+
+<!-- Load global scripts (Header, Footer, Animations) -->
+<script src="/main.js"></script>
+
+</body>
+</html>
+
