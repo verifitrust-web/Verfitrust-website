@@ -487,6 +487,116 @@
 <!-- Load global scripts (Header, Footer, Animations) -->
 <script src="/main.js"></script>
 
+<!-- Form Submission Script (Google Apps Script) -->
+<script>
+  // Strict Work Email Validation
+  const emailInput = document.getElementById('email');
+  const emailError = document.getElementById('emailError');
+  const blockedDomains = [
+    'gmail.com', 'googlemail.com', 'yahoo.com', 'yahoo.co.in', 'yahoo.co.uk', 
+    'hotmail.com', 'outlook.com', 'live.com', 'aol.com', 'icloud.com', 
+    'protonmail.com', 'proton.me', 'zoho.com', 'mail.com', 'gmx.com', 
+    'yandex.com', 'msn.com', 'facebook.com', 'me.com', 'mac.com', 
+    'mail.ru', 'rambler.ru', 'qq.com', 'naver.com', 'hanmail.net', 
+    'daum.net', '163.com', '126.com', 'sina.com', 'foxmail.com', 
+    'inbox.com', 'fastmail.com', 'hushmail.com', 'mailfence.com', 
+    'posteo.de', 'runbox.com', 'tutanota.com', 'email.com', 'my.com', 'aim.com'
+  ];
+
+  function validateWorkEmail() {
+    const emailValue = emailInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const domain = emailValue.split('@')[1] ? emailValue.split('@')[1].toLowerCase() : '';
+    
+    emailInput.classList.remove('is-valid', 'is-invalid');
+    
+    if (emailValue === '') {
+      emailError.classList.add('hidden');
+      return false;
+    }
+    
+    if (!emailRegex.test(emailValue)) {
+      emailError.textContent = "Please enter a valid email format.";
+      emailError.classList.remove('hidden');
+      emailInput.classList.add('is-invalid');
+      return false;
+    }
+    
+    if (blockedDomains.includes(domain)) {
+      emailError.textContent = "Please use your work email (no @gmail, @yahoo, @hotmail, etc.).";
+      emailError.classList.remove('hidden');
+      emailInput.classList.add('is-invalid');
+      return false;
+    }
+    
+    emailError.classList.add('hidden');
+    emailInput.classList.add('is-valid');
+    return true;
+  }
+
+  if(emailInput) {
+    emailInput.addEventListener('input', validateWorkEmail);
+    emailInput.addEventListener('blur', validateWorkEmail);
+  }
+
+  // Form Submission Logic
+  const demoForm = document.getElementById('demoForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const btnText = document.getElementById('btnText');
+  const formSuccess = document.getElementById('formSuccess');
+
+  if(demoForm) {
+    demoForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      if (!validateWorkEmail()) {
+        return;
+      }
+
+      submitBtn.disabled = true;
+      btnText.textContent = 'Submitting...';
+
+      const formData = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('countryCode').value + ' ' + document.getElementById('phone').value,
+        company: document.getElementById('company').value,
+        hiringVolume: document.getElementById('hiringVolume').value,
+        message: document.getElementById('message').value
+      };
+      
+      // ==========================================
+      // PASTE YOUR GOOGLE APPS SCRIPT URL RIGHT HERE (Between the quotes)
+      // ==========================================
+      const scriptUrl = 'https://script.google.com/macros/s/AKfycbwmrJSEvQsGbglstzUV7IdsPJlO5bgJRW0FYdp1Qe7zrlnC4nQW_tsW-HoPr1Uqcdkmqg/exec';
+      // ==========================================
+
+      try {
+        await fetch(scriptUrl, {
+          method: 'POST',
+          mode: 'no-cors', 
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        });
+
+        demoForm.reset();
+        formSuccess.classList.remove('hidden');
+        submitBtn.classList.add('hidden');
+        emailInput.classList.remove('is-valid', 'is-invalid');
+        
+      } catch (error) {
+        console.error('Error!', error);
+        alert('Something went wrong. Please try again or email us directly.');
+        submitBtn.disabled = false;
+        btnText.textContent = 'Book My Demo';
+      }
+    });
+  }
+</script>
+
 </body>
 </html>
 
