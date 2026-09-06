@@ -1,9 +1,102 @@
-<!-- Required CSS for Mobile Menu & Dropdowns -->
+<!-- Required CSS for Mobile Menu & Mega Menu Dropdowns -->
 <style>
-  /* Desktop Dropdown */
-  .group:hover .group-hover\:opacity-100 { opacity: 1; }
-  .group:hover .group-hover\:visible { visibility: visible; }
+  /* Desktop Dropdown Mega Menu */
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(7,26,43,0.08);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    padding: 24px;
+    z-index: 60;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .nav-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #334155;
+    transition: color 0.2s ease;
+  }
+  .nav-trigger:hover { color: #69be28; }
+  .nav-trigger i { font-size: 10px; transition: transform 0.2s ease; }
+  .nav-dropdown:hover .nav-trigger i { transform: rotate(180deg); }
   
+  .mega-menu-heading {
+    font-size: 11px;
+    font-weight: 800;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    padding-left: 12px;
+  }
+  
+  .mega-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+  }
+  .mega-item:hover {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+  }
+  .mega-item.active {
+    background: rgba(105,190,40,0.08);
+    border-color: rgba(105,190,40,0.2);
+  }
+  .mega-item-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(105,190,40,0.1);
+    color: #4f9e1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+  }
+  .mega-item:hover .mega-item-icon {
+    background: #69be28;
+    color: #071A2b;
+    transform: scale(1.05);
+  }
+  .mega-item.active .mega-item-icon {
+    background: #69be28;
+    color: #071A2b;
+  }
+  .mega-item-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #071A2b;
+    line-height: 1.3;
+  }
+  .mega-item-desc {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-top: 2px;
+    line-height: 1.3;
+  }
+
   /* Mobile Menu Sliding Animation */
   .mobile-menu {
     transform: translateX(100%);
@@ -13,191 +106,346 @@
     transform: translateX(0); 
   }
   
-  /* Prevent body scrolling when mobile menu is open (optional but recommended) */
-  body.menu-open {
+  /* Mobile Accordions */
+  .mobile-accordion-content {
+    max-height: 0;
     overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .mobile-accordion-content.open {
+    max-height: 1200px;
   }
 </style>
 
 <!-- ============ HEADER ============ -->
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="flex items-center justify-between h-20">
+  <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20 relative">
       
-      <!-- Logo (Visible on all screens) -->
-      <a href="/index.html" class="flex items-center group">
-        <img src="/assets/logo.png" alt="VerifitTrust - Right People. Safer Future." class="h-12 md:h-14 w-auto object-contain transition-transform group-hover:scale-105">
+      <a href="/index.html" class="flex items-center gap-2.5 group flex-shrink-0">
+        <div class="relative w-10 h-10 bg-[#071A2b] rounded-xl flex items-center justify-center overflow-hidden transition-transform group-hover:rotate-6">
+          <div class="absolute inset-0 bg-gradient-to-br from-[#69be28]/30 to-transparent"></div>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-9-5z" stroke="#69be28" stroke-width="2"/>
+            <path d="M8.5 12L11 14.5L15.5 10" stroke="#69be28" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="text-2xl font-bold tracking-tight">Verifi<span class="text-[#69be28]">trust</span></span>
       </a>
-        
-      <!-- Desktop Navigation (Hidden on mobile/tablet, visible on lg screens 1024px+) -->
-      <nav class="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-        <a href="/index.html#features" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Features</a>
-        
-        <!-- Solutions Dropdown (2-Column Layout) -->
-        <div class="relative group">
-          <button class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors flex items-center gap-1">
-            Solutions <i class="fas fa-chevron-down text-[10px] mt-0.5"></i>
-          </button>
-          <!-- Increased width to w-[480px] and added grid grid-cols-2 -->
-          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[480px] bg-white border border-slate-100 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-4">
-            <div class="grid grid-cols-2 gap-2">
 
-            <a href="/solutions/id-verification.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-              <div class="text-sm font-semibold text-[#071A2b]">ID Verification</div>
-            </a>
-            <a href="/solutions/employment-verification.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-              <div class="text-sm font-semibold text-[#071A2b]">Employment Verification</div>
-            </a>
-            <a href="/solutions/education-verification.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-              <div class="text-sm font-semibold text-[#071A2b]">Education Verification</div>
-            </a>
-            <a href="/solutions/address-verification.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-              <div class="text-sm font-semibold text-[#071A2b]">Address Verification</div>
-             </a>
-            <a href="/solutions/criminal-court-verification.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-              <div class="text-sm font-semibold text-[#071A2b]">Criminal Court Verification</div>
-              </a>
-              <a href="/solutions/global-background-screening.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-              <div class="text-sm font-semibold text-[#071A2b]">Global Background Screening</div>
-            </a>
-              <a href="/solutions/drug-verification.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-              <div class="text-sm font-semibold text-[#071A2b]">Drug Verification</div>
-            </a>
-              <a href="/solutions/social-media-verification.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-              <div class="text-sm font-semibold text-[#071A2b]">Social Media Verification</div>
-            </a>
+      <nav class="hidden lg:flex items-center gap-7">
+        
+        <!-- Solutions Mega Menu -->
+        <div class="nav-dropdown">
+          <a href="#" class="nav-trigger">Solutions <i class="fas fa-chevron-down"></i></a>
+          <div class="nav-dropdown-menu w-[900px] left-0">
+            <div class="grid grid-cols-4 gap-6">
+              <div>
+                <h5 class="mega-menu-heading">Verify</h5>
+                <div class="space-y-1">
+                  <a href="/solutions/id-verification.html" class="mega-item">
+                    <div class="mega-item-icon"><i class="fas fa-fingerprint"></i></div>
+                    <div><div class="mega-item-title">Identity Verification</div><div class="mega-item-desc">Confirm candidate identity</div></div>
+                  </a>
+                  <a href="/solutions/employment-verification.html" class="mega-item">
+                    <div class="mega-item-icon"><i class="fas fa-briefcase"></i></div>
+                    <div><div class="mega-item-title">Employment Verification</div><div class="mega-item-desc">Validate work history</div></div>
+                  </a>
+                  <a href="/solutions/education-verification.html" class="mega-item">
+                    <div class="mega-item-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div><div class="mega-item-title">Education Verification</div><div class="mega-item-desc">Verify academic degrees</div></div>
+                  </a>
+                  <a href="/solutions/address-verification.html" class="mega-item active">
+                    <div class="mega-item-icon"><i class="fas fa-location-dot"></i></div>
+                    <div><div class="mega-item-title text-[#69be28]">Address Verification <span class="text-[9px] bg-[#69be28] text-[#071A2b] px-1.5 py-0.5 rounded-full font-extrabold ml-1">ACTIVE</span></div><div class="mega-item-desc">Confirm residential addresses</div></div>
+                  </a>
+                </div>
+              </div>
+              <div>
+                <h5 class="mega-menu-heading">Screen</h5>
+                <div class="space-y-1">
+                  <a href="/solutions/criminal-court-verification.html" class="mega-item">
+                    <div class="mega-item-icon"><i class="fas fa-gavel"></i></div>
+                    <div><div class="mega-item-title">Criminal & Court Verification</div><div class="mega-item-desc">Check legal records</div></div>
+                  </a>
+                  <a href="/solutions/global-background-screening.html" class="mega-item">
+                    <div class="mega-item-icon"><i class="fas fa-earth-americas"></i></div>
+                    <div><div class="mega-item-title">Global Background Screening</div><div class="mega-item-desc">International background checks</div></div>
+                  </a>
+                  <a href="/solutions/social-media-verification.html" class="mega-item">
+                    <div class="mega-item-icon"><i class="fas fa-hashtag"></i></div>
+                    <div><div class="mega-item-title">Social Media Screening</div><div class="mega-item-desc">Review online presence</div></div>
+                  </a>
+                </div>
+              </div>
+              <div>
+                <h5 class="mega-menu-heading">Check</h5>
+                <div class="space-y-1">
+                  <a href="/solutions/professional-verification.html" class="mega-item">
+                    <div class="mega-item-icon"><i class="fas fa-award"></i></div>
+                    <div><div class="mega-item-title">Professional & Credential</div><div class="mega-item-desc">Validate licenses</div></div>
+                  </a>
+                  <a href="/solutions/financial-credit-screening.html" class="mega-item">
+                    <div class="mega-item-icon"><i class="fas fa-credit-card"></i></div>
+                    <div><div class="mega-item-title">Financial & Credit Screening</div><div class="mega-item-desc">Assess financial history</div></div>
+                  </a>
+                  <a href="/solutions/drug-verification.html" class="mega-item">
+                    <div class="mega-item-icon"><i class="fas fa-vial"></i></div>
+                    <div><div class="mega-item-title">Drug & Substance Screening</div><div class="mega-item-desc">Pre-employment drug testing</div></div>
+                  </a>
+                </div>
+              </div>
+              <div>
+                <h5 class="mega-menu-heading">Workforce</h5>
+                <div class="space-y-1">
+                  <a href="/solutions/reference-behavioural-screening.html" class="mega-item">
+                    <div class="mega-item-icon"><i class="fas fa-users"></i></div>
+                    <div><div class="mega-item-title">Reference & Behavioural</div><div class="mega-item-desc">Collect professional references</div></div>
+                  </a>
+                  <a href="/solutions/exit-interview.html" class="mega-item">
+                    <div class="mega-item-icon"><i class="fas fa-door-open"></i></div>
+                    <div><div class="mega-item-title">Exit Interview</div><div class="mega-item-desc">Manage employee offboarding</div></div>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Industry Dropdown (2-Column Layout) -->
-        <div class="relative group">
-          <button class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors flex items-center gap-1">
-            Industries <i class="fas fa-chevron-down text-[10px] mt-0.5"></i>
-          </button>
-          <!-- Increased width to w-[480px] and added grid grid-cols-2 -->
-          <div class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[480px] bg-white border border-slate-100 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-4">
-            <div class="grid grid-cols-2 gap-2">
-              <a href="/industry/it-technology.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-                <div class="text-sm font-semibold text-[#071A2b]">IT & Technology</div>
+        <!-- Industry Dropdown -->
+        <div class="nav-dropdown">
+          <a href="#" class="nav-trigger">Industry <i class="fas fa-chevron-down"></i></a>
+          <div class="nav-dropdown-menu w-[640px] left-0">
+            <div class="grid grid-cols-2 gap-x-6 gap-y-1">
+              <a href="/industry/it-technology.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-laptop-code"></i></div>
+                <div><div class="mega-item-title">IT & Technology</div><div class="mega-item-desc">Secure hiring for tech & data access</div></div>
               </a>
-              <a href="/industry/financial-services.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-                <div class="text-sm font-semibold text-[#071A2b]">Financial Services</div>
+              <a href="/industry/financial-services.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-landmark"></i></div>
+                <div><div class="mega-item-title">Financial Services</div><div class="mega-item-desc">Comprehensive checks for trust-critical roles</div></div>
               </a>
-              <a href="/industry/healthcare.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-                <div class="text-sm font-semibold text-[#071A2b]">Healthcare</div>
+              <a href="/industry/healthcare.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-hospital"></i></div>
+                <div><div class="mega-item-title">Healthcare</div><div class="mega-item-desc">Patient safety & regulatory compliance</div></div>
               </a>
-              <a href="/industry/logistics-transportation.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-                <div class="text-sm font-semibold text-[#071A2b]">Logistics Transportation</div>
+              <a href="/industry/manufacturing.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-industry"></i></div>
+                <div><div class="mega-item-title">Manufacturing</div><div class="mega-item-desc">On-site worker safety & compliance</div></div>
               </a>
-              <a href="/industry/retail-ecommerce.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-                <div class="text-sm font-semibold text-[#071A2b]">Retail Ecommerce</div>
+              <a href="/industry/logistics-transportation.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-truck"></i></div>
+                <div><div class="mega-item-title">Logistics & Transportation</div><div class="mega-item-desc">Reliable drivers & supply chain staff</div></div>
               </a>
-              <a href="/industry/staffing-recruitment.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-                <div class="text-sm font-semibold text-[#071A2b]">Staffing Recruitment</div>
+              <a href="/industry/retail-ecommerce.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-shopping-cart"></i></div>
+                <div><div class="mega-item-title">Retail & E-commerce</div><div class="mega-item-desc">Secure front-line & warehouse teams</div></div>
               </a>
-              <a href="/industry/manufacturing.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-                <div class="text-sm font-semibold text-[#071A2b]">Manufacturing</div>
+              <a href="/industry/staffing-recruitment.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-user-tie"></i></div>
+                <div><div class="mega-item-title">Staffing & Recruitment</div><div class="mega-item-desc">Fast, scalable screening for placements</div></div>
               </a>
-              <a href="/industry/hospitality-tourism.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-                <div class="text-sm font-semibold text-[#071A2b]">Hospitality Tourism</div>
+              <a href="/industry/hospitality-tourism.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-utensils"></i></div>
+                <div><div class="mega-item-title">Hospitality & Tourism</div><div class="mega-item-desc">Guest safety & service excellence</div></div>
               </a>
-              <a href="/industry/construction.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-                <div class="text-sm font-semibold text-[#071A2b]">Construction</div>
+              <a href="/industry/construction.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-helmet-safety"></i></div>
+                <div><div class="mega-item-title">Construction</div><div class="mega-item-desc">On-site worker safety & compliance screening</div></div>
               </a>
-              <a href="/industry/gig-economy.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-                <div class="text-sm font-semibold text-[#071A2b]">Gig Economy</div>
-              </a>  
-              <a href="/industry/education.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-                <div class="text-sm font-semibold text-[#071A2b]">Education</div>
-              </a>  
-              <a href="/industry/bpo-kpo.html" class="block py-2 px-3 rounded-lg hover:bg-slate-50 hover:text-[#69be28] transition-colors">
-                <div class="text-sm font-semibold text-[#071A2b]">BPO & KPO</div>
+              <a href="/industry/bpo-kpo.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-headset"></i></div>
+                <div><div class="mega-item-title">BPO & KPO</div><div class="mega-item-desc">Secure remote & customer-facing teams</div></div>
+              </a>
+              <a href="/industry/education.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-book"></i></div>
+                <div><div class="mega-item-title">Education</div><div class="mega-item-desc">Safe environments for students & staff</div></div>
+              </a>
+              <a href="/industry/gig-economy.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-bicycle"></i></div>
+                <div><div class="mega-item-title">Gig Economy</div><div class="mega-item-desc">Fast checks for freelance & gig workers</div></div>
               </a>
             </div>
           </div>
         </div>
 
-        <!-- How it Works Link (Restored) -->
-        <a href="careers.html" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Careers</a>
-        
-        <a href="/index.html#testimonials" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Customers</a>
-        <a href="/index.html#pricing" class="text-sm font-medium text-slate-700 hover:text-[#69be28] transition-colors">Pricing</a>
+        <!-- Resources Dropdown -->
+        <div class="nav-dropdown">
+          <a href="#" class="nav-trigger">Resources <i class="fas fa-chevron-down"></i></a>
+          <div class="nav-dropdown-menu w-[320px] left-0">
+            <div class="space-y-1">
+              <a href="/resources/blog.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-blog"></i></div>
+                <div><div class="mega-item-title">Blog</div><div class="mega-item-desc">Industry news and best practices</div></div>
+              </a>
+              <a href="/resources/case-studies.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-file-lines"></i></div>
+                <div><div class="mega-item-title">Case Studies</div><div class="mega-item-desc">Proven success stories</div></div>
+              </a>
+              <a href="/resources/guides.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-chart-line"></i></div>
+                <div><div class="mega-item-title">Guides & Reports</div><div class="mega-item-desc">In-depth screening guides</div></div>
+              </a>
+              <a href="/resources/insights.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+                <div><div class="mega-item-title">Screening Insights</div><div class="mega-item-desc">Expert data analysis</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Company Dropdown -->
+        <div class="nav-dropdown">
+          <a href="#" class="nav-trigger">Company <i class="fas fa-chevron-down"></i></a>
+          <div class="nav-dropdown-menu w-[280px] left-0">
+            <div class="space-y-1">
+              <a href="/company/about-us.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-building"></i></div>
+                <div><div class="mega-item-title">About us</div><div class="mega-item-desc">Our mission and team</div></div>
+              </a>
+              <a href="/company/careers.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-briefcase"></i></div>
+                <div><div class="mega-item-title">Careers</div><div class="mega-item-desc">Join our growing team</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Support Dropdown -->
+        <div class="nav-dropdown">
+          <a href="#" class="nav-trigger">Support <i class="fas fa-chevron-down"></i></a>
+          <div class="nav-dropdown-menu w-[280px] right-0 left-auto">
+            <div class="space-y-1">
+              <a href="/support/candidate.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-user-check"></i></div>
+                <div><div class="mega-item-title">Candidate</div><div class="mega-item-desc">Help for verification candidates</div></div>
+              </a>
+              <a href="/support/customer.html" class="mega-item">
+                <div class="mega-item-icon"><i class="fas fa-headset"></i></div>
+                <div><div class="mega-item-title">Customer</div><div class="mega-item-desc">Support for clients and admins</div></div>
+              </a>
+            </div>
+          </div>
+        </div>
       </nav>
-      
-      <!-- Desktop Right Buttons (Hidden on mobile/tablet) -->
-      <div class="hidden lg:flex items-center gap-3">
-        <a href="#" class="text-sm font-semibold text-[#071A2b] hover:text-[#69be28] transition-colors">Sign in</a>
-        <a href="/index.html#cta" class="btn-primary text-sm font-semibold px-5 py-2.5 rounded-full">
-          Get Started <i class="fas fa-arrow-right ml-1 text-xs"></i>
+
+      <div class="hidden lg:flex items-center gap-3 flex-shrink-0">
+        <a href="#" class="text-sm font-semibold text-[#071A2b] hover:text-[#69be28] transition-colors">Login</a>
+        <a href="/book-a-demo.html" class="btn-primary text-sm font-semibold px-5 py-2.5 rounded-full">
+          Get Started Today <i class="fas fa-arrow-right ml-1 text-xs"></i>
         </a>
       </div>
-      
-      <!-- Mobile Hamburger Button (Visible only on mobile/tablet) -->
-      <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-slate-100 z-50">
+
+      <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-slate-100 flex-shrink-0 z-50">
         <i class="fas fa-bars text-[#071A2b] text-xl"></i>
       </button>
     </div>
   </div>
-  
-   <!-- Mobile Slide-out Menu -->
-  <div id="mobileMenu" class="mobile-menu lg:hidden fixed top-0 right-0 h-screen w-80 max-w-[85vw] bg-white shadow-2xl z-[60] p-6 overflow-y-auto">
-    <div class="flex justify-between items-center mb-8 mt-1">
+
+  <!-- ===== MOBILE MENU ===== -->
+  <div id="mobileMenu" class="mobile-menu lg:hidden fixed top-0 right-0 h-screen w-[85vw] max-w-sm bg-white shadow-2xl z-[60] overflow-y-auto">
+    <div class="flex justify-between items-center mb-6 p-5 border-b border-slate-100 sticky top-0 bg-white z-10">
       <span class="text-xl font-bold">Menu</span>
       <button id="closeMenu" class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-slate-100">
         <i class="fas fa-times text-xl"></i>
       </button>
     </div>
-    <nav class="flex flex-col gap-4">
-      <a href="/index.html#features" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">Features</a>
-      
-      <!-- Mobile Solutions Dropdown -->
-      <details class="border-b border-slate-100">
-        <summary class="text-lg font-medium py-3 cursor-pointer list-none flex items-center justify-between">
-          Solutions <i class="fas fa-chevron-down text-xs"></i>
-        </summary>
-        <div class="flex flex-col gap-2 pb-4 pl-3">
-          <a href="/solutions/id-verification.html" class="mobile-link text-base font-normal py-2 text-slate-700">ID Verification</a>
-          <a href="/solutions/employment-verification.html" class="mobile-link text-base font-normal py-2 text-slate-700">Employment Verification</a>
-          <a href="/solutions/education-verification.html" class="mobile-link text-base font-normal py-2 text-slate-700">Education Verification</a>
-          <a href="/solutions/address-verification.html" class="mobile-link text-base font-normal py-2 text-slate-700">Address Verification</a>
-         <a href="/solutions/criminal-court-verification.html" class="mobile-link text-base font-normal py-2 text-slate-700">Criminal Court Verification</a>
-         <a href="/solutions/global-background-screening.html" class="mobile-link text-base font-normal py-2 text-slate-700">Global Background Screening</a>
-         <a href="/solutions/drug-verification.html" class="mobile-link text-base font-normal py-2 text-slate-700">Drug Verification</a>
-         <a href="/solutions/social-media-verification.html" class="mobile-link text-base font-normal py-2 text-slate-700">Social Media Verification</a>
+    <nav class="flex flex-col px-5 pb-8">
 
+      <!-- Mobile Solutions Accordion -->
+      <div class="border-b border-slate-100">
+        <button class="mobile-accordion-trigger w-full flex items-center justify-between py-3 text-base font-medium">
+          <span>Solutions</span>
+          <i class="fas fa-chevron-down text-sm transition-transform"></i>
+        </button>
+        <div class="mobile-accordion-content">
+          <div class="pb-3 space-y-1">
+            <a href="/solutions/id-verification.html" class="flex items-center gap-3 py-2.5 pl-2 pr-3 rounded-lg hover:bg-slate-50"><i class="fas fa-fingerprint w-5 text-slate-400 text-sm"></i><span class="text-sm text-slate-600">Identity Verification</span></a>
+            <a href="/solutions/employment-verification.html" class="flex items-center gap-3 py-2.5 pl-2 pr-3 rounded-lg hover:bg-slate-50"><i class="fas fa-briefcase w-5 text-slate-400 text-sm"></i><span class="text-sm text-slate-600">Employment Verification</span></a>
+            <a href="/solutions/education-verification.html" class="flex items-center gap-3 py-2.5 pl-2 pr-3 rounded-lg hover:bg-slate-50"><i class="fas fa-graduation-cap w-5 text-slate-400 text-sm"></i><span class="text-sm text-slate-600">Education Verification</span></a>
+            <a href="/solutions/address-verification.html" class="flex items-center gap-3 py-2.5 pl-2 pr-3 rounded-lg bg-[#69be28]/8"><i class="fas fa-location-dot w-5 text-[#69be28] text-sm"></i><span class="text-sm font-bold text-[#69be28]">Address Verification</span></a>
+            <a href="/solutions/criminal-court-verification.html" class="flex items-center gap-3 py-2.5 pl-2 pr-3 rounded-lg hover:bg-slate-50"><i class="fas fa-gavel w-5 text-slate-400 text-sm"></i><span class="text-sm text-slate-600">Criminal & Court Verification</span></a>
+            <a href="/solutions/global-background-screening.html" class="flex items-center gap-3 py-2.5 pl-2 pr-3 rounded-lg hover:bg-slate-50"><i class="fas fa-earth-americas w-5 text-slate-400 text-sm"></i><span class="text-sm text-slate-600">Global Background Screening</span></a>
+            <a href="/solutions/professional-verification.html" class="flex items-center gap-3 py-2.5 pl-2 pr-3 rounded-lg hover:bg-slate-50"><i class="fas fa-award w-5 text-slate-400 text-sm"></i><span class="text-sm text-slate-600">Professional & Credential Verification</span></a>
+            <a href="/solutions/financial-credit-screening.html" class="flex items-center gap-3 py-2.5 pl-2 pr-3 rounded-lg hover:bg-slate-50"><i class="fas fa-credit-card w-5 text-slate-400 text-sm"></i><span class="text-sm text-slate-600">Financial & Credit Screening</span></a>
+            <a href="/solutions/drug-verification.html" class="flex items-center gap-3 py-2.5 pl-2 pr-3 rounded-lg hover:bg-slate-50"><i class="fas fa-vial w-5 text-slate-400 text-sm"></i><span class="text-sm text-slate-600">Drug & Substance Screening</span></a>
+            <a href="/solutions/social-media-verification.html" class="flex items-center gap-3 py-2.5 pl-2 pr-3 rounded-lg hover:bg-slate-50"><i class="fas fa-hashtag w-5 text-slate-400 text-sm"></i><span class="text-sm text-slate-600">Social Media Screening</span></a>
+            <a href="/solutions/reference-behavioural-screening.html" class="flex items-center gap-3 py-2.5 pl-2 pr-3 rounded-lg hover:bg-slate-50"><i class="fas fa-users w-5 text-slate-400 text-sm"></i><span class="text-sm text-slate-600">Reference & Behavioural Screening</span></a>
+            <a href="/solutions/exit-interview.html" class="flex items-center gap-3 py-2.5 pl-2 pr-3 rounded-lg hover:bg-slate-50"><i class="fas fa-door-open w-5 text-slate-400 text-sm"></i><span class="text-sm text-slate-600">Exit Interview</span></a>
+          </div>
         </div>
-      </details>
-
-      <!-- Mobile Industries Dropdown -->
-      <details class="border-b border-slate-100">
-        <summary class="text-lg font-medium py-3 cursor-pointer list-none flex items-center justify-between">
-          Industries <i class="fas fa-chevron-down text-xs"></i>
-        </summary>
-        <div class="flex flex-col gap-2 pb-4 pl-3">
-          <a href="/industry/it-technology.html" class="mobile-link text-base font-normal py-2 text-slate-700">IT & Technology</a>
-          <a href="/industry/financial-services.html" class="mobile-link text-base font-normal py-2 text-slate-700">Financial Services</a>
-          <a href="/industry/healthcare.html" class="mobile-link text-base font-normal py-2 text-slate-700">Healthcare</a>
-          <a href="/industry/logistics-transportation.html" class="mobile-link text-base font-normal py-2 text-slate-700">Logistics Transportation</a>
-          <a href="/industry/retail-ecommerce.html" class="mobile-link text-base font-normal py-2 text-slate-700">Retail Ecommerce</a>
-          <a href="/industry/staffing-recruitment.html" class="mobile-link text-base font-normal py-2 text-slate-700">Staffing Recruitment</a>
-          <a href="/industry/manufacturing.html" class="mobile-link text-base font-normal py-2 text-slate-700">Manufacturing</a>
-          <a href="/industry/hospitality-tourism.html" class="mobile-link text-base font-normal py-2 text-slate-700">Hospitality Tourism</a>
-          <a href="/industry/construction.html" class="mobile-link text-base font-normal py-2 text-slate-700">Construction</a>
-          <a href="/industry/gig-economy.html" class="mobile-link text-base font-normal py-2 text-slate-700">Gig Economy</a>
-          <a href="/industry/education.html" class="mobile-link text-base font-normal py-2 text-slate-700">Education</a>
-          <a href="/industry/bpo-kpo.html" class="mobile-link text-base font-normal py-2 text-slate-700">BPO & KPO</a>
-        </div>
-      </details>
- 
-      <a href="/careers.html" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">Careers</a>
-      <a href="/index.html#testimonials" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">Customers</a>
-      <a href="/index.html#pricing" class="mobile-link text-lg font-medium py-3 border-b border-slate-100">Pricing</a>
-      
-      <div class="flex flex-col gap-3 mt-4">
-        <a href="#" class="text-center font-semibold py-3 rounded-full border border-slate-200 text-[#071A2b]">Sign in</a>
-        <a href="/index.html#cta" class="btn-primary text-center font-semibold py-3 rounded-full">Get Started</a>
       </div>
+
+      <!-- Mobile Industry Accordion -->
+      <div class="border-b border-slate-100">
+        <button class="mobile-accordion-trigger w-full flex items-center justify-between py-3 text-base font-medium">
+          <span>Industry</span>
+          <i class="fas fa-chevron-down text-sm transition-transform"></i>
+        </button>
+        <div class="mobile-accordion-content">
+          <div class="pb-3 grid grid-cols-1 gap-2">
+            <a href="/industry/it-technology.html" class="flex items-start gap-3 py-2 px-2 rounded-lg hover:bg-slate-50"><i class="fas fa-laptop-code w-5 text-slate-400 text-sm mt-1"></i><div><div class="text-sm text-slate-700 font-medium">IT & Technology</div><div class="text-xs text-slate-400">Secure hiring for tech & data access</div></div></a>
+            <a href="/industry/financial-services.html" class="flex items-start gap-3 py-2 px-2 rounded-lg hover:bg-slate-50"><i class="fas fa-landmark w-5 text-slate-400 text-sm mt-1"></i><div><div class="text-sm text-slate-700 font-medium">Financial Services</div><div class="text-xs text-slate-400">Comprehensive checks for trust-critical roles</div></div></a>
+            <a href="/industry/healthcare.html" class="flex items-start gap-3 py-2 px-2 rounded-lg hover:bg-slate-50"><i class="fas fa-hospital w-5 text-slate-400 text-sm mt-1"></i><div><div class="text-sm text-slate-700 font-medium">Healthcare</div><div class="text-xs text-slate-400">Patient safety & regulatory compliance</div></div></a>
+            <a href="/industry/manufacturing.html" class="flex items-start gap-3 py-2 px-2 rounded-lg hover:bg-slate-50"><i class="fas fa-industry w-5 text-slate-400 text-sm mt-1"></i><div><div class="text-sm text-slate-700 font-medium">Manufacturing</div><div class="text-xs text-slate-400">On-site worker safety & compliance</div></div></a>
+            <a href="/industry/logistics-transportation.html" class="flex items-start gap-3 py-2 px-2 rounded-lg hover:bg-slate-50"><i class="fas fa-truck w-5 text-slate-400 text-sm mt-1"></i><div><div class="text-sm text-slate-700 font-medium">Logistics & Transportation</div><div class="text-xs text-slate-400">Reliable drivers & supply chain staff</div></div></a>
+            <a href="/industry/retail-ecommerce.html" class="flex items-start gap-3 py-2 px-2 rounded-lg hover:bg-slate-50"><i class="fas fa-shopping-cart w-5 text-slate-400 text-sm mt-1"></i><div><div class="text-sm text-slate-700 font-medium">Retail & E-commerce</div><div class="text-xs text-slate-400">Secure front-line & warehouse teams</div></div></a>
+            <a href="/industry/staffing-recruitment.html" class="flex items-start gap-3 py-2 px-2 rounded-lg hover:bg-slate-50"><i class="fas fa-user-tie w-5 text-slate-400 text-sm mt-1"></i><div><div class="text-sm text-slate-700 font-medium">Staffing & Recruitment</div><div class="text-xs text-slate-400">Fast, scalable screening for placements</div></div></a>
+            <a href="/industry/hospitality-tourism.html" class="flex items-start gap-3 py-2 px-2 rounded-lg hover:bg-slate-50"><i class="fas fa-utensils w-5 text-slate-400 text-sm mt-1"></i><div><div class="text-sm text-slate-700 font-medium">Hospitality & Tourism</div><div class="text-xs text-slate-400">Guest safety & service excellence</div></div></a>
+            <a href="/industry/construction.html" class="flex items-start gap-3 py-2 px-2 rounded-lg hover:bg-slate-50"><i class="fas fa-helmet-safety w-5 text-slate-400 text-sm mt-1"></i><div><div class="text-sm text-slate-700 font-medium">Construction</div><div class="text-xs text-slate-400">On-site worker safety & compliance screening</div></div></a>
+            <a href="/industry/bpo-kpo.html" class="flex items-start gap-3 py-2 px-2 rounded-lg hover:bg-slate-50"><i class="fas fa-headset w-5 text-slate-400 text-sm mt-1"></i><div><div class="text-sm text-slate-700 font-medium">BPO & KPO</div><div class="text-xs text-slate-400">Secure remote & customer-facing teams</div></div></a>
+            <a href="/industry/education.html" class="flex items-start gap-3 py-2 px-2 rounded-lg hover:bg-slate-50"><i class="fas fa-book w-5 text-slate-400 text-sm mt-1"></i><div><div class="text-sm text-slate-700 font-medium">Education</div><div class="text-xs text-slate-400">Safe environments for students & staff</div></div></a>
+            <a href="/industry/gig-economy.html" class="flex items-start gap-3 py-2 px-2 rounded-lg hover:bg-slate-50"><i class="fas fa-bicycle w-5 text-slate-400 text-sm mt-1"></i><div><div class="text-sm text-slate-700 font-medium">Gig Economy</div><div class="text-xs text-slate-400">Fast checks for freelance & gig workers</div></div></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Resources Accordion -->
+      <div class="border-b border-slate-100">
+        <button class="mobile-accordion-trigger w-full flex items-center justify-between py-3 text-base font-medium">
+          <span>Resources</span>
+          <i class="fas fa-chevron-down text-sm transition-transform"></i>
+        </button>
+        <div class="mobile-accordion-content">
+          <div class="pb-3 space-y-1">
+            <a href="/resources/blog.html" class="flex items-center gap-3 py-2 pl-2 pr-3 rounded-lg hover:bg-slate-50 text-sm text-slate-600">Blog</a>
+            <a href="/resources/case-studies.html" class="flex items-center gap-3 py-2 pl-2 pr-3 rounded-lg hover:bg-slate-50 text-sm text-slate-600">Case Studies</a>
+            <a href="/resources/guides.html" class="flex items-center gap-3 py-2 pl-2 pr-3 rounded-lg hover:bg-slate-50 text-sm text-slate-600">Guides & Reports</a>
+            <a href="/resources/insights.html" class="flex items-center gap-3 py-2 pl-2 pr-3 rounded-lg hover:bg-slate-50 text-sm text-slate-600">Background Screening Insights</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Company Accordion -->
+      <div class="border-b border-slate-100">
+        <button class="mobile-accordion-trigger w-full flex items-center justify-between py-3 text-base font-medium">
+          <span>Company</span>
+          <i class="fas fa-chevron-down text-sm transition-transform"></i>
+        </button>
+        <div class="mobile-accordion-content">
+          <div class="pb-3 space-y-1">
+            <a href="/company/about-us.html" class="flex items-center gap-3 py-2 pl-2 pr-3 rounded-lg hover:bg-slate-50 text-sm text-slate-600">About us</a>
+            <a href="/company/careers.html" class="flex items-center gap-3 py-2 pl-2 pr-3 rounded-lg hover:bg-slate-50 text-sm text-slate-600">Careers</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Support Accordion -->
+      <div class="border-b border-slate-100">
+        <button class="mobile-accordion-trigger w-full flex items-center justify-between py-3 text-base font-medium">
+          <span>Support</span>
+          <i class="fas fa-chevron-down text-sm transition-transform"></i>
+        </button>
+        <div class="mobile-accordion-content">
+          <div class="pb-3 space-y-1">
+            <a href="/support/candidate.html" class="flex items-center gap-3 py-2 pl-2 pr-3 rounded-lg hover:bg-slate-50 text-sm text-slate-600">Candidate</a>
+            <a href="/support/customer.html" class="flex items-center gap-3 py-2 pl-2 pr-3 rounded-lg hover:bg-slate-50 text-sm text-slate-600">Customer</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" class="mobile-link text-base font-medium py-3 border-b border-slate-100">Login</a>
+      <a href="/book-a-demo.html" class="btn-primary mt-5 text-center font-semibold py-3.5 rounded-full">Get Started Today</a>
     </nav>
   </div>
 </header>
