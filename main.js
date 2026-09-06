@@ -77,16 +77,33 @@ document.addEventListener('click', function(e) {
   const closeMenu = e.target.closest('#closeMenu');
   const mobileMenu = document.getElementById('mobileMenu');
 
+  // Open/Close Mobile Hamburger Menu
   if (menuBtn && mobileMenu) {
     mobileMenu.classList.add('open');
   }
-  
   if (closeMenu && mobileMenu) {
     mobileMenu.classList.remove('open');
   }
   
-  // Close menu when a link inside it is clicked
+  // Close menu when a regular link inside it is clicked
   if (e.target.closest('.mobile-link') && mobileMenu && mobileMenu.classList.contains('open')) {
     mobileMenu.classList.remove('open');
+  }
+
+  // Handle Mobile Accordion Toggles (Solutions, Industries, etc.)
+  const accordionTrigger = e.target.closest('.mobile-accordion-trigger');
+  if (accordionTrigger) {
+    const content = accordionTrigger.nextElementSibling;
+    const chevron = accordionTrigger.querySelector('i');
+    if (content) {
+      content.classList.toggle('open');
+    }
+    if (chevron) {
+      if (content.classList.contains('open')) {
+        chevron.style.transform = 'rotate(180deg)';
+      } else {
+        chevron.style.transform = 'rotate(0deg)';
+      }
+    }
   }
 });
