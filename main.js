@@ -111,50 +111,8 @@ document.addEventListener('click', function(e) {
 // ==========================================
 // SUPPORT FORM LOGIC
 // ==========================================
-const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxkztDZsDPpCTT3wplHPeragKkoa7NNg8x0XJDx1HbACxje-V8PUGfg41VSyCDfrWgPIw/exec'; // PASTE YOUR ACTUAL URL HERE
+const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxkztDZsDPpCTT3wplHPeragKkoa7NNg8x0XJDx1HbACxje-V8PUGfg41VSyCDfrWgPIw/exec';
 
-async function submitSupportTicket(formData) {
-  try {
-    const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'text/plain;charset=utf-8'
-      },
-      body: JSON.stringify({
-        ticketId: formData.ticketId,
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        phone: formData.phone,
-        company: formData.company,
-        queryType: formData.queryType,
-        subject: formData.subject,
-        message: formData.message
-      })
-    });
-
-    const result = await response.json();
-
-    if (result.status === 'success') {
-      console.log('Ticket created:', result.ticketId);
-      return {
-        success: true,
-        ticketId: result.ticketId
-      };
-    }
-
-    throw new Error(result.message || 'Unable to submit ticket.');
-
-  } catch (error) {
-    console.error('Support form error:', error);
-    return {
-      success: false,
-      message: error.message
-    };
-  }
-}
-
-// Form Submission Event Listener for Support Page
 const supportForm = document.getElementById('supportForm');
 if(supportForm) {
   supportForm.addEventListener('submit', async (e) => {
@@ -162,6 +120,7 @@ if(supportForm) {
     
     // Disable submit button and show loading state
     const submitBtn = document.getElementById('submitBtn');
+    const originalBtnText = submitBtn.innerText;
     if(submitBtn) {
       submitBtn.disabled = true;
       submitBtn.innerText = 'Submitting...';
@@ -180,23 +139,38 @@ if(supportForm) {
       message: document.getElementById('message').value
     };
 
-    // Send the data to Google Apps Script
-    const result = await submitSupportTicket(formData);
+    try {
+      // Send the data to Google Apps Script silently
+      await fetch(GOOGLE_APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // This is required for Google Apps Script
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
 
-    // Handle the response
-    if (result.success) {
       // Show success message
       const successDiv = document.getElementById('formSuccess');
       if(successDiv) {
         successDiv.classList.remove('hidden');
         supportForm.reset();
       }
-    } else {
-      // Show error message
-      alert('Error: ' + result.message);
+      
+      // Reset button
       if(submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.innerText = 'Submit Ticket';
+        submitBtn.innerText = originalBtnText;
+      }
+
+    } catch (error) {
+      console.error('Support form error:', error);
+      alert('Something went wrong. Please try again.');
+      
+      // Reset button on error
+      if(submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerText = originalBtnText;
       }
     }
   });
