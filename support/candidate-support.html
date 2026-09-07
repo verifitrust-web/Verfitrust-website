@@ -7,6 +7,15 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KFSWZS2J');</script>
+<!-- End Google Tag Manager -->
+
 <style>
   :root{
     --primary: #69be28;
@@ -66,16 +75,10 @@
     transform: translateY(0);
   }
   
-  @keyframes drawCheck{ to{ stroke-dashoffset: 0; } }
-  .check-path{
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-    animation: drawCheck 1.5s ease forwards;
-  }
-  
+  /* Mobile Menu CSS */
   .mobile-menu{
     transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .mobile-menu.open{ transform: translateX(0); }
   
@@ -230,7 +233,8 @@
             </div>
           </div>
 
-          <form id="demoForm" class="space-y-5">
+          <!-- FIXED ID to supportForm -->
+          <form id="supportForm" class="space-y-5">
             <div class="grid md:grid-cols-2 gap-5">
               <div>
                 <label class="form-label" for="firstName">First Name</label>
@@ -321,9 +325,8 @@
 <!-- ============ FOOTER ============ -->
 <div id="footer-include"></div>
 
-<!-- Load global scripts (Header, Footer, Animations) -->
+<!-- Load global scripts -->
 <script src="/main.js"></script>
 
 </body>
 </html>
-
