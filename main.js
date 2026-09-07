@@ -175,3 +175,81 @@ if(supportForm) {
     }
   });
 }
+// ==========================================
+// candidate SUPPORT FORM LOGIC (Bulletproof version)
+// ==========================================
+document.addEventListener('submit', async function(e) {
+    if (e.target && e.target.id === 'supportForm') {
+        e.preventDefault(); 
+
+        const supportForm = e.target;
+        const submitBtn = document.getElementById('submitBtn');
+        const originalBtnText = submitBtn ? submitBtn.innerText : 'Submit';
+
+        if(submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Submitting...';
+        }
+
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxlkxFUZoesxSaZqGVei-xGAg0OAAV4nSBQwEizqseQCxNkmohyZ0pMBzOiroBr1vmKtg/exec';
+
+        // Safely grab the Country Code if it exists
+        const countryCodeEl = document.getElementById('countryCode');
+        const phoneEl = document.getElementById('phone');
+        const fullPhoneNumber = countryCodeEl ? `${countryCodeEl.value} ${phoneEl.value}` : (phoneEl ? phoneEl.value : '');
+
+        // Safely grab the Position or Company field (since Candidate form uses 'position' and Customer form uses 'company')
+        const positionEl = document.getElementById('position');
+        const companyEl = document.getElementById('company');
+        const roleOrCompany = positionEl ? positionEl.value : (companyEl ? companyEl.value : 'N/A');
+
+        const generatedTicketId = 'TKT-' + Date.now();
+
+        const formData = {
+            ticketId: generatedTicketId,
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            email: document.getElementById('email').value,
+            phone: fullPhoneNumber,
+            company: roleOrCompany, 
+            queryType: document.getElementById('queryType').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value
+        };
+
+        try {
+            await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            const successDiv = document.getElementById('formSuccess');
+            if(successDiv) {
+                successDiv.classList.remove('hidden');
+                
+                // Display the generated Ticket ID if the span exists
+                const ticketIdSpan = document.getElementById('ticketIdDisplay');
+                if(ticketIdSpan) {
+                    ticketIdSpan.innerText = generatedTicketId;
+                }
+                
+                supportForm.reset();
+            }
+            
+            if(submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerText = originalBtnText;
+            }
+
+        } catch (error) {
+            console.error('Support form error:', error);
+            alert('Something went wrong. Please try again.');
+            if(submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerText = originalBtnText;
+            }
+        }
+    }
+});
