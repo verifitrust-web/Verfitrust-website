@@ -253,3 +253,15 @@ document.addEventListener('submit', async function(e) {
         }
     }
 });
+// ===== AUTOMATIC FAVICON INJECTION =====
+const faviconLink = document.createElement('link');
+faviconLink.rel = 'icon';
+faviconLink.type = 'image/png';
+faviconLink.href = '/assets/favicon.png';
+document.head.appendChild(faviconLink);
+
+const appleTouchIcon = document.createElement('link');
+appleTouchIcon.rel = 'apple-touch-icon';
+appleTouchIcon.sizes = '180x180';
+appleTouchIcon.href = '/assets/favicon.png';
+document.head.appendChild(appleTouchIcon);
