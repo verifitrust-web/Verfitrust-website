@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cookie Policy — Verifitrust</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- AEO & GEO Schema for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Cookie Policy — Verifitrust",
+  "description": "Understand how Verifitrust uses cookies and similar technologies to improve site performance, analyze traffic, and enhance your browsing experience.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Verifitrust Inc.",
+    "url": "https://verifitrust.com"
+  }
+}
+</script>
+
+<style>
+  :root{
+    --primary: #69be28;
+    --primary-dark: #4f9e1a;
+    --primary-soft: #eaf7d8;
+    --secondary: #071A2b;
+    --secondary-soft: #122845;
+    --white: #ffffff;
+    --grey-50: #f8fafc;
+    --grey-100: #f1f5f9;
+    --grey-200: #e2e8f0;
+    --grey-600: #475569;
+    --grey-700: #334155;
+  }
+  *{ -webkit-font-smoothing: antialiased; }
+  body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    color: var(--secondary);
+    overflow-x: hidden;
+  }
+  .font-serif{ font-family: 'Instrument Serif', serif; font-weight: 400; }
+  
+  ::-webkit-scrollbar{ width: 10px; }
+  ::-webkit-scrollbar-track{ background: #f1f5f9; }
+  ::-webkit-scrollbar-thumb{ background: #69be28; border-radius: 5px; }
+  
+  /* Gradient text */
+  .gradient-text{
+    background: linear-gradient(135deg, #071A2b 0%, #2d5a1a 50%, #69be28 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Buttons */
+  .btn-primary{
+    background: var(--primary);
+    color: var(--secondary);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 4px 14px rgba(105,190,40,0.3);
+  }
+  .btn-primary:hover{
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(105,190,40,0.4);
+  }
+  
+  /* Fade in animation */
+  .fade-up{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fade-up.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Card hover */
+  .feature-card{
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before{
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, #69be28, transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  .feature-card:hover::before{ transform: translateX(100%); }
+  .feature-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(7,26,43,0.08);
+    border-color: rgba(105,190,40,0.3);
+  }
+  
+  .mobile-menu{
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-menu.open{ transform: translateX(0); }
+  
+  ::selection{ background: #69be28; color: #071A2b; }
+  
+  .border-soft{ border: 1px solid rgba(7,26,43,0.08); }
+  
+  .stagger > *{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .stagger.visible > *{ opacity: 1; transform: translateY(0); }
+  .stagger.visible > *:nth-child(1){ transition-delay: 0.05s; }
+  .stagger.visible > *:nth-child(2){ transition-delay: 0.15s; }
+  .stagger.visible > *:nth-child(3){ transition-delay: 0.25s; }
+  .stagger.visible > *:nth-child(4){ transition-delay: 0.35s; }
+  .stagger.visible > *:nth-child(5){ transition-delay: 0.45s; }
+  .stagger.visible > *:nth-child(6){ transition-delay: 0.55s; }
+  .stagger.visible > *:nth-child(7){ transition-delay: 0.65s; }
+  .stagger.visible > *:nth-child(8){ transition-delay: 0.75s; }
+  
+  html{ scroll-behavior: smooth; scroll-padding-top: 100px; }
+  
+  /* TOC active link */
+  .toc-link{
+    position: relative;
+    transition: all 0.2s ease;
+    color: #475569;
+  }
+  .toc-link:hover{ color: #69be28; }
+  .toc-link.active{
+    color: #69be28;
+    font-weight: 600;
+  }
+  .toc-link.active::before{
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 18px;
+    background: #69be28;
+    border-radius: 2px;
+  }
+  
+  /* Definition cards */
+  .def-card{
+    transition: all 0.3s ease;
+  }
+  .def-card:hover{
+    background: #f8fafc;
+    border-color: rgba(105,190,40,0.4);
+  }
+  
+  /* Callout */
+  .callout{
+    border-left: 4px solid #69be28;
+    background: linear-gradient(90deg, rgba(105,190,40,0.06), rgba(105,190,40,0.01));
+  }
+  
+  .anchor-offset{
+    scroll-margin-top: 100px;
+  }
+  
+  /* Section divider */
+  .section-divider{
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e2e8f0 20%, #e2e8f0 80%, transparent);
+  }
+  
+  @keyframes pulse-dot{
+    0%,100%{ opacity: 1; }
+    50%{ opacity: 0.4; }
+  }
+  .pulse-dot{ animation: pulse-dot 2s ease-in-out infinite; }
+  
+  /* Decorative background blob */
+  .blob{
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    z-index: 0;
+  }
+</style>
+</head>
+<body class="bg-white">
+
+<!-- ============ HEADER ============ -->
+<div id="header-include"></div>
+
+<!-- ============ HERO ============ -->
+<section class="relative pt-32 pb-16 lg:pt-40 lg:pb-20 overflow-hidden bg-white">
+  <div class="blob w-96 h-96 bg-[#69be28] -top-20 -right-20"></div>
+  <div class="blob w-80 h-80 bg-[#071A2b] top-40 -left-20"></div>
+  
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full mb-6">
+        <span class="w-2 h-2 bg-[#69be28] rounded-full pulse-dot"></span>
+        <span class="text-xs font-semibold text-[#071A2b] uppercase tracking-wider">Last Updated: January 2026</span>
+      </div>
+      
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
+        <span class="block text-[#071A2b]">Transparency in every</span>
+        <span class="block">
+          <span class="gradient-text">bite & byte</span><span class="text-[#69be28]">.</span>
+        </span>
+      </h1>
+      
+      <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+        How Verifitrust uses cookies and similar technologies to improve site performance, analyze traffic, and enhance your browsing experience.
+      </p>
+      
+      <div class="flex flex-wrap items-center justify-center gap-3 text-xs font-semibold">
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#69be28]/10 text-[#4f9e1a] rounded-full">
+          <i class="fas fa-shield-halved"></i> GDPR Compliant
+        </span>
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#69be28]/10 text-[#4f9e1a] rounded-full">
+          <i class="fas fa-shield-check"></i> DPDPA Aligned
+        </span>
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#69be28]/10 text-[#4f9e1a] rounded-full">
+          <i class="fas fa-lock"></i> Secure Browsing
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MAIN CONTENT WITH TOC ============ -->
+<section class="pb-24 lg:pb-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+      
+      <!-- Sticky Table of Contents -->
+      <aside class="lg:col-span-3 hidden lg:block">
+        <div class="sticky top-28">
+          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 flex items-center gap-2">
+              <i class="fas fa-list-ul text-[#69be28]"></i> Contents
+            </h3>
+            <nav class="flex flex-col gap-3 text-sm">
+              <a href="#introduction" class="toc-link anchor-offset">Introduction</a>
+              <a href="#what-are-cookies" class="toc-link anchor-offset">What are Cookies?</a>
+              <a href="#types" class="toc-link anchor-offset">Types of Cookies</a>
+              <a href="#list" class="toc-link anchor-offset">List of Our Cookies</a>
+              <a href="#withdraw" class="toc-link anchor-offset">Withdraw Consent</a>
+              <a href="#delete" class="toc-link anchor-offset">Delete Cookies</a>
+              <a href="#changes" class="toc-link anchor-offset">Policy Changes</a>
+              <a href="#contact" class="toc-link anchor-offset">Contact Us</a>
+            </nav>
+          </div>
+          
+          <div class="mt-6 p-5 rounded-2xl bg-[#071A2b] text-white">
+            <i class="fas fa-headset text-[#69be28] text-xl mb-3"></i>
+            <h4 class="font-bold mb-2">Have a privacy concern?</h4>
+            <p class="text-xs text-slate-300 mb-4">Our Data Privacy Team responds within 48 hours.</p>
+            <a href="mailto:privacy@verifitrust.com" class="inline-flex items-center gap-2 text-xs font-semibold text-[#69be28] hover:underline">
+              privacy@verifitrust.com <i class="fas fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+      </aside>
+      
+      <!-- Main Content Area -->
+      <div class="lg:col-span-9 space-y-16">
+        
+        <!-- Introduction -->
+        <article id="introduction" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-cookie-bite text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">01 — Introduction</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Introduction
+          </h2>
+          <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 text-[15px] md:text-base">
+            <p>By continuing to use this website you agree that we can place cookies and other similar technology on your device, including mobile device. This consent will remain active only till the time you choose to delete the stored cookies on your device using the cookie removal process described below in this policy.</p>
+            <p>This Cookie Policy should be read together with Verifitrust's Privacy Notice.</p>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- What are Cookies -->
+        <article id="what-are-cookies" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-circle-question text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">02 — What Are Cookies?</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            What are Cookies?
+          </h2>
+          <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 text-[15px] md:text-base">
+            <p>Cookies are small text files a web server sends to the browser that can be placed on your computer or mobile device to uniquely identify your browser or device. Cookies allow a site to know if your device has visited that site before. This allows the website to recognize your visit from those of other users of the website.</p>
+            <p>Cookies used by the site do not contain your personally identifiable information. Cookies are used for system improvement and administration, statistical analysis purposes, and in addition, cookies can help us to analyze the use of our websites and online content (analytics cookies) and they can also facilitate/track the interaction on our websites. Depending on the Site, we use the cookies as explained below.</p>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Types of Cookies -->
+        <article id="types" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-layer-group text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">03 — Types of Cookies</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            What cookies do we use and why?
+          </h2>
+          <p class="text-slate-600 mb-8 leading-relaxed">We deploy different categories of cookies to balance functionality, analytics, and user privacy.</p>
+          
+          <div class="grid md:grid-cols-2 gap-4 stagger">
+            <div class="def-card bg-white border-soft rounded-2xl p-6">
+              <div class="flex items-start gap-3 mb-2">
+                <i class="fas fa-user-shield text-[#69be28] mt-1"></i>
+                <h3 class="font-bold text-[#071A2b]">First Party Cookies</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">"First party Cookies" are cookies that belong to Verifitrust and that Verifitrust places on your device. These cookies allow us to employ data analytics so we can measure and improve the performance of our site and provide more relevant content to you. These cookies don't collect information that identifies a visitor down to an individual level that is available to us. These cookies are not passing personally identifiable information to any external third party.</p>
+            </div>
+            
+            <div class="def-card bg-white border-soft rounded-2xl p-6">
+              <div class="flex items-start gap-3 mb-2">
+                <i class="fas fa-lock text-[#69be28] mt-1"></i>
+                <h3 class="font-bold text-[#071A2b]">Strictly Necessary Cookies</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">These cookies are essential in order to enable you to move around the site and use its features, such as accessing secure areas of the site. Without these cookies, services you have asked for cannot be provided.</p>
+            </div>
+            
+            <div class="def-card bg-white border-soft rounded-2xl p-6">
+              <div class="flex items-start gap-3 mb-2">
+                <i class="fas fa-network-wired text-[#69be28] mt-1"></i>
+                <h3 class="font-bold text-[#071A2b]">Third Party Cookies</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">"Third party Cookies" are cookies that another party places on your device through our Site. Some cookies, web beacons and other tracking and storage technologies that we use are from third party companies (third party cookies), such as YouTube, Google Analytics to provide us with web analytics and intelligence about our sites which may also be used to provide measurement services and target ads. These companies use programming code to collect information about your interaction with our sites, such as the pages you visit, the links you click on and how long you are on our sites. This code is only active while you are on a Verifitrust website.</p>
+            </div>
+            
+            <div class="def-card bg-white border-soft rounded-2xl p-6">
+              <div class="flex items-start gap-3 mb-2">
+                <i class="fas fa-database text-[#69be28] mt-1"></i>
+                <h3 class="font-bold text-[#071A2b]">Persistent Cookies</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">We use persistent Cookies to improve your experience of using the Sites. This includes recording your acceptance of our Cookie Policy to remove the cookie message which first appears when you use the Sites.</p>
+            </div>
+
+            <div class="def-card bg-white border-soft rounded-2xl p-6 md:col-span-2">
+              <div class="flex items-start gap-3 mb-2">
+                <i class="fas fa-clock-rotate-left text-[#69be28] mt-1"></i>
+                <h3 class="font-bold text-[#071A2b]">Session Cookies</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">Session Cookies are temporary and deleted from your machine when your web browser closes. We use session Cookies to help us track internet usage as described above.</p>
+            </div>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- List of Cookies -->
+        <article id="list" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-list-ul text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">04 — List of Cookies</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            List of our cookies
+          </h2>
+          <div class="callout rounded-r-xl p-6">
+            <p class="text-slate-700 leading-relaxed text-[15px] md:text-base">
+              See our Cookie Declaration listing our different types of cookies. Please be aware that some cookies are set by third-party media and advertising partners for our joint or their independent use and they may combine data collected from your visit to Verifitrust website with information they have collected from you elsewhere. Please read their privacy policies on how your information is processed and what rights you have.
+            </p>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Withdraw Consent -->
+        <article id="withdraw" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-arrow-rotate-left text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">05 — Withdraw Consent</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            How can you withdraw your consent to the use of cookies
+          </h2>
+          <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 text-[15px] md:text-base">
+            <p>Necessary cookies are essential for the website, and you cannot opt out of them, but you can delete necessary cookies after use. For all other cookies, you can always adjust your settings and revoke your consent through our cookie banner <strong>Manage Cookie Preferences</strong>.</p>
+          </div>
+          <div class="mt-6 bg-slate-50 border border-slate-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+               <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                 <i class="fas fa-sliders text-[#69be28] text-xl"></i>
+               </div>
+               <div>
+                 <h4 class="font-bold text-[#071A2b]">Cookie Preferences</h4>
+                 <p class="text-sm text-slate-600">Manage your consent settings anytime.</p>
+               </div>
+            </div>
+            <a href="#" class="btn-primary px-5 py-3 rounded-full text-sm font-semibold whitespace-nowrap">
+              Manage Preferences
+            </a>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Delete Cookies -->
+        <article id="delete" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-trash-can text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">06 — Delete Cookies</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            How can you delete cookies from your system?
+          </h2>
+          <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 text-[15px] md:text-base mb-8">
+            <p>You can view, manage, delete and block cookies for a website through your browser. Be aware that if you delete all cookies then any preferences you have set will be lost. Guidance on how to control cookies for common browsers is linked below — for other browsers, please consult the documentation that your browser manufacturer provides.</p>
+          </div>
+          
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 stagger">
+            <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener" class="feature-card bg-white border-soft rounded-2xl p-6 text-center block">
+              <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <i class="fab fa-chrome text-[#69be28] text-xl"></i>
+              </div>
+              <h4 class="font-bold text-[#071A2b] mb-1 text-sm">Google Chrome</h4>
+              <span class="text-xs text-[#69be28] font-semibold">View Guide <i class="fas fa-arrow-right ml-1 text-[10px]"></i></span>
+            </a>
+            
+            <a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener" class="feature-card bg-white border-soft rounded-2xl p-6 text-center block">
+              <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <i class="fab fa-firefox-browser text-[#69be28] text-xl"></i>
+              </div>
+              <h4 class="font-bold text-[#071A2b] mb-1 text-sm">Mozilla Firefox</h4>
+              <span class="text-xs text-[#69be28] font-semibold">View Guide <i class="fas fa-arrow-right ml-1 text-[10px]"></i></span>
+            </a>
+            
+            <a href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac" target="_blank" rel="noopener" class="feature-card bg-white border-soft rounded-2xl p-6 text-center block">
+              <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <i class="fab fa-safari text-[#69be28] text-xl"></i>
+              </div>
+              <h4 class="font-bold text-[#071A2b] mb-1 text-sm">Safari</h4>
+              <span class="text-xs text-[#69be28] font-semibold">View Guide <i class="fas fa-arrow-right ml-1 text-[10px]"></i></span>
+            </a>
+            
+            <a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener" class="feature-card bg-white border-soft rounded-2xl p-6 text-center block">
+              <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <i class="fab fa-edge text-[#69be28] text-xl"></i>
+              </div>
+              <h4 class="font-bold text-[#071A2b] mb-1 text-sm">Microsoft Edge</h4>
+              <span class="text-xs text-[#69be28] font-semibold">View Guide <i class="fas fa-arrow-right ml-1 text-[10px]"></i></span>
+            </a>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Changes to Cookie Policy -->
+        <article id="changes" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-arrows-rotate text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">07 — Policy Changes</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Changes to the Cookie Policy
+          </h2>
+          <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 text-[15px] md:text-base">
+            <p>We may modify or amend this Cookie Policy from time to time at our discretion. When we make changes to this notice, we will amend the revision date at the top of this page, and such modified or amended Cookie Notice shall be effective as to you and your information as of that revision date.</p>
+            <p>We encourage you to periodically review this Cookie Notice to be informed about how we are using cookies.</p>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Contact Us -->
+        <article id="contact" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-headset text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">08 — Contact Us</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Contact us
+          </h2>
+          <p class="text-slate-700 leading-relaxed mb-8 text-[15px] md:text-base">
+            If you have any privacy concerns or queries regarding this Cookie Policy, you may contact us at:
+          </p>
+          
+          <div class="grid md:grid-cols-2 gap-5">
+            <div class="bg-white border-soft rounded-2xl p-6">
+              <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-4">
+                <i class="fas fa-envelope text-[#69be28] text-xl"></i>
+              </div>
+              <h3 class="font-bold text-[#071A2b] mb-2">Email Us</h3>
+              <p class="text-sm text-slate-600 mb-3">For cookie related queries or grievances.</p>
+              <a href="mailto:privacy@verifitrust.com" class="text-[#69be28] font-semibold hover:underline text-sm">privacy@verifitrust.com</a>
+            </div>
+            
+            <div class="bg-white border-soft rounded-2xl p-6">
+              <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-4">
+                <i class="fas fa-location-dot text-[#69be28] text-xl"></i>
+              </div>
+              <h3 class="font-bold text-[#071A2b] mb-2">Mail Us</h3>
+              <p class="text-sm text-slate-600 mb-3">Verifitrust's Data Privacy Team</p>
+              <p class="text-sm text-slate-700 leading-relaxed">
+                C/o Compliance Team<br/>
+                No. 16, Balaji Avenue, 1st Street,<br/>
+                T.Nagar, Chennai - 600 017<br/>
+                Tamil Nadu, India
+              </p>
+            </div>
+          </div>
+        </article>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="py-20 lg:py-24 relative overflow-hidden bg-white">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="relative bg-[#071A2b] rounded-[2.5rem] p-10 md:p-14 lg:p-16 overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-80 h-80 bg-[#69be28]/20 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-[#69be28]/10 rounded-full blur-3xl"></div>
+      <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(105,190,40,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(105,190,40,0.5) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      
+      <div class="relative grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-1.5 bg-[#69be28]/15 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-6">Get started today</span>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight">
+            Secure your next <span class="font-serif italic text-[#69be28]">verified</span> hire
+          </h2>
+          <p class="text-base text-slate-300 mb-7 leading-relaxed">
+            Join thousands of platforms that trust Verifitrust for fast, accurate, and compliant background checks. No credit card required.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#" class="btn-primary inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold">
+              Start free trial
+              <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+            <a href="#" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold border border-white/20 text-white hover:bg-white/5 transition-all">
+              Book a demo
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8">
+          <h3 class="text-white font-bold text-xl mb-6">What's included:</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">5 free background checks — no card required</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">Mobile SDK & API integration</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">Real-time MVR & criminal checks</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">Continuous workforce monitoring</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div id="footer-include"></div>
+
+<!-- Load global scripts (Header, Footer, Animations) -->
+<script src="/main.js"></script>
+
+</body>
+</html>
+
