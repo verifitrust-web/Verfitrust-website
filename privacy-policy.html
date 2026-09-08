@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy — Verifitrust</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- AEO & GEO Schema for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Privacy Policy — Verifitrust",
+  "description": "Learn how Verifitrust collects, processes, stores and protects your Personal Data in line with global data protection laws including GDPR and DPDPA.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Verifitrust Inc.",
+    "url": "https://verifitrust.com"
+  }
+}
+</script>
+
+<style>
+  :root{
+    --primary: #69be28;
+    --primary-dark: #4f9e1a;
+    --primary-soft: #eaf7d8;
+    --secondary: #071A2b;
+    --secondary-soft: #122845;
+    --white: #ffffff;
+    --grey-50: #f8fafc;
+    --grey-100: #f1f5f9;
+    --grey-200: #e2e8f0;
+    --grey-600: #475569;
+    --grey-700: #334155;
+  }
+  *{ -webkit-font-smoothing: antialiased; }
+  body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    color: var(--secondary);
+    overflow-x: hidden;
+  }
+  .font-serif{ font-family: 'Instrument Serif', serif; font-weight: 400; }
+  
+  ::-webkit-scrollbar{ width: 10px; }
+  ::-webkit-scrollbar-track{ background: #f1f5f9; }
+  ::-webkit-scrollbar-thumb{ background: #69be28; border-radius: 5px; }
+  
+  /* Gradient text */
+  .gradient-text{
+    background: linear-gradient(135deg, #071A2b 0%, #2d5a1a 50%, #69be28 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Buttons */
+  .btn-primary{
+    background: var(--primary);
+    color: var(--secondary);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 4px 14px rgba(105,190,40,0.3);
+  }
+  .btn-primary:hover{
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(105,190,40,0.4);
+  }
+  .btn-secondary{
+    background: transparent;
+    color: var(--secondary);
+    border: 1.5px solid var(--secondary);
+    transition: all 0.3s ease;
+  }
+  .btn-secondary:hover{
+    background: var(--secondary);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  
+  /* Fade in animation */
+  .fade-up{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fade-up.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Card hover */
+  .feature-card{
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before{
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, #69be28, transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  .feature-card:hover::before{ transform: translateX(100%); }
+  .feature-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(7,26,43,0.08);
+    border-color: rgba(105,190,40,0.3);
+  }
+  
+  .mobile-menu{
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-menu.open{ transform: translateX(0); }
+  
+  ::selection{ background: #69be28; color: #071A2b; }
+  
+  .border-soft{ border: 1px solid rgba(7,26,43,0.08); }
+  
+  .stagger > *{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .stagger.visible > *{ opacity: 1; transform: translateY(0); }
+  .stagger.visible > *:nth-child(1){ transition-delay: 0.05s; }
+  .stagger.visible > *:nth-child(2){ transition-delay: 0.15s; }
+  .stagger.visible > *:nth-child(3){ transition-delay: 0.25s; }
+  .stagger.visible > *:nth-child(4){ transition-delay: 0.35s; }
+  .stagger.visible > *:nth-child(5){ transition-delay: 0.45s; }
+  .stagger.visible > *:nth-child(6){ transition-delay: 0.55s; }
+  .stagger.visible > *:nth-child(7){ transition-delay: 0.65s; }
+  .stagger.visible > *:nth-child(8){ transition-delay: 0.75s; }
+  
+  html{ scroll-behavior: smooth; scroll-padding-top: 100px; }
+  
+  /* TOC active link */
+  .toc-link{
+    position: relative;
+    transition: all 0.2s ease;
+    color: #475569;
+  }
+  .toc-link:hover{ color: #69be28; }
+  .toc-link.active{
+    color: #69be28;
+    font-weight: 600;
+  }
+  .toc-link.active::before{
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 18px;
+    background: #69be28;
+    border-radius: 2px;
+  }
+  
+  /* Definition cards */
+  .def-card{
+    transition: all 0.3s ease;
+  }
+  .def-card:hover{
+    background: #f8fafc;
+    border-color: rgba(105,190,40,0.4);
+  }
+  
+  /* Purpose table */
+  .purpose-row{
+    transition: background 0.2s ease;
+  }
+  .purpose-row:hover{
+    background: rgba(105,190,40,0.04);
+  }
+  
+  /* Callout */
+  .callout{
+    border-left: 4px solid #69be28;
+    background: linear-gradient(90deg, rgba(105,190,40,0.06), rgba(105,190,40,0.01));
+  }
+  
+  .anchor-offset{
+    scroll-margin-top: 100px;
+  }
+  
+  /* Section divider */
+  .section-divider{
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e2e8f0 20%, #e2e8f0 80%, transparent);
+  }
+  
+  @keyframes pulse-dot{
+    0%,100%{ opacity: 1; }
+    50%{ opacity: 0.4; }
+  }
+  .pulse-dot{ animation: pulse-dot 2s ease-in-out infinite; }
+  
+  /* Decorative background blob */
+  .blob{
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    z-index: 0;
+  }
+</style>
+</head>
+<body class="bg-white">
+
+<!-- ============ HEADER ============ -->
+<div id="header-include"></div>
+
+<!-- ============ HERO ============ -->
+<section class="relative pt-32 pb-16 lg:pt-40 lg:pb-20 overflow-hidden bg-white">
+  <div class="blob w-96 h-96 bg-[#69be28] -top-20 -right-20"></div>
+  <div class="blob w-80 h-80 bg-[#071A2b] top-40 -left-20"></div>
+  
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full mb-6">
+        <span class="w-2 h-2 bg-[#69be28] rounded-full pulse-dot"></span>
+        <span class="text-xs font-semibold text-[#071A2b] uppercase tracking-wider">Last Updated: January 2026</span>
+      </div>
+      
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
+        <span class="block text-[#071A2b]">Your trust, our</span>
+        <span class="block">
+          <span class="gradient-text">privacy promise</span><span class="text-[#69be28]">.</span>
+        </span>
+      </h1>
+      
+      <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+        How Verifitrust collects, processes, stores, and protects your Personal Data — built to meet the highest global standards of privacy, transparency, and accountability.
+      </p>
+      
+      <div class="flex flex-wrap items-center justify-center gap-3 text-xs font-semibold">
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#69be28]/10 text-[#4f9e1a] rounded-full">
+          <i class="fas fa-shield-halved"></i> GDPR Compliant
+        </span>
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#69be28]/10 text-[#4f9e1a] rounded-full">
+          <i class="fas fa-shield-check"></i> DPDPA Aligned
+        </span>
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#69be28]/10 text-[#4f9e1a] rounded-full">
+          <i class="fas fa-lock"></i> ISO 27001 Certified
+        </span>
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#69be28]/10 text-[#4f9e1a] rounded-full">
+          <i class="fas fa-certificate"></i> SoC-2 Type II
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MAIN CONTENT WITH TOC ============ -->
+<section class="pb-24 lg:pb-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+      
+      <!-- Sticky Table of Contents -->
+      <aside class="lg:col-span-3 hidden lg:block">
+        <div class="sticky top-28">
+          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 flex items-center gap-2">
+              <i class="fas fa-list-ul text-[#69be28]"></i> Contents
+            </h3>
+            <nav class="flex flex-col gap-3 text-sm">
+              <a href="#introduction" class="toc-link anchor-offset">Introduction</a>
+              <a href="#scope" class="toc-link anchor-offset">Scope & Applicability</a>
+              <a href="#definitions" class="toc-link anchor-offset">Definitions</a>
+              <a href="#collect" class="toc-link anchor-offset">What We Collect</a>
+              <a href="#how" class="toc-link anchor-offset">How We Collect</a>
+              <a href="#purpose" class="toc-link anchor-offset">Purpose & Legal Basis</a>
+              <a href="#share" class="toc-link anchor-offset">Sharing</a>
+              <a href="#protect" class="toc-link anchor-offset">Data Protection</a>
+              <a href="#profiling" class="toc-link anchor-offset">Profiling</a>
+              <a href="#retention" class="toc-link anchor-offset">Retention</a>
+              <a href="#children" class="toc-link anchor-offset">Children's Privacy</a>
+              <a href="#rights" class="toc-link anchor-offset">Your Rights</a>
+              <a href="#communications" class="toc-link anchor-offset">User Communications</a>
+              <a href="#contact" class="toc-link anchor-offset">Contact Us</a>
+              <a href="#updates" class="toc-link anchor-offset">Updates</a>
+            </nav>
+          </div>
+          
+          <div class="mt-6 p-5 rounded-2xl bg-[#071A2b] text-white">
+            <i class="fas fa-headset text-[#69be28] text-xl mb-3"></i>
+            <h4 class="font-bold mb-2">Have a privacy concern?</h4>
+            <p class="text-xs text-slate-300 mb-4">Our Data Privacy Team responds within 48 hours.</p>
+            <a href="mailto:privacy@verifitrust.com" class="inline-flex items-center gap-2 text-xs font-semibold text-[#69be28] hover:underline">
+              privacy@verifitrust.com <i class="fas fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+      </aside>
+      
+      <!-- Main Content Area -->
+      <div class="lg:col-span-9 space-y-16">
+        
+        <!-- Introduction -->
+        <article id="introduction" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-file-shield text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">01 — Introduction</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Introduction
+          </h2>
+          <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 text-[15px] md:text-base">
+            <p>This Privacy Policy describes the information collection practices that <strong>Verifitrust Inc.</strong>, and its respective subsidiaries ("<strong>Verifitrust</strong>," "<strong>we</strong>," "<strong>us</strong>," or "<strong>our</strong>," if not explicitly referring to one company) follow when handling Personal Data.</p>
+            <p>This privacy statement applies to the collection, processing, disclosure, and use of Personal Data from a registered user or other visitor of our website, which is submitted to Verifitrust.</p>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Scope & Applicability -->
+        <article id="scope" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-bullseye text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">02 — Scope & Applicability</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Scope & Applicability
+          </h2>
+          <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 text-[15px] md:text-base">
+            <p>This Notice outlines how we collect, process, disclose, use, retain, transfer, and protect the Personal Data of a registered user with Verifitrust or other visitors to our website.</p>
+          </div>
+          <div class="callout rounded-r-xl p-5 mt-6">
+            <div class="flex items-start gap-3">
+              <i class="fas fa-circle-info text-[#69be28] mt-1"></i>
+              <div>
+                <h4 class="font-bold text-[#071A2b] mb-1">Important Note</h4>
+                <p class="text-sm text-slate-700 leading-relaxed">Users may visit and browse our website without having to provide Personal Data. By using our website and accessing and using its services, users confirm their agreement with the terms of this policy. If a user does not agree with the terms of this policy, he / she should stop using the website immediately.</p>
+                <p class="text-sm text-slate-700 leading-relaxed mt-2">If you are a candidate, employee, vendor, or customer of Verifitrust's Client, please follow this link to access the stakeholders' Privacy Notice.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Definitions -->
+        <article id="definitions" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-book text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">03 — Definitions</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Definitions
+          </h2>
+          <p class="text-slate-600 mb-8 leading-relaxed">Understanding the key terms used throughout this Privacy Policy.</p>
+          
+          <div class="grid md:grid-cols-2 gap-4 stagger">
+            <div class="def-card bg-white border-soft rounded-2xl p-6">
+              <div class="flex items-start gap-3 mb-2">
+                <i class="fas fa-gavel text-[#69be28] mt-1"></i>
+                <h3 class="font-bold text-[#071A2b]">Applicable Data Protection Law</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">Relevant local and/or international laws/regulations based on the jurisdiction where the individual resides or is located. Notable laws include the GDPR and the Digital Personal Data Protection Act (DPDPA).</p>
+            </div>
+            
+            <div class="def-card bg-white border-soft rounded-2xl p-6">
+              <div class="flex items-start gap-3 mb-2">
+                <i class="fas fa-user text-[#69be28] mt-1"></i>
+                <h3 class="font-bold text-[#071A2b]">Personal Data</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">Any data relating to an identified or identifiable natural person.</p>
+            </div>
+            
+            <div class="def-card bg-white border-soft rounded-2xl p-6">
+              <div class="flex items-start gap-3 mb-2">
+                <i class="fas fa-lock text-[#69be28] mt-1"></i>
+                <h3 class="font-bold text-[#071A2b]">Sensitive Personal Data</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">A specific set of "special categories" that must be treated with extra security, as may be required under Applicable Data Protection Law.</p>
+            </div>
+            
+            <div class="def-card bg-white border-soft rounded-2xl p-6">
+              <div class="flex items-start gap-3 mb-2">
+                <i class="fas fa-fingerprint text-[#69be28] mt-1"></i>
+                <h3 class="font-bold text-[#071A2b]">Data Subject / Data Principal</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">Any identified or identifiable natural person — one who can be identified directly or indirectly by reference to an identification number or specific factors.</p>
+            </div>
+            
+            <div class="def-card bg-white border-soft rounded-2xl p-6">
+              <div class="flex items-start gap-3 mb-2">
+                <i class="fas fa-gears text-[#69be28] mt-1"></i>
+                <h3 class="font-bold text-[#071A2b]">Processing</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">Any operation performed on Personal Data — whether automated or not — including collection, recording, storage, alteration, retrieval, use, transfer, disclosure, alignment, restriction, erasure, or destruction.</p>
+            </div>
+            
+            <div class="def-card bg-white border-soft rounded-2xl p-6">
+              <div class="flex items-start gap-3 mb-2">
+                <i class="fas fa-building text-[#69be28] mt-1"></i>
+                <h3 class="font-bold text-[#071A2b]">Data Controller / Data Fiduciary</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">A person, company, or other body which determines the purposes and means of processing the Personal Data.</p>
+            </div>
+            
+            <div class="def-card bg-white border-soft rounded-2xl p-6">
+              <div class="flex items-start gap-3 mb-2">
+                <i class="fas fa-handshake text-[#69be28] mt-1"></i>
+                <h3 class="font-bold text-[#071A2b]">Consent</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">Any freely given, specific, informed, and unambiguous indication of an individual's permission by which they signify agreement to the processing of their Personal Data.</p>
+            </div>
+            
+            <div class="def-card bg-white border-soft rounded-2xl p-6">
+              <div class="flex items-start gap-3 mb-2">
+                <i class="fas fa-server text-[#69be28] mt-1"></i>
+                <h3 class="font-bold text-[#071A2b]">Data Processor & Sub-processor</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">A person, company, or other body who processes data on behalf of a Data Controller. A Sub-processor assists the Data Processor in its processing activities.</p>
+            </div>
+            
+            <div class="def-card bg-white border-soft rounded-2xl p-6 md:col-span-2">
+              <div class="flex items-start gap-3 mb-2">
+                <i class="fas fa-triangle-exclamation text-[#69be28] mt-1"></i>
+                <h3 class="font-bold text-[#071A2b]">Personal Data Breach</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">A security event leading to the accidental or unlawful destruction, loss, alteration, unauthorized disclosure of, or access to Personal Data.</p>
+            </div>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- What We Collect -->
+        <article id="collect" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-database text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">04 — What We Collect</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            What Personal Data do we collect?
+          </h2>
+          <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 text-[15px] md:text-base mb-8">
+            <p>Verifitrust collects Personal Data that you submit voluntarily to us while filling out forms available on this website. We may collect, process, use, store, maintain, and transfer different kinds of Personal Data, grouped as follows:</p>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-5 stagger">
+            <div class="feature-card bg-white border-soft rounded-2xl p-6">
+              <div class="w-11 h-11 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-4">
+                <i class="fas fa-id-card text-[#69be28]"></i>
+              </div>
+              <h3 class="font-bold text-[#071A2b] mb-2">Contact Information</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">Name, company name(s), email address, and telephone number(s) submitted through website forms.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-6">
+              <div class="w-11 h-11 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-4">
+                <i class="fas fa-users text-[#69be28]"></i>
+              </div>
+              <h3 class="font-bold text-[#071A2b] mb-2">Recruitment Data</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">Personal Data about candidates interested in our recruitment drives. Learn more in our Recruitment Privacy Policy.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-6">
+              <div class="w-11 h-11 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-4">
+                <i class="fas fa-cookie-bite text-[#69be28]"></i>
+              </div>
+              <h3 class="font-bold text-[#071A2b] mb-2">Cookies & Technical Data</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">In addition to data you submit, we use cookies and collect technical information. Read our Cookie Policy for more details.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-6">
+              <div class="w-11 h-11 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-4">
+                <i class="fas fa-bullhorn text-[#69be28]"></i>
+              </div>
+              <h3 class="font-bold text-[#071A2b] mb-2">Marketing & Communications</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">Your preferences in receiving marketing services from us and third parties, and your communication preferences.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-6 md:col-span-2">
+              <div class="w-11 h-11 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-4">
+                <i class="fas fa-globe text-[#69be28]"></i>
+              </div>
+              <h3 class="font-bold text-[#071A2b] mb-2">Public Sources</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">Verifitrust may obtain your Personal Data from public sources such as free or paid databases, including public content on social media websites through Verifitrust's social media pages. Social media sites may have their own privacy policies explaining how they use and share your Personal Data.</p>
+            </div>
+          </div>
+          
+          <div class="mt-6 p-5 bg-red-50 border-l-4 border-red-400 rounded-r-xl">
+            <div class="flex items-start gap-3">
+              <i class="fas fa-circle-exclamation text-red-500 mt-1"></i>
+              <div>
+                <h4 class="font-bold text-[#071A2b] mb-1">Restriction on Sensitive Personal Data</h4>
+                <p class="text-sm text-slate-700 leading-relaxed">Unless we specifically request information to comply with applicable laws, we ask users not to send or disclose to us any sensitive Personal Data — including government IDs, passport numbers, racial or ethnic origin, political opinions, religious or other beliefs, health, biometrics or genetic characteristics, criminal background, or trade union membership — on or through this website.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- How We Collect -->
+        <article id="how" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-magnifying-glass text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">05 — How We Collect</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            How we collect your Personal Data
+          </h2>
+          <p class="text-slate-600 mb-8 leading-relaxed">We use different methods to collect your Personal Data as detailed below:</p>
+          
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 p-5 rounded-2xl bg-slate-50 hover:bg-[#69be28]/5 transition-colors">
+              <div class="w-10 h-10 bg-[#69be28] rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="text-[#071A2b] font-bold">1</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-[#071A2b] mb-1">Directly from You</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">Through this website when you sign up to our newsletter or fill out online forms on this Website.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4 p-5 rounded-2xl bg-slate-50 hover:bg-[#69be28]/5 transition-colors">
+              <div class="w-10 h-10 bg-[#69be28] rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="text-[#071A2b] font-bold">2</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-[#071A2b] mb-1">External Business Activities</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">Through our externally facing business activities such as service offerings, events, surveys, and communications.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4 p-5 rounded-2xl bg-slate-50 hover:bg-[#69be28]/5 transition-colors">
+              <div class="w-10 h-10 bg-[#69be28] rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="text-[#071A2b] font-bold">3</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-[#071A2b] mb-1">Direct Interactions</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">When we interact with you and collect data from you for use by and on behalf of Verifitrust.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4 p-5 rounded-2xl bg-slate-50 hover:bg-[#69be28]/5 transition-colors">
+              <div class="w-10 h-10 bg-[#69be28] rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="text-[#071A2b] font-bold">4</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-[#071A2b] mb-1">HR Events & Forums</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">We may also collect your Personal Data through HR events, forums, and similar gatherings.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4 p-5 rounded-2xl bg-slate-50 hover:bg-[#69be28]/5 transition-colors">
+              <div class="w-10 h-10 bg-[#69be28] rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="text-[#071A2b] font-bold">5</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-[#071A2b] mb-1">Cookies & Server Logs</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">By using cookies, server logs, and other similar technologies. Visit our Cookie Policy for more details.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Purpose & Legal Basis -->
+        <article id="purpose" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-scale-balanced text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">06 — Purpose & Legal Basis</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            What purpose does Verifitrust use the Personal Data for?
+          </h2>
+          <p class="text-slate-600 mb-8 leading-relaxed">The purposes for which we process your Personal Data, along with the legal basis for each:</p>
+          
+          <div class="overflow-hidden rounded-2xl border border-slate-200">
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="bg-[#071A2b] text-white">
+                    <th class="text-left p-5 font-semibold w-1/2">Purpose</th>
+                    <th class="text-left p-5 font-semibold w-1/2">Legal Basis</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr class="purpose-row">
+                    <td class="p-5 text-slate-700 align-top">
+                      <div class="flex items-start gap-3">
+                        <i class="fas fa-handshake text-[#69be28] mt-1"></i>
+                        <span>Contractual obligations with our clients, vendors, or any other business associates</span>
+                      </div>
+                    </td>
+                    <td class="p-5 text-slate-600 align-top">Necessary for the performance of a contract to which you are a party.</td>
+                  </tr>
+                  <tr class="purpose-row">
+                    <td class="p-5 text-slate-700 align-top">
+                      <div class="flex items-start gap-3">
+                        <i class="fas fa-gavel text-[#69be28] mt-1"></i>
+                        <span>Legal and regulatory requirements</span>
+                      </div>
+                    </td>
+                    <td class="p-5 text-slate-600 align-top">Necessary for compliance with a legal obligation to which we are subject.</td>
+                  </tr>
+                  <tr class="purpose-row">
+                    <td class="p-5 text-slate-700 align-top">
+                      <div class="flex items-start gap-3">
+                        <i class="fas fa-gears text-[#69be28] mt-1"></i>
+                        <span>Operating and managing our business operations including being part of the provision of our services to our clients</span>
+                      </div>
+                    </td>
+                    <td class="p-5 text-slate-600 align-top">Necessary for the performance of a contract.</td>
+                  </tr>
+                  <tr class="purpose-row">
+                    <td class="p-5 text-slate-700 align-top">
+                      <div class="flex items-start gap-3">
+                        <i class="fas fa-bullhorn text-[#69be28] mt-1"></i>
+                        <span>Marketing our products or services to users for advertisement purposes and to develop and increase our business</span>
+                      </div>
+                    </td>
+                    <td class="p-5 text-slate-600 align-top">Based on the consent of the data subject or justified on the basis of our legitimate interests.</td>
+                  </tr>
+                  <tr class="purpose-row">
+                    <td class="p-5 text-slate-700 align-top">
+                      <div class="flex items-start gap-3">
+                        <i class="fas fa-comments text-[#69be28] mt-1"></i>
+                        <span>Facilitating communication with you, including meetings, emergencies, and providing requested information</span>
+                      </div>
+                    </td>
+                    <td class="p-5 text-slate-600 align-top">Justified on the basis of our legitimate interest.</td>
+                  </tr>
+                  <tr class="purpose-row">
+                    <td class="p-5 text-slate-700 align-top">
+                      <div class="flex items-start gap-3">
+                        <i class="fas fa-shield-halved text-[#69be28] mt-1"></i>
+                        <span>Improving the security and functioning of our website and networks to ensure proper administration and monitor our systems</span>
+                      </div>
+                    </td>
+                    <td class="p-5 text-slate-600 align-top">Based on the consent obtained from the user. Please refer to our Cookie Policy for more details.</td>
+                  </tr>
+                  <tr class="purpose-row">
+                    <td class="p-5 text-slate-700 align-top">
+                      <div class="flex items-start gap-3">
+                        <i class="fas fa-user-tie text-[#69be28] mt-1"></i>
+                        <span>Verifitrust's recruitment or employment purposes</span>
+                      </div>
+                    </td>
+                    <td class="p-5 text-slate-600 align-top">Based on the consent of the data subject or justified on the basis of our legitimate interests of recruiting appropriate employees. See Recruitment Privacy Policy.</td>
+                  </tr>
+                  <tr class="purpose-row">
+                    <td class="p-5 text-slate-700 align-top">
+                      <div class="flex items-start gap-3">
+                        <i class="fas fa-mobile-screen text-[#69be28] mt-1"></i>
+                        <span>To manage and respond to any request you submit through our website</span>
+                      </div>
+                    </td>
+                    <td class="p-5 text-slate-600 align-top">
+                      <p class="mb-2">We can send our communication at the mobile number provided, even if registered under DND/NCPR list under TRAI regulations. For this purpose, we may share/disclose information to any third-party service provider, affiliates, group companies, their authorized agents, or third-party service providers for legitimate purposes of responding to your request.</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <p class="mt-6 text-sm text-slate-600 leading-relaxed">
+            We will further seek your consent if we use your Personal Data for any purpose other than those mentioned above.
+          </p>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Sharing -->
+        <article id="share" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-share-nodes text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">07 — Sharing</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            To whom we share your Personal Data
+          </h2>
+          
+          <div class="space-y-6">
+            <!-- Within Verifitrust -->
+            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-[#69be28]/15 rounded-xl flex items-center justify-center">
+                  <i class="fas fa-building text-[#69be28]"></i>
+                </div>
+                <h3 class="text-lg font-bold text-[#071A2b]">Within Verifitrust</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">We may share your Personal Data and usage information within Verifitrust (i.e., between and among Verifitrust and its subsidiaries). Such information may be used for business purposes consistent with the purpose for which the information was originally collected and authorized by you.</p>
+            </div>
+            
+            <!-- Outside Verifitrust -->
+            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-[#69be28]/15 rounded-xl flex items-center justify-center">
+                  <i class="fas fa-network-wired text-[#69be28]"></i>
+                </div>
+                <h3 class="text-lg font-bold text-[#071A2b]">Outside of Verifitrust</h3>
+              </div>
+              <ul class="space-y-3 text-sm text-slate-600">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-[#69be28] mt-1"></i>
+                  <span>We may share your data with third-party service providers based on our legitimate business interest or any other legal basis such as Verifitrust's contractual obligations or the Data Subject's consent for informed purposes, including but not limited to email marketing services and Verifitrust's CRM tool.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-[#69be28] mt-1"></i>
+                  <span>Verifitrust also uses Enterprise Email service by Gmail for its business purpose and may communicate with you using the same. <a href="https://policies.google.com/privacy" target="_blank" class="text-[#69be28] underline">Learn about Gmail's security measures</a>.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-[#69be28] mt-1"></i>
+                  <span>Our website and the server on which it is hosted is at AWS Mumbai. There are reasonable and appropriate controls at AWS to secure your data against any accidental or unlawful loss, access, or disclosure. <a href="https://aws.amazon.com/privacy/" target="_blank" class="text-[#69be28] underline">Visit AWS Privacy</a>.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-[#69be28] mt-1"></i>
+                  <span>Verifitrust's legal or professional advisors, if necessary, in connection with any investigation or complaint relating to the use of the website, or to identify, contact, or bring legal action against someone who may be causing injury to or interference with any person's rights or property.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-[#69be28] mt-1"></i>
+                  <span>Disclosure of any information to any governmental or statutory body to comply with applicable laws, regulations, regulatory requests/notices, as necessary for any fraud detection, or in the public interest.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Data Protection -->
+        <article id="protect" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-shield-halved text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">08 — Data Protection</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            How does Verifitrust protect your Personal Data?
+          </h2>
+          
+          <div class="grid md:grid-cols-2 gap-4 mb-6 stagger">
+            <div class="bg-white border-soft rounded-2xl p-6 flex items-start gap-4">
+              <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-certificate text-[#69be28] text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-[#071A2b] mb-1">ISO/IEC 27001:2013</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">This international standard defines the requirements for an Information Security Management System (ISMS).</p>
+              </div>
+            </div>
+            
+            <div class="bg-white border-soft rounded-2xl p-6 flex items-start gap-4">
+              <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-award text-[#69be28] text-xl"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-[#071A2b] mb-1">SoC-2 Type II Certified</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">Our processes and security controls provide an effective framework for protecting all stakeholder information.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="space-y-4 text-slate-700 leading-relaxed text-[15px] md:text-base">
+            <p>We maintain organizational and technical measures for protecting all Personal Data we hold. We have protocols, controls, and relevant policies, procedures, and guidelines to maintain these controls, considering the risks associated with the categories of Personal Data and the processing we undertake.</p>
+            <p>We regularly monitor our systems to mitigate possible vulnerabilities and attacks. However, we cannot guarantee or warrant the security of any information transmitted via our websites.</p>
+            <p>We employ procedures, including contractual obligations, and require all third parties to respect the security of Personal Data about you and to treat it in accordance with the Applicable Data Privacy Laws. We do not grant permission for our third-party service providers to use Personal Data about you for their own purposes and only grant permission for them to process Personal Data about you for specified purposes and in accordance with our instructions.</p>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Profiling -->
+        <article id="profiling" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-chart-line text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">09 — Profiling</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Will profiling take place?
+          </h2>
+          <div class="callout rounded-r-xl p-6">
+            <p class="text-slate-700 leading-relaxed text-[15px] md:text-base">
+              As a matter of principle, your Personal Data will <strong>not</strong> be processed automatically with the objective of evaluating certain personal aspects (profiling). If we should process your Personal Data with the objective of conducting profiling, we will, if prescribed by Applicable Data Privacy Laws, obtain your explicit consent and inform you of your rights in this respect.
+            </p>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Retention -->
+        <article id="retention" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-clock-rotate-left text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">10 — Retention</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Retention Period
+          </h2>
+          <p class="text-slate-700 leading-relaxed text-[15px] md:text-base">
+            We will retain your Personal Data as long as necessary for the fulfilment of the purposes set out for which it was collected or as required under the Applicable Laws and regulations.
+          </p>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Children's Privacy -->
+        <article id="children" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-child text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">11 — Children's Privacy</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Children's Privacy
+          </h2>
+          <p class="text-slate-700 leading-relaxed text-[15px] md:text-base">
+            Verifitrust does not undertake processing of Personal Data belonging to a minor (as defined under the Applicable Data Privacy Regulations), except in cases where due consent from the parent/lawful guardian of the minor is obtained in accordance with the Applicable Data Privacy Regulations.
+          </p>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Rights for Data Subjects -->
+        <article id="rights" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-user-shield text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">12 — Your Rights</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Rights for Data Subjects
+          </h2>
+          <p class="text-slate-600 mb-6 leading-relaxed">
+            You have the following rights with respect to your Personal Data that we process, subject to the conditions and restrictions set out under the applicable laws and based on the jurisdiction in which you reside. If you wish to exercise any of these rights, we may need certain information to verify/locate your identity and validate your request, which may include your full name, email addresses or mobile numbers associated with you, or details of how you submitted your Personal Data with us. This information will be used strictly to process your request.
+          </p>
+          
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger">
+            <div class="feature-card bg-white border-soft rounded-2xl p-5">
+              <i class="fas fa-eye text-[#69be28] mb-3"></i>
+              <h3 class="font-bold text-[#071A2b] mb-2 text-sm">Right of Access</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">Obtain a copy of your Personal Data, including categories processed, purposes, and details of third parties to whom data may have been disclosed.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-5">
+              <i class="fas fa-pen-to-square text-[#69be28] mb-3"></i>
+              <h3 class="font-bold text-[#071A2b] mb-2 text-sm">Right to Rectification</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">Correct or update your Personal Data available with us.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-5">
+              <i class="fas fa-trash-can text-[#69be28] mb-3"></i>
+              <h3 class="font-bold text-[#071A2b] mb-2 text-sm">Right to Erasure</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">Get your Personal Data deleted from our records.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-5">
+              <i class="fas fa-ban text-[#69be28] mb-3"></i>
+              <h3 class="font-bold text-[#071A2b] mb-2 text-sm">Right to Object / Restrict</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">Object to and/or restrict the processing or sharing of your Personal Data in circumstances prescribed under Applicable Data Privacy Laws.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-5">
+              <i class="fas fa-arrow-right-arrow-left text-[#69be28] mb-3"></i>
+              <h3 class="font-bold text-[#071A2b] mb-2 text-sm">Right to Data Portability</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">Obtain and reuse your Personal Data — transfer it to yourself or directly to a third party.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-5">
+              <i class="fas fa-xmark text-[#69be28] mb-3"></i>
+              <h3 class="font-bold text-[#071A2b] mb-2 text-sm">Right to Withdraw / Opt-out</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">Withdraw your consent for any or all of the purposes for which your Personal Data has been collected at any time by contacting us.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-5">
+              <i class="fas fa-equals text-[#69be28] mb-3"></i>
+              <h3 class="font-bold text-[#071A2b] mb-2 text-sm">Right to Non-Discrimination</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">Not be discriminated against for exercising your individual rights regarding your Personal Data.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-5">
+              <i class="fas fa-user-plus text-[#69be28] mb-3"></i>
+              <h3 class="font-bold text-[#071A2b] mb-2 text-sm">Right to Nominate</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">Nominate any other individual to exercise the above-mentioned rights in the event of death or incapacity of the Data Subject.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-5">
+              <i class="fas fa-gavel text-[#69be28] mb-3"></i>
+              <h3 class="font-bold text-[#071A2b] mb-2 text-sm">Right to Complain</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">Lodge a complaint with the competent supervisory authority, depending upon your jurisdiction, to obtain redressal.</p>
+            </div>
+          </div>
+          
+          <div class="mt-8 p-6 rounded-2xl bg-[#071A2b] text-white flex flex-col md:flex-row items-start md:items-center gap-4 justify-between">
+            <div>
+              <h4 class="font-bold mb-1 flex items-center gap-2">
+                <i class="fas fa-file-signature text-[#69be28]"></i> Exercise Your Rights
+              </h4>
+              <p class="text-sm text-slate-300">Share the duly filled Data Subject Request Form (DSR Form) to get started.</p>
+            </div>
+            <a href="mailto:datasubjectrights@verifitrust.com" class="btn-primary px-5 py-3 rounded-full text-sm font-semibold whitespace-nowrap">
+              <i class="fas fa-envelope mr-2"></i> datasubjectrights@verifitrust.com
+            </a>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- User Communications -->
+        <article id="communications" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-comments text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">13 — User Communications</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            User Communications
+          </h2>
+          <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 text-[15px] md:text-base">
+            <p>If you communicate any information (other than your Personal Data), such as feedback, data, questions, comments, suggestions, or other items to Verifitrust regarding Verifitrust, this site and its content, or the services offered on this site — any such communication shall be deemed <strong>not to be confidential</strong> and shall become the property of Verifitrust.</p>
+            <p>Verifitrust shall be free to reproduce, use, disclose, and distribute or make derivatives of such communication to others, without limitation. Verifitrust shall also have the unrestricted right to use any ideas, concepts, know-how, software, documentation, diagrams, drawings, schematics, or techniques contained in your communication in any manner and for any purpose whatsoever, including but not limited to developing and marketing products or providing services.</p>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Contact Us -->
+        <article id="contact" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-headset text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">14 — Contact Us</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Contact Us
+          </h2>
+          <p class="text-slate-700 leading-relaxed mb-8 text-[15px] md:text-base">
+            We commit to handle your Personal Data in a way that provides you trust. We also have processes for investigating and resolving any complaints regarding privacy concerns. If you wish to contact Verifitrust for any privacy related query/concern or any grievance, you can do so by writing to us using the details below:
+          </p>
+          
+          <div class="grid md:grid-cols-2 gap-5">
+            <div class="bg-white border-soft rounded-2xl p-6">
+              <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-4">
+                <i class="fas fa-envelope text-[#69be28] text-xl"></i>
+              </div>
+              <h3 class="font-bold text-[#071A2b] mb-2">Email Us</h3>
+              <p class="text-sm text-slate-600 mb-3">For privacy queries, concerns, or grievances.</p>
+              <a href="mailto:privacy@verifitrust.com" class="text-[#69be28] font-semibold hover:underline text-sm">privacy@verifitrust.com</a>
+            </div>
+            
+            <div class="bg-white border-soft rounded-2xl p-6">
+              <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-4">
+                <i class="fas fa-location-dot text-[#69be28] text-xl"></i>
+              </div>
+              <h3 class="font-bold text-[#071A2b] mb-2">Mail Us</h3>
+              <p class="text-sm text-slate-600 mb-3">Verifitrust's Data Privacy Team</p>
+              <p class="text-sm text-slate-700 leading-relaxed">
+                C/o Compliance Team<br/>
+                No. 16, Balaji Avenue, 1st Street,<br/>
+                T.Nagar, Chennai - 600 017<br/>
+                Tamil Nadu, India
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Updates -->
+        <article id="updates" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-arrows-rotate text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">15 — Updates</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Updates to the Privacy Notice
+          </h2>
+          <p class="text-slate-700 leading-relaxed text-[15px] md:text-base">
+            We may update our Privacy Notice from time to time. To let you know, we will amend the revision date on top of this page.
+          </p>
+        </article>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="py-20 lg:py-24 relative overflow-hidden bg-white">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="relative bg-[#071A2b] rounded-[2.5rem] p-10 md:p-14 lg:p-16 overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-80 h-80 bg-[#69be28]/20 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-[#69be28]/10 rounded-full blur-3xl"></div>
+      <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(105,190,40,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(105,190,40,0.5) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      
+      <div class="relative grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-1.5 bg-[#69be28]/15 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-6">Get started today</span>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight">
+            Secure your next <span class="font-serif italic text-[#69be28]">verified</span> hire
+          </h2>
+          <p class="text-base text-slate-300 mb-7 leading-relaxed">
+            Join thousands of platforms that trust Verifitrust for fast, accurate, and compliant background checks. No credit card required.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#" class="btn-primary inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold">
+              Start free trial
+              <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+            <a href="#" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold border border-white/20 text-white hover:bg-white/5 transition-all">
+              Book a demo
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8">
+          <h3 class="text-white font-bold text-xl mb-6">What's included:</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">5 free background checks — no card required</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">Mobile SDK & API integration</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">Real-time MVR & criminal checks</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">Continuous workforce monitoring</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div id="footer-include"></div>
+
+<!-- Load global scripts (Header, Footer, Animations) -->
+<script src="/main.js"></script>
+
+</body>
+</html>
+
