@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Recruitment Privacy Policy — Verifitrust</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- AEO & GEO Schema for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Recruitment Privacy Policy — Verifitrust",
+  "description": "Learn how Verifitrust collects, processes, and protects the personal data of candidates applying for employment and recruitment opportunities.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Verifitrust Inc.",
+    "url": "https://verifitrust.com"
+  }
+}
+</script>
+
+<style>
+  :root{
+    --primary: #69be28;
+    --primary-dark: #4f9e1a;
+    --primary-soft: #eaf7d8;
+    --secondary: #071A2b;
+    --secondary-soft: #122845;
+    --white: #ffffff;
+    --grey-50: #f8fafc;
+    --grey-100: #f1f5f9;
+    --grey-200: #e2e8f0;
+    --grey-600: #475569;
+    --grey-700: #334155;
+  }
+  *{ -webkit-font-smoothing: antialiased; }
+  body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    color: var(--secondary);
+    overflow-x: hidden;
+  }
+  .font-serif{ font-family: 'Instrument Serif', serif; font-weight: 400; }
+  
+  ::-webkit-scrollbar{ width: 10px; }
+  ::-webkit-scrollbar-track{ background: #f1f5f9; }
+  ::-webkit-scrollbar-thumb{ background: #69be28; border-radius: 5px; }
+  
+  /* Gradient text */
+  .gradient-text{
+    background: linear-gradient(135deg, #071A2b 0%, #2d5a1a 50%, #69be28 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Buttons */
+  .btn-primary{
+    background: var(--primary);
+    color: var(--secondary);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 4px 14px rgba(105,190,40,0.3);
+  }
+  .btn-primary:hover{
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(105,190,40,0.4);
+  }
+  .btn-secondary{
+    background: transparent;
+    color: var(--secondary);
+    border: 1.5px solid var(--secondary);
+    transition: all 0.3s ease;
+  }
+  .btn-secondary:hover{
+    background: var(--secondary);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  
+  /* Fade in animation */
+  .fade-up{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fade-up.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Card hover */
+  .feature-card{
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before{
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, #69be28, transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  .feature-card:hover::before{ transform: translateX(100%); }
+  .feature-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(7,26,43,0.08);
+    border-color: rgba(105,190,40,0.3);
+  }
+  
+  .mobile-menu{
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-menu.open{ transform: translateX(0); }
+  
+  ::selection{ background: #69be28; color: #071A2b; }
+  
+  .border-soft{ border: 1px solid rgba(7,26,43,0.08); }
+  
+  .stagger > *{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .stagger.visible > *{ opacity: 1; transform: translateY(0); }
+  .stagger.visible > *:nth-child(1){ transition-delay: 0.05s; }
+  .stagger.visible > *:nth-child(2){ transition-delay: 0.15s; }
+  .stagger.visible > *:nth-child(3){ transition-delay: 0.25s; }
+  .stagger.visible > *:nth-child(4){ transition-delay: 0.35s; }
+  .stagger.visible > *:nth-child(5){ transition-delay: 0.45s; }
+  .stagger.visible > *:nth-child(6){ transition-delay: 0.55s; }
+  .stagger.visible > *:nth-child(7){ transition-delay: 0.65s; }
+  .stagger.visible > *:nth-child(8){ transition-delay: 0.75s; }
+  
+  html{ scroll-behavior: smooth; scroll-padding-top: 100px; }
+  
+  /* TOC active link */
+  .toc-link{
+    position: relative;
+    transition: all 0.2s ease;
+    color: #475569;
+  }
+  .toc-link:hover{ color: #69be28; }
+  .toc-link.active{
+    color: #69be28;
+    font-weight: 600;
+  }
+  .toc-link.active::before{
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 18px;
+    background: #69be28;
+    border-radius: 2px;
+  }
+  
+  /* Definition cards */
+  .def-card{
+    transition: all 0.3s ease;
+  }
+  .def-card:hover{
+    background: #f8fafc;
+    border-color: rgba(105,190,40,0.4);
+  }
+  
+  /* Purpose table */
+  .purpose-row{
+    transition: background 0.2s ease;
+  }
+  .purpose-row:hover{
+    background: rgba(105,190,40,0.04);
+  }
+  
+  /* Callout */
+  .callout{
+    border-left: 4px solid #69be28;
+    background: linear-gradient(90deg, rgba(105,190,40,0.06), rgba(105,190,40,0.01));
+  }
+  
+  .anchor-offset{
+    scroll-margin-top: 100px;
+  }
+  
+  /* Section divider */
+  .section-divider{
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e2e8f0 20%, #e2e8f0 80%, transparent);
+  }
+  
+  @keyframes pulse-dot{
+    0%,100%{ opacity: 1; }
+    50%{ opacity: 0.4; }
+  }
+  .pulse-dot{ animation: pulse-dot 2s ease-in-out infinite; }
+  
+  /* Decorative background blob */
+  .blob{
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    z-index: 0;
+  }
+</style>
+</head>
+<body class="bg-white">
+
+<!-- ============ HEADER ============ -->
+<div id="header-include"></div>
+
+<!-- ============ HERO ============ -->
+<section class="relative pt-32 pb-16 lg:pt-40 lg:pb-20 overflow-hidden bg-white">
+  <div class="blob w-96 h-96 bg-[#69be28] -top-20 -right-20"></div>
+  <div class="blob w-80 h-80 bg-[#071A2b] top-40 -left-20"></div>
+  
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full mb-6">
+        <span class="w-2 h-2 bg-[#69be28] rounded-full pulse-dot"></span>
+        <span class="text-xs font-semibold text-[#071A2b] uppercase tracking-wider">Last Updated: January 2026</span>
+      </div>
+      
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
+        <span class="block text-[#071A2b]">Respecting candidate</span>
+        <span class="block">
+          <span class="gradient-text">privacy from day one</span><span class="text-[#69be28]">.</span>
+        </span>
+      </h1>
+      
+      <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+        How Verifitrust collects, processes, and protects the personal data of candidates applying for employment and recruitment opportunities within our organization.
+      </p>
+      
+      <div class="flex flex-wrap items-center justify-center gap-3 text-xs font-semibold">
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#69be28]/10 text-[#4f9e1a] rounded-full">
+          <i class="fas fa-shield-halved"></i> GDPR Compliant
+        </span>
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#69be28]/10 text-[#4f9e1a] rounded-full">
+          <i class="fas fa-shield-check"></i> DPDPA Aligned
+        </span>
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#69be28]/10 text-[#4f9e1a] rounded-full">
+          <i class="fas fa-lock"></i> ISO 27001 Certified
+        </span>
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#69be28]/10 text-[#4f9e1a] rounded-full">
+          <i class="fas fa-user-tie"></i> Fair Hiring Practices
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MAIN CONTENT WITH TOC ============ -->
+<section class="pb-24 lg:pb-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+      
+      <!-- Sticky Table of Contents -->
+      <aside class="lg:col-span-3 hidden lg:block">
+        <div class="sticky top-28">
+          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 flex items-center gap-2">
+              <i class="fas fa-list-ul text-[#69be28]"></i> Contents
+            </h3>
+            <nav class="flex flex-col gap-3 text-sm">
+              <a href="#introduction" class="toc-link anchor-offset">Introduction</a>
+              <a href="#scope" class="toc-link anchor-offset">Scope & Applicability</a>
+              <a href="#collect" class="toc-link anchor-offset">What We Collect</a>
+              <a href="#how" class="toc-link anchor-offset">How We Collect</a>
+              <a href="#purpose" class="toc-link anchor-offset">Purpose & Legal Basis</a>
+              <a href="#share" class="toc-link anchor-offset">Data Sharing</a>
+              <a href="#retention" class="toc-link anchor-offset">Retention Period</a>
+              <a href="#rights" class="toc-link anchor-offset">Candidate Rights</a>
+              <a href="#contact" class="toc-link anchor-offset">Contact Us</a>
+            </nav>
+          </div>
+          
+          <div class="mt-6 p-5 rounded-2xl bg-[#071A2b] text-white">
+            <i class="fas fa-headset text-[#69be28] text-xl mb-3"></i>
+            <h4 class="font-bold mb-2">Have a privacy concern?</h4>
+            <p class="text-xs text-slate-300 mb-4">Our Data Privacy Team responds within 48 hours.</p>
+            <a href="mailto:privacy@verifitrust.com" class="inline-flex items-center gap-2 text-xs font-semibold text-[#69be28] hover:underline">
+              privacy@verifitrust.com <i class="fas fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+      </aside>
+      
+      <!-- Main Content Area -->
+      <div class="lg:col-span-9 space-y-16">
+        
+        <!-- Introduction -->
+        <article id="introduction" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-file-shield text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">01 — Introduction</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Introduction
+          </h2>
+          <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 text-[15px] md:text-base">
+            <p>This Recruitment Privacy Policy describes the information collection practices that <strong>Verifitrust Inc.</strong>, and its respective subsidiaries ("<strong>Verifitrust</strong>," "<strong>we</strong>," "<strong>us</strong>," or "<strong>our</strong>") follow when handling Personal Data of prospective candidates applying for employment opportunities.</p>
+            <p>We are committed to conducting our recruitment process in a transparent, fair, and lawful manner. This policy explains how we collect, use, disclose, and protect your Personal Data when you apply for a position, participate in our recruitment drives, or engage with our Talent Acquisition team.</p>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Scope & Applicability -->
+        <article id="scope" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-bullseye text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">02 — Scope & Applicability</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Scope & Applicability
+          </h2>
+          <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 text-[15px] md:text-base">
+            <p>This Notice outlines how we collect, process, disclose, use, retain, transfer, and protect the Personal Data of candidates who apply to Verifitrust directly, through job portals, recruitment agencies, or via employee referrals.</p>
+          </div>
+          <div class="callout rounded-r-xl p-5 mt-6">
+            <div class="flex items-start gap-3">
+              <i class="fas fa-circle-info text-[#69be28] mt-1"></i>
+              <div>
+                <h4 class="font-bold text-[#071A2b] mb-1">Important Note</h4>
+                <p class="text-sm text-slate-700 leading-relaxed">By submitting your resume, application, or Personal Data to Verifitrust, you explicitly consent to the processing of your information for recruitment purposes as outlined in this policy. If you do not agree with the terms of this policy, please refrain from submitting your application.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- What We Collect -->
+        <article id="collect" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-database text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">03 — What We Collect</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            What Personal Data do we collect?
+          </h2>
+          <p class="text-slate-600 mb-8 leading-relaxed">We collect various categories of Personal Data necessary to evaluate your candidacy, communicate with you, and make informed hiring decisions. This includes:</p>
+          
+          <div class="grid md:grid-cols-2 gap-5 stagger">
+            <div class="feature-card bg-white border-soft rounded-2xl p-6">
+              <div class="w-11 h-11 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-4">
+                <i class="fas fa-id-card text-[#69be28]"></i>
+              </div>
+              <h3 class="font-bold text-[#071A2b] mb-2">Contact Information</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">Full name, email address, phone number, current location, and links to professional profiles (e.g., LinkedIn).</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-6">
+              <div class="w-11 h-11 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-4">
+                <i class="fas fa-briefcase text-[#69be28]"></i>
+              </div>
+              <h3 class="font-bold text-[#071A2b] mb-2">Professional Background</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">Resume/CV details, employment history, educational qualifications, certifications, skills, and work experience.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-6">
+              <div class="w-11 h-11 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-4">
+                <i class="fas fa-pen-to-square text-[#69be28]"></i>
+              </div>
+              <h3 class="font-bold text-[#071A2b] mb-2">Assessment Data</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">Information provided during interviews, technical assessments, written tests, and interactions with our hiring managers.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-6">
+              <div class="w-11 h-11 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-4">
+                <i class="fas fa-shield-halved text-[#69be28]"></i>
+              </div>
+              <h3 class="font-bold text-[#071A2b] mb-2">Background Verification</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">If an offer is extended, we may collect identity proof, address proof, and references for standard pre-employment background checks.</p>
+            </div>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- How We Collect -->
+        <article id="how" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-magnifying-glass text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">04 — How We Collect</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            How we collect your Personal Data
+          </h2>
+          <p class="text-slate-600 mb-8 leading-relaxed">We use different methods to collect candidate Personal Data:</p>
+          
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 p-5 rounded-2xl bg-slate-50 hover:bg-[#69be28]/5 transition-colors">
+              <div class="w-10 h-10 bg-[#69be28] rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="text-[#071A2b] font-bold">1</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-[#071A2b] mb-1">Direct Applications</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">Information you voluntarily submit through our career portal, via email to our HR department, or through job portals where we post openings.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4 p-5 rounded-2xl bg-slate-50 hover:bg-[#69be28]/5 transition-colors">
+              <div class="w-10 h-10 bg-[#69be28] rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="text-[#071A2b] font-bold">2</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-[#071A2b] mb-1">Recruitment Agencies</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">Via third-party recruitment agencies or consultants who share your profile with us for relevant job openings.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4 p-5 rounded-2xl bg-slate-50 hover:bg-[#69be28]/5 transition-colors">
+              <div class="w-10 h-10 bg-[#69be28] rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="text-[#071A2b] font-bold">3</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-[#071A2b] mb-1">Public Sources</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">Publicly available professional platforms like LinkedIn, GitHub, or personal portfolios when assessing passive candidates.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4 p-5 rounded-2xl bg-slate-50 hover:bg-[#69be28]/5 transition-colors">
+              <div class="w-10 h-10 bg-[#69be28] rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="text-[#071A2b] font-bold">4</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-[#071A2b] mb-1">HR Events & Forums</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">Data collected during campus placements, job fairs, networking events, and HR forums.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Purpose & Legal Basis -->
+        <article id="purpose" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-scale-balanced text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">05 — Purpose & Legal Basis</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Purpose & Legal Basis
+          </h2>
+          <p class="text-slate-600 mb-8 leading-relaxed">The purposes for which we process your Personal Data, along with the legal basis for each:</p>
+          
+          <div class="overflow-hidden rounded-2xl border border-slate-200">
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="bg-[#071A2b] text-white">
+                    <th class="text-left p-5 font-semibold w-1/2">Purpose</th>
+                    <th class="text-left p-5 font-semibold w-1/2">Legal Basis</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr class="purpose-row">
+                    <td class="p-5 text-slate-700 align-top">
+                      <div class="flex items-start gap-3">
+                        <i class="fas fa-user-check text-[#69be28] mt-1"></i>
+                        <span>Evaluating qualifications, skills, and suitability for applied or potential roles</span>
+                      </div>
+                    </td>
+                    <td class="p-5 text-slate-600 align-top">Necessary for taking steps at your request prior to entering into an employment contract.</td>
+                  </tr>
+                  <tr class="purpose-row">
+                    <td class="p-5 text-slate-700 align-top">
+                      <div class="flex items-start gap-3">
+                        <i class="fas fa-comments text-[#69be28] mt-1"></i>
+                        <span>Communicating with you regarding your application, interviews, and results</span>
+                      </div>
+                    </td>
+                    <td class="p-5 text-slate-600 align-top">Justified on the basis of our legitimate interest in managing the recruitment process.</td>
+                  </tr>
+                  <tr class="purpose-row">
+                    <td class="p-5 text-slate-700 align-top">
+                      <div class="flex items-start gap-3">
+                        <i class="fas fa-shield-halved text-[#69be28] mt-1"></i>
+                        <span>Conducting pre-employment background verification checks</span>
+                      </div>
+                    </td>
+                    <td class="p-5 text-slate-600 align-top">Based on the explicit consent provided by the candidate and necessary for compliance with legal obligations.</td>
+                  </tr>
+                  <tr class="purpose-row">
+                    <td class="p-5 text-slate-700 align-top">
+                      <div class="flex items-start gap-3">
+                        <i class="fas fa-gavel text-[#69be28] mt-1"></i>
+                        <span>Maintaining records of the hiring process for audit and compliance</span>
+                      </div>
+                    </td>
+                    <td class="p-5 text-slate-600 align-top">Necessary for compliance with applicable labor laws and regulations.</td>
+                  </tr>
+                  <tr class="purpose-row">
+                    <td class="p-5 text-slate-700 align-top">
+                      <div class="flex items-start gap-3">
+                        <i class="fas fa-users text-[#69be28] mt-1"></i>
+                        <span>Considering you for future job opportunities that match your profile</span>
+                      </div>
+                    </td>
+                    <td class="p-5 text-slate-600 align-top">Based on your explicit consent to be added to our talent pool database.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Sharing -->
+        <article id="share" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-share-nodes text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">06 — Data Sharing</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            To whom we share your Personal Data
+          </h2>
+          <p class="text-slate-700 leading-relaxed mb-6 text-[15px] md:text-base">
+            Your Personal Data is treated with strict confidentiality. We do not sell your data. Access is restricted to authorized personnel only. However, we may share your information under the following circumstances:
+          </p>
+          
+          <div class="space-y-6">
+            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-[#69be28]/15 rounded-xl flex items-center justify-center">
+                  <i class="fas fa-building text-[#69be28]"></i>
+                </div>
+                <h3 class="text-lg font-bold text-[#071A2b]">Internal Access</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">Shared strictly on a need-to-know basis with HR personnel, hiring managers, and interview panelists involved in the specific recruitment drive.</p>
+            </div>
+            
+            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-[#69be28]/15 rounded-xl flex items-center justify-center">
+                  <i class="fas fa-network-wired text-[#69be28]"></i>
+                </div>
+                <h3 class="text-lg font-bold text-[#071A2b]">External Service Providers</h3>
+              </div>
+              <ul class="space-y-3 text-sm text-slate-600">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-[#69be28] mt-1"></i>
+                  <span><strong>Background Check Agencies:</strong> If an offer is extended, we may share your details with our trusted verification partners to conduct background checks (subject to your explicit consent).</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-[#69be28] mt-1"></i>
+                  <span><strong>Technology Providers:</strong> We use Applicant Tracking Systems (ATS) and CRM tools (hosted on secure platforms like AWS) to manage candidate data efficiently.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-[#69be28] mt-1"></i>
+                  <span><strong>Statutory Bodies:</strong> If required by law, court order, or governmental authority.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Retention -->
+        <article id="retention" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-clock-rotate-left text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">07 — Retention Period</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Retention Period
+          </h2>
+          <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 text-[15px] md:text-base">
+            <p>We will retain your Personal Data only for as long as necessary to fulfill the purposes for which it was collected, including for the purposes of satisfying any legal, accounting, or reporting requirements.</p>
+            <p>If you are hired by Verifitrust, your candidate data will be transferred to your employee file and retained according to our Employee Records Policy. If you are not selected, we will retain your application data for a maximum of <strong>24 months</strong> to consider you for future opportunities, unless you request earlier deletion.</p>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Candidate Rights -->
+        <article id="rights" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-user-shield text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">08 — Candidate Rights</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Your Rights as a Candidate
+          </h2>
+          <p class="text-slate-600 mb-6 leading-relaxed">
+            As a candidate, you have the following rights regarding the Personal Data we process, subject to applicable data protection laws:
+          </p>
+          
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger">
+            <div class="feature-card bg-white border-soft rounded-2xl p-5">
+              <i class="fas fa-eye text-[#69be28] mb-3"></i>
+              <h3 class="font-bold text-[#071A2b] mb-2 text-sm">Right of Access</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">Request a copy of the Personal Data we hold about you.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-5">
+              <i class="fas fa-pen-to-square text-[#69be28] mb-3"></i>
+              <h3 class="font-bold text-[#071A2b] mb-2 text-sm">Right to Rectification</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">Correct any inaccurate or incomplete information in your application.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-5">
+              <i class="fas fa-trash-can text-[#69be28] mb-3"></i>
+              <h3 class="font-bold text-[#071A2b] mb-2 text-sm">Right to Erasure</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">Request the deletion of your Personal Data from our talent pool.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-5">
+              <i class="fas fa-ban text-[#69be28] mb-3"></i>
+              <h3 class="font-bold text-[#071A2b] mb-2 text-sm">Right to Object</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">Object to the processing of your data for future recruitment purposes.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-5">
+              <i class="fas fa-arrow-right-arrow-left text-[#69be28] mb-3"></i>
+              <h3 class="font-bold text-[#071A2b] mb-2 text-sm">Right to Portability</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">Obtain and reuse your data across different services.</p>
+            </div>
+            
+            <div class="feature-card bg-white border-soft rounded-2xl p-5">
+              <i class="fas fa-xmark text-[#69be28] mb-3"></i>
+              <h3 class="font-bold text-[#071A2b] mb-2 text-sm">Right to Withdraw</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">Withdraw consent for background checks or talent pool retention at any time.</p>
+            </div>
+          </div>
+          
+          <div class="mt-8 p-6 rounded-2xl bg-[#071A2b] text-white flex flex-col md:flex-row items-start md:items-center gap-4 justify-between">
+            <div>
+              <h4 class="font-bold mb-1 flex items-center gap-2">
+                <i class="fas fa-file-signature text-[#69be28]"></i> Exercise Your Rights
+              </h4>
+              <p class="text-sm text-slate-300">Share the duly filled Data Subject Request Form (DSR Form) to get started.</p>
+            </div>
+            <a href="mailto:datasubjectrights@verifitrust.com" class="btn-primary px-5 py-3 rounded-full text-sm font-semibold whitespace-nowrap">
+              <i class="fas fa-envelope mr-2"></i> datasubjectrights@verifitrust.com
+            </a>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Contact Us -->
+        <article id="contact" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-headset text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">09 — Contact Us</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Contact Us
+          </h2>
+          <p class="text-slate-700 leading-relaxed mb-8 text-[15px] md:text-base">
+            We are committed to handling your Personal Data securely. If you have any queries, concerns, or grievances regarding this Recruitment Privacy Policy, please reach out to us:
+          </p>
+          
+          <div class="grid md:grid-cols-2 gap-5">
+            <div class="bg-white border-soft rounded-2xl p-6">
+              <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-4">
+                <i class="fas fa-envelope text-[#69be28] text-xl"></i>
+              </div>
+              <h3 class="font-bold text-[#071A2b] mb-2">Email Us</h3>
+              <p class="text-sm text-slate-600 mb-3">For recruitment privacy queries or grievances.</p>
+              <a href="mailto:careers@verifitrust.com" class="text-[#69be28] font-semibold hover:underline text-sm">careers@verifitrust.com</a>
+            </div>
+            
+            <div class="bg-white border-soft rounded-2xl p-6">
+              <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-4">
+                <i class="fas fa-location-dot text-[#69be28] text-xl"></i>
+              </div>
+              <h3 class="font-bold text-[#071A2b] mb-2">Mail Us</h3>
+              <p class="text-sm text-slate-600 mb-3">Verifitrust's Data Privacy Team</p>
+              <p class="text-sm text-slate-700 leading-relaxed">
+                C/o Compliance Team<br/>
+                No. 16, Balaji Avenue, 1st Street,<br/>
+                T.Nagar, Chennai - 600 017<br/>
+                Tamil Nadu, India
+              </p>
+            </div>
+          </div>
+        </article>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div id="footer-include"></div>
+
+<!-- Load global scripts (Header, Footer, Animations) -->
+<script src="/main.js"></script>
+
+</body>
+</html>
+
