@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terms & Conditions — Verifitrust</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- AEO & GEO Schema for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Terms & Conditions — Verifitrust",
+  "description": "Read the Terms of Use for www.verifitrust.com. Understand the rules, restrictions, and limitations governing your access and use of our website and services.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Verifitrust Inc.",
+    "url": "https://verifitrust.com"
+  }
+}
+</script>
+
+<style>
+  :root{
+    --primary: #69be28;
+    --primary-dark: #4f9e1a;
+    --primary-soft: #eaf7d8;
+    --secondary: #071A2b;
+    --secondary-soft: #122845;
+    --white: #ffffff;
+    --grey-50: #f8fafc;
+    --grey-100: #f1f5f9;
+    --grey-200: #e2e8f0;
+    --grey-600: #475569;
+    --grey-700: #334155;
+  }
+  *{ -webkit-font-smoothing: antialiased; }
+  body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    color: var(--secondary);
+    overflow-x: hidden;
+  }
+  .font-serif{ font-family: 'Instrument Serif', serif; font-weight: 400; }
+  
+  ::-webkit-scrollbar{ width: 10px; }
+  ::-webkit-scrollbar-track{ background: #f1f5f9; }
+  ::-webkit-scrollbar-thumb{ background: #69be28; border-radius: 5px; }
+  
+  /* Gradient text */
+  .gradient-text{
+    background: linear-gradient(135deg, #071A2b 0%, #2d5a1a 50%, #69be28 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Buttons */
+  .btn-primary{
+    background: var(--primary);
+    color: var(--secondary);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 4px 14px rgba(105,190,40,0.3);
+  }
+  .btn-primary:hover{
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(105,190,40,0.4);
+  }
+  
+  /* Fade in animation */
+  .fade-up{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fade-up.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Card hover */
+  .feature-card{
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before{
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, #69be28, transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  .feature-card:hover::before{ transform: translateX(100%); }
+  .feature-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(7,26,43,0.08);
+    border-color: rgba(105,190,40,0.3);
+  }
+  
+  .mobile-menu{
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-menu.open{ transform: translateX(0); }
+  
+  ::selection{ background: #69be28; color: #071A2b; }
+  
+  .border-soft{ border: 1px solid rgba(7,26,43,0.08); }
+  
+  .stagger > *{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .stagger.visible > *{ opacity: 1; transform: translateY(0); }
+  .stagger.visible > *:nth-child(1){ transition-delay: 0.05s; }
+  .stagger.visible > *:nth-child(2){ transition-delay: 0.15s; }
+  .stagger.visible > *:nth-child(3){ transition-delay: 0.25s; }
+  .stagger.visible > *:nth-child(4){ transition-delay: 0.35s; }
+  .stagger.visible > *:nth-child(5){ transition-delay: 0.45s; }
+  .stagger.visible > *:nth-child(6){ transition-delay: 0.55s; }
+  .stagger.visible > *:nth-child(7){ transition-delay: 0.65s; }
+  .stagger.visible > *:nth-child(8){ transition-delay: 0.75s; }
+  
+  html{ scroll-behavior: smooth; scroll-padding-top: 100px; }
+  
+  /* TOC active link */
+  .toc-link{
+    position: relative;
+    transition: all 0.2s ease;
+    color: #475569;
+  }
+  .toc-link:hover{ color: #69be28; }
+  .toc-link.active{
+    color: #69be28;
+    font-weight: 600;
+  }
+  .toc-link.active::before{
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 18px;
+    background: #69be28;
+    border-radius: 2px;
+  }
+  
+  /* Callout */
+  .callout{
+    border-left: 4px solid #69be28;
+    background: linear-gradient(90deg, rgba(105,190,40,0.06), rgba(105,190,40,0.01));
+  }
+  
+  .callout-warn{
+    border-left: 4px solid #f59e0b;
+    background: linear-gradient(90deg, rgba(245,158,11,0.06), rgba(245,158,11,0.01));
+  }
+  
+  .anchor-offset{
+    scroll-margin-top: 100px;
+  }
+  
+  /* Section divider */
+  .section-divider{
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e2e8f0 20%, #e2e8f0 80%, transparent);
+  }
+  
+  @keyframes pulse-dot{
+    0%,100%{ opacity: 1; }
+    50%{ opacity: 0.4; }
+  }
+  .pulse-dot{ animation: pulse-dot 2s ease-in-out infinite; }
+  
+  /* Decorative background blob */
+  .blob{
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    z-index: 0;
+  }
+</style>
+</head>
+<body class="bg-white">
+
+<!-- ============ HEADER ============ -->
+<div id="header-include"></div>
+
+<!-- ============ MAIN CONTENT WITH TOC ============ -->
+<section class="pb-24 lg:pb-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+      
+      <!-- Sticky Table of Contents -->
+      <aside class="lg:col-span-3 hidden lg:block">
+        <div class="sticky top-28">
+          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 flex items-center gap-2">
+              <i class="fas fa-list-ul text-[#69be28]"></i> Contents
+            </h3>
+            <nav class="flex flex-col gap-3 text-sm">
+              <a href="#introduction" class="toc-link anchor-offset">Introduction</a>
+              <a href="#restrictions" class="toc-link anchor-offset">Restrictions</a>
+              <a href="#warranties" class="toc-link anchor-offset">No Warranties</a>
+              <a href="#liability" class="toc-link anchor-offset">Limitations of Liability</a>
+              <a href="#governing-law" class="toc-link anchor-offset">Governing Law & Jurisdiction</a>
+              <a href="#changes" class="toc-link anchor-offset">Changes to Terms of Use</a>
+            </nav>
+          </div>
+          
+          <div class="mt-6 p-5 rounded-2xl bg-[#071A2b] text-white">
+            <i class="fas fa-scale-balanced text-[#69be28] text-xl mb-3"></i>
+            <h4 class="font-bold mb-2">Need legal clarification?</h4>
+            <p class="text-xs text-slate-300 mb-4">Our compliance team is here to assist you.</p>
+            <a href="mailto:legal@verifitrust.com" class="inline-flex items-center gap-2 text-xs font-semibold text-[#69be28] hover:underline">
+              legal@verifitrust.com <i class="fas fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+      </aside>
+      
+      <!-- Main Content Area -->
+      <div class="lg:col-span-9 space-y-16">
+        
+        <!-- Introduction -->
+        <article id="introduction" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-file-shield text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">01 — Introduction</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Introduction
+          </h2>
+          <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 text-[15px] md:text-base">
+            <p>These Website Terms of Use written on this webpage shall manage your use of our website <a href="https://www.verifitrust.com" class="text-[#69be28] font-semibold">www.verifitrust.com</a> (“Website”).</p>
+            <p>By accessing the Website, you agree to be bound by these Website Terms of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. You must not use this Website if you disagree with any of these Website Terms of Use.</p>
+            <p><strong>Verifitrust Inc.</strong> and/or their affiliates ("<strong>Verifitrust</strong>") retain all their respective Intellectual Property Rights and material contained on this Website, including trademarks displayed on this Website and copyright on all the text, graphics, etc.</p>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Restrictions -->
+        <article id="restrictions" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-ban text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">02 — Restrictions</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Restrictions
+          </h2>
+          <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 text-[15px] md:text-base mb-6">
+            <p>The content and writings on this Website are the property of Verifitrust Inc. We grant limited and non-exclusive rights to access and peruse the content herein. No part of the Website shall be modified or incorporated in any other work, publication, or other website, whether in hard copy or electronic format, including postings to any other website.</p>
+            <p>Sale or distribution, for commercial gain, by reproduction or otherwise, of any part of the Website, whatsoever, is strictly prohibited hereunder.</p>
+            <p>Any person, organization, or institution discovered reproducing, duplicating, and distributing the content herein without express permission of the owners of this Website will be in violation of and subject to applicable copyright laws.</p>
+          </div>
+          
+          <div class="callout-warn rounded-r-xl p-5">
+            <div class="flex items-start gap-3">
+              <i class="fas fa-triangle-exclamation text-amber-500 mt-1"></i>
+              <div>
+                <h4 class="font-bold text-[#071A2b] mb-1">Data Mining & Harvesting Prohibited</h4>
+                <p class="text-sm text-slate-700 leading-relaxed">You will not engage in any data mining, data harvesting, data extracting, or any other similar activity in relation to this Website. Additionally, you will not perform any action pertaining to this Website in any way that impacts user access to this Website.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- No Warranties -->
+        <article id="warranties" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-circle-exclamation text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">03 — No Warranties</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            No Warranties
+          </h2>
+          <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 text-[15px] md:text-base">
+            <p>Although every effort has been made to provide accurate content on these pages, neither Verifitrust, nor any of its employees, directors, shareholders, consultants, or associates make any warranty, expressed or implied, or assume any legal liability or responsibility for the accuracy or completeness of any information contained on this Website.</p>
+            <p>Verifitrust cannot be held responsible for the contents of any pages referenced by external sources. Reference herein to any company does not necessarily constitute or imply its endorsement or recommendation by Verifitrust or any of its employees.</p>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Limitations of Liability -->
+        <article id="liability" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-shield-halved text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">04 — Limitations of Liability</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Limitations of Liability
+          </h2>
+          <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 text-[15px] md:text-base">
+            <p>Verifitrust Inc. or their affiliates, officers, employees, or agents are neither responsible nor liable for any inaccuracies, errors, or omissions, or for any loss, damage, or expense, including, without limitation, any loss of profit, indirect, special, incidental, or consequential loss/damages, arising out of any access to or use of the Website.</p>
+            <p>This limitation also applies to any liability concerning the material contained on the Website or any website linked to it, or the inability to use the Website and/or the materials contained on the Website.</p>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Governing Law & Jurisdiction -->
+        <article id="governing-law" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-gavel text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">05 — Governing Law & Jurisdiction</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Governing Law & Jurisdiction
+          </h2>
+          <div class="callout rounded-r-xl p-6">
+            <p class="text-slate-700 leading-relaxed text-[15px] md:text-base">
+              These Terms of Use are governed by and construed in accordance with the Indian laws. You irrevocably submit to the exclusive jurisdiction of the courts in India.
+            </p>
+          </div>
+        </article>
+
+        <div class="section-divider"></div>
+
+        <!-- Changes to Terms of Use -->
+        <article id="changes" class="anchor-offset fade-up scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 bg-[#69be28]/10 rounded-xl flex items-center justify-center">
+              <i class="fas fa-arrows-rotate text-[#69be28]"></i>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-[#69be28]">06 — Changes to Terms of Use</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#071A2b] mb-5">
+            Changes to Terms of Use
+          </h2>
+          <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4 text-[15px] md:text-base">
+            <p>Verifitrust Inc. reserves the right to change or revise these Terms of Use at any time by posting any changes or a revised Terms of Use on this Website. Verifitrust Inc. will alert you to any changes or revisions by indicating on the top of this document the date of update when it was last revised.</p>
+            <p>The changed or revised document will be effective immediately after it is posted on this Website. Your use of the Website following the posting of any such changes will constitute your acceptance of any such changes or revisions.</p>
+          </div>
+          
+          <div class="mt-6 bg-slate-50 border border-slate-200 rounded-2xl p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-[#69be28] rounded-xl flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-circle-check text-[#071A2b]"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-[#071A2b] mb-1">Acceptance & Privacy Policy</h4>
+                <p class="text-sm text-slate-600 leading-relaxed">If you do not agree to these Terms of Use (including any referenced policies), please refrain from using this Website. By accepting the above-mentioned Terms of Use, the user also agrees to accept the Privacy Policy of this Website.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div id="footer-include"></div>
+
+<!-- Load global scripts (Header, Footer, Animations) -->
+<script src="/main.js"></script>
+
+</body>
+</html>
+
