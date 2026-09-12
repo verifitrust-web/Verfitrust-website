@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Exit Interview & Offboarding Insights — Verifitrust</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- AEO & GEO Schema for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a structured exit interview?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A structured exit interview is a formal conversation conducted with an employee who is leaving the organization. It uses a consistent framework of questions to gather honest feedback about their experience, reasons for leaving, and suggestions for improvement, helping companies turn offboarding into actionable insights."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should exit interviews be conducted by internal HR or an external agency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "While internal HR can conduct exit interviews, many organizations prefer using an external, neutral agency like Verifitrust. External interviews encourage departing employees to be more candid and open, resulting in less filtered, more reliable data that accurately reflects the company culture and potential areas of improvement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the details shared by employees during an exit interview confidential?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. All feedback shared during an exit interview is strictly confidential. Data is anonymized and aggregated in reporting to prevent the identification of specific individuals. This ensures departing employees feel safe to share honest feedback without fear of burning bridges."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Verifitrust turn interview feedback into actionable insights?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our platform uses AI-driven sentiment analysis and thematic categorization to process interview responses. We identify recurring patterns—such as compensation, management, or career growth—and present them in a clear, visual dashboard. This helps leadership pinpoint exactly where to take action to improve retention."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can we customize the exit interview questions for our company?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Verifitrust offers fully customizable interview templates. While we provide scientifically backed standard questions, you can easily tailor the questionnaire to address specific departments, roles, or strategic initiatives relevant to your organization's current goals."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do exit interviews actually help improve employee retention?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. When acted upon, exit interview data is one of the most powerful tools for improving retention. By understanding why employees leave, organizations can identify systemic issues, improve company culture, and implement proactive changes that keep top talent engaged and staying longer."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --primary: #69be28;
+    --primary-dark: #4f9e1a;
+    --primary-soft: #eaf7d8;
+    --secondary: #071A2b;
+    --secondary-soft: #122845;
+    --white: #ffffff;
+    --grey-50: #f8fafc;
+    --grey-100: #f1f5f9;
+    --grey-200: #e2e8f0;
+    --grey-600: #475569;
+    --grey-700: #334155;
+  }
+  *{ -webkit-font-smoothing: antialiased; }
+  body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    color: var(--secondary);
+    overflow-x: hidden;
+  }
+  .font-serif{ font-family: 'Instrument Serif', serif; font-weight: 400; }
+  
+  ::-webkit-scrollbar{ width: 10px; }
+  ::-webkit-scrollbar-track{ background: #f1f5f9; }
+  ::-webkit-scrollbar-thumb{ background: #69be28; border-radius: 5px; }
+  
+  .gradient-text{
+    background: linear-gradient(135deg, #071A2b 0%, #2d5a1a 50%, #69be28 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .btn-primary{
+    background: var(--primary);
+    color: var(--secondary);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 4px 14px rgba(105,190,40,0.3);
+  }
+  .btn-primary:hover{
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(105,190,40,0.4);
+  }
+  .btn-secondary{
+    background: transparent;
+    color: var(--secondary);
+    border: 1.5px solid var(--secondary);
+    transition: all 0.3s ease;
+  }
+  .btn-secondary:hover{
+    background: var(--secondary);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  
+  .fade-up{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fade-up.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .feature-card{
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before{
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, #69be28, transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  .feature-card:hover::before{ transform: translateX(100%); }
+  .feature-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(7,26,43,0.08);
+    border-color: rgba(105,190,40,0.3);
+  }
+  
+  .dashboard-card{
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px -15px rgba(7,26,43,0.1), 0 0 0 1px rgba(7,26,43,0.02);
+  }
+  
+  @keyframes drawCheck{ to{ stroke-dashoffset: 0; } }
+  .check-path{
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawCheck 1.5s ease forwards;
+  }
+  
+  .stripe-bg{
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(105,190,40,0.04) 10px,
+      rgba(105,190,40,0.04) 20px
+    );
+  }
+  
+  .mobile-menu{
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-menu.open{ transform: translateX(0); }
+  
+  ::selection{ background: #69be28; color: #071A2b; }
+  
+  .border-soft{ border: 1px solid rgba(7,26,43,0.08); }
+  
+  .stagger > *{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .stagger.visible > *{ opacity: 1; transform: translateY(0); }
+  .stagger.visible > *:nth-child(1){ transition-delay: 0.05s; }
+  .stagger.visible > *:nth-child(2){ transition-delay: 0.15s; }
+  .stagger.visible > *:nth-child(3){ transition-delay: 0.25s; }
+  .stagger.visible > *:nth-child(4){ transition-delay: 0.35s; }
+  .stagger.visible > *:nth-child(5){ transition-delay: 0.45s; }
+  .stagger.visible > *:nth-child(6){ transition-delay: 0.55s; }
+  
+  @keyframes verifyRing{
+    0%,100%{ transform: scale(1); opacity: 0.6; }
+    50%{ transform: scale(1.1); opacity: 1; }
+  }
+  .verify-ring{ animation: verifyRing 3s ease-in-out infinite; }
+
+  @keyframes pulseBar{
+    0%,100%{ transform: scaleY(0.4); }
+    50%{ transform: scaleY(1); }
+  }
+  .bar-anim{ transform-origin: bottom; animation: pulseBar 2.4s ease-in-out infinite; }
+  
+  html{ scroll-behavior: smooth; }
+  
+  .step-badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: #071A2b;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 9999px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  
+  .comic-card {
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    border: 1px solid rgba(7,26,43,0.08);
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px -5px rgba(7,26,43,0.05);
+  }
+  .comic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -5px rgba(7,26,43,0.1);
+    border-color: rgba(105,190,40,0.3);
+  }
+  
+  .faq-item {
+    border: 1px solid #e2e8f0;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .faq-item.active {
+    border-color: rgba(105,190,40,0.5);
+    box-shadow: 0 10px 30px -5px rgba(105,190,40,0.1);
+  }
+  .faq-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    text-align: left;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    gap: 1rem;
+  }
+  .faq-trigger h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #071A2b;
+  }
+  .faq-icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    background: rgba(105,190,40,0.1);
+    color: #4f9e1a;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  }
+  .faq-item.active .faq-icon {
+    transform: rotate(135deg);
+    background: #69be28;
+    color: #071A2b;
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+  .faq-answer-inner {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  .footer-link {
+    color: #94a3b8;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    display: inline-block;
+  }
+  .footer-link:hover {
+    color: #69be28;
+    padding-left: 4px;
+  }
+  
+  .footer-col-title {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.02em;
+  }
+  
+  .social-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    transition: all 0.3s ease;
+  }
+  .social-icon:hover {
+    background: #69be28;
+    color: #071A2b;
+    border-color: #69be28;
+    transform: translateY(-3px);
+  }
+</style>
+</head>
+<body class="bg-white">
+
+<!-- ============ HEADER ============ -->
+<div id="header-include"></div>
+
+<!-- ============ HERO ============ -->
+<section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-white">
+  <div class="absolute top-20 right-0 w-96 h-96 bg-[#69be28]/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 left-0 w-80 h-80 bg-[#071A2b]/5 rounded-full blur-3xl"></div>
+  
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      
+      <div class="relative z-10">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full mb-6">
+          <i class="fas fa-door-open text-[#69be28]"></i>
+          <span class="text-xs font-semibold text-[#071A2b]">Exit Interview & Offboarding</span>
+        </div>
+        
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
+          <span class="block text-[#071A2b]">Every goodbye</span>
+          <span class="block">
+            <span class="gradient-text">holds a blueprint</span>
+          </span>
+          <span class="block text-[#071A2b]">for <span class="text-[#69be28]">growth.</span></span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-xl leading-relaxed">
+          For employees moving on, their feedback is your most valuable insight. We make exit interviews comfortable, confidential, and actionable — turning departures into data that drives retention, culture, and leadership improvement.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#cta" class="btn-primary px-7 py-4 rounded-full font-semibold text-base inline-flex items-center justify-center gap-2">
+            Start Listening Today
+            <i class="fas fa-arrow-right text-sm"></i>
+          </a>
+          <a href="#process" class="btn-secondary px-7 py-4 rounded-full font-semibold text-base inline-flex items-center justify-center gap-2">
+            <i class="fas fa-play text-xs"></i>
+            See How It Works
+          </a>
+        </div>
+      </div>
+      
+      <div class="relative">
+        <div class="dashboard-card max-w-md mx-auto relative z-10 p-6">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <div class="text-xs text-slate-400 uppercase tracking-wider">Exit Insights Dashboard</div>
+              <div class="text-lg font-bold text-[#071A2b]">Priya Sharma</div>
+              <div class="text-xs text-slate-500">Senior Designer (Departing)</div>
+            </div>
+            <div class="w-10 h-10 bg-[#69be28] rounded-full flex items-center justify-center">
+              <i class="fas fa-microphone text-[#071A2b]"></i>
+            </div>
+          </div>
+          
+          <!-- Sentiment Gauge -->
+          <div class="bg-slate-50 rounded-xl p-4 mb-4">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs text-slate-500">Overall Sentiment</span>
+              <span class="text-xs font-bold text-[#69be28]">Constructive</span>
+            </div>
+            <div class="flex items-end gap-2 mb-2">
+              <span class="text-3xl font-bold text-[#071A2b]">+82</span>
+              <span class="text-xs text-slate-400 mb-1">/ 100</span>
+            </div>
+            <div class="flex gap-1 h-2">
+              <div class="flex-1 rounded-full bg-red-400/40"></div>
+              <div class="flex-1 rounded-full bg-orange-400/40"></div>
+              <div class="flex-1 rounded-full bg-yellow-400/40"></div>
+              <div class="flex-1 rounded-full bg-lime-400/40"></div>
+              <div class="flex-1 rounded-full bg-[#69be28]"></div>
+            </div>
+          </div>
+          
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Reason for Leaving</span>
+              <span class="text-xs font-semibold text-[#071A2b] flex items-center gap-1"><i class="fas fa-arrow-trend-up text-[#69be28]"></i> Career Growth</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Manager Feedback</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Positive</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Culture Feedback</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Empowering</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Would Recommend</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Yes</span>
+            </div>
+          </div>
+          
+          <div class="bg-[#69be28]/8 rounded-xl p-4 mt-6 flex items-center gap-3">
+            <div class="verify-ring w-8 h-8 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-shield-halved text-[#071A2b] text-xs"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-[#071A2b]">Interview Complete</div>
+              <div class="text-[10px] text-slate-500">Anonymized for reporting</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Floating mini cards -->
+        <div class="hidden md:block absolute -top-4 -left-4 bg-white rounded-2xl shadow-lg p-3 border border-slate-100 z-20">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-[#69be28]/10 rounded-lg flex items-center justify-center">
+              <i class="fas fa-chart-line text-[#69be28] text-sm"></i>
+            </div>
+            <div>
+              <div class="text-[10px] text-slate-500">Trend Pattern</div>
+              <div class="text-xs font-bold text-[#071A2b]">Detected</div>
+            </div>
+          </div>
+        </div>
+        <div class="hidden md:block absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-lg p-3 border border-slate-100 z-20">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-[#69be28]/10 rounded-lg flex items-center justify-center">
+              <i class="fas fa-lock text-[#69be28] text-sm"></i>
+            </div>
+            <div>
+              <div class="text-[10px] text-slate-500">Data Privacy</div>
+              <div class="text-xs font-bold text-[#071A2b]">Secured</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMIC PROCESS TIMELINE ============ -->
+<section id="process" class="py-24 lg:py-32 bg-gradient-to-b from-white to-slate-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="text-center max-w-3xl mx-auto mb-20 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">The Journey</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        The journey to <span class="font-serif italic text-[#69be28]">actionable</span> insights
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        From a bittersweet goodbye to a stronger, more resilient workplace. Follow how a structured exit interview turns departing feedback into your organization's biggest advantage.
+      </p>
+    </div>
+
+    <div class="space-y-12 lg:space-y-24">
+
+      <!-- Step 1 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="comic-card fade-up order-1 lg:order-1">
+          <img src="https://z-cdn-media.chatglm.cn/files/51be1d7f-3586-40b1-ad1c-74ac5bdb3b72.png?auth_key=1889092178-836bf1837ac74035940987d1684733cf-0-d9cc5ce6c120f708691f0b0b117b7516&format=webp" alt="Employee packing box saying goodbye comic" class="w-full h-auto" loading="lazy">
+        </div>
+        <div class="text-center lg:text-left fade-up order-2 lg:order-2 py-4">
+          <span class="step-badge mb-4">Step 01</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">A meaningful goodbye.</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">"Today's my last day. It's been quite a journey." The exit process begins with a warm, empathetic conversation. We ensure departing employees feel valued for their contributions, creating a safe space for them to open up about their experience before they leave.</p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="text-center lg:text-right fade-up order-2 lg:order-1 py-4">
+          <span class="step-badge mb-4">Step 02</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Comfortable and confidential.</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">"What made you decide to move on?" Conducted by neutral experts, our interviews encourage candor. We ask the right questions in a structured, non-judgmental way, allowing employees to share the real reasons behind their departure—safely and confidentially.</p>
+        </div>
+        <div class="comic-card fade-up order-1 lg:order-2">
+          <img src="https://z-cdn-media.chatglm.cn/files/5adde7f7-f2e6-47b3-a45e-094bf7a37c54.png?auth_key=1889092178-93605f9fb5d848718fc543ff326b9afe-0-1c2b4bc40e848a8e2076c86387f8b3b7&format=webp" alt="HR professional talking with departing employee comic" class="w-full h-auto" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="comic-card fade-up order-1 lg:order-1">
+          <img src="https://z-cdn-media.chatglm.cn/files/edde8397-5598-4b29-94cf-33706d40fa01.png?auth_key=1889092178-a5e3efbb6d3c43379d39c68c96caa338-0-3816f3d4ce5d2a204e3ad35f3ff3ad4d&format=webp" alt="Employee discussing limited growth opportunities comic" class="w-full h-auto" loading="lazy">
+        </div>
+        <div class="text-center lg:text-left fade-up order-2 lg:order-2 py-4">
+          <span class="step-badge mb-4">Step 03</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Digging into the "Why".</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">"I enjoyed the team, but I felt there were limited growth opportunities." We go beyond surface-level answers to uncover root causes. By deeply understanding their perspective on career growth, management, and culture, we find the exact areas that need your attention.</p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="text-center lg:text-right fade-up order-2 lg:order-1 py-4">
+          <span class="step-badge mb-4">Step 04</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Turning feedback into data.</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">One employee's feedback is a conversation; repeated feedback is a pattern. Our AI-driven dashboard categorizes insights into themes like Management, Compensation, and Career Growth, visualizing trends so you can instantly see the bigger picture.</p>
+        </div>
+        <div class="comic-card fade-up order-1 lg:order-2">
+          <img src="https://z-cdn-media.chatglm.cn/files/30c2f2e2-227b-4b74-aaad-11d2f90239c3.png?auth_key=1889092178-b5ba77c27feb4780b051783c6a334a40-0-f0fc4e7e16a20ffa980d03566e24f9f5&format=webp" alt="HR looking at employee feedback insights dashboard comic" class="w-full h-auto" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="comic-card fade-up order-1 lg:order-1">
+          <img src="https://z-cdn-media.chatglm.cn/files/49ab0ee4-d6d2-4244-bdee-20f270a900b3.png?auth_key=1889092178-b2aaa4ef6b80499eaa2f776c225ad141-0-96af947917371ccbee7bd657ffc1284b&format=webp" alt="HR discussing key improvement areas comic" class="w-full h-auto" loading="lazy">
+        </div>
+        <div class="text-center lg:text-left fade-up order-2 lg:order-2 py-4">
+          <span class="step-badge mb-4">Step 05</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Insights into action.</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">"Let's turn these insights into action." We don't just collect data; we help you strategize. Identify key improvement areas to build better growth plans, enhance communication, and elevate the overall employee experience for those who stay.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Step 6 (Full Width Banner) -->
+    <div class="mt-12 lg:mt-24 fade-up">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-0 items-center bg-[#071A2b] rounded-[2rem] overflow-hidden border border-slate-100 shadow-lg">
+        <div class="p-8 lg:p-12 lg:pl-16 order-2 lg:order-1">
+          <span class="step-badge mb-6 bg-[#69be28] text-[#071A2b]">Step 06</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight mt-4">
+            Closing the loop. <br><span class="font-serif italic text-[#69be28]">Building stronger teams.</span>
+          </h2>
+          <p class="text-slate-300 mb-8 leading-relaxed">
+            "I'm glad my feedback could make a difference." When departing employees see their insights creating real change, it builds lasting goodwill. Your employer brand strengthens, and your team evolves into a better, more resilient workplace.
+          </p>
+          <a href="#cta" class="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm">
+            Transform Your Offboarding
+            <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+        <div class="h-full w-full order-1 lg:order-2">
+          <img src="https://z-cdn-media.chatglm.cn/files/e6c7b13d-2b72-425a-a268-38a3e989418c.png?auth_key=1889092178-bafd2001167b4e1ab4d9241ea1643be9-0-18d29717a54ddee050b3b0fceb5b9ba2&format=webp" alt="Employee and HR closing the feedback loop comic" class="w-full h-full object-cover" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SIMPLE AS 1, 2, 3 ============ -->
+<section class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">How it works</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Offboarding as simple as <span class="font-serif italic text-[#69be28]">1, 2, 3</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        We handle the interviews, the data analysis, and the actionable reporting — so your HR team can focus on implementing changes that actually retain top talent.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8 stagger">
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-paper-plane text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 1</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Invite & schedule</h3>
+        <p class="text-slate-600 leading-relaxed">Automatically trigger a personalized, confidential interview invitation the moment an employee submits their resignation.</p>
+      </div>
+      
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-headset text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 2</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Conduct interview</h3>
+        <p class="text-slate-600 leading-relaxed">Our neutral experts conduct a structured, empathetic interview—via phone, video, or form—ensuring honest and detailed feedback.</p>
+      </div>
+      
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-chart-pie text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 3</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Analyze & improve</h3>
+        <p class="text-slate-600 leading-relaxed">Receive an anonymized, data-rich dashboard highlighting themes and trends, with clear recommendations to improve retention.</p>
+      </div>
+    </div>
+
+    <!-- Feature Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 stagger">
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-user-shield text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Neutral & Safe</h3>
+          <p class="text-sm text-slate-600">Third-party neutrality encourages departing employees to be completely honest without fear of burning bridges.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-lock text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Strictly Confidential</h3>
+          <p class="text-sm text-slate-600">All feedback is anonymized and aggregated. Individual identities are never exposed in reporting.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-brain text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">AI-Powered Themes</h3>
+          <p class="text-sm text-slate-600">Automatically categorizes qualitative feedback into actionable themes like management, pay, and culture.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-sliders text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Custom Templates</h3>
+          <p class="text-sm text-slate-600">Tailor your interview questions to specific roles, departments, or strategic company goals.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-arrow-trend-up text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Trend Analysis</h3>
+          <p class="text-sm text-slate-600">Track sentiment and turnover reasons over time to see if your culture and retention initiatives are working.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-handshake text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Alumni Goodwill</h3>
+          <p class="text-sm text-slate-600">A positive offboarding experience turns former employees into brand ambassadors and boomerang hires.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ (AEO & GEO Optimized) ============ -->
+<section class="py-24 lg:py-32 bg-slate-50">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">FAQ</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Frequently asked <span class="font-serif italic text-[#69be28]">questions</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">Everything you need to know about running structured, confidential exit interviews that actually improve employee retention.</p>
+    </div>
+
+    <div class="space-y-4 stagger" id="faq-container">
+      
+      <!-- FAQ Item 1 -->
+      <div class="faq-item active">
+        <button class="faq-trigger">
+          <h3>What is a structured exit interview?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer" style="max-height: 500px;">
+          <div class="faq-answer-inner">
+            <p>A structured exit interview is a formal conversation conducted with an employee who is leaving the organization. It uses a consistent framework of questions to gather honest feedback about their experience, reasons for leaving, and suggestions for improvement, helping companies turn offboarding into actionable insights.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>Should exit interviews be conducted by internal HR or an external agency?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>While internal HR can conduct exit interviews, many organizations prefer using an external, neutral agency like Verifitrust. External interviews encourage departing employees to be more candid and open, resulting in less filtered, more reliable data that accurately reflects the company culture and potential areas of improvement.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>Are the details shared by employees during an exit interview confidential?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Absolutely. All feedback shared during an exit interview is strictly confidential. Data is anonymized and aggregated in reporting to prevent the identification of specific individuals. This ensures departing employees feel safe to share honest feedback without fear of burning bridges.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>How does Verifitrust turn interview feedback into actionable insights?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Our platform uses AI-driven sentiment analysis and thematic categorization to process interview responses. We identify recurring patterns—such as compensation, management, or career growth—and present them in a clear, visual dashboard. This helps leadership pinpoint exactly where to take action to improve retention.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 5 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>Can we customize the exit interview questions for our company?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Yes. Verifitrust offers fully customizable interview templates. While we provide scientifically backed standard questions, you can easily tailor the questionnaire to address specific departments, roles, or strategic initiatives relevant to your organization's current goals.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 6 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>Do exit interviews actually help improve employee retention?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Yes. When acted upon, exit interview data is one of the most powerful tools for improving retention. By understanding why employees leave, organizations can identify systemic issues, improve company culture, and implement proactive changes that keep top talent engaged and staying longer.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="cta" class="py-24 lg:py-32 relative overflow-hidden bg-white">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="relative bg-[#071A2b] rounded-[2.5rem] p-10 md:p-16 lg:p-20 overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-80 h-80 bg-[#69be28]/20 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-[#69be28]/10 rounded-full blur-3xl"></div>
+      <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(105,190,40,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(105,190,40,0.5) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      
+      <div class="relative grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-1.5 bg-[#69be28]/15 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-6">Get started today</span>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Turn goodbyes into <span class="font-serif italic text-[#69be28]">growth</span>
+          </h2>
+          <p class="text-lg text-slate-300 mb-8 leading-relaxed">
+            Join 4,000+ companies that trust Verifitrust to capture honest, actionable offboarding feedback. Stop guessing why employees leave—start knowing.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#" class="btn-primary inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold">
+              Start free trial
+              <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+            <a href="#" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold border border-white/20 text-white hover:bg-white/5 transition-all">
+              Book a demo
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8">
+          <h3 class="text-white font-bold text-xl mb-6">What's included:</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">5 free exit interviews — no card required</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">Access to AI-driven sentiment analytics</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">Fully anonymized & confidential reporting</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">24/7 priority support</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div id="footer-include"></div>
+
+<!-- Load global scripts (Header, Footer, Animations) -->
+<script src="/main.js"></script>
+
+</body>
+</html>
+
