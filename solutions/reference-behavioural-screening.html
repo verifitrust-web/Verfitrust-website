@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reference & Behavioural Screening — Verifitrust</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- AEO & GEO Schema for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is reference & behavioural screening?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reference & behavioural screening is the process of contacting a candidate's provided professional references — typically former managers, colleagues, or supervisors — to verify their role, responsibilities, performance, communication style, teamwork, and overall professional conduct. It is conducted with candidate consent and focuses strictly on job-relevant behavioural insights."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should reference & behavioural screening be used?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reference & behavioural screening is recommended for nearly all roles, especially those requiring collaboration, leadership, client interaction, or cultural alignment. It is particularly valuable for mid-to-senior level positions, team-critical roles, and positions where interpersonal dynamics directly impact team performance and workplace culture."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does the reference & behavioural verification process take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most reference & behavioural screenings are completed within 48 to 96 hours, depending on the number of references provided, their availability, and time zones. Real-time status updates are visible on your dashboard throughout the process, with automated follow-ups to ensure timely completion."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is reference & behavioural screening legal and compliant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Our screening is fully compliant with FCRA, EEOC, GDPR, and local hiring regulations. References are only contacted after explicit candidate consent is captured. Questions are structured to assess job-relevant behavioural competencies only — never personal lifestyle, protected attributes, or discriminatory factors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if a behavioural concern is flagged during reference checks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When a behavioural concern is raised during a reference call, our system captures the full context of the feedback — including the question asked, the reference's response, and surrounding circumstances. A trained analyst reviews whether the signal is genuinely job-relevant before it reaches your team. We never auto-reject candidates — final decisions always remain with your hiring team."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can candidates dispute the findings of a reference & behavioural screening?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. Candidates have the right to review flagged feedback and provide additional context or alternative references before any hiring decision is finalized. Verifitrust provides a structured pre-adverse action workflow that ensures fairness, transparency, and the opportunity for candidates to clarify or respond to any concerns raised during reference checks."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --primary: #69be28;
+    --primary-dark: #4f9e1a;
+    --primary-soft: #eaf7d8;
+    --secondary: #071A2b;
+    --secondary-soft: #122845;
+    --white: #ffffff;
+    --grey-50: #f8fafc;
+    --grey-100: #f1f5f9;
+    --grey-200: #e2e8f0;
+    --grey-600: #475569;
+    --grey-700: #334155;
+  }
+  *{ -webkit-font-smoothing: antialiased; }
+  body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    color: var(--secondary);
+    overflow-x: hidden;
+  }
+  .font-serif{ font-family: 'Instrument Serif', serif; font-weight: 400; }
+  
+  ::-webkit-scrollbar{ width: 10px; }
+  ::-webkit-scrollbar-track{ background: #f1f5f9; }
+  ::-webkit-scrollbar-thumb{ background: #69be28; border-radius: 5px; }
+  
+  .gradient-text{
+    background: linear-gradient(135deg, #071A2b 0%, #2d5a1a 50%, #69be28 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .btn-primary{
+    background: var(--primary);
+    color: var(--secondary);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 4px 14px rgba(105,190,40,0.3);
+  }
+  .btn-primary:hover{
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(105,190,40,0.4);
+  }
+  .btn-secondary{
+    background: transparent;
+    color: var(--secondary);
+    border: 1.5px solid var(--secondary);
+    transition: all 0.3s ease;
+  }
+  .btn-secondary:hover{
+    background: var(--secondary);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+  
+  .fade-up{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fade-up.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .feature-card{
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before{
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, #69be28, transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  .feature-card:hover::before{ transform: translateX(100%); }
+  .feature-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(7,26,43,0.08);
+    border-color: rgba(105,190,40,0.3);
+  }
+  
+  .dashboard-card{
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px -15px rgba(7,26,43,0.1), 0 0 0 1px rgba(7,26,43,0.02);
+  }
+  
+  @keyframes drawCheck{ to{ stroke-dashoffset: 0; } }
+  .check-path{
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawCheck 1.5s ease forwards;
+  }
+  
+  .stripe-bg{
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(105,190,40,0.04) 10px,
+      rgba(105,190,40,0.04) 20px
+    );
+  }
+  
+  .mobile-menu{
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-menu.open{ transform: translateX(0); }
+  
+  ::selection{ background: #69be28; color: #071A2b; }
+  
+  .border-soft{ border: 1px solid rgba(7,26,43,0.08); }
+  
+  .stagger > *{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .stagger.visible > *{ opacity: 1; transform: translateY(0); }
+  .stagger.visible > *:nth-child(1){ transition-delay: 0.05s; }
+  .stagger.visible > *:nth-child(2){ transition-delay: 0.15s; }
+  .stagger.visible > *:nth-child(3){ transition-delay: 0.25s; }
+  .stagger.visible > *:nth-child(4){ transition-delay: 0.35s; }
+  .stagger.visible > *:nth-child(5){ transition-delay: 0.45s; }
+  .stagger.visible > *:nth-child(6){ transition-delay: 0.55s; }
+  
+  @keyframes verifyRing{
+    0%,100%{ transform: scale(1); opacity: 0.6; }
+    50%{ transform: scale(1.1); opacity: 1; }
+  }
+  .verify-ring{ animation: verifyRing 3s ease-in-out infinite; }
+
+  @keyframes pulseBar{
+    0%,100%{ transform: scaleY(0.4); }
+    50%{ transform: scaleY(1); }
+  }
+  .bar-anim{ transform-origin: bottom; animation: pulseBar 2.4s ease-in-out infinite; }
+  
+  html{ scroll-behavior: smooth; }
+  
+  .step-badge {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: #071A2b;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 9999px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  
+  .comic-card {
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    border: 1px solid rgba(7,26,43,0.08);
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px -5px rgba(7,26,43,0.05);
+  }
+  .comic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -5px rgba(7,26,43,0.1);
+    border-color: rgba(105,190,40,0.3);
+  }
+  
+  .faq-item {
+    border: 1px solid #e2e8f0;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .faq-item.active {
+    border-color: rgba(105,190,40,0.5);
+    box-shadow: 0 10px 30px -5px rgba(105,190,40,0.1);
+  }
+  .faq-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    text-align: left;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    gap: 1rem;
+  }
+  .faq-trigger h3 {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: #071A2b;
+    line-height: 1.4;
+  }
+  .faq-icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    background: rgba(105,190,40,0.1);
+    color: #4f9e1a;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  }
+  .faq-item.active .faq-icon {
+    transform: rotate(135deg);
+    background: #69be28;
+    color: #071A2b;
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+  .faq-answer-inner {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  .footer-link {
+    color: #94a3b8;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    display: inline-block;
+  }
+  .footer-link:hover {
+    color: #69be28;
+    padding-left: 4px;
+  }
+  
+  .footer-col-title {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.02em;
+  }
+  
+  .social-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    transition: all 0.3s ease;
+  }
+  .social-icon:hover {
+    background: #69be28;
+    color: #071A2b;
+    border-color: #69be28;
+    transform: translateY(-3px);
+  }
+
+  /* Hero rating bar */
+  .rating-bar {
+    height: 6px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    overflow: hidden;
+    position: relative;
+  }
+  .rating-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #69be28, #4f9e1a);
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fade-up.visible .rating-fill { width: var(--w); }
+</style>
+</head>
+<body class="bg-white">
+
+<!-- ============ HEADER ============ -->
+<div id="header-include"></div>
+
+<!-- ============ HERO ============ -->
+<section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-white">
+  <div class="absolute top-20 right-0 w-96 h-96 bg-[#69be28]/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 left-0 w-80 h-80 bg-[#071A2b]/5 rounded-full blur-3xl"></div>
+  
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      
+      <div class="relative z-10">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full mb-6">
+          <i class="fas fa-users text-[#69be28]"></i>
+          <span class="text-xs font-semibold text-[#071A2b]">Reference & Behavioural Screening</span>
+        </div>
+        
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
+          <span class="block text-[#071A2b]">Trust with</span>
+          <span class="block">
+            <span class="gradient-text">people.</span>
+          </span>
+          <span class="block text-[#071A2b]">Decide with <span class="text-[#69be28]">insight.</span></span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-xl leading-relaxed">
+          For roles that demand collaboration, leadership, and cultural fit — verify professional behaviour before you onboard. We connect with references who've worked closely with your candidate to assess communication, teamwork, and on-the-job conduct — fairly, transparently, and with full candidate consent.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 mb-12">
+          <a href="#cta" class="btn-primary px-7 py-4 rounded-full font-semibold text-base inline-flex items-center justify-center gap-2">
+            Start Screening Free
+            <i class="fas fa-arrow-right text-sm"></i>
+          </a>
+          <a href="#process" class="btn-secondary px-7 py-4 rounded-full font-semibold text-base inline-flex items-center justify-center gap-2">
+            <i class="fas fa-play text-xs"></i>
+            See How It Works
+          </a>
+        </div>
+        
+      </div>
+      
+      <div class="relative">
+        <div class="dashboard-card max-w-md mx-auto relative z-10 p-6">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <div class="text-xs text-slate-400 uppercase tracking-wider">Reference Check Report</div>
+              <div class="text-lg font-bold text-[#071A2b]">Rohan Sharma</div>
+              <div class="text-xs text-slate-500">Marketing Specialist Candidate</div>
+            </div>
+            <div class="w-10 h-10 bg-[#69be28] rounded-full flex items-center justify-center">
+              <i class="fas fa-check text-[#071A2b]"></i>
+            </div>
+          </div>
+          
+          <!-- Behavioural Traits Rating -->
+          <div class="bg-slate-50 rounded-xl p-4 mb-4">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs text-slate-500">Behavioural Assessment</span>
+              <span class="text-xs font-bold text-[#69be28]">Strong Fit</span>
+            </div>
+            <div class="space-y-3">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-xs text-slate-600">Communication</span>
+                  <span class="text-xs font-semibold text-[#071A2b]">Clear & Professional</span>
+                </div>
+                <div class="rating-bar"><div class="rating-fill" style="--w: 92%"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-xs text-slate-600">Teamwork</span>
+                  <span class="text-xs font-semibold text-[#071A2b]">Collaborative</span>
+                </div>
+                <div class="rating-bar"><div class="rating-fill" style="--w: 88%"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-xs text-slate-600">Ownership</span>
+                  <span class="text-xs font-semibold text-[#071A2b]">Accountable</span>
+                </div>
+                <div class="rating-bar"><div class="rating-fill" style="--w: 85%"></div></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Role & Responsibilities</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Verified</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Working Relationship</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Confirmed</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">Experience Alignment</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> Aligned</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-500">References Contacted</span>
+              <span class="text-xs font-semibold text-[#69be28] flex items-center gap-1"><i class="fas fa-check-circle"></i> 2 of 2</span>
+            </div>
+          </div>
+          
+          <div class="bg-[#69be28]/8 rounded-xl p-4 mt-6 flex items-center gap-3">
+            <div class="verify-ring w-8 h-8 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-shield-halved text-[#071A2b] text-xs"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-[#071A2b]">Screening Complete</div>
+              <div class="text-[10px] text-slate-500">Verified experience. Valuable insight.</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Floating mini cards -->
+        <div class="hidden md:block absolute -top-4 -left-4 bg-white rounded-2xl shadow-lg p-3 border border-slate-100 z-20">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-[#69be28]/10 rounded-lg flex items-center justify-center">
+              <i class="fas fa-phone text-[#69be28] text-sm"></i>
+            </div>
+            <div>
+              <div class="text-[10px] text-slate-500">Reference Call</div>
+              <div class="text-xs font-bold text-[#071A2b]">Completed</div>
+            </div>
+          </div>
+        </div>
+        <div class="hidden md:block absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-lg p-3 border border-slate-100 z-20">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-[#69be28]/10 rounded-lg flex items-center justify-center">
+              <i class="fas fa-user-check text-[#69be28] text-sm"></i>
+            </div>
+            <div>
+              <div class="text-[10px] text-slate-500">Consent</div>
+              <div class="text-xs font-bold text-[#071A2b]">Captured</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMIC PROCESS TIMELINE ============ -->
+<section id="process" class="py-24 lg:py-32 bg-gradient-to-b from-white to-slate-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="text-center max-w-3xl mx-auto mb-20 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">The Journey</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        The journey to <span class="font-serif italic text-[#69be28]">behavioural</span> trust
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        From a strong resume to a confident, people-first hiring decision. Follow how reference & behavioural screening adds the right layer of insight — fairly, transparently, and only when it matters.
+      </p>
+    </div>
+
+    <div class="space-y-12 lg:space-y-24">
+
+      <!-- Step 1 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="comic-card fade-up order-1 lg:order-1">
+          <img src="https://z-cdn-media.chatglm.cn/files/9b409631-bfd3-40f4-b9d1-7d44a9bdbf40.png?auth_key=1889093833-054595760afb40f2b69070e1b78ec4ea-0-2eb075f8b5d16376197508134247b759" alt="HR manager interviewing candidate with strong skills comic" class="w-full h-auto" loading="lazy">
+        </div>
+        <div class="text-center lg:text-left fade-up order-2 lg:order-2 py-4">
+          <span class="step-badge mb-4">Step 01</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Strong profile. Right skills. But what about the team?</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">The candidate walks in with the experience and the skills. But great people build great teams — so before the offer, there's one more critical layer: understanding how they actually work with others, communicate under pressure, and take ownership on the job.</p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="text-center lg:text-right fade-up order-2 lg:order-1 py-4">
+          <span class="step-badge mb-4">Step 02</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Who can speak to your professional journey?</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">The candidate provides professional references — typically former managers or direct supervisors who can speak to their role, responsibilities, and working style. Consent is captured upfront, and every reference is contacted only after the candidate gives explicit permission.</p>
+        </div>
+        <div class="comic-card fade-up order-1 lg:order-2">
+          <img src="https://z-cdn-media.chatglm.cn/files/693e5bb2-157d-4bda-a653-8c9a7f362475.png?auth_key=1889093833-df8ccbec01414950906bbb7e9c062bf4-0-10684e19af2b7b48bb2ade3633b81aa7" alt="Candidate providing reference details and consent comic" class="w-full h-auto" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="comic-card fade-up order-1 lg:order-1">
+          <img src="https://z-cdn-media.chatglm.cn/files/4117b0de-cf0e-42e5-ad19-12c5c06bb01d.png?auth_key=1889093833-f3491ec0837a4b04890fb651e489857c-0-2163d73200e1df9cca317881a831bbc4" alt="HR manager conducting reference call with screening questions comic" class="w-full h-auto" loading="lazy">
+        </div>
+        <div class="text-center lg:text-left fade-up order-2 lg:order-2 py-4">
+          <span class="step-badge mb-4">Step 03</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Structured reference calls. The right questions.</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">Our team connects with each reference through a structured call — covering role and responsibilities, working relationship, communication style, and teamwork. Every question is job-relevant, consistent across candidates, and designed to surface real behavioural insight — not opinions or gossip.</p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="text-center lg:text-right fade-up order-2 lg:order-1 py-4">
+          <span class="step-badge mb-4">Step 04</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Professional behaviour, assessed with context.</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">References share how the candidate communicated, handled challenges, collaborated, and took ownership. We capture the full context — not just ratings — so your team gets a nuanced, human picture of how the person actually works, not a checkbox scorecard.</p>
+        </div>
+        <div class="comic-card fade-up order-1 lg:order-2">
+          <img src="https://z-cdn-media.chatglm.cn/files/c49a564d-0800-4d96-98b3-11b8550c08ed.png?auth_key=1889093833-817acd1b3e614ae68bd9f9ee0588fd16-0-4588d18ba6f2c49717e72553c133de14" alt="Professional behaviour assessment through reference video call comic" class="w-full h-auto" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="comic-card fade-up order-1 lg:order-1">
+          <img src="https://z-cdn-media.chatglm.cn/files/3bfa38cd-fce3-4fac-8603-d827c8f11a1e.png?auth_key=1889093833-496dc77bef6f4ee48ce3360c52953f75-0-e451224a88932927a418d477af4981cf" alt="HR manager reviewing reference screening report comic" class="w-full h-auto" loading="lazy">
+        </div>
+        <div class="text-center lg:text-left fade-up order-2 lg:order-2 py-4">
+          <span class="step-badge mb-4">Step 05</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-[#071A2b] mt-4 mb-4">Verified experience. Contextual insight.</h3>
+          <p class="text-slate-600 text-lg leading-relaxed">The screening report surfaces whether the candidate's claimed experience aligns with what references describe — including responsibilities, working style, and any areas that might need additional clarification. Every finding is tied to a specific reference, with full context for your team to review.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Step 6 (Full Width Banner) -->
+    <div class="mt-12 lg:mt-24 fade-up">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-0 items-center bg-[#071A2b] rounded-[2rem] overflow-hidden border border-slate-100 shadow-lg">
+        <div class="p-8 lg:p-12 lg:pl-16 order-2 lg:order-1">
+          <span class="step-badge mb-6 bg-[#69be28] text-[#071A2b]">Step 06</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight mt-4">
+            Verified experience. <br><span class="font-serif italic text-[#69be28]">Confident decision.</span>
+          </h2>
+          <p class="text-slate-300 mb-8 leading-relaxed">
+            With reference feedback and behavioural insight in hand, the candidate is welcomed aboard. Your team moves forward with trust — knowing the person joining brings not just the right skills, but the right working style, communication, and cultural alignment for the role.
+          </p>
+          <a href="#cta" class="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm">
+            Start Screening Today
+            <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+        <div class="h-full w-full order-1 lg:order-2">
+          <img src="https://z-cdn-media.chatglm.cn/files/a7697e43-0615-46cd-ac66-bb71d5c31e77.png?auth_key=1889093833-152d339c2dae4d8787752d0e435c772d-0-b81b4fa485f64273d2d5def63788b394" alt="Candidate welcomed to team after reference screening cleared comic" class="w-full h-full object-cover" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SIMPLE AS 1, 2, 3 ============ -->
+<section class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">How it works</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Reference screening as simple as <span class="font-serif italic text-[#69be28]">1, 2, 3</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        We handle the reference calls, structured interviews, and behavioural assessment — so your team can focus on hiring candidates who bring the right skills and the right working style.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8 stagger">
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-user-plus text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 1</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Request & consent</h3>
+        <p class="text-slate-600 leading-relaxed">Trigger a reference & behavioural screening from your dashboard. The candidate provides reference contacts and gives explicit consent — fully FCRA and GDPR aligned.</p>
+      </div>
+      
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-phone-volume text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 2</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Connect & assess</h3>
+        <p class="text-slate-600 leading-relaxed">Our team contacts each reference through structured calls — assessing role, responsibilities, communication, teamwork, and professional conduct with full context captured.</p>
+      </div>
+      
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 text-center flex flex-col h-full">
+        <div class="w-16 h-16 bg-[#69be28]/10 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+          <i class="fas fa-file-lines text-[#69be28] text-2xl"></i>
+        </div>
+        <div class="text-sm font-bold text-[#69be28] uppercase tracking-wider mb-2">Step 3</div>
+        <h3 class="text-2xl font-bold text-[#071A2b] mb-4">Get report</h3>
+        <p class="text-slate-600 leading-relaxed">Receive a contextual report with verified behavioural insights, reference attributions, and a clear recommendation — never an automatic rejection. Final decisions stay yours.</p>
+      </div>
+    </div>
+
+    <!-- Feature Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 stagger">
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-scale-balanced text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Fair & Job-Relevant</h3>
+          <p class="text-sm text-slate-600">Only job-relevant behavioural competencies are assessed — never personal opinions, lifestyle, or protected attributes.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-user-lock text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Consent-First</h3>
+          <p class="text-sm text-slate-600">No reference is contacted without explicit candidate consent. Full transparency on what's asked and why, every single time.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-gavel text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Compliant by Design</h3>
+          <p class="text-sm text-slate-600">Built to align with FCRA, EEOC, GDPR, and regional hiring regulations across global markets and jurisdictions.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-comments text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Structured Questions</h3>
+          <p class="text-sm text-slate-600">Every reference call follows a consistent, structured questionnaire — ensuring fair, comparable, and job-relevant insights across all candidates.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-eye text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Contextual Review</h3>
+          <p class="text-sm text-slate-600">Every flagged signal is reviewed by trained analysts with full context before it reaches your team — never auto-rejected.</p>
+        </div>
+      </div>
+      <div class="feature-card bg-white border-soft rounded-2xl p-6 flex gap-4 items-start h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fas fa-rotate text-[#69be28] text-xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-[#071A2b] mb-1">Dispute Workflow</h3>
+          <p class="text-sm text-slate-600">A structured pre-adverse action process lets candidates clarify, respond, or provide alternative references — ensuring fairness throughout.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ (AEO & GEO Optimized) ============ -->
+<section class="py-24 lg:py-32 bg-slate-50">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="inline-block px-4 py-1.5 bg-[#69be28]/10 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-4">FAQ</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Frequently asked <span class="font-serif italic text-[#69be28]">questions</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">Everything you need to know about reference & behavioural screening and how it helps you hire people who fit — not just on paper, but in practice.</p>
+    </div>
+
+    <div class="space-y-4 stagger" id="faq-container">
+      
+      <!-- FAQ Item 1 -->
+      <div class="faq-item active">
+        <button class="faq-trigger">
+          <h3>What is reference & behavioural screening?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer" style="max-height: 500px;">
+          <div class="faq-answer-inner">
+            <p>Reference & behavioural screening is the process of contacting a candidate's provided professional references — typically former managers, colleagues, or supervisors — to verify their role, responsibilities, performance, communication style, teamwork, and overall professional conduct. It is conducted with candidate consent and focuses strictly on job-relevant behavioural insights, never personal lifestyle or protected attributes.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>When should reference & behavioural screening be used?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Reference & behavioural screening is recommended for nearly all roles, especially those requiring collaboration, leadership, client interaction, or cultural alignment. It is particularly valuable for mid-to-senior level positions, team-critical roles, and positions where interpersonal dynamics directly impact team performance, client relationships, and workplace culture.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>How long does the reference & behavioural verification process take?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Most reference & behavioural screenings are completed within 48 to 96 hours, depending on the number of references provided, their availability, and time zones. Real-time status updates are visible on your dashboard throughout the process, with automated follow-ups to references to ensure timely completion without manual intervention.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>Is reference & behavioural screening legal and compliant?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Yes. Our screening is fully compliant with FCRA, EEOC, GDPR, and local hiring regulations. References are only contacted after explicit candidate consent is captured. Questions are structured to assess job-relevant behavioural competencies only — never personal lifestyle, protected classes, or discriminatory factors. All reference feedback is documented and attributable.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 5 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>What happens if a behavioural concern is flagged during reference checks?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>When a behavioural concern is raised during a reference call, our system captures the full context of the feedback — including the specific question asked, the reference's verbatim response, and surrounding circumstances. A trained analyst reviews whether the signal is genuinely job-relevant before it reaches your hiring team. We never auto-reject candidates — final decisions always remain with your team, supported by transparent, contextual insight.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 6 -->
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <h3>Can candidates dispute the findings of a reference & behavioural screening?</h3>
+          <span class="faq-icon"><i class="fas fa-plus text-sm"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Absolutely. Candidates have the right to review flagged feedback and provide additional context, alternative references, or clarification before any hiring decision is finalized. Verifitrust provides a structured pre-adverse action workflow that ensures fairness, transparency, and the opportunity for candidates to respond to any concerns raised during reference checks — ensuring a balanced, human-led process.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="cta" class="py-24 lg:py-32 relative overflow-hidden bg-white">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="relative bg-[#071A2b] rounded-[2.5rem] p-10 md:p-16 lg:p-20 overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-80 h-80 bg-[#69be28]/20 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-[#69be28]/10 rounded-full blur-3xl"></div>
+      <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(105,190,40,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(105,190,40,0.5) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      
+      <div class="relative grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-1.5 bg-[#69be28]/15 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-6">Get started today</span>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Screen your first candidate in <span class="font-serif italic text-[#69be28]">minutes</span>
+          </h2>
+          <p class="text-lg text-slate-300 mb-8 leading-relaxed">
+            Join 4,000+ companies that trust Verifitrust for fair, compliant, and contextual reference & behavioural screening. No credit card required.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#" class="btn-primary inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold">
+              Start free trial
+              <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+            <a href="#" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold border border-white/20 text-white hover:bg-white/5 transition-all">
+              Book a demo
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8">
+          <h3 class="text-white font-bold text-xl mb-6">What's included:</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">5 free reference & behavioural checks — no card required</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">Full access to dashboard & integrations</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">FCRA / EEOC / GDPR compliant workflows</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-[#69be28] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i class="fas fa-check text-[#071A2b] text-xs"></i>
+              </div>
+              <span class="text-slate-200">24/7 priority support</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div id="footer-include"></div>
+
+<!-- Load global scripts (Header, Footer, Animations) -->
+<script src="/main.js"></script>
+
+</body>
+</html>
+
