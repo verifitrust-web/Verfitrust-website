@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: your-github-username/your-repo-name # REPLACE THIS with your actual GitHub username and repo name!
+  repo: verifitrust-web/Verfitrust-website # REPLACE THIS with your actual GitHub username and repo name!
   branch: main # Branch you want to update
 
 media_folder: "assets/images" # Where uploaded images go
