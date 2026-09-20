@@ -2,7 +2,7 @@ backend:
   name: github
   repo: your-github-username/your-repo-name
   branch: main
-  base_url: https://decap-oauth.your-name.workers.dev
+  base_url: decap-oauth.verifitrust.workers.dev
   auth_endpoint: auth
 
 media_folder: "assets/images"
