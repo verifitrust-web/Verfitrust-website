@@ -1,0 +1,30 @@
+backend:
+  name: github
+  repo: your-github-username/your-repo-name # REPLACE THIS with your actual GitHub username and repo name!
+  branch: main # Branch you want to update
+
+media_folder: "assets/images" # Where uploaded images go
+public_folder: "/assets/images"
+
+collections:
+  # BLOG POSTS
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "blog/"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  # CASE STUDIES
+  - name: "case-studies"
+    label: "Case Studies"
+    folder: "case-studies/"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Company Name", name: "title", widget: "string"}
+      - {label: "Summary", name: "summary", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
