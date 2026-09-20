@@ -2,14 +2,13 @@ backend:
   name: github
   repo: your-github-username/your-repo-name
   branch: main
-  base_url: https://decap-oauth.verifitrust.workers.dev  # Use your actual Worker URL here
+  base_url: https://decap-oauth.your-name.workers.dev
   auth_endpoint: auth
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
 
 collections:
-  # BLOG POSTS
   - name: "blog"
     label: "Blog Posts"
     folder: "blog/"
@@ -20,7 +19,6 @@ collections:
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Body", name: "body", widget: "markdown"}
 
-  # CASE STUDIES
   - name: "case-studies"
     label: "Case Studies"
     folder: "case-studies/"
