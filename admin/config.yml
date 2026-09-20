@@ -1,9 +1,11 @@
 backend:
   name: github
-  repo: verifitrust-web/Verfitrust-website # REPLACE THIS with your actual GitHub username and repo name!
-  branch: main # Branch you want to update
+  repo: your-github-username/your-repo-name
+  branch: main
+  base_url: https://decap-oauth.verifitrust.workers.dev  # Use your actual Worker URL here
+  auth_endpoint: auth
 
-media_folder: "assets/images" # Where uploaded images go
+media_folder: "assets/images"
 public_folder: "/assets/images"
 
 collections:
