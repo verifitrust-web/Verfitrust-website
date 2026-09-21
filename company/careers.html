@@ -637,11 +637,13 @@
           <input type="url" id="linkedin" name="linkedin" class="form-input" placeholder="https://linkedin.com/in/username">
         </div>
         
-        <!-- Resume Upload -->
+               <!-- Resume Upload -->
         <div>
           <label class="form-label">Resume / CV <span class="req">*</span></label>
           <div id="dropzone" class="dropzone">
-            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx,.rtf,.txt" style="display: none;">
+            <!-- Native input is now invisible but covers the whole box -->
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx,.rtf,.txt" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 20;">
+            
             <div id="dropzoneDefault">
               <div class="w-14 h-14 bg-[#69be28]/15 rounded-full flex items-center justify-center mx-auto mb-3">
                 <i class="fas fa-cloud-arrow-up text-[#69be28] text-xl"></i>
@@ -658,7 +660,7 @@
                   <p id="fileName" class="text-sm font-bold text-[#071A2b] truncate"></p>
                   <p id="fileSize" class="text-xs text-slate-500"></p>
                 </div>
-                <button type="button" id="removeFile" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50 text-slate-400 hover:text-red-500 transition-colors flex-shrink-0">
+                <button type="button" id="removeFile" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50 text-slate-400 hover:text-red-500 transition-colors flex-shrink-0" style="z-index: 30; position: relative;">
                   <i class="fas fa-times"></i>
                 </button>
               </div>
@@ -937,19 +939,13 @@
     checkFormValidity();
   }
   
-    dropzone.addEventListener('click', (e) => {
-    // Bypass if the remove button was clicked
-    if(e.target.closest('#removeFile')) return;
-    
-    // Force the file input to open natively
-    e.preventDefault();
-    fileInput.click();
+      dropzone.addEventListener('click', (e) => {
+    // If the remove button is clicked, stop the file input from opening
+    if(e.target.closest('#removeFile')) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
   });
-  
-  // Fallback: If pointer-events were blocked by animation, remove them on first hover
-  dropzone.addEventListener('mouseenter', () => {
-    dropzone.style.pointerEvents = 'auto';
-  }, { once: true });
   
   fileInput.addEventListener('change', (e) => {
     const file = e.target.files[0];
