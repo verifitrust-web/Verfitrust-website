@@ -1063,14 +1063,15 @@
       console.error('Form submission error:', err);
       showToast('error', 'Submission Failed', 'Please try again or email us at verify@verifitrust.com');
       submitBtn.disabled = false;
-    } finally {
+       } finally {
       btnText.textContent = 'Submit Application';
       btnIcon.className = 'fas fa-arrow-right text-sm';
       checkFormValidity();
     }
   });
+</script>
 
-  <!-- Toast Notification -->
+<!-- Toast Notification -->
 <div id="toast" class="toast">
   <i id="toastIcon" class="fas fa-check-circle text-[#69be28] text-xl"></i>
   <div>
@@ -1078,4 +1079,3 @@
     <p id="toastMsg" class="text-xs text-slate-600">Your application has been submitted.</p>
   </div>
 </div>
-</script>
