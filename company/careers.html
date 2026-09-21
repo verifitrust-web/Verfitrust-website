@@ -636,21 +636,22 @@
           <label class="form-label" for="linkedin">LinkedIn Profile URL</label>
           <input type="url" id="linkedin" name="linkedin" class="form-input" placeholder="https://linkedin.com/in/username">
         </div>
-        
-                                   <!-- Resume Upload -->
+
+                <!-- Resume Upload -->
         <div>
           <label class="form-label">Resume / CV <span class="req">*</span></label>
-          <div id="dropzone" class="dropzone">
-            <!-- Moved off-screen instead of display:none so browser allows .click() -->
-            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx,.rtf,.txt" style="position: absolute; left: -9999px; top: -9999px; opacity: 0;">
-            <div id="dropzoneDefault">
+          <div id="dropzone" class="dropzone relative overflow-hidden">
+            <!-- Invisible native input laid on top. Browser handles the click natively. -->
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx,.rtf,.txt" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20">
+            
+            <div id="dropzoneDefault" class="pointer-events-none">
               <div class="w-14 h-14 bg-[#69be28]/15 rounded-full flex items-center justify-center mx-auto mb-3">
                 <i class="fas fa-cloud-arrow-up text-[#69be28] text-xl"></i>
               </div>
               <p class="text-sm font-semibold text-[#071A2b] mb-1">Click to upload or drag and drop</p>
               <p class="text-xs text-slate-500">PDF, DOC, DOCX, RTF, TXT up to 10MB</p>
             </div>
-            <div id="dropzonePreview" class="hidden">
+            <div id="dropzonePreview" class="hidden relative z-10">
               <div class="resume-preview">
                 <div class="w-12 h-12 bg-[#69be28]/15 rounded-lg flex items-center justify-center flex-shrink-0">
                   <i id="fileIcon" class="fas fa-file-pdf text-[#69be28] text-xl"></i>
@@ -659,7 +660,7 @@
                   <p id="fileName" class="text-sm font-bold text-[#071A2b] truncate"></p>
                   <p id="fileSize" class="text-xs text-slate-500"></p>
                 </div>
-                <button type="button" id="removeFile" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50 text-slate-400 hover:text-red-500 transition-colors flex-shrink-0">
+                <button type="button" id="removeFile" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50 text-slate-400 hover:text-red-500 transition-colors flex-shrink-0 relative z-30 bg-white">
                   <i class="fas fa-times"></i>
                 </button>
               </div>
@@ -667,6 +668,7 @@
           </div>
           <p id="fileError" class="text-xs text-red-500 mt-2 hidden"></p>
         </div>
+                                
         
         <!-- Cover Letter -->
         <div>
@@ -714,13 +716,14 @@
   // ============ CONFIG ============
   const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxGToPvU1c9Y7HjsDIMqjOZ6x73BH6iIpR95bBXNPtIQvvfaI0y-mIoAHPOkbuUXPf6/exec';
   
-  // ============ Mobile Menu (Fixed: Check if exists first) ============
+   // ============ Mobile Menu ============
   const menuBtn = document.getElementById('menuBtn');
   const closeMenu = document.getElementById('closeMenu');
   const mobileMenu = document.getElementById('mobileMenu');
   
   if(menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
   if(closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  
   document.querySelectorAll('.mobile-link').forEach(link => {
     if(mobileMenu) link.addEventListener('click', () => mobileMenu.classList.remove('open'));
   });
@@ -867,7 +870,7 @@
     backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
   
-  // ============ Resume File Upload & Preview ============
+   // ============ Resume File Upload & Preview ============
   const dropzone = document.getElementById('dropzone');
   const fileInput = document.getElementById('resume');
   const dropzoneDefault = document.getElementById('dropzoneDefault');
@@ -878,7 +881,6 @@
   const removeFile = document.getElementById('removeFile');
   const fileError = document.getElementById('fileError');
   const submitBtn = document.getElementById('submitBtn');
-  const policyCheck = document.getElementById('policyCheck');
   
   let attachedFile = null;
   const MAX_SIZE = 10 * 1024 * 1024; // 10 MB
@@ -939,20 +941,13 @@
     checkFormValidity();
   }
   
-  dropzone.addEventListener('click', (e) => {
-    if(e.target.closest('#removeFile')) {
-      e.preventDefault();
-      e.stopPropagation();
-      return;
-    }
-    fileInput.click();
-  });
-  
+  // Because the input is physically on top, we don't need dropzone.click() anymore!
   fileInput.addEventListener('change', (e) => {
     const file = e.target.files[0];
     if(file && validateFile(file)) showFilePreview(file);
   });
   
+  // Drag and drop
   ['dragenter','dragover'].forEach(ev => {
     dropzone.addEventListener(ev, (e) => {
       e.preventDefault();
@@ -968,11 +963,14 @@
   });
   
   dropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
     const file = e.dataTransfer.files[0];
     if(file && validateFile(file)) showFilePreview(file);
   });
   
+  // Remove file button
   removeFile.addEventListener('click', (e) => {
+    e.preventDefault();
     e.stopPropagation();
     resetFileInput();
   });
