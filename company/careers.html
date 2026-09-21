@@ -712,17 +712,17 @@
 
 <script>
   // ============ CONFIG ============
-  // ⚠️ Replace with your Google Apps Script Web App URL (after deployment)
   const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxGToPvU1c9Y7HjsDIMqjOZ6x73BH6iIpR95bBXNPtIQvvfaI0y-mIoAHPOkbuUXPf6/exec';
   
-  // ============ Mobile Menu ============
+  // ============ Mobile Menu (Fixed: Check if exists first) ============
   const menuBtn = document.getElementById('menuBtn');
   const closeMenu = document.getElementById('closeMenu');
   const mobileMenu = document.getElementById('mobileMenu');
-  menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
-  closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  
+  if(menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+  if(closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
   document.querySelectorAll('.mobile-link').forEach(link => {
-    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    if(mobileMenu) link.addEventListener('click', () => mobileMenu.classList.remove('open'));
   });
   
   // ============ Scroll Animations ============
@@ -779,7 +779,6 @@
     });
   });
   
-  // Apply link auto-fill department + role
   document.querySelectorAll('.apply-link').forEach(link => {
     link.addEventListener('click', (e) => {
       const dept = e.currentTarget.getAttribute('data-dept');
@@ -825,8 +824,8 @@
       positionPreview.classList.add('hidden');
     }
   }
-  departmentSelect.addEventListener('change', updatePositionPreview);
-  roleLevelSelect.addEventListener('change', updatePositionPreview);
+  if(departmentSelect) departmentSelect.addEventListener('change', updatePositionPreview);
+  if(roleLevelSelect) roleLevelSelect.addEventListener('change', updatePositionPreview);
   
   // ============ FAQ Accordion ============
   const faqItems = document.querySelectorAll('.faq-item');
@@ -853,18 +852,20 @@
   const firstFaq = document.querySelector('.faq-item.active');
   if(firstFaq) firstFaq.querySelector('.faq-answer').style.maxHeight = firstFaq.querySelector('.faq-answer').scrollHeight + 'px';
   
-  // ============ Back to Top ============
+  // ============ Back to Top (Fixed: Check if exists first) ============
   const backTop = document.getElementById('backTop');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
-      backTop.style.opacity = '1';
-      backTop.style.visibility = 'visible';
-    } else {
-      backTop.style.opacity = '0';
-      backTop.style.visibility = 'hidden';
-    }
-  });
-  backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  if(backTop) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backTop.style.opacity = '1';
+        backTop.style.visibility = 'visible';
+      } else {
+        backTop.style.opacity = '0';
+        backTop.style.visibility = 'hidden';
+      }
+    });
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
   
   // ============ Resume File Upload & Preview ============
   const dropzone = document.getElementById('dropzone');
@@ -938,14 +939,13 @@
     checkFormValidity();
   }
   
-    dropzone.addEventListener('click', (e) => {
-    if(e.target.closest('#removeFile')) return;
+  dropzone.addEventListener('click', (e) => {
+    if(e.target.closest('#removeFile')) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
     fileInput.click();
-  });
-  
-  fileInput.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if(file && validateFile(file)) showFilePreview(file);
   });
   
   fileInput.addEventListener('change', (e) => {
@@ -997,13 +997,14 @@
     field.addEventListener('change', checkFormValidity);
   });
   
-  // ============ Toast Notification ============
+  // ============ Toast Notification (Fixed) ============
   const toast = document.getElementById('toast');
   const toastIcon = document.getElementById('toastIcon');
   const toastTitle = document.getElementById('toastTitle');
   const toastMsg = document.getElementById('toastMsg');
   
   function showToast(type, title, msg){
+    if(!toast) return; // Prevent crash if toast HTML is missing
     toast.className = 'toast ' + type;
     toastIcon.className = type === 'success' ? 'fas fa-check-circle text-[#69be28] text-xl' : 'fas fa-exclamation-circle text-red-500 text-xl';
     toastTitle.textContent = title;
@@ -1053,7 +1054,7 @@
         showToast('success', 'Application Submitted!', 'Our team will contact you within 5-7 days.');
         careerForm.reset();
         resetFileInput();
-        positionPreview.classList.add('hidden');
+        if(positionPreview) positionPreview.classList.add('hidden');
         setTimeout(() => {
           document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
         }, 100);
@@ -1070,8 +1071,13 @@
       checkFormValidity();
     }
   });
+
+  <!-- Toast Notification -->
+<div id="toast" class="toast">
+  <i id="toastIcon" class="fas fa-check-circle text-[#69be28] text-xl"></i>
+  <div>
+    <p id="toastTitle" class="text-sm font-bold text-[#071A2b]">Success!</p>
+    <p id="toastMsg" class="text-xs text-slate-600">Your application has been submitted.</p>
+  </div>
+</div>
 </script>
-
-</body>
-</html>
-
