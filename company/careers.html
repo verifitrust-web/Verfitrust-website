@@ -636,21 +636,22 @@
           <label class="form-label" for="linkedin">LinkedIn Profile URL</label>
           <input type="url" id="linkedin" name="linkedin" class="form-input" placeholder="https://linkedin.com/in/username">
         </div>
-
-                <!-- Resume Upload -->
+        <!-- Resume Upload -->
         <div>
           <label class="form-label">Resume / CV <span class="req">*</span></label>
           <div id="dropzone" class="dropzone relative overflow-hidden">
-            <!-- Invisible native input laid on top. Browser handles the click natively. -->
-            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx,.rtf,.txt" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20">
+            <!-- Label covers the dropzone and natively triggers the input -->
+            <label id="dropzoneLabel" for="resume" class="absolute inset-0 w-full h-full cursor-pointer z-20"></label>
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx,.rtf,.txt" style="position: absolute; left: -9999px; opacity: 0;">
             
-            <div id="dropzoneDefault" class="pointer-events-none">
+            <div id="dropzoneDefault">
               <div class="w-14 h-14 bg-[#69be28]/15 rounded-full flex items-center justify-center mx-auto mb-3">
                 <i class="fas fa-cloud-arrow-up text-[#69be28] text-xl"></i>
               </div>
               <p class="text-sm font-semibold text-[#071A2b] mb-1">Click to upload or drag and drop</p>
               <p class="text-xs text-slate-500">PDF, DOC, DOCX, RTF, TXT up to 10MB</p>
             </div>
+            
             <div id="dropzonePreview" class="hidden relative z-10">
               <div class="resume-preview">
                 <div class="w-12 h-12 bg-[#69be28]/15 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -668,8 +669,7 @@
           </div>
           <p id="fileError" class="text-xs text-red-500 mt-2 hidden"></p>
         </div>
-                                
-        
+              
         <!-- Cover Letter -->
         <div>
           <label class="form-label" for="coverLetter">Cover Letter / Message</label>
@@ -870,9 +870,10 @@
     backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
   
-   // ============ Resume File Upload & Preview ============
+     // ============ Resume File Upload & Preview ============
   const dropzone = document.getElementById('dropzone');
   const fileInput = document.getElementById('resume');
+  const dropzoneLabel = document.getElementById('dropzoneLabel');
   const dropzoneDefault = document.getElementById('dropzoneDefault');
   const dropzonePreview = document.getElementById('dropzonePreview');
   const fileName = document.getElementById('fileName');
@@ -928,6 +929,10 @@
     dropzoneDefault.classList.add('hidden');
     dropzonePreview.classList.remove('hidden');
     dropzone.classList.add('uploaded');
+    
+    // Hide the invisible label so it doesn't block the remove button
+    if(dropzoneLabel) dropzoneLabel.style.display = 'none';
+    
     checkFormValidity();
   }
   
@@ -938,10 +943,13 @@
     dropzonePreview.classList.add('hidden');
     dropzone.classList.remove('uploaded');
     fileError.classList.add('hidden');
+    
+    // Bring the invisible label back so they can upload again
+    if(dropzoneLabel) dropzoneLabel.style.display = 'block';
+    
     checkFormValidity();
   }
   
-  // Because the input is physically on top, we don't need dropzone.click() anymore!
   fileInput.addEventListener('change', (e) => {
     const file = e.target.files[0];
     if(file && validateFile(file)) showFilePreview(file);
