@@ -637,11 +637,12 @@
           <input type="url" id="linkedin" name="linkedin" class="form-input" placeholder="https://linkedin.com/in/username">
         </div>
         
-                            <!-- Resume Upload -->
+                                   <!-- Resume Upload -->
         <div>
           <label class="form-label">Resume / CV <span class="req">*</span></label>
           <div id="dropzone" class="dropzone">
-            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx,.rtf,.txt" style="display: none;">
+            <!-- Moved off-screen instead of display:none so browser allows .click() -->
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx,.rtf,.txt" style="position: absolute; left: -9999px; top: -9999px; opacity: 0;">
             <div id="dropzoneDefault">
               <div class="w-14 h-14 bg-[#69be28]/15 rounded-full flex items-center justify-center mx-auto mb-3">
                 <i class="fas fa-cloud-arrow-up text-[#69be28] text-xl"></i>
@@ -937,9 +938,14 @@
     checkFormValidity();
   }
   
-        dropzone.addEventListener('click', (e) => {
+    dropzone.addEventListener('click', (e) => {
     if(e.target.closest('#removeFile')) return;
     fileInput.click();
+  });
+  
+  fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if(file && validateFile(file)) showFilePreview(file);
   });
   
   fileInput.addEventListener('change', (e) => {
