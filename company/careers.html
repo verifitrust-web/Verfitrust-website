@@ -1051,7 +1051,13 @@
           formData.append('linkedin', document.getElementById('linkedin').value);
           formData.append('coverLetter', document.getElementById('coverLetter').value);
           formData.append('policyCheck', document.getElementById('policyCheck').checked ? 'Agreed' : 'Not Agreed');
-          formData.append('resume', attachedFile, attachedFile.name);
+                    // ✅ BULLETPROOF FILE ATTACHMENT: Grab the file directly from the HTML input
+          const fileInput = document.getElementById('resume');
+          if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
+            throw new Error('No file selected in the input.');
+          }
+          const actualFile = fileInput.files[0];
+          formData.append('resume', actualFile, actualFile.name);
           formData.append('submittedAt', new Date().toISOString());
           
           const response = await fetch(GOOGLE_SCRIPT_URL, {
