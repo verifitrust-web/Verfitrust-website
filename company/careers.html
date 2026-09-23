@@ -119,7 +119,7 @@
   }
   .form-label .req{ color: #69be28; }
   
-    .dropzone{
+  .dropzone{
     border: 2px dashed #cbd5e1;
     border-radius: 1rem;
     padding: 2rem 1.5rem;
@@ -140,7 +140,7 @@
     background: #f0fdf4;
     border-style: solid;
   }
-  /* NEW: Hide the native input when a file is uploaded so the preview is visible */
+  /* Hide the native input once a file is chosen so the preview (and remove button) is clickable */
   .dropzone.uploaded input[type="file"] {
     display: none !important;
   }
@@ -640,11 +640,11 @@
           <input type="url" id="linkedin" name="linkedin" class="form-input" placeholder="https://linkedin.com/in/username">
         </div>
 
-                <!-- Resume Upload -->
+        <!-- Resume Upload -->
         <div>
           <label class="form-label">Resume / CV <span class="req">*</span></label>
           <div id="dropzone" class="dropzone relative overflow-hidden">
-            <!-- Native input laid directly on top. Browser handles the click and attaches the file natively. -->
+            <!-- Native input laid directly on top. Browser handles the click natively. -->
             <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx,.rtf,.txt" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20" required>
             
             <div id="dropzoneDefault" class="pointer-events-none relative z-10">
@@ -715,7 +715,7 @@
 <!-- Load global scripts (Header, Footer, Animations) -->
 <script src="/main.js"></script>
 
-<!-- Toast Notification (Outside the Script Tag) -->
+<!-- Toast Notification -->
 <div id="toast" class="toast">
   <i id="toastIcon" class="fas fa-check-circle text-[#69be28] text-xl"></i>
   <div>
@@ -725,12 +725,12 @@
 </div>
 
 <script>
-  // We wrap everything in an IIFE to prevent variable conflicts with your main website's JS.
+  // Wrapped in an IIFE to prevent variable conflicts with the site's main.js
   (function() {
     // ============ CONFIG ============
+    // Paste your Web App /exec URL here (must be redeployed as a NEW VERSION after script changes)
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxGToPvU1c9Y7HjsDIMqjOZ6x73BH6iIpR95bBXNPtIQvvfaI0y-mIoAHPOkbuUXPf6/exec';
     
-    // Ensure DOM is fully loaded before running scripts
     document.addEventListener("DOMContentLoaded", function() {
       
       // ============ Mobile Menu ============
@@ -911,6 +911,16 @@
         return parseFloat((bytes / Math.pow(k,i)).toFixed(2)) + ' ' + sizes[i];
       }
       
+      // Reads a File and resolves with its base64 string (no data: prefix)
+      function fileToBase64(file){
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(String(reader.result).split(',')[1]);
+          reader.onerror = () => reject(new Error('Could not read the file'));
+          reader.readAsDataURL(file);
+        });
+      }
+      
       function getFileIcon(name){
         const ext = name.split('.').pop().toLowerCase();
         if(ext === 'pdf') return 'fas fa-file-pdf';
@@ -960,7 +970,12 @@
       
       fileInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
-        if(file && validateFile(file)) showFilePreview(file);
+        if(file && validateFile(file)){
+          showFilePreview(file);
+        } else if(file){
+          // Invalid file chosen: clear it so it can't be submitted
+          fileInput.value = '';
+        }
       });
       
       ['dragenter','dragover'].forEach(ev => {
@@ -970,17 +985,23 @@
         });
       });
       
-      ['dragleave','drop'].forEach(ev => {
-        dropzone.addEventListener(ev, (e) => {
-          e.preventDefault();
-          dropzone.classList.remove('dragover');
-        });
+      dropzone.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('dragover');
       });
       
+      // Drop handler: preventDefault stops the browser from filling the input,
+      // so we copy the dropped file into the real <input> ourselves.
       dropzone.addEventListener('drop', (e) => {
         e.preventDefault();
+        dropzone.classList.remove('dragover');
         const file = e.dataTransfer.files[0];
-        if(file && validateFile(file)) showFilePreview(file);
+        if(file && validateFile(file)){
+          const dt = new DataTransfer();
+          dt.items.add(file);
+          fileInput.files = dt.files;   // sync the real input
+          showFilePreview(file);
+        }
       });
       
       removeFile.addEventListener('click', (e) => {
@@ -996,6 +1017,8 @@
         requiredFields.forEach(field => {
           if(field.type === 'checkbox'){
             if(!field.checked) allValid = false;
+          } else if(field.type === 'file'){
+            // handled via attachedFile below
           } else {
             if(!field.value.trim()) allValid = false;
           }
@@ -1014,6 +1037,7 @@
       const toastIcon = document.getElementById('toastIcon');
       const toastTitle = document.getElementById('toastTitle');
       const toastMsg = document.getElementById('toastMsg');
+      let toastTimer = null;
       
       function showToast(type, title, msg){
         if(!toast) return;
@@ -1021,8 +1045,9 @@
         toastIcon.className = type === 'success' ? 'fas fa-check-circle text-[#69be28] text-xl' : 'fas fa-exclamation-circle text-red-500 text-xl';
         toastTitle.textContent = title;
         toastMsg.textContent = msg;
+        clearTimeout(toastTimer);
         setTimeout(() => toast.classList.add('show'), 100);
-        setTimeout(() => toast.classList.remove('show'), 5000);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 6000);
       }
       
       // ============ Form Submission ============
@@ -1039,31 +1064,39 @@
         btnIcon.className = 'spinner';
         
         try {
-          const formData = new FormData();
-          formData.append('fullName', document.getElementById('fullName').value);
-          formData.append('email', document.getElementById('email').value);
-          formData.append('phone', document.getElementById('phone').value);
-          formData.append('location', document.getElementById('location').value);
-          formData.append('department', document.getElementById('department').value);
-          formData.append('roleLevel', document.getElementById('roleLevel').value);
-          formData.append('position', document.getElementById('roleLevel').value + ' - ' + document.getElementById('department').value);
-          formData.append('experience', document.getElementById('experience').value);
-          formData.append('linkedin', document.getElementById('linkedin').value);
-          formData.append('coverLetter', document.getElementById('coverLetter').value);
-          formData.append('policyCheck', document.getElementById('policyCheck').checked ? 'Agreed' : 'Not Agreed');
-                    // ✅ BULLETPROOF FILE ATTACHMENT: Grab the file directly from the HTML input
-          const fileInput = document.getElementById('resume');
-          if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
-            throw new Error('No file selected in the input.');
+          // Grab the file straight from the native input
+          const actualFile = fileInput.files && fileInput.files[0];
+          if (!actualFile) {
+            throw new Error('No file selected. Please attach your resume.');
           }
-          const actualFile = fileInput.files[0];
-          formData.append('resume', actualFile, actualFile.name);
-          formData.append('submittedAt', new Date().toISOString());
           
+          const base64 = await fileToBase64(actualFile);
+          
+          const payload = {
+            fullName:    document.getElementById('fullName').value,
+            email:       document.getElementById('email').value,
+            phone:       document.getElementById('phone').value,
+            location:    document.getElementById('location').value,
+            department:  document.getElementById('department').value,
+            roleLevel:   document.getElementById('roleLevel').value,
+            position:    document.getElementById('roleLevel').value + ' - ' + document.getElementById('department').value,
+            experience:  document.getElementById('experience').value,
+            linkedin:    document.getElementById('linkedin').value,
+            coverLetter: document.getElementById('coverLetter').value,
+            policyCheck: document.getElementById('policyCheck').checked ? 'Agreed' : 'Not Agreed',
+            submittedAt: new Date().toISOString(),
+            resume: {
+              name: actualFile.name,
+              mimeType: actualFile.type || 'application/octet-stream',
+              data: base64
+            }
+          };
+          
+          // text/plain avoids the CORS preflight that Apps Script cannot answer
           const response = await fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
-            body: formData,
-            mode: 'cors'
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(payload)
           });
           
           const result = await response.json();
@@ -1077,20 +1110,12 @@
               document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
             }, 100);
           } else {
-            // ✅ DIAGNOSTIC: Pass the receivedKeys to the error
-            let error = new Error(result.message || 'Submission failed');
-            error.receivedKeys = result.receivedKeys;
-            throw error;
+            throw new Error(result.message || 'Submission failed');
           }
         } catch (err) {
           console.error('Form submission error:', err);
-          // ✅ DIAGNOSTIC: If Google returned receivedKeys, show them!
-          let errorMsg = err.message || 'Please try again or email us at verify@verifitrust.com';
-          if (err.receivedKeys) {
-            errorMsg += ' (Keys received: ' + err.receivedKeys.join(', ') + ')';
-          }
+          const errorMsg = err.message || 'Please try again or email us at verify@verifitrust.com';
           showToast('error', 'Submission Failed', errorMsg);
-          submitBtn.disabled = false;
         } finally {
           btnText.textContent = 'Submit Application';
           btnIcon.className = 'fas fa-arrow-right text-sm';
