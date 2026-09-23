@@ -1,89 +1,139 @@
+<!-- Footer link/social styles (delete this block if your global CSS already defines these classes) -->
+<style>
+  .footer-col-title {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .footer-link {
+    color: #94a3b8;
+    transition: color 0.2s ease;
+  }
+  .footer-link:hover { color: #69be28; }
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+  }
+  .social-icon:hover {
+    background: #69be28;
+    border-color: #69be28;
+    color: #071A2b;
+    transform: translateY(-2px);
+  }
+</style>
+
 <!-- ============ FOOTER ============ -->
-<footer class="bg-white border-t border-slate-100 pt-20 pb-10">
+<footer class="bg-[#071A2b] pt-20 pb-10">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-10 mb-12">
-      <div class="lg:col-span-2">
-        <a href="/index.html" class="flex items-center justify-start group mr-auto mb-5">
-          <img src="/assets/logo.png" alt="VerifitTrust - Right People. Safer Future." class="h-12 md:h-14 w-auto object-contain transition-transform group-hover:scale-105">
+    
+    <div class="grid lg:grid-cols-12 gap-10 mb-16">
+      
+      <!-- LEFT: Logo + Content + Social -->
+      <div class="lg:col-span-4">
+        <!-- Image logo (white card so the dark part of the logo stays visible on the navy background) -->
+        <a href="/index.html" class="inline-flex items-center bg-white rounded-xl px-4 py-2 mb-5 group">
+          <img src="/assets/logo.png" alt="VerifitTrust - Right People. Safer Future." class="h-10 md:h-12 w-auto object-contain transition-transform group-hover:scale-105">
         </a>
-        <p class="text-slate-600 leading-relaxed max-w-sm mb-6">Fast, accurate, and compliant background checks for teams hiring anywhere in the world.</p>
-        <div class="flex gap-3">
-          <a href="#" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-[#69be28] flex items-center justify-center transition-colors group">
-            <i class="fab fa-linkedin-in text-slate-600 group-hover:text-[#071A2b]"></i>
-          </a>
-          <a href="#" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-[#69be28] flex items-center justify-center transition-colors group">
-            <i class="fab fa-x-twitter text-slate-600 group-hover:text-[#071A2b]"></i>
-          </a>
-          <a href="#" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-[#69be28] flex items-center justify-center transition-colors group">
-            <i class="fab fa-github text-slate-600 group-hover:text-[#071A2b]"></i>
-          </a>
-          <a href="#" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-[#69be28] flex items-center justify-center transition-colors group">
-            <i class="fab fa-youtube text-slate-600 group-hover:text-[#071A2b]"></i>
-          </a>
+        <p class="text-slate-400 leading-relaxed max-w-sm mb-6 text-sm">
+          Fast, accurate, and compliant background verification &amp; screening for teams hiring anywhere in the world. Identity, employment, education, financial, criminal, and more — unified in one trusted platform.
+        </p>
+        <div class="flex flex-wrap gap-2.5">
+          <a href="#" aria-label="LinkedIn" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Facebook" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube" class="social-icon"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="WhatsApp" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" aria-label="X (Twitter)" class="social-icon"><i class="fab fa-x-twitter"></i></a>
         </div>
       </div>
       
-      <div>
-        <h4 class="font-bold text-[#071A2b] mb-4">Product</h4>
-        <ul class="space-y-3">
-          <li><a href="/index.html#features" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Features</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Integrations</a></li>
-          <li><a href="/index.html#pricing" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Pricing</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">API Docs</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Changelog</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <h4 class="font-bold text-[#071A2b] mb-4">Solutions</h4>
-        <ul class="space-y-3">
-          <li><a href="/solutions/id-verification.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">ID Verification</a></li>
-          <li><a href="/solutions/enterprise.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Enterprise</a></li>
-          <li><a href="/solutions/platforms.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Platforms</a></li>
-          <li><a href="/solutions/healthcare.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Healthcare</a></li>
-          <li><a href="/solutions/finance.html" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Financial Services</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <h4 class="font-bold text-[#071A2b] mb-4">Company</h4>
-        <ul class="space-y-3">
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">About us</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Careers</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Blog</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Press</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Contact</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <h4 class="font-bold text-[#071A2b] mb-4">Resources</h4>
-        <ul class="space-y-3">
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Help Center</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Compliance</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Security</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Status</a></li>
-          <li><a href="#" class="text-slate-600 hover:text-[#69be28] transition-colors text-sm">Privacy</a></li>
-        </ul>
+      <!-- RIGHT: Link Columns -->
+      <div class="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        
+        <div>
+          <h4 class="footer-col-title">Solution</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="/solutions/id-verification.html" class="footer-link">Identity Verification</a></li>
+            <li><a href="/solutions/employment-verification.html" class="footer-link">Employment Verification</a></li>
+            <li><a href="/solutions/education-verification.html" class="footer-link">Education Verification</a></li>
+            <li><a href="/solutions/address-verification.html" class="footer-link">Address Verification</a></li>
+            <li><a href="/solutions/criminal-court-verification.html" class="footer-link">Criminal &amp; Court Verification</a></li>
+            <li><a href="/solutions/global-background-screening.html" class="footer-link">Global Background Screening</a></li>
+            <li><a href="/solutions/professional-credential-verification.html" class="footer-link">Professional &amp; Credential Verification</a></li>
+            <li><a href="/solutions/financial-credit-verification.html" class="footer-link">Financial &amp; Credit Screening</a></li>
+            <li><a href="/solutions/drug-verification.html" class="footer-link">Drug &amp; Substance Screening</a></li>
+            <!-- TODO: no URL for this page exists in the header. Replace "#" with the real page. -->
+            <li><a href="#" class="footer-link">Driver &amp; Vehicle Screening</a></li>
+            <li><a href="/solutions/reference-behavioural-screening.html" class="footer-link text-[#69be28] font-medium">Reference &amp; Behavioural Screening</a></li>
+            <li><a href="/solutions/exit-interview.html" class="footer-link">Exit Interview</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-col-title">Industry</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="/industry/it-technology.html" class="footer-link">IT &amp; Technology</a></li>
+            <li><a href="/industry/financial-services.html" class="footer-link">BFSI</a></li>
+            <li><a href="/industry/healthcare.html" class="footer-link">Healthcare</a></li>
+            <li><a href="/industry/manufacturing.html" class="footer-link">Manufacturing</a></li>
+            <li><a href="/industry/logistics-transportation.html" class="footer-link">Logistics &amp; Transportation</a></li>
+            <li><a href="/industry/retail-ecommerce.html" class="footer-link">Retail &amp; E-commerce</a></li>
+            <li><a href="/industry/staffing-recruitment.html" class="footer-link">Staffing &amp; Recruitment</a></li>
+            <li><a href="/industry/hospitality-tourism.html" class="footer-link">Hospitality &amp; Tourism</a></li>
+            <li><a href="/industry/construction.html" class="footer-link">Construction</a></li>
+            <li><a href="/industry/bpo-kpo.html" class="footer-link">BPO &amp; KPO</a></li>
+            <li><a href="/industry/education.html" class="footer-link">Education</a></li>
+            <li><a href="/industry/gig-economy.html" class="footer-link">Gig Economy</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-col-title">Resource</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="/resources/blog.html" class="footer-link">Blog</a></li>
+            <li><a href="/resources/case-studies.html" class="footer-link">Case Studies</a></li>
+            <li><a href="/resources/guides.html" class="footer-link">Guides &amp; Reports</a></li>
+            <li><a href="/resources/insights.html" class="footer-link">Background Screening Insights</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-col-title">Company</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="/company/about-us.html" class="footer-link">About us</a></li>
+            <li><a href="/company/careers.html" class="footer-link">Career</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-col-title">Support</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="/support/candidate-support.html" class="footer-link">Candidate</a></li>
+            <li><a href="/support/customer.html" class="footer-link">Customer</a></li>
+          </ul>
+        </div>
+        
       </div>
     </div>
     
-    <div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-slate-500">© 2025 Verifitrust Inc. All rights reserved.</p>
-      <div class="flex items-center gap-6">
-        <a href="#" class="text-sm text-slate-500 hover:text-[#69be28] transition-colors">Terms</a>
-        <a href="#" class="text-sm text-slate-500 hover:text-[#69be28] transition-colors">Privacy</a>
-        <a href="#" class="text-sm text-slate-500 hover:text-[#69be28] transition-colors">Cookies</a>
-        <div class="flex items-center gap-2 px-3 py-1.5 bg-slate-100 rounded-full">
-          <i class="fas fa-globe text-slate-500 text-xs"></i>
-          <select class="bg-transparent text-sm text-slate-600 outline-none cursor-pointer">
-            <option>English</option>
-            <option>Français</option>
-            <option>Deutsch</option>
-            <option>Español</option>
-            <option>日本語</option>
-          </select>
-        </div>
+    <!-- Bottom Bar (no URLs for these pages exist in the header yet, so they stay "#") -->
+    <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-slate-500">© 2026 Verifitrust Inc. All rights reserved.</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+        <a href="#" class="text-sm text-slate-500 hover:text-[#69be28] transition-colors">Privacy Policy</a>
+        <a href="#" class="text-sm text-slate-500 hover:text-[#69be28] transition-colors">Cookie Policy</a>
+        <a href="#" class="text-sm text-slate-500 hover:text-[#69be28] transition-colors">Recruitment Policy</a>
+        <a href="#" class="text-sm text-slate-500 hover:text-[#69be28] transition-colors">Terms &amp; Conditions</a>
+        <a href="#" class="text-sm text-slate-500 hover:text-[#69be28] transition-colors">Disclaimer</a>
       </div>
     </div>
   </div>
