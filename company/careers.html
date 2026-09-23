@@ -1072,11 +1072,19 @@
               document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
             }, 100);
           } else {
-            throw new Error(result.message || 'Submission failed');
+            // ✅ DIAGNOSTIC: Pass the receivedKeys to the error
+            let error = new Error(result.message || 'Submission failed');
+            error.receivedKeys = result.receivedKeys;
+            throw error;
           }
         } catch (err) {
           console.error('Form submission error:', err);
-          showToast('error', 'Submission Failed', 'Please try again or email us at verify@verifitrust.com');
+          // ✅ DIAGNOSTIC: If Google returned receivedKeys, show them!
+          let errorMsg = err.message || 'Please try again or email us at verify@verifitrust.com';
+          if (err.receivedKeys) {
+            errorMsg += ' (Keys received: ' + err.receivedKeys.join(', ') + ')';
+          }
+          showToast('error', 'Submission Failed', errorMsg);
           submitBtn.disabled = false;
         } finally {
           btnText.textContent = 'Submit Application';
@@ -1088,3 +1096,5 @@
     }); // End DOMContentLoaded
   })(); // End IIFE
 </script>
+</body>
+</html>
