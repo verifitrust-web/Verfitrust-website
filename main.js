@@ -3,7 +3,10 @@ fetch('/header.html')
   .then(response => response.text())
   .then(data => {
     document.getElementById('header-include').innerHTML = data;
-    if (window.tailwind) { window.tailwind.refresh(); }
+    // Fixed: Check if tailwind and refresh exist to prevent crash
+    if (window.tailwind && typeof window.tailwind.refresh === 'function') {
+      window.tailwind.refresh();
+    }
   });
 
 // Fetch and inject Footer
@@ -11,7 +14,10 @@ fetch('/footer.html')
   .then(response => response.text())
   .then(data => {
     document.getElementById('footer-include').innerHTML = data;
-    if (window.tailwind) { window.tailwind.refresh(); }
+    // Fixed: Check if tailwind and refresh exist to prevent crash
+    if (window.tailwind && typeof window.tailwind.refresh === 'function') {
+      window.tailwind.refresh();
+    }
     
     const backTop = document.getElementById('backTop');
     if(backTop) {
