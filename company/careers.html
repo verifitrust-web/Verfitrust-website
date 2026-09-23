@@ -640,15 +640,14 @@
           <input type="url" id="linkedin" name="linkedin" class="form-input" placeholder="https://linkedin.com/in/username">
         </div>
 
-        <!-- Resume Upload -->
+                <!-- Resume Upload -->
         <div>
           <label class="form-label">Resume / CV <span class="req">*</span></label>
           <div id="dropzone" class="dropzone relative overflow-hidden">
-            <!-- Label covers the dropzone and natively triggers the input -->
-            <label id="dropzoneLabel" for="resume" class="absolute inset-0 w-full h-full cursor-pointer z-20"></label>
-            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx,.rtf,.txt" style="position: absolute; left: -9999px; opacity: 0;" required>
+            <!-- Native input laid directly on top. Browser handles the click and attaches the file natively. -->
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx,.rtf,.txt" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20" required>
             
-            <div id="dropzoneDefault" class="relative z-10">
+            <div id="dropzoneDefault" class="pointer-events-none relative z-10">
               <div class="w-14 h-14 bg-[#69be28]/15 rounded-full flex items-center justify-center mx-auto mb-3">
                 <i class="fas fa-cloud-arrow-up text-[#69be28] text-xl"></i>
               </div>
@@ -656,7 +655,7 @@
               <p class="text-xs text-slate-500">PDF, DOC, DOCX, RTF, TXT up to 10MB</p>
             </div>
             
-            <div id="dropzonePreview" class="hidden relative z-30">
+            <div id="dropzonePreview" class="hidden relative z-30 bg-[#f0fdf4]">
               <div class="resume-preview">
                 <div class="w-12 h-12 bg-[#69be28]/15 rounded-lg flex items-center justify-center flex-shrink-0">
                   <i id="fileIcon" class="fas fa-file-pdf text-[#69be28] text-xl"></i>
