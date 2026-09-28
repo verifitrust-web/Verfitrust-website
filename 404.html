@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>404 Page Not Found — Verifitrust</title>
+<link rel="icon" type="image/png" href="/assets/favicon.png" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  .font-serif { font-family: 'Instrument Serif', serif; }
+  .btn-primary { background: #69be28; color: #071A2b; box-shadow: 0 4px 14px rgba(105,190,40,0.3); transition: all 0.3s ease; }
+  .btn-primary:hover { background: #4f9e1a; transform: translateY(-2px); }
+  .btn-secondary { background: transparent; color: #071A2b; border: 1.5px solid #071A2b; transition: all 0.3s ease; }
+  .btn-secondary:hover { background: #071A2b; color: #ffffff; transform: translateY(-2px); }
+</style>
+</head>
+<body class="bg-white">
+
+<!-- ============ HEADER ============ -->
+<div id="header-include"></div>
+
+<!-- ============ 404 CONTENT ============ -->
+<section class="relative pt-40 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white flex items-center justify-center">
+  
+  <!-- Background blur shapes -->
+  <div class="absolute top-20 left-0 w-72 h-72 bg-[#69be28]/5 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-[#071A2b]/5 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center relative z-10">
+    
+    <!-- The Big 404 -->
+    <h1 class="text-[120px] md:text-[180px] font-black leading-none text-[#071A2b] mb-2 tracking-tighter">
+      4<span class="text-[#69be28]">0</span>4
+    </h1>
+
+    <!-- Oh No Text -->
+    <p class="text-lg md:text-xl font-bold text-[#69be28] uppercase tracking-widest mb-6">
+      Oh No! It's not here.
+    </p>
+
+    <!-- Subtitle -->
+    <h2 class="text-2xl md:text-3xl font-bold text-[#071A2b] mb-4">
+      We are sorry, but the page you are looking for can not be found.
+    </h2>
+    <p class="text-base md:text-lg text-slate-600 mb-10 max-w-xl mx-auto">
+      You might try searching our site or visit the homepage.
+    </p>
+
+    <!-- Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/index.html" class="btn-primary inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold text-base">
+        <i class="fas fa-house text-sm"></i>
+        Back to Homepage
+      </a>
+      <a href="/support/customer.html" class="btn-secondary inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold text-base">
+        <i class="fas fa-headset text-sm"></i>
+        Contact Support
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div id="footer-include"></div>
+
+<!-- Load global scripts -->
+<script src="/main.js"></script>
+
+</body>
+</html>
