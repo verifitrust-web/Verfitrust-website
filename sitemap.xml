@@ -3,7 +3,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://verifitrust.com/</loc>
-    <lastmod>2024-05-24</lastmod>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,68 +11,89 @@
   <!-- Book a Demo -->
   <url>
     <loc>https://verifitrust.com/book-a-demo.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Blog -->
+  <url>
+    <loc>https://verifitrust.com/blog.html</loc>
+    <lastmod>2024-06-01</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- Solutions Pages -->
   <url>
     <loc>https://verifitrust.com/solutions/id-verification.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/solutions/employment-verification.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/solutions/education-verification.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/solutions/address-verification.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/solutions/criminal-court-verification.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/solutions/global-background-screening.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/solutions/social-media-verification.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://verifitrust.com/solutions/professional-verification.html</loc>
+    <loc>https://verifitrust.com/solutions/professional-credential-verification.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://verifitrust.com/solutions/financial-credit-screening.html</loc>
+    <loc>https://verifitrust.com/solutions/financial-credit-verification.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/solutions/drug-verification.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/solutions/reference-behavioural-screening.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/solutions/exit-interview.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -80,83 +101,93 @@
   <!-- Industry Pages -->
   <url>
     <loc>https://verifitrust.com/industry/it-technology.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/industry/financial-services.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/industry/healthcare.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/industry/manufacturing.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/industry/logistics-transportation.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/industry/retail-ecommerce.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/industry/staffing-recruitment.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/industry/hospitality-tourism.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/industry/construction.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/industry/bpo-kpo.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/industry/education.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/industry/gig-economy.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Resources Pages -->
   <url>
-    <loc>https://verifitrust.com/resources/blog.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://verifitrust.com/resources/case-studies.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/resources/guides.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/resources/insights.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -164,11 +195,13 @@
   <!-- Company Pages -->
   <url>
     <loc>https://verifitrust.com/company/about-us.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/company/careers.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -176,11 +209,13 @@
   <!-- Support Pages -->
   <url>
     <loc>https://verifitrust.com/support/candidate.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://verifitrust.com/support/customer.html</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
