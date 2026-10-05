@@ -200,7 +200,7 @@
         const imgContainer = document.getElementById('post-image-container');
         if (post._embedded && post._embedded['wp:featuredmedia'] && imgContainer) {
           const imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
-          imgContainer.innerHTML = `<img src="${imageUrl}" alt="${post.title.rendered}" class="w-full h-auto object-cover rounded-2xl mb-10 fade-up shadow-lg">`;
+                    imgContainer.innerHTML = `<img src="${imageUrl}" alt="${post.title.rendered}" class="w-full h-auto object-cover rounded-2xl mb-10 fade-up visible shadow-lg">`;
         }
 
         // Setup Share Buttons
