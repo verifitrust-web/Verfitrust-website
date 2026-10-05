@@ -158,12 +158,19 @@
   const WP_API_URL = `${WP_URL}/wp-json/wp/v2`;
 
   const urlParams = new URLSearchParams(window.location.search);
-  const postId = urlParams.get('id');
+  const slug = urlParams.get('slug');
 
-  if (postId) {
-    fetch(`${WP_API_URL}/posts/${postId}?_embed`)
+  if (slug) {
+    // Fetch the specific post using the slug
+    fetch(`${WP_API_URL}/posts?slug=${slug}&_embed`)
       .then(response => response.json())
-      .then(post => {
+      .then(posts => {
+        if(posts.length === 0) {
+          document.getElementById('post-content').innerHTML = '<p class="text-red-500">Article not found.</p>';
+          return;
+        }
+        
+        const post = posts[0];
         const date = new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
         
         document.title = post.title.rendered + ' — Verifitrust';
@@ -187,7 +194,7 @@
         // Update Category Tag
         document.getElementById('post-category').innerText = isCaseStudy ? 'Case Study' : categoryName;
 
-        // Update Back Button (FIXED PATHS)
+        // Update Back Button
         if(isCaseStudy) {
           document.getElementById('back-btn').href = '/resources/case-studies.html';
           document.getElementById('back-text').innerText = 'Back to Case Studies';
@@ -200,7 +207,7 @@
         const imgContainer = document.getElementById('post-image-container');
         if (post._embedded && post._embedded['wp:featuredmedia'] && imgContainer) {
           const imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
-                    imgContainer.innerHTML = `<img src="${imageUrl}" alt="${post.title.rendered}" class="w-full h-auto object-cover rounded-2xl mb-10 fade-up visible shadow-lg">`;
+          imgContainer.innerHTML = `<img src="${imageUrl}" alt="${post.title.rendered}" class="w-full h-auto object-cover rounded-2xl mb-10 fade-up visible shadow-lg">`;
         }
 
         // Setup Share Buttons
