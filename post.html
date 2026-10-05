@@ -187,12 +187,12 @@
         // Update Category Tag
         document.getElementById('post-category').innerText = isCaseStudy ? 'Case Study' : categoryName;
 
-        // Update Back Button
+        // Update Back Button (FIXED PATHS)
         if(isCaseStudy) {
-          document.getElementById('back-btn').href = '/case-studies.html';
+          document.getElementById('back-btn').href = '/resources/case-studies.html';
           document.getElementById('back-text').innerText = 'Back to Case Studies';
         } else {
-          document.getElementById('back-btn').href = '/blog.html';
+          document.getElementById('back-btn').href = '/resources/blog.html';
           document.getElementById('back-text').innerText = 'Back to Blog';
         }
 
