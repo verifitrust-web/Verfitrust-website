@@ -41,7 +41,6 @@
     box-shadow: 0 8px 24px rgba(105,190,40,0.4);
   }
 
-  /* Mobile Menu CSS */
   .mobile-menu{
     transform: translateX(100%);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -71,7 +70,6 @@
   }
   .fade-up.visible{ opacity: 1; transform: translateY(0); }
 
-  /* Share Button Hover Effect */
   .share-btn { transition: all 0.2s ease; }
   .share-btn:hover { transform: translateY(-2px); }
 </style>
@@ -85,14 +83,14 @@
 <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-white">
   <div class="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8">
     
-    <!-- Back Button -->
-    <a href="/blog.html" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-[#69be28] mb-8 transition-colors">
-      <i class="fas fa-arrow-left text-xs"></i> Back to Blog
+    <!-- Dynamic Back Button -->
+    <a href="/blog.html" id="back-btn" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-[#69be28] mb-8 transition-colors">
+      <i class="fas fa-arrow-left text-xs"></i> <span id="back-text">Back to Blog</span>
     </a>
 
-    <!-- Category Tag -->
+    <!-- Dynamic Category Tag -->
     <div class="mb-4 fade-up">
-      <span class="px-3 py-1 bg-[#69be28]/10 text-[#69be28] text-[11px] font-bold uppercase tracking-wider rounded-full">HR Tips</span>
+      <span id="post-category" class="px-3 py-1 bg-[#69be28]/10 text-[#69be28] text-[11px] font-bold uppercase tracking-wider rounded-full">Article</span>
     </div>
 
     <!-- Title Area -->
@@ -102,7 +100,7 @@
     <div class="flex items-center gap-4 mb-8 fade-up">
       <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Author" class="w-12 h-12 rounded-full object-cover border-2 border-[#69be28]">
       <div>
-        <p class="font-bold text-[#071A2b] text-sm">Maya Krishnan</p>
+        <p class="font-bold text-[#071A2b] text-sm">Verifitrust Team</p>
         <p id="post-date" class="text-slate-500 text-xs">Loading date...</p>
       </div>
     </div>
@@ -137,8 +135,6 @@
     <!-- ============ COMMENTS SECTION ============ -->
     <div class="mt-16">
       <h3 class="text-2xl font-bold text-[#071A2b] mb-6">Join the conversation <span class="text-slate-400 text-lg">(0 Comments)</span></h3>
-      
-      <!-- Comment Form -->
       <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 mb-8">
         <textarea placeholder="Share your thoughts..." class="w-full p-4 bg-white rounded-xl border border-slate-200 focus:outline-none focus:border-[#69be28] focus:ring-2 focus:ring-[#69be28]/20 resize-none mb-3" rows="3"></textarea>
         <div class="flex justify-end">
@@ -171,10 +167,36 @@
         const date = new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
         
         document.title = post.title.rendered + ' — Verifitrust';
-        document.getElementById('post-date').innerText = `VP People Ops · ${date} · 5 min read`;
+        document.getElementById('post-date').innerText = `Published · ${date}`;
         document.getElementById('post-title').innerHTML = post.title.rendered;
         document.getElementById('post-content').innerHTML = post.content.rendered;
 
+        // Dynamic Category & Back Button Logic
+        let isCaseStudy = false;
+        let categoryName = 'Blog';
+        if(post._embedded && post._embedded['wp:term']) {
+          const cats = post._embedded['wp:term'].flat().filter(t => t.taxonomy === 'category');
+          if(cats.length > 0) {
+            categoryName = cats[0].name;
+            if(categoryName.toLowerCase().includes('case')) {
+              isCaseStudy = true;
+            }
+          }
+        }
+
+        // Update Category Tag
+        document.getElementById('post-category').innerText = isCaseStudy ? 'Case Study' : categoryName;
+
+        // Update Back Button
+        if(isCaseStudy) {
+          document.getElementById('back-btn').href = '/case-studies.html';
+          document.getElementById('back-text').innerText = 'Back to Case Studies';
+        } else {
+          document.getElementById('back-btn').href = '/blog.html';
+          document.getElementById('back-text').innerText = 'Back to Blog';
+        }
+
+        // Display Image
         const imgContainer = document.getElementById('post-image-container');
         if (post._embedded && post._embedded['wp:featuredmedia'] && imgContainer) {
           const imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
