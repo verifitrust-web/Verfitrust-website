@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+  <script>
+  // Check if the URL is a root-level path (like /my-post-slug) and not a file/folder
+  const path = window.location.pathname;
+  if (path && path !== '/' && !path.includes('.') && path.split('/').length === 2) {
+    const slug = path.replace(/\//g, '');
+    // Redirect to the post reader page with the slug
+    window.location.href = '/post.html?slug=' + slug;
+  }
+</script>
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
