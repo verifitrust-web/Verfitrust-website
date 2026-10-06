@@ -160,9 +160,12 @@
   const urlParams = new URLSearchParams(window.location.search);
   const slug = urlParams.get('slug');
 
-  if (slug) {
-    // Fetch the specific post using the slug
+    if (slug) {
+    // Rewrite the URL to look clean (remove post.html?slug=)
+    window.history.replaceState({}, document.title, '/' + slug);
+
     fetch(`${WP_API_URL}/posts?slug=${slug}&_embed`)
+      // ... (rest of your fetch code remains exactly the same)
       .then(response => response.json())
       .then(posts => {
         if(posts.length === 0) {
