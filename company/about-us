@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Us — Verifitrust</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root{
+    --primary: #69be28;
+    --primary-dark: #4f9e1a;
+    --primary-soft: #eaf7d8;
+    --secondary: #071A2b;
+    --secondary-soft: #122845;
+    --white: #ffffff;
+  }
+  *{ -webkit-font-smoothing: antialiased; }
+  body{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    color: var(--secondary);
+    overflow-x: hidden;
+  }
+  .font-serif{ font-family: 'Instrument Serif', serif; font-weight: 400; }
+
+  ::-webkit-scrollbar{ width: 10px; }
+  ::-webkit-scrollbar-track{ background: #f1f5f9; }
+  ::-webkit-scrollbar-thumb{ background: #69be28; border-radius: 5px; }
+
+  .gradient-text{
+    background: linear-gradient(135deg, #071A2b 0%, #2d5a1a 50%, #69be28 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .btn-primary{
+    background: var(--primary);
+    color: var(--secondary);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 4px 14px rgba(105,190,40,0.3);
+  }
+  .btn-primary:hover{
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(105,190,40,0.4);
+  }
+
+  .fade-up{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fade-up.visible{ opacity: 1; transform: translateY(0); }
+
+  .feature-card{
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before{
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, transparent, #69be28, transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  .feature-card:hover::before{ transform: translateX(100%); }
+  .feature-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(7,26,43,0.08);
+    border-color: rgba(105,190,40,0.3);
+  }
+
+  @keyframes drawCheck{ to{ stroke-dashoffset: 0; } }
+  .check-path{
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawCheck 1.5s ease forwards;
+  }
+
+  .stripe-bg{
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(105,190,40,0.04) 10px, rgba(105,190,40,0.04) 20px);
+  }
+
+  .mobile-menu{
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-menu.open{ transform: translateX(0); }
+
+  ::selection{ background: #69be28; color: #071A2b; }
+  .border-soft{ border: 1px solid rgba(7,26,43,0.08); }
+
+  .stagger > *{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .stagger.visible > *{ opacity: 1; transform: translateY(0); }
+  .stagger.visible > *:nth-child(1){ transition-delay: 0.05s; }
+  .stagger.visible > *:nth-child(2){ transition-delay: 0.12s; }
+  .stagger.visible > *:nth-child(3){ transition-delay: 0.19s; }
+  .stagger.visible > *:nth-child(4){ transition-delay: 0.26s; }
+  .stagger.visible > *:nth-child(5){ transition-delay: 0.33s; }
+  .stagger.visible > *:nth-child(6){ transition-delay: 0.40s; }
+  .stagger.visible > *:nth-child(7){ transition-delay: 0.47s; }
+  .stagger.visible > *:nth-child(8){ transition-delay: 0.54s; }
+
+  html{ scroll-behavior: smooth; }
+
+  .badge-pill{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    background: rgba(105,190,40,0.10);
+    color: var(--primary-dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 9999px;
+  }
+
+  /* ===== PROCESS FLOW ===== */
+  .process-card{
+    transition: all 0.45s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+  }
+  .process-card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 24px 50px -12px rgba(7,26,43,0.16);
+    border-color: rgba(105,190,40,0.45);
+  }
+  .process-card:hover .process-icon-wrap{
+    background: linear-gradient(135deg, #69be28 0%, #4f9e1a 100%);
+    color: #071A2b;
+    transform: scale(1.08) rotate(-4deg);
+    box-shadow: 0 12px 30px rgba(105,190,40,0.35);
+  }
+  .process-card:hover .process-icon-wrap i{
+    transform: scale(1.15);
+  }
+  .process-card:hover .process-num{
+    background: var(--primary);
+    color: var(--secondary);
+    transform: scale(1.15);
+  }
+  .process-icon-wrap{
+    transition: all 0.45s cubic-bezier(0.4,0,0.2,1);
+    background: linear-gradient(135deg, #eaf7d8 0%, #f7fcef 100%);
+    color: var(--primary-dark);
+    box-shadow: 0 6px 18px rgba(105,190,40,0.12);
+  }
+  .process-icon-wrap i{
+    transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+  }
+  .process-num{
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  /* Soft pulse ring around icon */
+  .icon-ring{
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 2px dashed rgba(105,190,40,0.25);
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.8s ease;
+  }
+  .process-card:hover .icon-ring{
+    opacity: 1;
+    transform: rotate(180deg);
+  }
+
+  /* ===== FAQ ===== */
+  .faq-item{ transition: all 0.35s ease; }
+  .faq-item:hover{ border-color: rgba(105,190,40,0.35); }
+  .faq-question{ cursor: pointer; transition: color 0.3s ease; }
+  .faq-item.active .faq-question{ color: var(--primary-dark); }
+  .faq-answer{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), padding 0.35s ease;
+  }
+  .faq-item.active .faq-answer{
+    max-height: 400px;
+    padding-top: 0.25rem;
+  }
+  .faq-icon{
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), background 0.3s ease, color 0.3s ease;
+  }
+  .faq-item.active .faq-icon{
+    transform: rotate(135deg);
+    background: var(--primary);
+    color: var(--secondary);
+  }
+  .faq-item.active{
+    background: linear-gradient(180deg, rgba(105,190,40,0.04) 0%, transparent 100%);
+    box-shadow: 0 10px 30px -10px rgba(105,190,40,0.15);
+  }
+
+  /* Stat counter gradient */
+  .stat-num{
+    background: linear-gradient(90deg, #69be28, #ffffff, #69be28);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s linear infinite;
+  }
+  @keyframes shimmer{ to { background-position: 200% center; } }
+</style>
+</head>
+<body class="bg-white">
+
+<!-- ============ HEADER ============ -->
+<div id="header-include"></div>
+
+<!-- ============ HERO ============ -->
+<section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-white">
+  <div class="absolute inset-0 grid-bg opacity-40" style="background-image: linear-gradient(rgba(7,26,43,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(7,26,43,0.04) 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="text-center max-w-4xl mx-auto fade-up">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full mb-6">
+        <i class="fas fa-compass text-[#69be28]"></i>
+        <span class="text-xs font-semibold text-[#071A2b]">Our Mission</span>
+      </div>
+
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
+        <span class="block text-[#071A2b]">We're building the</span>
+        <span class="block">
+          <span class="gradient-text">trust infrastructure</span>
+        </span>
+        <span class="block text-[#071A2b]">for modern hiring<span class="text-[#69be28]">.</span></span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        Founded in 2026, Verifitrust was born to fix a broken system. Building safe, reliable, and global teams shouldn't take weeks of manual paperwork. It should be instant, secure, and built for the modern workforce.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUR STORY ============ -->
+<section class="py-24 lg:py-32 bg-gradient-to-b from-white to-slate-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <div class="fade-up">
+        <span class="badge-pill mb-4">The Verifitrust Story</span>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-[#071A2b] mb-6">
+          Every great team <span class="font-serif italic text-[#69be28]">starts</span> with trust
+        </h2>
+        <p class="text-slate-600 text-lg mb-6 leading-relaxed">
+          In 2026, our founders set out to solve a problem they had lived through for years — scaling a global workforce meant slow, fragmented background checks, scattered across dozens of local vendors, with candidate experiences that felt broken.
+        </p>
+        <p class="text-slate-600 text-lg mb-8 leading-relaxed">
+          We knew there had to be a better way. So we built Verifitrust: a single, unified API and dashboard for global identity and background verification — making it effortless for companies to hire the right people, anywhere in the world, in minutes instead of weeks.
+        </p>
+        <div class="flex items-center gap-8">
+          <div>
+            <div class="text-3xl font-bold text-[#071A2b]">2026</div>
+            <div class="text-sm text-slate-500 mt-1">Year Founded</div>
+          </div>
+          <div class="w-px h-12 bg-slate-200"></div>
+          <div>
+            <div class="text-3xl font-bold text-[#071A2b]">Chennai, IN</div>
+            <div class="text-sm text-slate-500 mt-1">Global HQ</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative fade-up">
+        <div class="stripe-bg absolute inset-0 rounded-3xl"></div>
+        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&auto=format&fit=crop&q=80" alt="Team collaboration" class="relative rounded-3xl shadow-2xl w-full h-[450px] object-cover">
+        <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-5 border border-slate-100">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-[#69be28]/15 rounded-full flex items-center justify-center">
+              <i class="fas fa-globe text-[#69be28] text-xl"></i>
+            </div>
+            <div>
+              <div class="text-xs text-slate-500">Operating Globally</div>
+              <div class="text-xl font-bold text-[#071A2b]">180+ Countries</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS BAND ============ -->
+<section class="py-16 lg:py-20 bg-[#071A2b] relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 20% 30%, #69be28 0%, transparent 40%), radial-gradient(circle at 80% 70%, #69be28 0%, transparent 40%);"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="fade-up">
+        <div class="text-4xl md:text-5xl font-bold mb-2 stat-num">100+</div>
+        <div class="text-sm text-slate-400">Companies trust us</div>
+      </div>
+      <div class="fade-up">
+        <div class="text-4xl md:text-5xl font-bold mb-2 stat-num">5k+</div>
+        <div class="text-sm text-slate-400">Checks completed</div>
+      </div>
+      <div class="fade-up">
+        <div class="text-4xl md:text-5xl font-bold mb-2 stat-num">99.9%</div>
+        <div class="text-sm text-slate-400">Platform uptime</div>
+      </div>
+      <div class="fade-up">
+        <div class="text-4xl md:text-5xl font-bold mb-2 stat-num">1.2 Days</div>
+        <div class="text-sm text-slate-400">Avg. turnaround time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CORE VALUES ============ -->
+<section class="py-24 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-up">
+      <span class="badge-pill mb-4">Our Values</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        What drives <span class="font-serif italic text-[#69be28]">our team</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        Our core principles shape how we build our product, interact with our clients, and grow our team globally.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 stagger">
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-shield-halved text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-[#071A2b] mb-2">Trust First</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">We build trust with our clients and each other. Transparency, honesty, and accountability are non-negotiable in everything we do.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-bolt text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-[#071A2b] mb-2">Bias for Speed</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">We act with urgency. Shipping fast and iterating based on customer feedback is embedded in our DNA. Done is better than perfect.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-globe text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-[#071A2b] mb-2">Global Mindset</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">We think globally. We embrace diverse perspectives to build a product that works seamlessly across borders and cultures.</p>
+      </div>
+
+      <div class="feature-card bg-white border-soft rounded-2xl p-8 flex flex-col h-full">
+        <div class="w-12 h-12 bg-[#69be28]/10 rounded-xl flex items-center justify-center mb-5">
+          <i class="fas fa-hand-holding-heart text-[#69be28] text-xl"></i>
+        </div>
+        <h3 class="text-lg font-bold text-[#071A2b] mb-2">Candidate Respect</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">We treat every candidate's data with extreme care. We build products that respect privacy and deliver a frictionless user experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS (ICON FLOW) ============ -->
+<section id="process" class="py-24 lg:py-32 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
+  <div class="absolute inset-0 grid-bg opacity-30" style="background-image: linear-gradient(rgba(7,26,43,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(7,26,43,0.03) 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+    <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-20 fade-up">
+      <span class="badge-pill mb-4">How It Works</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        The Verifitrust <span class="font-serif italic text-[#69be28]">process</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        From invitation to verified hire — follow the journey of how we turn days of paperwork into minutes of seamless verification.
+      </p>
+    </div>
+
+    <!-- 8-step icon flow -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 stagger">
+
+      <!-- Step 1 -->
+      <div class="process-card bg-white border-soft rounded-2xl p-7 flex flex-col items-center text-center">
+        <div class="relative mb-5">
+          <div class="process-icon-wrap w-20 h-20 rounded-2xl flex items-center justify-center">
+            <i class="fas fa-paper-plane text-3xl"></i>
+          </div>
+          <div class="icon-ring"></div>
+          <div class="process-num absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#071A2b] text-white text-xs font-bold flex items-center justify-center shadow-md">01</div>
+        </div>
+        <h3 class="text-base font-bold text-[#071A2b] mb-2">Invitation Sent</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">HR sends a secure verification invite to the candidate in a single click.</p>
+        <div class="mt-4 text-[#69be28] text-xs font-semibold flex items-center gap-1 opacity-60">
+          <span>Step 1 of 8</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="process-card bg-white border-soft rounded-2xl p-7 flex flex-col items-center text-center">
+        <div class="relative mb-5">
+          <div class="process-icon-wrap w-20 h-20 rounded-2xl flex items-center justify-center">
+            <i class="fas fa-user-plus text-3xl"></i>
+          </div>
+          <div class="icon-ring"></div>
+          <div class="process-num absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#071A2b] text-white text-xs font-bold flex items-center justify-center shadow-md">02</div>
+        </div>
+        <h3 class="text-base font-bold text-[#071A2b] mb-2">Candidate Onboarded</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">Candidate receives a friendly link and completes their details in minutes.</p>
+        <div class="mt-4 text-[#69be28] text-xs font-semibold flex items-center gap-1 opacity-60">
+          <span>Step 2 of 8</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="process-card bg-white border-soft rounded-2xl p-7 flex flex-col items-center text-center">
+        <div class="relative mb-5">
+          <div class="process-icon-wrap w-20 h-20 rounded-2xl flex items-center justify-center">
+            <i class="fas fa-id-card text-3xl"></i>
+          </div>
+          <div class="icon-ring"></div>
+          <div class="process-num absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#071A2b] text-white text-xs font-bold flex items-center justify-center shadow-md">03</div>
+        </div>
+        <h3 class="text-base font-bold text-[#071A2b] mb-2">Documents Uploaded</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">ID, proofs, and certificates are captured with auto-validation.</p>
+        <div class="mt-4 text-[#69be28] text-xs font-semibold flex items-center gap-1 opacity-60">
+          <span>Step 3 of 8</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="process-card bg-white border-soft rounded-2xl p-7 flex flex-col items-center text-center">
+        <div class="relative mb-5">
+          <div class="process-icon-wrap w-20 h-20 rounded-2xl flex items-center justify-center">
+            <i class="fas fa-fingerprint text-3xl"></i>
+          </div>
+          <div class="icon-ring"></div>
+          <div class="process-num absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#071A2b] text-white text-xs font-bold flex items-center justify-center shadow-md">04</div>
+        </div>
+        <h3 class="text-base font-bold text-[#071A2b] mb-2">Identity Verified</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">Our engine cross-checks identity against global databases in real time.</p>
+        <div class="mt-4 text-[#69be28] text-xs font-semibold flex items-center gap-1 opacity-60">
+          <span>Step 4 of 8</span>
+          <i class="fas fa-arrow-down"></i>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="process-card bg-white border-soft rounded-2xl p-7 flex flex-col items-center text-center">
+        <div class="relative mb-5">
+          <div class="process-icon-wrap w-20 h-20 rounded-2xl flex items-center justify-center">
+            <i class="fas fa-user-shield text-3xl"></i>
+          </div>
+          <div class="icon-ring"></div>
+          <div class="process-num absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#071A2b] text-white text-xs font-bold flex items-center justify-center shadow-md">05</div>
+        </div>
+        <h3 class="text-base font-bold text-[#071A2b] mb-2">Background Screened</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">Education, employment, and criminal records screened in parallel.</p>
+        <div class="mt-4 text-[#69be28] text-xs font-semibold flex items-center gap-1 opacity-60">
+          <span>Step 5 of 8</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="process-card bg-white border-soft rounded-2xl p-7 flex flex-col items-center text-center">
+        <div class="relative mb-5">
+          <div class="process-icon-wrap w-20 h-20 rounded-2xl flex items-center justify-center">
+            <i class="fas fa-chart-line text-3xl"></i>
+          </div>
+          <div class="icon-ring"></div>
+          <div class="process-num absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#071A2b] text-white text-xs font-bold flex items-center justify-center shadow-md">06</div>
+        </div>
+        <h3 class="text-base font-bold text-[#071A2b] mb-2">Live Status Tracked</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">HR and candidate watch every step progress on a transparent dashboard.</p>
+        <div class="mt-4 text-[#69be28] text-xs font-semibold flex items-center gap-1 opacity-60">
+          <span>Step 6 of 8</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+
+      <!-- Step 7 -->
+      <div class="process-card bg-white border-soft rounded-2xl p-7 flex flex-col items-center text-center">
+        <div class="relative mb-5">
+          <div class="process-icon-wrap w-20 h-20 rounded-2xl flex items-center justify-center">
+            <i class="fas fa-file-circle-check text-3xl"></i>
+          </div>
+          <div class="icon-ring"></div>
+          <div class="process-num absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#071A2b] text-white text-xs font-bold flex items-center justify-center shadow-md">07</div>
+        </div>
+        <h3 class="text-base font-bold text-[#071A2b] mb-2">Report Generated</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">A clear, compliant report is auto-generated and ready for review.</p>
+        <div class="mt-4 text-[#69be28] text-xs font-semibold flex items-center gap-1 opacity-60">
+          <span>Step 7 of 8</span>
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+
+      <!-- Step 8 -->
+      <div class="process-card bg-white border-soft rounded-2xl p-7 flex flex-col items-center text-center relative overflow-hidden">
+        <!-- Special highlight for final step -->
+        <div class="absolute inset-0 bg-gradient-to-br from-[#69be28]/8 to-transparent pointer-events-none"></div>
+        <div class="relative mb-5">
+          <div class="process-icon-wrap w-20 h-20 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, #69be28 0%, #4f9e1a 100%); color: #071A2b;">
+            <i class="fas fa-circle-check text-3xl"></i>
+          </div>
+          <div class="icon-ring" style="opacity:1;"></div>
+          <div class="process-num absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#69be28] text-[#071A2b] text-xs font-bold flex items-center justify-center shadow-md">08</div>
+        </div>
+        <h3 class="text-base font-bold text-[#071A2b] mb-2 relative">Hire Confirmed</h3>
+        <p class="text-slate-600 text-sm leading-relaxed relative">A verified, trusted candidate joins the team — onboarded with confidence.</p>
+        <div class="mt-4 text-[#69be28] text-xs font-semibold flex items-center gap-1 opacity-80 relative">
+          <i class="fas fa-check-circle"></i>
+          <span>Process Complete</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom note -->
+    <div class="text-center mt-14 fade-up">
+      <a href="#cta" class="btn-primary inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold">
+        See it in action
+        <i class="fas fa-arrow-right text-sm"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="py-24 lg:py-32 bg-white">
+  <div class="max-w-5xl mx-auto px-6 lg:px-8">
+
+    <div class="text-center max-w-3xl mx-auto mb-14 lg:mb-16 fade-up">
+      <span class="badge-pill mb-4">FAQ</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#071A2b] mb-6">
+        Questions, <span class="font-serif italic text-[#69be28]">answered</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        Everything you need to know about Verifitrust, our process, and what we stand for.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-4 fade-up">
+
+      <div class="faq-item bg-white border border-slate-200 rounded-2xl px-6 md:px-8 py-5">
+        <div class="faq-question flex items-center justify-between gap-4">
+          <h3 class="text-base md:text-lg font-bold text-[#071A2b]">What makes Verifitrust different from other background check providers?</h3>
+          <span class="faq-icon flex-shrink-0 w-9 h-9 rounded-full bg-slate-100 text-[#071A2b] flex items-center justify-center">
+            <i class="fas fa-plus text-sm"></i>
+          </span>
+        </div>
+        <div class="faq-answer text-slate-600 text-sm md:text-base leading-relaxed">
+          Verifitrust unifies the entire verification workflow — identity, education, employment, criminal, and reference checks — into a single API and dashboard. Instead of juggling dozens of local vendors, you get one contract, one bill, and one consistent candidate experience across 180+ countries.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white border border-slate-200 rounded-2xl px-6 md:px-8 py-5">
+        <div class="faq-question flex items-center justify-between gap-4">
+          <h3 class="text-base md:text-lg font-bold text-[#071A2b]">How long does a typical background check take?</h3>
+          <span class="faq-icon flex-shrink-0 w-9 h-9 rounded-full bg-slate-100 text-[#071A2b] flex items-center justify-center">
+            <i class="fas fa-plus text-sm"></i>
+          </span>
+        </div>
+        <div class="faq-answer text-slate-600 text-sm md:text-base leading-relaxed">
+          Our average turnaround time is just 1.2 days. Many checks complete within hours thanks to our parallelised screening engine and direct integrations with global databases, courts, and universities. Complex cases may take longer, but you'll always have live status updates.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white border border-slate-200 rounded-2xl px-6 md:px-8 py-5">
+        <div class="faq-question flex items-center justify-between gap-4">
+          <h3 class="text-base md:text-lg font-bold text-[#071A2b]">Is Verifitrust compliant with global data privacy laws?</h3>
+          <span class="faq-icon flex-shrink-0 w-9 h-9 rounded-full bg-slate-100 text-[#071A2b] flex items-center justify-center">
+            <i class="fas fa-plus text-sm"></i>
+          </span>
+        </div>
+        <div class="faq-answer text-slate-600 text-sm md:text-base leading-relaxed">
+          Yes. We are GDPR, CCPA, and PDPA compliant, and we follow ISO 27001 information security standards. All data is encrypted in transit and at rest, and candidate information is only retained for the duration required by local regulations.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white border border-slate-200 rounded-2xl px-6 md:px-8 py-5">
+        <div class="faq-question flex items-center justify-between gap-4">
+          <h3 class="text-base md:text-lg font-bold text-[#071A2b]">In which countries can Verifitrust run checks?</h3>
+          <span class="faq-icon flex-shrink-0 w-9 h-9 rounded-full bg-slate-100 text-[#071A2b] flex items-center justify-center">
+            <i class="fas fa-plus text-sm"></i>
+          </span>
+        </div>
+        <div class="faq-answer text-slate-600 text-sm md:text-base leading-relaxed">
+          We currently operate in 180+ countries through a network of local partners and direct database integrations. Specific check availability varies by jurisdiction — our team will guide you on what's legally permitted in each country.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white border border-slate-200 rounded-2xl px-6 md:px-8 py-5">
+        <div class="faq-question flex items-center justify-between gap-4">
+          <h3 class="text-base md:text-lg font-bold text-[#071A2b]">Do candidates need to install any software?</h3>
+          <span class="faq-icon flex-shrink-0 w-9 h-9 rounded-full bg-slate-100 text-[#071A2b] flex items-center justify-center">
+            <i class="fas fa-plus text-sm"></i>
+          </span>
+        </div>
+        <div class="faq-answer text-slate-600 text-sm md:text-base leading-relaxed">
+          No. The entire candidate journey runs in a browser or mobile web — no app downloads required. We support document upload, selfie verification, e-signatures, and live status tracking through a single secure link.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white border border-slate-200 rounded-2xl px-6 md:px-8 py-5">
+        <div class="faq-question flex items-center justify-between gap-4">
+          <h3 class="text-base md:text-lg font-bold text-[#071A2b]">Can I integrate Verifitrust with my existing ATS or HRIS?</h3>
+          <span class="faq-icon flex-shrink-0 w-9 h-9 rounded-full bg-slate-100 text-[#071A2b] flex items-center justify-center">
+            <i class="fas fa-plus text-sm"></i>
+          </span>
+        </div>
+        <div class="faq-answer text-slate-600 text-sm md:text-base leading-relaxed">
+          Absolutely. We offer plug-and-play integrations with Workday, Greenhouse, BambooHR, Lever, SAP SuccessFactors, and more. For custom workflows, our REST API and webhooks let you build any integration in a matter of days.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white border border-slate-200 rounded-2xl px-6 md:px-8 py-5">
+        <div class="faq-question flex items-center justify-between gap-4">
+          <h3 class="text-base md:text-lg font-bold text-[#071A2b]">How is pricing structured?</h3>
+          <span class="faq-icon flex-shrink-0 w-9 h-9 rounded-full bg-slate-100 text-[#071A2b] flex items-center justify-center">
+            <i class="fas fa-plus text-sm"></i>
+          </span>
+        </div>
+        <div class="faq-answer text-slate-600 text-sm md:text-base leading-relaxed">
+          Pricing is flexible — choose a pay-as-you-go model for low volume, or a packaged subscription for higher volumes with discounted per-check rates. Custom enterprise pricing is available for global teams with specific compliance needs. Talk to our team for a tailored quote.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-12 text-center fade-up">
+      <p class="text-slate-600 text-base md:text-lg">Still have questions?</p>
+      <a href="#cta" class="inline-flex items-center gap-2 mt-2 text-[#69be28] font-semibold hover:text-[#4f9e1a] transition-colors">
+        Talk to our team
+        <i class="fas fa-arrow-right text-sm"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="cta" class="py-24 lg:py-32 relative overflow-hidden bg-white">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="relative bg-[#071A2b] rounded-[2.5rem] p-10 md:p-16 lg:p-20 overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-80 h-80 bg-[#69be28]/20 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-[#69be28]/10 rounded-full blur-3xl"></div>
+      <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(105,190,40,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(105,190,40,0.5) 1px, transparent 1px); background-size: 50px 50px;"></div>
+
+      <div class="relative text-center max-w-2xl mx-auto">
+        <span class="inline-block px-4 py-1.5 bg-[#69be28]/15 text-[#69be28] text-xs font-bold uppercase tracking-wider rounded-full mb-6">Join the mission</span>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          Help us build a <span class="font-serif italic text-[#69be28]">safer</span> working world
+        </h2>
+        <p class="text-lg text-slate-300 mb-8 leading-relaxed">
+          Whether you're looking to secure your hiring pipeline or want to join a fast-paced, mission-driven team, we'd love to hear from you.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#" class="btn-primary inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold">
+            Start Verifying Free
+            <i class="fas fa-arrow-right text-sm"></i>
+          </a>
+          <a href="#" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full font-semibold border border-white/20 text-white hover:bg-white/5 transition-all">
+            View Open Careers
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<div id="footer-include"></div>
+
+<!-- Load global scripts (Header, Footer, Animations) -->
+<script src="/main.js"></script>
+
+</body>
+</html>
+
+
